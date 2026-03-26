@@ -1,0 +1,29 @@
+score
+take map
+take brochure
+read brochure
+south
+take penny
+east
+take feed
+feed goats
+feed rabbits
+pet goats
+west
+west
+west
+take camera
+photograph toys
+put penny in press
+east
+east
+north
+take keycard
+south
+unlock gate with keycard
+open gate
+south
+take flashlight
+switch on flashlight
+south
+score
