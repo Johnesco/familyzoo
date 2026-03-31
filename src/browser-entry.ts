@@ -7,12 +7,13 @@ import { WorldModel, EntityType } from '@sharpee/world-model';
 import { Parser } from '@sharpee/parser-en-us';
 import { LanguageProvider } from '@sharpee/lang-en-us';
 import { PerceptionService } from '@sharpee/stdlib';
-import { BrowserClient, ThemeManager } from '@sharpee/platform-browser';
+import { BrowserClient } from '@sharpee/platform-browser';
 import { story } from './index.js';
 
 const THEME_STORAGE_KEY = 'familyzoo-theme';
 
-ThemeManager.applyEarlyTheme(THEME_STORAGE_KEY);
+// Apply saved theme immediately (inlined — esbuild IIFE loses the ThemeManager export ref, see ifhub#52)
+try { const t = localStorage.getItem(THEME_STORAGE_KEY); if (t) document.documentElement.setAttribute('data-theme', t); } catch {}
 
 const config = story.config;
 const title = config.title;
