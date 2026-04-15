@@ -1,0 +1,1114 @@
+/*
+ * Fever Dream — CSS Overlay System
+ *
+ * Medical horror aesthetic with three perception layers:
+ *   normal     — clinical, institutional, cold
+ *   clarity    — organic, amber, biological
+ *   corruption — glitched, fractured, chromatic aberration
+ *
+ * Zone palettes shift via data-zone on <body>.
+ * Perception states shift via data-perception on <body>.
+ * Event animations triggered by adding/removing classes.
+ */
+
+/* ─── Houdini @property for animated gradients ─────────────── */
+
+@property --vignette-opacity {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --zone-transition {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --aberration-offset {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+
+/* ─── Zone Palettes (CSS custom properties) ────────────────── */
+
+:root {
+  /* Base palette — overridden per zone */
+  --bg: #0a0a0c;
+  --bg-secondary: #111114;
+  --text: #c0beb8;
+  --text-dim: #707070;
+  --text-bright: #e8e8e8;
+  --accent: #3a5a5a;
+  --status-bg: #1a1a1e;
+  --status-text: #8a8a8a;
+  --input-bg: #0c0c0e;
+  --border: #222228;
+  --vignette-color: rgba(0, 0, 0, 0.6);
+  --glow: rgba(60, 90, 90, 0.08);
+
+  /* Perception tint (blended with zone palette) */
+  --perception-tint: transparent;
+
+  /* Transition timing */
+  --zone-fade: 1.2s;
+  --perception-fade: 2s;
+}
+
+/* Ward: sterile white-green fluorescent */
+[data-zone="ward"] {
+  --bg: #0a0c0a;
+  --bg-secondary: #0e110e;
+  --text: #b8c8b8;
+  --text-dim: #607060;
+  --text-bright: #d8e8d8;
+  --accent: #3a6a4a;
+  --status-bg: #121812;
+  --status-text: #6a8a6a;
+  --input-bg: #080a08;
+  --border: #1a2a1a;
+  --vignette-color: rgba(0, 10, 0, 0.5);
+  --glow: rgba(50, 100, 60, 0.06);
+}
+
+/* Treatment: slightly warmer, instrument steel */
+[data-zone="treatment"] {
+  --bg: #0c0a0a;
+  --bg-secondary: #100e0e;
+  --text: #c0b8b8;
+  --text-dim: #706060;
+  --text-bright: #e0d8d8;
+  --accent: #6a4a4a;
+  --status-bg: #181212;
+  --status-text: #8a6a6a;
+  --input-bg: #0a0808;
+  --border: #2a1a1a;
+  --vignette-color: rgba(10, 0, 0, 0.5);
+  --glow: rgba(100, 50, 50, 0.06);
+}
+
+/* Basement: concrete grey, cold */
+[data-zone="basement"] {
+  --bg: #08080a;
+  --bg-secondary: #0c0c0e;
+  --text: #a8a8b0;
+  --text-dim: #585860;
+  --text-bright: #c8c8d0;
+  --accent: #4a4a5a;
+  --status-bg: #101014;
+  --status-text: #6a6a7a;
+  --input-bg: #060608;
+  --border: #1a1a22;
+  --vignette-color: rgba(0, 0, 8, 0.6);
+  --glow: rgba(50, 50, 80, 0.06);
+}
+
+/* Laboratory: chemical green-yellow */
+[data-zone="laboratory"] {
+  --bg: #0a0c08;
+  --bg-secondary: #0e100c;
+  --text: #b8c0a8;
+  --text-dim: #607050;
+  --text-bright: #d8e0c8;
+  --accent: #5a6a3a;
+  --status-bg: #121808;
+  --status-text: #7a8a5a;
+  --input-bg: #080a06;
+  --border: #1a221a;
+  --vignette-color: rgba(5, 10, 0, 0.6);
+  --glow: rgba(80, 100, 40, 0.06);
+}
+
+/* Cold Storage: blue-white frost */
+[data-zone="coldstorage"] {
+  --bg: #080a0e;
+  --bg-secondary: #0c0e12;
+  --text: #a8b8c8;
+  --text-dim: #506070;
+  --text-bright: #c8d8e8;
+  --accent: #3a5a7a;
+  --status-bg: #0e1218;
+  --status-text: #5a7a9a;
+  --input-bg: #06080c;
+  --border: #1a2230;
+  --vignette-color: rgba(0, 5, 15, 0.6);
+  --glow: rgba(40, 70, 120, 0.06);
+}
+
+/* Cistern: dark wet stone */
+[data-zone="cistern"] {
+  --bg: #060808;
+  --bg-secondary: #0a0c0c;
+  --text: #90a0a0;
+  --text-dim: #405050;
+  --text-bright: #b0c0c0;
+  --accent: #2a4a4a;
+  --status-bg: #0a1010;
+  --status-text: #4a6a6a;
+  --input-bg: #040606;
+  --border: #122020;
+  --vignette-color: rgba(0, 5, 5, 0.7);
+  --glow: rgba(30, 60, 60, 0.06);
+}
+
+/* Source: deep amber-red organic */
+[data-zone="source"] {
+  --bg: #0c0806;
+  --bg-secondary: #100c08;
+  --text: #c0a890;
+  --text-dim: #705840;
+  --text-bright: #e0c8a8;
+  --accent: #7a5a3a;
+  --status-bg: #181008;
+  --status-text: #9a7a5a;
+  --input-bg: #0a0604;
+  --border: #2a1a10;
+  --vignette-color: rgba(15, 5, 0, 0.7);
+  --glow: rgba(120, 80, 40, 0.06);
+}
+
+/* ─── Perception State: Clarity (Post-Fungus) ──────────────── */
+/* Each zone gets a warmer, organic palette shift.
+   Text always stays bright against background for readability. */
+
+[data-perception="clarity"][data-zone="ward"] {
+  --bg: #12100a;
+  --text: #c8c0a0;
+  --text-dim: #8a8060;
+  --text-bright: #e0d8b8;
+  --accent: #b0a068;
+  --status-bg: #12100a;
+  --status-text: #8a8060;
+  --input-bg: #0e0c08;
+  --border: #242018;
+  --vignette-color: rgba(10, 8, 0, 0.5);
+}
+
+[data-perception="clarity"][data-zone="treatment"] {
+  --bg: #140e0a;
+  --text: #d0b8a0;
+  --text-dim: #8a7050;
+  --text-bright: #e8d0b8;
+  --accent: #b88848;
+  --status-bg: #140e0a;
+  --status-text: #8a7050;
+  --input-bg: #100a06;
+  --border: #281c10;
+  --vignette-color: rgba(12, 6, 0, 0.5);
+}
+
+[data-perception="clarity"][data-zone="basement"] {
+  --bg: #0e100c;
+  --text: #b0b8a0;
+  --text-dim: #688058;
+  --text-bright: #c8d0b8;
+  --accent: #80a060;
+  --status-bg: #0e100c;
+  --status-text: #688058;
+  --input-bg: #0a0c08;
+  --border: #1c2410;
+  --vignette-color: rgba(4, 6, 0, 0.55);
+}
+
+[data-perception="clarity"][data-zone="laboratory"] {
+  --bg: #101408;
+  --text: #b8c898;
+  --text-dim: #6a8848;
+  --text-bright: #d0e0b0;
+  --accent: #88a840;
+  --status-bg: #101408;
+  --status-text: #6a8848;
+  --input-bg: #0c1006;
+  --border: #202808;
+  --vignette-color: rgba(6, 8, 0, 0.55);
+}
+
+[data-perception="clarity"][data-zone="coldstorage"] {
+  --bg: #0e0e14;
+  --text: #b0b0c0;
+  --text-dim: #687088;
+  --text-bright: #c8c8d8;
+  --accent: #6880a8;
+  --status-bg: #0e0e14;
+  --status-text: #687088;
+  --input-bg: #0a0a10;
+  --border: #1c1c28;
+  --vignette-color: rgba(4, 4, 8, 0.55);
+}
+
+/* Cistern + Source keep their normal palettes under clarity
+   (they shift under corruption/spray instead) */
+
+/* ─── Perception State: Corruption (Post-Spray) ───────────── */
+/* Cistern and Source shift to purple-violet.
+   Other rooms shouldn't be reachable under spray,
+   but we set fallback tints just in case. */
+
+[data-perception="corruption"][data-zone="cistern"] {
+  --bg: #120a18;
+  --text: #c0a8d0;
+  --text-dim: #785898;
+  --text-bright: #d8c0e0;
+  --accent: #a060c8;
+  --status-bg: #120a18;
+  --status-text: #785898;
+  --input-bg: #0e0814;
+  --border: #201438;
+  --vignette-color: rgba(8, 2, 12, 0.65);
+}
+
+[data-perception="corruption"][data-zone="source"] {
+  --bg: #140a1a;
+  --text: #d0b0d8;
+  --text-dim: #8860a0;
+  --text-bright: #e0c8e8;
+  --accent: #c070d8;
+  --status-bg: #140a1a;
+  --status-text: #8860a0;
+  --input-bg: #100818;
+  --border: #281840;
+  --vignette-color: rgba(10, 2, 14, 0.65);
+}
+
+/* ─── Base Reset ───────────────────────────────────────────── */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Iowan Old Style", Palatino, Georgia, "Times New Roman", serif;
+  font-size: 16px;
+  line-height: 1.6;
+  text-rendering: optimizeLegibility;
+  transition:
+    background-color var(--zone-fade) ease,
+    color var(--zone-fade) ease;
+}
+
+/* ─── Game Container ───────────────────────────────────────── */
+
+#game-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  max-width: 72ch;
+  margin: 0 auto;
+  padding: 0;
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Status Line ──────────────────────────────────────────── */
+
+#status-line {
+  background: var(--text);
+  color: #0a0a0a;
+  padding: 6px 12px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+  transition:
+    background-color var(--zone-fade) ease,
+    color var(--zone-fade) ease,
+    border-color var(--zone-fade) ease;
+}
+
+#location-name {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+/* ─── Main Text Window ─────────────────────────────────────── */
+
+#main-window {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 40px;
+  padding-bottom: 2em;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+#main-window::-webkit-scrollbar {
+  width: 6px;
+}
+
+#main-window::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#main-window::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+#main-window::-webkit-scrollbar-thumb:hover {
+  background: #404050;
+}
+
+#text-content {
+  container-type: inline-size;
+}
+
+#text-content p {
+  margin-bottom: 0.9em;
+  transition: color var(--zone-fade) ease;
+}
+
+#text-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* ─── Command Echo ─────────────────────────────────────────── */
+
+.command-echo {
+  color: var(--text-dim);
+  margin-top: 1.2em;
+  margin-bottom: 0.4em;
+  font-style: italic;
+}
+
+/* ─── Input Area ───────────────────────────────────────────── */
+
+#input-area {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  background: var(--input-bg);
+  border-top: 1px solid var(--border);
+  flex-shrink: 0;
+  transition:
+    background-color var(--zone-fade) ease,
+    border-color var(--zone-fade) ease;
+}
+
+#input-area .prompt {
+  color: var(--accent);
+  margin-right: 8px;
+  font-weight: bold;
+  user-select: none;
+}
+
+#command-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--text-bright);
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: bold;
+  line-height: inherit;
+  outline: none;
+  caret-color: var(--accent);
+  caret-shape: underscore;
+}
+
+#command-input::placeholder {
+  color: var(--text-dim);
+  opacity: 0.5;
+}
+
+/* ─── Overlay Layers ───────────────────────────────────────── */
+
+.overlay-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Scanlines — persistent, subtle */
+#overlay-scanlines {
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 2px,
+    rgba(0, 0, 0, 0.04) 2px,
+    rgba(0, 0, 0, 0.04) 4px
+  );
+  z-index: 12;
+}
+
+/* Vignette — zone-aware via mask-image */
+#overlay-vignette {
+  background: var(--vignette-color);
+  mask-image: radial-gradient(
+    ellipse 70% 65% at 50% 50%,
+    transparent 50%,
+    black 100%
+  );
+  -webkit-mask-image: radial-gradient(
+    ellipse 70% 65% at 50% 50%,
+    transparent 50%,
+    black 100%
+  );
+  z-index: 11;
+  transition: background-color var(--zone-fade) ease;
+}
+
+/* Event overlay — transient effects */
+#overlay-event {
+  z-index: 15;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+
+/* ─── Perception: Clarity Persistent Effects ───────────────── */
+
+/* Amber vignette — inset box-shadow (matches Inform version) */
+[data-perception="clarity"] #overlay-vignette {
+  background: none;
+  mask-image: none;
+  -webkit-mask-image: none;
+  box-shadow:
+    inset 0 0 60px 15px rgba(160, 120, 40, 0.08),
+    inset 0 0 120px 30px rgba(140, 100, 30, 0.04);
+  animation: fungus-vignette 40s ease-out forwards;
+}
+
+@keyframes fungus-vignette {
+  0% {
+    box-shadow:
+      inset 0 0 60px 15px rgba(160, 120, 40, 0.06),
+      inset 0 0 120px 30px rgba(140, 100, 30, 0.03);
+  }
+  35% {
+    box-shadow:
+      inset 0 0 100px 35px rgba(160, 120, 40, 0.3),
+      inset 0 0 200px 60px rgba(140, 100, 30, 0.18),
+      inset 0 0 300px 80px rgba(120, 80, 20, 0.08);
+  }
+  70% {
+    box-shadow:
+      inset 0 0 60px 15px rgba(160, 120, 40, 0.08),
+      inset 0 0 120px 30px rgba(140, 100, 30, 0.04);
+  }
+  100% {
+    box-shadow:
+      inset 0 0 40px 10px rgba(160, 120, 40, 0.04),
+      inset 0 0 80px 20px rgba(140, 100, 30, 0.02);
+  }
+}
+
+/* ═══ FUNGUS BLUR (v1) — original gentle distortion ═══════
+   Commented out — replaced by fungus-trip (v2) below.
+
+[data-perception="clarity"] #text-content {
+  animation: fungus-decay 40s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+}
+
+@keyframes fungus-decay {
+  0%   { filter: blur(0.3px) hue-rotate(3deg) saturate(1.05); letter-spacing: 0.3px; word-spacing: 0.5px;
+         text-shadow: -0.3px 0 rgba(200,140,40,0.08), 0.3px 0 rgba(80,160,60,0.06); }
+  15%  { filter: blur(1px) hue-rotate(18deg) saturate(1.3); letter-spacing: 1.2px; word-spacing: 2px;
+         text-shadow: -0.8px 0 rgba(200,140,40,0.2), 0.8px 0 rgba(80,160,60,0.14); }
+  35%  { filter: blur(1.8px) hue-rotate(35deg) saturate(1.5); letter-spacing: 2.5px; word-spacing: 4px;
+         text-shadow: -1.2px 0 rgba(200,140,40,0.3), 1.2px 0 rgba(80,160,60,0.2), 0 1px rgba(160,100,180,0.12); }
+  55%  { filter: blur(0.8px) hue-rotate(15deg) saturate(1.2); letter-spacing: 0.8px; word-spacing: 1.5px;
+         text-shadow: -0.5px 0 rgba(200,140,40,0.12), 0.5px 0 rgba(80,160,60,0.08); }
+  75%  { filter: blur(0.2px) hue-rotate(5deg) saturate(1.05); letter-spacing: 0.1px; word-spacing: 0.2px;
+         text-shadow: -0.15px 0 rgba(200,140,40,0.04), 0.15px 0 rgba(80,160,60,0.03); }
+  100% { filter: none; letter-spacing: normal; word-spacing: normal; text-shadow: none; }
+}
+
+   ═══ END FUNGUS BLUR (v1) ════════════════════════════════ */
+
+/* 40-second perception trip on the CONTAINER.
+   Very slow onset — barely noticeable for the first 8 seconds.
+   Perspective bending builds gradually, peaks at 35-42% (brief
+   unreadable window), then settles back. No rainbow colors —
+   hue-rotate shifts the existing palette. Muted warm shadows.
+   Per-character wave (.trip-char) runs in parallel via JS. */
+[data-perception="clarity"] #text-content {
+  text-shadow: 0 0 4px rgba(200, 160, 60, 0.06);
+  animation: fungus-trip 40s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+@keyframes fungus-trip {
+  0% {
+    transform: perspective(800px) rotateX(0) rotateY(0) skewX(0);
+    filter: hue-rotate(0deg) saturate(1);
+    letter-spacing: 0;
+    word-spacing: 0;
+    text-shadow: none;
+  }
+  /* Barely perceptible — just a hint */
+  8% {
+    transform: perspective(800px) rotateX(0.2deg) rotateY(-0.1deg);
+    filter: hue-rotate(5deg) saturate(1.05);
+    letter-spacing: 0.2px;
+    text-shadow:
+      -0.3px 0 rgba(180, 120, 40, 0.06),
+       0.3px 0 rgba(60, 120, 80, 0.04);
+  }
+  /* Something feels off */
+  18% {
+    transform: perspective(600px) rotateX(-0.6deg) rotateY(0.5deg) skewX(0.8deg);
+    filter: hue-rotate(15deg) saturate(1.15);
+    letter-spacing: 0.6px;
+    word-spacing: 1px;
+    text-shadow:
+      -0.8px 0 rgba(180, 120, 40, 0.12),
+       0.8px 0 rgba(60, 120, 80, 0.08);
+  }
+  /* Building — perspective warp becoming visible */
+  28% {
+    transform: perspective(400px) rotateX(1.2deg) rotateY(-1deg) skewX(1.8deg);
+    filter: blur(0.5px) hue-rotate(35deg) saturate(1.3);
+    letter-spacing: 1.2px;
+    word-spacing: 2px;
+    text-shadow:
+      -1.5px -0.5px rgba(180, 120, 40, 0.2),
+       1.5px  0.5px rgba(60, 120, 80, 0.15),
+       0      1px   rgba(140, 80, 60, 0.1);
+  }
+  /* Peak — text bends hard, briefly unreadable */
+  35% {
+    transform: perspective(250px) rotateX(-2deg) rotateY(2deg) skewX(-3deg);
+    filter: blur(1.2px) hue-rotate(60deg) saturate(1.5);
+    letter-spacing: 2px;
+    word-spacing: 3px;
+    text-shadow:
+      -2.5px -1px rgba(180, 120, 40, 0.3),
+       2.5px  1px rgba(60, 120, 80, 0.25),
+       0      2px rgba(140, 80, 60, 0.18),
+      -1px    1px rgba(160, 100, 40, 0.15);
+  }
+  /* Peak oscillation — warps opposite direction */
+  42% {
+    transform: perspective(250px) rotateX(1.8deg) rotateY(-1.8deg) skewX(2.5deg);
+    filter: blur(1px) hue-rotate(50deg) saturate(1.4);
+    letter-spacing: 1.8px;
+    word-spacing: 2.5px;
+    text-shadow:
+      -2px -0.5px rgba(180, 120, 40, 0.25),
+       2px  0.5px rgba(60, 120, 80, 0.2),
+       0    1.5px rgba(140, 80, 60, 0.14);
+  }
+  /* Coming down — readable again */
+  55% {
+    transform: perspective(500px) rotateX(-0.5deg) rotateY(0.3deg) skewX(-0.5deg);
+    filter: blur(0.3px) hue-rotate(25deg) saturate(1.2);
+    letter-spacing: 0.8px;
+    word-spacing: 1px;
+    text-shadow:
+      -0.8px 0 rgba(180, 120, 40, 0.1),
+       0.8px 0 rgba(60, 120, 80, 0.06);
+  }
+  /* Settling */
+  70% {
+    transform: perspective(700px) rotateX(0.15deg) skewX(0.1deg);
+    filter: hue-rotate(8deg) saturate(1.08);
+    letter-spacing: 0.3px;
+    text-shadow:
+      -0.3px 0 rgba(180, 120, 40, 0.05),
+       0.3px 0 rgba(60, 120, 80, 0.03);
+  }
+  /* Nearly normal */
+  85% {
+    transform: none;
+    filter: hue-rotate(3deg) saturate(1.03);
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-shadow: 0 0 3px rgba(200, 160, 60, 0.05);
+  }
+  /* Settled — matches persistent text-shadow */
+  100% {
+    transform: none;
+    filter: none;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-shadow: 0 0 4px rgba(200, 160, 60, 0.06);
+  }
+}
+
+/* Amber-tinted scanlines during clarity */
+[data-perception="clarity"] #overlay-scanlines {
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0px,
+      transparent 2px,
+      rgba(120, 80, 20, 0.03) 2px,
+      rgba(120, 80, 20, 0.03) 4px
+    );
+}
+
+/* ─── Perception: Corruption Persistent Effects ────────────── */
+
+/* Sparse chromatic flicker — mostly clean, brief red/blue split
+   every ~6 seconds. Targets the container for uniform effect. */
+[data-perception="corruption"] #text-content {
+  animation: chromatic-flicker 6s steps(1) infinite;
+}
+
+@keyframes chromatic-flicker {
+  0%, 89%, 100% { text-shadow: none; }
+  90% { text-shadow: -1px 0 rgba(255, 60, 60, 0.3), 1px 0 rgba(60, 60, 255, 0.3); }
+  93% { text-shadow: 1px 0 rgba(255, 60, 60, 0.2), -1px 0 rgba(60, 60, 255, 0.2); }
+  95% { text-shadow: none; }
+}
+
+/* Sparse static overlay — brief scanline flicker every ~8 seconds */
+[data-perception="corruption"] #overlay-event {
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0px,
+      transparent 2px,
+      rgba(255, 255, 255, 0.06) 2px,
+      rgba(255, 255, 255, 0.06) 3px
+    );
+  animation: static-overlay 8s steps(1) infinite;
+}
+
+@keyframes static-overlay {
+  0%, 92%, 97%, 100% { opacity: 0; }
+  93% { opacity: 0.04; }
+  96% { opacity: 0.03; }
+}
+
+/* Corruption vignette — inset box-shadow */
+[data-perception="corruption"] #overlay-vignette {
+  background: none;
+  mask-image: none;
+  -webkit-mask-image: none;
+  box-shadow:
+    inset 0 0 60px 15px rgba(80, 20, 60, 0.1),
+    inset 0 0 120px 30px rgba(60, 10, 40, 0.06);
+}
+
+/* ─── Fungus Trip: Per-Character Wave ──────────────────────── */
+/* Applied by JS when fungus is consumed. Each character becomes an
+   inline-block span with a staggered animation-delay via --i.
+   Creates a visible wave that ripples across text like a hallucination.
+   Removed by JS after ~18s as the trip winds down. */
+
+.trip-char {
+  display: inline-block;
+  animation: char-wave 2.5s ease-in-out infinite;
+  animation-delay: calc(var(--i, 0) * 25ms);
+  will-change: transform;
+}
+
+@keyframes char-wave {
+  0%, 100% {
+    transform: translateY(0) rotate(0) scaleY(1);
+  }
+  20% {
+    transform: translateY(-3px) rotate(-2.5deg) scaleY(1.08);
+  }
+  50% {
+    transform: translateY(2px) rotate(2deg) scaleY(0.95);
+  }
+  75% {
+    transform: translateY(-1px) rotate(-0.8deg) scaleY(1.03);
+  }
+}
+
+/* ─── Per-Paragraph Entry Animations ───────────────────────── */
+
+/* @starting-style for new paragraphs */
+@supports (selector(:has(+ *))) {
+  #text-content p {
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+
+  @starting-style {
+    #text-content p {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+  }
+
+  /* Clarity: organic pulse entry */
+  [data-perception="clarity"] #text-content p {
+    transition: opacity 0.6s ease, transform 0.6s ease, filter 0.6s ease;
+  }
+
+  @starting-style {
+    [data-perception="clarity"] #text-content p {
+      opacity: 0;
+      transform: translateY(6px) scale(0.995);
+      filter: hue-rotate(15deg);
+    }
+  }
+
+  /* Corruption: stagger/shake entry */
+  [data-perception="corruption"] #text-content p {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  @starting-style {
+    [data-perception="corruption"] #text-content p {
+      opacity: 0;
+      transform: translateX(-3px);
+    }
+  }
+}
+
+/* ─── Event Animations ─────────────────────────────────────── */
+
+/* Glass break: screen shake + flash */
+body.event-glass-break {
+  animation: screen-shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+}
+
+body.event-glass-break #overlay-event {
+  opacity: 1 !important;
+  background: rgba(200, 200, 200, 0.15);
+  animation: flash-fade 0.6s ease-out forwards;
+}
+
+@keyframes screen-shake {
+  0%, 100% { transform: translate(0, 0); }
+  8%  { transform: translate(-4px, 2px); }
+  16% { transform: translate(3px, -3px); }
+  24% { transform: translate(-3px, 3px); }
+  32% { transform: translate(3px, -1px); }
+  42% { transform: translate(-2px, 2px); }
+  52% { transform: translate(1.5px, -2px); }
+  64% { transform: translate(-1px, 1px); }
+  78% { transform: translate(0.5px, -0.5px); }
+}
+
+@keyframes flash-fade {
+  0% { opacity: 0.8; }
+  20% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* ═══ FUNGUS BLUR (v1) — original event animation ═════════
+
+body.event-fungus-consumed {
+  animation: fungus-ripple 2.5s ease-out;
+}
+body.event-fungus-consumed #overlay-event {
+  opacity: 1 !important;
+  background: radial-gradient(ellipse at center, rgba(200,160,60,0.4) 0%, rgba(160,120,40,0.2) 40%, transparent 70%);
+  animation: fungus-flash 2.5s ease-out forwards;
+}
+@keyframes fungus-ripple {
+  0%   { filter: hue-rotate(0deg) saturate(1); }
+  15%  { filter: hue-rotate(20deg) saturate(1.3); }
+  30%  { filter: hue-rotate(-15deg) saturate(1.15); }
+  50%  { filter: hue-rotate(25deg) saturate(1.35); }
+  70%  { filter: hue-rotate(-8deg) saturate(1.1); }
+  85%  { filter: hue-rotate(5deg) saturate(1.05); }
+  100% { filter: hue-rotate(0deg) saturate(1); }
+}
+@keyframes fungus-flash {
+  0% { opacity: 0; } 10% { opacity: 0.25; } 30% { opacity: 0.35; }
+  50% { opacity: 0.2; } 100% { opacity: 0; }
+}
+
+   ═══ END FUNGUS BLUR (v1) event ══════════════════════════ */
+
+/* Fungus consumed (v2): 6s event burst.
+   Gentle hue cycling shifts the existing palette — no painted colors.
+   Overlay is a simple amber pulse, not a rainbow wash. */
+body.event-fungus-consumed {
+  animation: fungus-warp 6s ease-out;
+}
+
+body.event-fungus-consumed #overlay-event {
+  opacity: 1 !important;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(160, 120, 40, 0.3) 0%,
+    rgba(120, 80, 20, 0.15) 40%,
+    transparent 70%
+  );
+  animation: fungus-burst 6s ease-out forwards;
+}
+
+@keyframes fungus-warp {
+  0%   { filter: none; }
+  10%  { filter: hue-rotate(15deg) saturate(1.2) brightness(1.05); }
+  25%  { filter: hue-rotate(45deg) saturate(1.4) brightness(1.1); }
+  40%  { filter: hue-rotate(90deg) saturate(1.5) brightness(1.08); }
+  55%  { filter: hue-rotate(60deg) saturate(1.3) brightness(1.04); }
+  70%  { filter: hue-rotate(30deg) saturate(1.15); }
+  85%  { filter: hue-rotate(10deg) saturate(1.05); }
+  100% { filter: none; }
+}
+
+@keyframes fungus-burst {
+  0%   { opacity: 0; transform: scale(0.5); }
+  15%  { opacity: 0.3; transform: scale(0.9); }
+  35%  { opacity: 0.45; transform: scale(1.05); }
+  55%  { opacity: 0.3; transform: scale(1.1); }
+  100% { opacity: 0; transform: scale(1.2); }
+}
+
+/* Spray exposure: stepped glitch + static flash (1.5s) */
+body.event-spray-exposure {
+  animation: spray-glitch 1.5s steps(1);
+}
+
+body.event-spray-exposure #overlay-event {
+  opacity: 1 !important;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0px,
+      transparent 2px,
+      rgba(255, 255, 255, 0.08) 2px,
+      rgba(255, 255, 255, 0.08) 3px
+    );
+  animation: static-flash 1.5s steps(1) forwards;
+}
+
+@keyframes spray-glitch {
+  0%   { filter: none; }
+  10%  { filter: hue-rotate(90deg) invert(0.1); }
+  12%  { filter: none; }
+  30%  { filter: hue-rotate(-60deg) invert(0.15); }
+  33%  { filter: none; }
+  50%  { filter: hue-rotate(120deg) saturate(2); }
+  53%  { filter: none; }
+  70%  { filter: invert(0.2) hue-rotate(-90deg); }
+  73%  { filter: none; }
+  85%  { filter: hue-rotate(45deg) invert(0.08); }
+  88%  { filter: none; }
+  100% { filter: none; }
+}
+
+@keyframes static-flash {
+  0%   { opacity: 0; }
+  5%   { opacity: 0.3; }
+  15%  { opacity: 0.2; }
+  40%  { opacity: 0.15; }
+  42%  { opacity: 0.15; }
+  100% { opacity: 0; }
+}
+
+/* Valve drain: downward gradient sweep */
+body.event-valve-drain #overlay-event {
+  opacity: 1 !important;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(30, 60, 60, 0.2) 50%,
+    transparent 100%
+  );
+  animation: drain-sweep 2s ease-out forwards;
+}
+
+@keyframes drain-sweep {
+  0% { transform: translateY(-100%); opacity: 0.8; }
+  30% { opacity: 1; }
+  70% { opacity: 0.6; }
+  100% { transform: translateY(100%); opacity: 0; }
+}
+
+/* Valve flood: rising water */
+body.event-valve-flood #overlay-event {
+  opacity: 1 !important;
+  background: linear-gradient(
+    to top,
+    rgba(10, 30, 40, 0.8) 0%,
+    rgba(10, 30, 40, 0.4) 40%,
+    transparent 100%
+  );
+  animation: flood-rise 3s cubic-bezier(0.4, 0, 0.6, 1) forwards;
+}
+
+@keyframes flood-rise {
+  0% { transform: translateY(100%); }
+  100% { transform: translateY(0); }
+}
+
+/* Basin touch: warm white-gold radial bloom */
+body.event-basin-touch #overlay-event {
+  opacity: 1 !important;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 255, 240, 0.6) 0%,
+    rgba(224, 176, 64, 0.3) 30%,
+    rgba(192, 152, 64, 0.1) 50%,
+    transparent 70%
+  );
+  animation: basin-flash 3s ease-out forwards;
+}
+
+@keyframes basin-flash {
+  0%   { opacity: 0; transform: scale(0.3); }
+  20%  { opacity: 0.6; transform: scale(0.8); }
+  50%  { opacity: 0.8; transform: scale(1.2); }
+  100% { opacity: 0; transform: scale(2); }
+}
+
+/* Wound opening: red-amber vignette pulse */
+body.event-wound-open #overlay-event {
+  opacity: 1 !important;
+  background: none;
+  animation: wound-pulse 1.5s ease-out forwards;
+}
+
+@keyframes wound-pulse {
+  0%   { box-shadow: none; opacity: 0; }
+  30%  { box-shadow: inset 0 0 80px 20px rgba(160, 60, 30, 0.4), inset 0 0 160px 40px rgba(140, 50, 20, 0.2); opacity: 0.5; }
+  60%  { box-shadow: inset 0 0 80px 20px rgba(160, 60, 30, 0.3), inset 0 0 160px 40px rgba(140, 50, 20, 0.15); opacity: 0.3; }
+  100% { box-shadow: none; opacity: 0; }
+}
+
+/* Spectacles on: brief clarity flash */
+body.event-spectacles #overlay-event {
+  opacity: 1 !important;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(200, 220, 200, 0.15) 0%,
+    transparent 70%
+  );
+  animation: clarity-flash 0.8s ease-out forwards;
+}
+
+@keyframes clarity-flash {
+  0% { opacity: 0; filter: blur(3px); }
+  30% { opacity: 1; filter: blur(0); }
+  100% { opacity: 0; }
+}
+
+/* ─── View Transitions on Room Change ──────────────────────── */
+
+@supports (view-transition-name: auto) {
+  #text-content {
+    view-transition-name: text-content;
+  }
+
+  ::view-transition-old(text-content) {
+    animation: 0.4s ease-out fade-out;
+  }
+
+  ::view-transition-new(text-content) {
+    animation: 0.4s ease-in fade-in;
+  }
+
+  @keyframes fade-out {
+    from { opacity: 1; }
+    to { opacity: 0; }
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+}
+
+/* ─── Container Queries for Perception-Aware Paragraphs ──── */
+
+@container (min-width: 0px) {
+  /* These activate once container-type is set on #text-content */
+  p {
+    line-height: 1.6;
+  }
+}
+
+/* ─── Prefers Reduced Motion ───────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  #overlay-scanlines {
+    display: none;
+  }
+
+  [data-perception="corruption"] #overlay-event {
+    opacity: 0 !important;
+    animation: none !important;
+  }
+
+  [data-perception="corruption"] #text-content {
+    text-shadow: none;
+    animation: none;
+  }
+
+  body.event-glass-break,
+  body.event-spray-exposure {
+    animation: none !important;
+  }
+}
+
+/* ─── Mobile Responsive ────────────────────────────────────── */
+
+@media (max-width: 600px) {
+  body {
+    font-size: 14px;
+  }
+
+  #game-container {
+    max-width: 100%;
+  }
+
+  #status-line {
+    padding: 4px 8px;
+    font-size: 12px;
+  }
+
+  #main-window {
+    padding: 8px 10px;
+  }
+
+  #input-area {
+    padding: 6px 8px;
+  }
+}
+
+/* Landscape phones */
+@media (max-height: 480px) and (orientation: landscape) {
+  #status-line {
+    padding: 2px 8px;
+    font-size: 11px;
+  }
+
+  #main-window {
+    padding: 4px 10px;
+  }
+
+  body {
+    font-size: 13px;
+    line-height: 1.4;
+  }
+}
+
+/* ─── Selection ────────────────────────────────────────────── */
+
+::selection {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+/* ─── Focus Styles ─────────────────────────────────────────── */
+
+#command-input:focus {
+  outline: none;
+}
+
+/* Accessibility: visible focus for keyboard nav */
+#command-input:focus-visible {
+  box-shadow: 0 0 0 1px var(--accent);
+}

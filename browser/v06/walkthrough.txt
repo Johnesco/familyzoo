@@ -1,0 +1,7 @@
+south
+open lunchbox
+look in lunchbox
+close lunchbox
+east
+open dispenser
+take dispenser

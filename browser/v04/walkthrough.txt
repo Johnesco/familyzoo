@@ -1,0 +1,12 @@
+look
+take map
+inventory
+south
+take penny
+inventory
+drop map
+look
+east
+take feed
+inventory
+take goats

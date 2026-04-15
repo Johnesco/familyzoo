@@ -1,0 +1,17 @@
+look
+examine fence
+take fence
+south
+examine bench
+examine flowers
+take bench
+east
+examine hay bale
+take hay bale
+examine rabbits
+west
+west
+examine parrots
+examine waterfall
+take waterfall
+examine perches

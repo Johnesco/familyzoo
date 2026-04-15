@@ -2,171 +2,37 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Fever Dream (Sharpee) &mdash; IF Hub</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="ifhub:title" content="Fever Dream (Sharpee)">
-<meta name="ifhub:meta" content="John Googol">
-<meta name="ifhub:description" content="A perceptual horror. Three items alter your perception. The world stays the same. You do not.">
-
+<title>Family Zoo &mdash; Sharpee Tutorial</title>
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-html {
-  height: 100%;
-  background: var(--page-bg, #0a0a0a);
-  color: var(--page-fg, #d4c5a9);
-  font-family: Georgia, "Times New Roman", serif;
-}
-
-body {
-  min-height: 100%;
-  max-width: 740px;
-  margin: 0 auto;
-  padding: 60px 24px 80px;
-  line-height: 1.7;
-}
-
-.breadcrumb {
-  font-size: 0.85em;
-  color: #887755;
-  margin-bottom: 24px;
-}
-
-.breadcrumb a {
-  color: #887755;
-  border-bottom-color: #3a3020;
-}
-
-.breadcrumb a:hover {
-  color: var(--accent, #e8d090);
-}
-
-h1 {
-  font-size: 1.8em;
-  color: var(--heading, #e8d8b0);
-  letter-spacing: 1px;
-  margin-bottom: 6px;
-}
-
-.subtitle {
-  font-style: italic;
-  color: #aa9966;
-  margin-bottom: 40px;
-}
-
-h2 {
-  font-size: 1.2em;
-  color: #c4b48a;
-  margin-top: 48px;
-  margin-bottom: 16px;
-  padding-bottom: 6px;
-  border-bottom: 1px solid #2a2418;
-}
-
-p {
-  margin-bottom: 16px;
-}
-
-a {
-  color: var(--accent, #e8d090);
-  text-decoration: none;
-  border-bottom: 1px solid #5a4a30;
-  transition: color 0.15s, border-color 0.15s;
-}
-
-a:hover {
-  color: #ffe8a0;
-  border-bottom-color: #aa9966;
-}
-
-.btn-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 32px;
-}
-
-.btn-play-hub {
-  display: inline-block;
-  padding: 14px 36px;
-  background: var(--accent, #e8d090);
-  color: var(--page-bg, #0a0a0a);
-  border: none;
-  border-radius: 4px;
-  font-family: inherit;
-  font-size: 1.1em;
-  font-weight: bold;
-  letter-spacing: 0.5px;
-  text-decoration: none;
-  transition: background 0.15s, color 0.15s;
-}
-
-.btn-play-hub:hover {
-  background: #ffe8a0;
-  color: #0a0a0a;
-  border-bottom-color: transparent;
-}
-
-.btn-secondary {
-  display: inline-block;
-  padding: 10px 24px;
-  background: #2a2010;
-  border: 1px solid #5a4a30;
-  border-radius: 4px;
-  color: var(--accent, #e8d090);
-  font-family: inherit;
-  font-size: 0.95em;
-  letter-spacing: 0.5px;
-  text-decoration: none;
-  transition: background 0.15s, color 0.15s, border-color 0.15s;
-}
-
-.btn-secondary:hover {
-  background: #3a3018;
-  color: #ffe8a0;
-  border-color: #aa9966;
-}
-
-code {
-  font-family: "Consolas", "Monaco", monospace;
-  font-size: 0.9em;
-  color: #c8b888;
-  background: #1a1510;
-  padding: 1px 5px;
-  border-radius: 3px;
-}
+  body { font-family: Georgia, serif; max-width: 640px; margin: 3em auto; padding: 0 1em; color: #2a2215; background: #f5eddb; }
+  h1 { font-size: 1.5em; }
+  ol { padding-left: 1.5em; line-height: 1.7; }
+  a { color: #6b3f1b; }
+  .latest { font-weight: bold; }
 </style>
-<script>
-// Apply saved IF Hub theme
-(function() {
-  try {
-    var themeId = localStorage.getItem('ifhub-theme');
-    if (!themeId || themeId === 'classic') return;
-    // Load themes.js from hub to get theme data
-    var s = document.createElement('script');
-    s.src = '../../ifhub/themes.js';
-    s.onload = function() {
-      if (typeof initTheme === 'function') initTheme('library');
-    };
-    document.head.appendChild(s);
-  } catch(e) {}
-})();
-</script>
 </head>
 <body>
-
-<nav class="breadcrumb"><a href="../../ifhub/">IF Hub</a> &rsaquo; Fever Dream (Sharpee)</nav>
-
-<h1>Fever Dream (Sharpee)</h1>
-
-<div class="btn-row">
-  <a class="btn-play-hub" href="../../ifhub/app.html?game=feverdream-sharpee">Play in IF Hub</a>
-  <a class="btn-secondary" href="play.html">Play Standalone</a>
-  <a class="btn-secondary" href="source.html">Source</a>
-  <a class="btn-secondary" href="walkthrough.html">Walkthrough</a>
-</div>
-
-<p>A perceptual horror. Three items alter your perception. The world stays the same. You do not.</p>
-
+<h1>Family Zoo &mdash; a progressive Sharpee tutorial</h1>
+<p>Seventeen incremental versions, each adding one engine feature to a growing tutorial game.</p>
+<ol>
+  <li><a href="v01/play.html">v01 &mdash; A Single Room</a></li>
+  <li><a href="v02/play.html">v02 &mdash; Multiple Rooms &amp; Navigation</a></li>
+  <li><a href="v03/play.html">v03 &mdash; Scenery</a></li>
+  <li><a href="v04/play.html">v04 &mdash; Portable Objects</a></li>
+  <li><a href="v05/play.html">v05 &mdash; Containers &amp; Supporters</a></li>
+  <li><a href="v06/play.html">v06 &mdash; Openable Things</a></li>
+  <li><a href="v07/play.html">v07 &mdash; Locked Doors &amp; Keys</a></li>
+  <li><a href="v08/play.html">v08 &mdash; Light &amp; Dark</a></li>
+  <li><a href="v09/play.html">v09 &mdash; Readable Objects</a></li>
+  <li><a href="v10/play.html">v10 &mdash; Switchable Devices</a></li>
+  <li><a href="v11/play.html">v11 &mdash; Non-Player Characters</a></li>
+  <li><a href="v12/play.html">v12 &mdash; Event Handlers</a></li>
+  <li><a href="v13/play.html">v13 &mdash; Custom Actions</a></li>
+  <li><a href="v14/play.html">v14 &mdash; Capability Dispatch</a></li>
+  <li><a href="v15/play.html">v15 &mdash; Timed Events (Daemons &amp; Fuses)</a></li>
+  <li><a href="v16/play.html">v16 &mdash; Scoring and Endgame</a></li>
+  <li class="latest"><a href="v17/play.html">v17 &mdash; After Hours &amp; Multi-File Organization (latest)</a></li>
+</ol>
+<p><a href="v17/play.html">&rarr; Play the latest version (v17)</a></p>
 </body>
 </html>

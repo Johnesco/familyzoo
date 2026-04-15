@@ -1,0 +1,8 @@
+look
+south
+examine zookeeper
+west
+examine parrot
+wait
+wait
+east

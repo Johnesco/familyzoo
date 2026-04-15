@@ -1,0 +1,14 @@
+wait
+wait
+wait
+wait
+wait
+south
+east
+wait
+wait
+wait
+wait
+wait
+take feed
+feed goats

@@ -1,0 +1,10 @@
+look
+south
+examine signs
+east
+examine goats
+west
+west
+examine toucan
+east
+north

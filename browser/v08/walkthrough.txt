@@ -1,0 +1,15 @@
+take keycard
+south
+unlock gate with keycard
+open gate
+south
+take flashlight
+south
+look
+north
+switch on flashlight
+south
+look
+examine owl
+examine galagos
+north

@@ -1,0 +1,11 @@
+take backpack
+take map
+put map in backpack
+look in backpack
+south
+take penny
+put penny on bench
+examine bench
+east
+take dispenser
+examine dispenser

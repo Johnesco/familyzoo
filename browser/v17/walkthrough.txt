@@ -1,0 +1,197 @@
+look
+examine sign
+examine booth
+take sign
+look
+look
+south
+examine signs
+east
+examine goats
+west
+west
+examine toucan
+east
+north
+look
+examine fence
+take fence
+south
+examine bench
+examine flowers
+take bench
+east
+examine hay bale
+take hay bale
+examine rabbits
+west
+west
+examine parrots
+examine waterfall
+take waterfall
+examine perches
+look
+take map
+inventory
+south
+take penny
+inventory
+drop map
+look
+east
+take feed
+inventory
+take goats
+take backpack
+take map
+put map in backpack
+look in backpack
+south
+take penny
+put penny on bench
+examine bench
+east
+take dispenser
+examine dispenser
+south
+open lunchbox
+look in lunchbox
+close lunchbox
+east
+open dispenser
+take dispenser
+take keycard
+south
+south
+unlock gate with keycard
+open gate
+south
+north
+take keycard
+south
+unlock gate with keycard
+open gate
+south
+take flashlight
+south
+look
+north
+switch on flashlight
+south
+look
+examine owl
+examine galagos
+north
+take brochure
+read brochure
+examine brochure
+south
+east
+read plaque
+west
+west
+read plaque
+east
+north
+take keycard
+south
+unlock gate with keycard
+open gate
+south
+read warning
+take keycard
+south
+unlock gate with keycard
+open gate
+south
+examine radio
+switch on radio
+switch off radio
+take radio
+look
+south
+examine zookeeper
+west
+examine parrot
+wait
+wait
+east
+south
+east
+take feed
+drop feed
+west
+west
+west
+examine press
+east
+east
+take penny
+west
+west
+put penny in press
+inventory
+south
+east
+take feed
+feed goats
+feed goats
+photograph goats
+west
+west
+west
+take camera
+photograph postcards
+east
+photograph toucan
+south
+east
+pet goats
+pet rabbits
+pet hay bale
+west
+west
+pet parrot
+wait
+wait
+wait
+wait
+wait
+south
+east
+wait
+wait
+wait
+wait
+wait
+take feed
+feed goats
+score
+take map
+take brochure
+read brochure
+south
+take penny
+east
+take feed
+feed goats
+feed rabbits
+pet goats
+west
+west
+west
+take camera
+photograph toys
+put penny in press
+east
+east
+north
+take keycard
+south
+unlock gate with keycard
+open gate
+south
+take flashlight
+switch on flashlight
+south
+score
