@@ -1,0 +1,180 @@
+{
+  "title": "Family Zoo - Sharpee Tutorial",
+  "meta": "A progressive Sharpee engine walkthrough",
+  "subtitle": "A progressive Sharpee engine walkthrough",
+  "description": "Family Zoo \u2014 a 17-version progressive walkthrough of the Sharpee TypeScript IF engine, from a single room to a full multi-file story.",
+  "primaryCtaLabel": "\u2192 Play the latest version",
+  "introHtml": "<p>Family Zoo is a progressive tutorial for the <a href=\"https://sharpee.net\">Sharpee</a> TypeScript interactive fiction engine. Each version adds one more chapter of the story \u2014 and one more slice of the engine. Pick a step below to play it or read the source.</p>",
+  "versions": {
+    "familyzoo-01": {
+      "summary": "The simplest possible Sharpee story: one room with a welcome sign and ticket booth. Introduces the Story class structure, entities, and the four essential traits needed to stand up a world.",
+      "features": [
+        "Story interface with config, createPlayer, and initializeWorld",
+        "IdentityTrait for names, descriptions, and aliases",
+        "ActorTrait with isPlayer flag and ContainerTrait for inventory",
+        "SceneryTrait and RoomTrait basics",
+        "Explicit entity placement via world.moveEntity"
+      ]
+    },
+    "familyzoo-02": {
+      "summary": "Expands the zoo to four connected rooms \u2014 entrance, main path, petting zoo, and aviary \u2014 linked by compass directions. Teaches how room exits are wired and why they must be created as pairs.",
+      "features": [
+        "Direction enum for compass movement (N/S/E/W and more)",
+        "RoomTrait.exits mapping directions to destinations",
+        "Two-step create-then-connect pattern for rooms",
+        "Retrieving traits with entity.get(Trait)",
+        "Automatic handling by the stdlib going action"
+      ]
+    },
+    "familyzoo-03": {
+      "summary": "Populates every room with environmental detail \u2014 fences, flowers, hay bales, waterfalls \u2014 that the player can examine but not pick up. Makes the distinction between EntityType.SCENERY as a label and SceneryTrait as the mechanism that actually blocks taking.",
+      "features": [
+        "SceneryTrait to prevent items from being taken",
+        "Distinction between EntityType.SCENERY and SceneryTrait",
+        "Generous alias lists for natural player phrasing",
+        "Guidance on what belongs as scenery vs. portable items",
+        "Scenery-only descriptions that stay hidden from room object listings"
+      ]
+    },
+    "familyzoo-04": {
+      "summary": "Introduces takeable items \u2014 a zoo map, a bag of feed, a souvenir penny \u2014 that the player can pick up, carry between rooms, and drop. Establishes that portability is the default and SceneryTrait is what removes it.",
+      "features": [
+        "EntityType.ITEM for portable objects",
+        "Built-in take, drop, inventory, and take all actions",
+        "Items traveling with the player automatically",
+        "Loose objects appearing in room listings",
+        "The portable-by-default design philosophy"
+      ]
+    },
+    "familyzoo-05": {
+      "summary": "Adds intermediate storage: a backpack to put things in, a park bench to set things on, and a fixed feed dispenser. Covers the split between containers and supporters and how capacity limits work.",
+      "features": [
+        "ContainerTrait for things held inside",
+        "SupporterTrait for things placed on top",
+        "Preposition-sensitive parsing of put in vs put on",
+        "Capacity limits via maxItems",
+        "Composing multiple traits (e.g. SupporterTrait + SceneryTrait) on one entity"
+      ]
+    },
+    "familyzoo-06": {
+      "summary": "Makes containers openable and closeable, so a lunchbox and the feed dispenser hide their contents until opened. Teaches the open/closed state machine and the trick for pre-populating closed containers during world setup.",
+      "features": [
+        "OpenableTrait with isOpen, canClose, and revealsContents",
+        "Built-in open and close actions from stdlib",
+        "Closed containers blocking put-in and hiding contents",
+        "Temporarily opening a container during initializeWorld to seed items",
+        "Pattern preview for combining OpenableTrait with LockableTrait"
+      ]
+    },
+    "familyzoo-07": {
+      "summary": "A staff gate now blocks passage south until the player finds the keycard at the entrance and unlocks it. Covers the full locked-door stack: keys, LockableTrait, DoorTrait, and the via property on exits.",
+      "features": [
+        "LockableTrait with keyId wiring a specific key to a specific lock",
+        "DoorTrait bridging two rooms bidirectionally",
+        "Exit via property so going checks the door state",
+        "The take, unlock, open, go player sequence",
+        "Ordinary items serving as keys \u2014 no special trait needed"
+      ]
+    },
+    "familyzoo-08": {
+      "summary": "Adds a pitch-black nocturnal exhibit reachable only after finding and switching on a flashlight in the supply room. Introduces darkness as a room property and light sources as the gating mechanism.",
+      "features": [
+        "isDark flag on RoomTrait",
+        "LightSourceTrait with brightness and isLit",
+        "SwitchableTrait for on/off toggles",
+        "The flashlight pattern combining three traits",
+        "Alternative patterns for always-on, consumable, and adjustable lights"
+      ]
+    },
+    "familyzoo-09": {
+      "summary": "Plaques, warning signs, and a take-away brochure give the zoo readable text. Separates what an object looks like from what it actually says.",
+      "features": [
+        "ReadableTrait with its own text field",
+        "Clear split between examine and read verbs",
+        "Scenery plaques you can read but not take",
+        "Portable readables like brochures, letters, and books",
+        "Guidance on when to use ReadableTrait vs. a long description"
+      ]
+    },
+    "familyzoo-10": {
+      "summary": "A radio bolted to a shelf in the supply room can be switched on and off to play music. Shows SwitchableTrait on its own \u2014 no light source involved \u2014 and contrasts it with OpenableTrait.",
+      "features": [
+        "Standalone SwitchableTrait for non-light devices",
+        "switch on/off and turn on/off verb aliases from stdlib",
+        "Semantic distinction between switch (devices) and open (barriers)",
+        "Combining SwitchableTrait with SceneryTrait for fixed appliances",
+        "Patterns for future device combinations"
+      ]
+    },
+    "familyzoo-11": {
+      "summary": "A patrolling zookeeper and a chatty parrot bring the zoo to life. Walks through the three-part NPC system \u2014 trait, behavior, plugin \u2014 and how to write custom behavior reactions.",
+      "features": [
+        "NpcTrait, ActorTrait with isPlayer false, and the NpcPlugin",
+        "Built-in behaviors: patrol, wanderer, follower, guard, passive",
+        "Custom NpcBehavior implementations with onTurn and onPlayerEnters hooks",
+        "NpcAction types: move, speak, emote, wait, take, drop",
+        "NpcContext giving behaviors access to world, npc, and player state"
+      ]
+    },
+    "familyzoo-12": {
+      "summary": "Hooks into stdlib action events so dropped feed triggers goats to rush in and a penny dropped in a press becomes a pressed souvenir. Separates silent state mutations from chained events that produce player-facing text.",
+      "features": [
+        "registerEventHandler for silent state changes",
+        "chainEvent returning ISemanticEvent for narrated reactions",
+        "The full catalog of if.event.* triggers (taken, dropped, put_in, opened, etc.)",
+        "The item-transformation pattern: remove input, create output, message the player",
+        "Unique handler keys for each chain registration"
+      ]
+    },
+    "familyzoo-13": {
+      "summary": "Adds entirely new verbs \u2014 feed, photograph, snap \u2014 that stdlib does not know about. Walks through the four-phase Action interface and how to teach the parser and language provider about story-specific vocabulary.",
+      "features": [
+        "The Action interface with validate, execute, report, and blocked phases",
+        "getCustomActions on the Story class",
+        "extendParser with grammar.define and mapsTo",
+        "extendLanguage for registering message IDs and text",
+        "context.sharedData for passing state between phases"
+      ]
+    },
+    "familyzoo-14": {
+      "summary": "Petting the goats feels different from petting the parrot (which bites). Introduces capability dispatch \u2014 one verb whose behavior is delegated to whichever trait the target entity carries.",
+      "features": [
+        "Custom traits declaring a static capabilities[] list",
+        "registerCapabilityBehavior with optional condition predicates",
+        "createCapabilityDispatchAction factory for auto-built dispatch actions",
+        "Per-entity behavior selection via trait data like animalKind",
+        "The verb vs entity responsibility split vs. plain custom actions"
+      ]
+    },
+    "familyzoo-15": {
+      "summary": "The PA system makes scheduled announcements, feeding time arrives on a timer, and goats bleat until fed. Introduces the SchedulerPlugin and its two primitives \u2014 daemons that tick every turn and fuses that count down.",
+      "features": [
+        "SchedulerPlugin registration in onEngineReady",
+        "Daemon interface with condition() and run() that returns events",
+        "Fuse interface with turns, repeat, and originalTurns for re-arming",
+        "game.message events with narrate: true for auto-rendered text",
+        "Gotchas around turn offsets and the fuse skipNextTick behavior"
+      ]
+    },
+    "familyzoo-16": {
+      "summary": "Turns the zoo into a 75-point game with an ending: visit rooms, feed animals, and collect items to win. Introduces the score ledger, unique award IDs, and a victory daemon that watches for the win condition.",
+      "features": [
+        "world.setMaxScore and world.awardScore with idempotent unique IDs",
+        "world.getScore and the built-in score command",
+        "Chained event handlers awarding points on room entry",
+        "A high-priority victory daemon driving endgame state flags",
+        "Designing a balanced scoring table across exploration and action"
+      ]
+    },
+    "familyzoo-17": {
+      "summary": "Splits the growing story across six concern-based files and adds an after-hours phase where the zoo closes, the zookeeper leaves, and the parrot starts speaking candidly. Demonstrates organizing a real-size Sharpee project and swapping NPC behavior at runtime.",
+      "features": [
+        "Multi-file layout split by concern (zoo-map, zoo-items, characters, events, scoring, language, index)",
+        "Runtime NPC behavior swap via npcService.removeBehavior + registerBehavior",
+        "Conditional daemon gated on a world state flag (zoo.after_hours)",
+        "25-point after-hours bonus for witnessing closing events (max 100)",
+        "getRunnerState/restoreRunnerState hooks so behavior swaps survive save/restore"
+      ]
+    }
+  }
+}
