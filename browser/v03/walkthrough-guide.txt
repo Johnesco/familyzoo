@@ -1,0 +1,47 @@
+# Auto-generated walkthrough guide
+
+# look Family Zoo By Sharpee Tutorial Type HELP for instructions. Zoo Entrance
+#   You stand before the wrought-iron gates of the Willowbrook Family Zoo.
+> look
+# examine fence A tall wrought-iron fence with animal silhouettes.
+> examine fence
+# take fence iron fence is fixed in place.
+> take fence
+# south Main Path A wide gravel path winds through the heart of the zoo.
+#   Colorful direction signs point every which way. A park bench sits beside
+#   the path.
+> south
+# examine bench A sturdy park bench painted forest green. *DING DONG*
+#   "Attention visitors! The Willowbrook Family Zoo will be closing in three
+#   hours.
+> examine bench
+# examine flowers Tidy beds of marigolds and petunias.
+> examine flowers
+# take bench park bench is fixed in place.
+> take bench
+# east Petting Zoo A cheerful open-air enclosure filled with friendly animals.
+> east
+# examine hay bale A large round bale of golden hay.
+> examine hay bale
+# take hay bale hay bale is fixed in place. *DING DONG* "Attention visitors!
+#   Two hours until closing.
+> take hay bale
+# examine rabbits A pair of Holland Lop rabbits with floppy ears.
+> examine rabbits
+# west Main Path A wide gravel path winds through the heart of the zoo.
+#   Colorful direction signs point every which way. A park bench sits beside
+#   the path.
+> west
+# west Aviary You step inside a soaring mesh dome. Brilliantly colored parrots
+#   chatter from rope perches, and a toucan eyes you curiously from a branch
+#   overhead.
+> west
+# examine parrots A raucous flock of scarlet macaws and grey African parrots.
+> examine parrots
+# examine waterfall A gentle artificial waterfall cascading into a stone
+#   basin. *DING DONG* "Attention visitors! One hour until closing.
+> examine waterfall
+# take waterfall waterfall is fixed in place.
+> take waterfall
+# examine perches Thick sisal ropes strung between wooden posts.
+> examine perches

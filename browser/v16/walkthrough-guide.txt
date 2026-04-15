@@ -1,0 +1,87 @@
+# Auto-generated walkthrough guide
+
+# score You have scored 0 out of 100, earning you the rank of Novice.
+> score
+# take map Family Zoo By Sharpee Tutorial Type HELP for instructions. Taken.
+> take map
+# take brochure Taken.
+> take brochure
+# read brochure Zoo brochure reads: WILLOWBROOK FAMILY ZOO — Your Guide
+#   EXHIBITS: Petting Zoo — East from Main Path Aviary — West from Main Path
+#   Gift...
+> read brochure
+# south Main Path A wide gravel path winds through the heart of the zoo.
+#   Colorful direction signs point every which way. A park bench sits beside
+#   the path.
+> south
+# take penny Taken. *DING DONG* "Attention visitors! The Willowbrook Family
+#   Zoo will be closing in three hours.
+> take penny
+# east Petting Zoo A cheerful open-air enclosure filled with friendly animals.
+> east
+# take feed Taken.
+> take feed
+# feed goats You scatter some feed on the ground. The pygmy goats rush over,
+#   bleating excitedly, and devour the corn and pellets in seconds.
+> feed goats
+# feed rabbits You sprinkle some pellets near the rabbits. Biscuit and
+#   Marmalade hop over cautiously, then munch away happily.
+> feed rabbits
+# pet goats You reach down and pet the nearest goat. It leans into your hand
+#   and bleats happily. The others crowd around, demanding equal attention.
+> pet goats
+# west Main Path A wide gravel path winds through the heart of the zoo.
+#   Colorful direction signs point every which way. A park bench sits beside
+#   the path.
+> west
+# west Aviary You step inside a soaring mesh dome. Brilliantly colored parrots
+#   chatter from rope perches, and a toucan eyes you curiously from a branch
+#   overhead.
+> west
+# west Gift Shop A small zoo gift shop crammed with stuffed animals and
+#   postcards. A large souvenir penny press machine stands near the door.
+> west
+# take camera Taken.
+> take camera
+# photograph toys Click! You snap a photo of stuffed animals. That one's going
+#   on the fridge. *DING DONG* "Attention visitors! One hour until closing.
+> photograph toys
+# Store the penny in the press
+# put penny in press You put souvenir penny in souvenir press.
+> put penny in press
+# east Aviary You step inside a soaring mesh dome. Brilliantly colored parrots
+#   chatter from rope perches, and a toucan eyes you curiously from a branch
+#   overhead.
+> east
+# east Main Path A wide gravel path winds through the heart of the zoo.
+#   Colorful direction signs point every which way. A park bench sits beside
+#   the path.
+> east
+# north Zoo Entrance You stand before the wrought-iron gates of the
+#   Willowbrook Family Zoo.
+> north
+# take keycard Taken. *DING DONG* "The Willowbrook Family Zoo is now closed.
+#   Thank you for visiting! We hope to see you again soon!"
+> take keycard
+# south Main Path A wide gravel path winds through the heart of the zoo.
+#   Colorful direction signs point every which way. A park bench sits beside
+#   the path.
+> south
+# Unlock the gate
+# unlock gate with keycard You unlock staff gate with staff keycard.
+> unlock gate with keycard
+# open gate You open staff gate.
+> open gate
+# south Supply Room A cluttered storage room behind the staff gate. Metal
+#   shelves line the walls. A cork board on the wall is covered with staff
+#   schedules.
+> south
+# take flashlight Taken.
+> take flashlight
+# switch on flashlight The flashlight switches on, banishing the darkness.
+> switch on flashlight
+# south Nocturnal Animals Exhibit A cool, dimly lit cavern designed to
+#   simulate nighttime. Glass enclosures line both walls with soft red lights.
+> south
+# score You have scored 75 out of 100, earning you the rank of Expert.
+> score

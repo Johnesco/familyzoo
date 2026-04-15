@@ -1,0 +1,42 @@
+# Auto-generated walkthrough guide
+
+# south Family Zoo By Sharpee Tutorial Type HELP for instructions. Main Path A
+#   wide gravel path winds through the heart of the zoo.
+> south
+# east Petting Zoo A cheerful open-air enclosure filled with friendly animals.
+> east
+# take feed Taken.
+> take feed
+# feed goats You scatter some feed on the ground. The pygmy goats rush over,
+#   bleating excitedly, and devour the corn and pellets in seconds.
+> feed goats
+# feed goats You've already fed them. They look contentedly full. *DING DONG*
+#   "Attention visitors! The Willowbrook Family Zoo will be closing in three
+#   hours.
+> feed goats
+# photograph goats You don't have a camera. There's one in the gift shop.
+> photograph goats
+# west Main Path A wide gravel path winds through the heart of the zoo.
+#   Colorful direction signs point every which way. A park bench sits beside
+#   the path.
+> west
+# west Aviary You step inside a soaring mesh dome. Brilliantly colored parrots
+#   chatter from rope perches, and a toucan eyes you curiously from a branch
+#   overhead.
+> west
+# west Gift Shop A small zoo gift shop crammed with stuffed animals and
+#   postcards. A large souvenir penny press machine stands near the door.
+> west
+# take camera Taken. *DING DONG* "Attention visitors! Two hours until closing.
+#   Don't forget to stop by the gift shop for souvenirs!"
+> take camera
+# photograph postcards Click! You snap a photo of postcards. That one's going
+#   on the fridge.
+> photograph postcards
+# east Aviary You step inside a soaring mesh dome. Brilliantly colored parrots
+#   chatter from rope perches, and a toucan eyes you curiously from a branch
+#   overhead.
+> east
+# photograph toucan Click! You snap a photo of toucan. That one's going on the
+#   fridge.
+> photograph toucan

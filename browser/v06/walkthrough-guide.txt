@@ -1,0 +1,17 @@
+# Auto-generated walkthrough guide
+
+# south Family Zoo By Sharpee Tutorial Type HELP for instructions. Main Path A
+#   wide gravel path winds through the heart of the zoo.
+> south
+# open lunchbox You open lunchbox. Inside the lunchbox you see juice box.
+> open lunchbox
+# look in lunchbox In lunchbox you see: juice box.
+> look in lunchbox
+# close lunchbox You close lunchbox.
+> close lunchbox
+# east Petting Zoo A cheerful open-air enclosure filled with friendly animals.
+> east
+# open dispenser You open feed dispenser, which is empty.
+> open dispenser
+# take dispenser feed dispenser is fixed in place.
+> take dispenser

@@ -1,0 +1,46 @@
+# Auto-generated walkthrough guide
+
+# take keycard Family Zoo By Sharpee Tutorial Type HELP for instructions.
+#   Taken.
+> take keycard
+# south Main Path A wide gravel path winds through the heart of the zoo.
+#   Colorful direction signs point every which way. A park bench sits beside
+#   the path.
+> south
+# Unlock the gate
+# unlock gate with keycard You unlock staff gate with staff keycard.
+> unlock gate with keycard
+# open gate You open staff gate.
+> open gate
+# south Supply Room A cluttered storage room behind the staff gate. Metal
+#   shelves line the walls. A cork board on the wall is covered with staff
+#   schedules.
+> south
+# take flashlight Taken.
+> take flashlight
+# DEATH
+# south It is pitch dark. You are likely to be eaten by a grue.
+> south
+# look It's pitch dark, and you can't see a thing.
+> look
+# north Supply Room A cluttered storage room behind the staff gate. Metal
+#   shelves line the walls. A cork board on the wall is covered with staff
+#   schedules.
+> north
+# switch on flashlight The flashlight switches on, banishing the darkness.
+#   *DING DONG* "Attention visitors! Two hours until closing.
+> switch on flashlight
+# south Nocturnal Animals Exhibit A cool, dimly lit cavern designed to
+#   simulate nighttime. Glass enclosures line both walls with soft red lights.
+> south
+# look Nocturnal Animals Exhibit A cool, dimly lit cavern designed to simulate
+#   nighttime. Glass enclosures line both walls with soft red lights.
+> look
+# examine owl An enormous barn owl with a heart-shaped white face.
+> examine owl
+# examine galagos Two bush babies with impossibly large round eyes.
+> examine galagos
+# north Supply Room A cluttered storage room behind the staff gate. Metal
+#   shelves line the walls. A cork board on the wall is covered with staff
+#   schedules.
+> north

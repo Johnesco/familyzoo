@@ -1,0 +1,52 @@
+# Auto-generated walkthrough guide
+
+# south Family Zoo By Sharpee Tutorial Type HELP for instructions. Main Path A
+#   wide gravel path winds through the heart of the zoo.
+> south
+# east Petting Zoo A cheerful open-air enclosure filled with friendly animals.
+> east
+# take feed Taken.
+> take feed
+# drop feed Dropped. The pygmy goats spot the bag of feed and rush over! They
+#   crowd around, bleating excitedly, and devour the corn and pellets in
+#   seconds.
+> drop feed
+# west Main Path A wide gravel path winds through the heart of the zoo.
+#   Colorful direction signs point every which way. A park bench sits beside
+#   the path.
+> west
+# west Aviary You step inside a soaring mesh dome. Brilliantly colored parrots
+#   chatter from rope perches, and a toucan eyes you curiously from a branch
+#   overhead.
+> west
+# west Gift Shop A small zoo gift shop crammed with stuffed animals and
+#   postcards. A large souvenir penny press machine stands near the door.
+> west
+# examine press A heavy cast-iron machine with a big crank handle. A slot on
+#   top accepts pennies, and the mechanism stamps them with a zoo animal
+#   design.
+> examine press
+# east Aviary You step inside a soaring mesh dome. Brilliantly colored parrots
+#   chatter from rope perches, and a toucan eyes you curiously from a branch
+#   overhead.
+> east
+# east Main Path A wide gravel path winds through the heart of the zoo.
+#   Colorful direction signs point every which way. A park bench sits beside
+#   the path.
+> east
+# take penny Taken. *DING DONG* "It's FEEDING TIME at the Petting Zoo! Come
+#   watch our pygmy goats and rabbits enjoy their favorite snacks!"
+> take penny
+# west Aviary You step inside a soaring mesh dome. Brilliantly colored parrots
+#   chatter from rope perches, and a toucan eyes you curiously from a branch
+#   overhead.
+> west
+# west Gift Shop A small zoo gift shop crammed with stuffed animals and
+#   postcards. A large souvenir penny press machine stands near the door.
+> west
+# Store the penny in the press
+# put penny in press You put souvenir penny in souvenir press.
+> put penny in press
+# inventory You are carrying: pressed penny *DING DONG* "Attention visitors!
+#   One hour until closing. Please begin making your way toward the exit."
+> inventory

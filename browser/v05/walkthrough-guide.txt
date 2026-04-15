@@ -1,0 +1,30 @@
+# Auto-generated walkthrough guide
+
+# take backpack Family Zoo By Sharpee Tutorial Type HELP for instructions.
+#   Taken.
+> take backpack
+# take map Taken.
+> take map
+# Store the map in the backpack
+# put map in backpack You put zoo map in backpack.
+> put map in backpack
+# look in backpack In backpack you see: zoo map.
+> look in backpack
+# south Main Path A wide gravel path winds through the heart of the zoo.
+#   Colorful direction signs point every which way. A park bench sits beside
+#   the path.
+> south
+# take penny Taken.
+> take penny
+# put penny on bench You put souvenir penny on park bench.
+> put penny on bench
+# examine bench A sturdy park bench painted forest green. On park bench you
+#   see souvenir penny.
+> examine bench
+# east Petting Zoo A cheerful open-air enclosure filled with friendly animals.
+> east
+# take dispenser feed dispenser is fixed in place. *DING DONG* "Attention
+#   visitors! Two hours until closing.
+> take dispenser
+# examine dispenser A coin-operated feed dispenser mounted on a wooden post.
+> examine dispenser

@@ -1,0 +1,25 @@
+# Auto-generated walkthrough guide
+
+# take keycard Family Zoo By Sharpee Tutorial Type HELP for instructions.
+#   Taken.
+> take keycard
+# south Main Path A wide gravel path winds through the heart of the zoo.
+#   Colorful direction signs point every which way. A park bench sits beside
+#   the path.
+> south
+# south The staff gate is locked.
+> south
+# Unlock the gate
+# unlock gate with keycard You unlock staff gate with staff keycard.
+> unlock gate with keycard
+# open gate You open staff gate. *DING DONG* "Attention visitors! The
+#   Willowbrook Family Zoo will be closing in three hours.
+> open gate
+# south Supply Room A cluttered storage room behind the staff gate. Metal
+#   shelves line the walls. A cork board on the wall is covered with staff
+#   schedules.
+> south
+# north Main Path A wide gravel path winds through the heart of the zoo.
+#   Colorful direction signs point every which way. A park bench sits beside
+#   the path.
+> north

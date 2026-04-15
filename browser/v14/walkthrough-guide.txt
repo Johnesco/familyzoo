@@ -1,0 +1,27 @@
+# Auto-generated walkthrough guide
+
+# south Family Zoo By Sharpee Tutorial Type HELP for instructions. Main Path A
+#   wide gravel path winds through the heart of the zoo.
+> south
+# east Petting Zoo A cheerful open-air enclosure filled with friendly animals.
+> east
+# pet goats You reach down and pet the nearest goat. It leans into your hand
+#   and bleats happily. The others crowd around, demanding equal attention.
+> pet goats
+# pet rabbits You gently stroke one of the rabbits. Its fur is incredibly
+#   soft. It twitches its nose at you contentedly.
+> pet rabbits
+# pet hay bale You can't pet that. *DING DONG* "Attention visitors! The
+#   Willowbrook Family Zoo will be closing in three hours.
+> pet hay bale
+# west Main Path A wide gravel path winds through the heart of the zoo.
+#   Colorful direction signs point every which way. A park bench sits beside
+#   the path.
+> west
+# west Aviary You step inside a soaring mesh dome. Brilliantly colored parrots
+#   chatter from rope perches, and a toucan eyes you curiously from a branch
+#   overhead.
+> west
+# pet parrot You reach toward the parrot. CHOMP! It nips your finger with its
+#   beak. "NO TOUCHING!" it squawks indignantly.
+> pet parrot

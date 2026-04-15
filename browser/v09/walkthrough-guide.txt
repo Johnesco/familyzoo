@@ -1,0 +1,58 @@
+# Auto-generated walkthrough guide
+
+# take brochure Family Zoo By Sharpee Tutorial Type HELP for instructions.
+#   Taken.
+> take brochure
+# read brochure Zoo brochure reads: WILLOWBROOK FAMILY ZOO — Your Guide
+#   EXHIBITS: Petting Zoo — East from Main Path Aviary — West from Main Path
+#   Gift...
+> read brochure
+# examine brochure A glossy tri-fold brochure with "WILLOWBROOK FAMILY ZOO" on
+#   the cover.
+> examine brochure
+# south Main Path A wide gravel path winds through the heart of the zoo.
+#   Colorful direction signs point every which way. A park bench sits beside
+#   the path.
+> south
+# east Petting Zoo A cheerful open-air enclosure filled with friendly animals.
+> east
+# read plaque Info plaque reads: PYGMY GOATS — These Nigerian Dwarf goats are
+#   gentle, curious, and always hungry.
+> read plaque
+# west Main Path A wide gravel path winds through the heart of the zoo.
+#   Colorful direction signs point every which way. A park bench sits beside
+#   the path.
+> west
+# west Aviary You step inside a soaring mesh dome. Brilliantly colored parrots
+#   chatter from rope perches, and a toucan eyes you curiously from a branch
+#   overhead.
+> west
+# read plaque Aviary plaque reads: WELCOME TO THE AVIARY — Home to over 30
+#   species! TOCO TOUCAN — Its bill weighs less than a smartphone.
+> read plaque
+# east Main Path A wide gravel path winds through the heart of the zoo.
+#   Colorful direction signs point every which way. A park bench sits beside
+#   the path.
+> east
+# north Zoo Entrance You stand before the wrought-iron gates of the
+#   Willowbrook Family Zoo.
+> north
+# take keycard Taken.
+> take keycard
+# south Main Path A wide gravel path winds through the heart of the zoo.
+#   Colorful direction signs point every which way. A park bench sits beside
+#   the path.
+> south
+# Unlock the gate
+# unlock gate with keycard You unlock staff gate with staff keycard.
+> unlock gate with keycard
+# open gate You open staff gate. *DING DONG* "Attention visitors! One hour
+#   until closing. Please begin making your way toward the exit."
+> open gate
+# south Supply Room A cluttered storage room behind the staff gate. Metal
+#   shelves line the walls. A cork board on the wall is covered with staff
+#   schedules.
+> south
+# read warning Warning sign reads: CAUTION: The Nocturnal Animals Exhibit is
+#   kept dark. Please use a flashlight. Do NOT use camera flash.
+> read warning

@@ -1,0 +1,59 @@
+>wait
+Family Zoo
+By Sharpee Tutorial
+
+Type HELP for instructions.
+
+Time passes...
+
+>wait
+Time passes...
+
+>wait
+Time passes...
+
+>wait
+Time passes...
+
+>wait
+Time passes...
+*DING DONG* "Attention visitors! The Willowbrook Family Zoo will be closing in three hours. Please make sure to visit all exhibits before closing time!"
+
+>south
+Main Path
+
+A wide gravel path winds through the heart of the zoo. Colorful direction signs point every which way. A park bench sits beside the path. To the east, the petting zoo. To the west, the aviary. A staff gate blocks the path to the south. The entrance is back to the north.
+
+You can see staff gate, direction signs, flower beds, souvenir penny, park bench, lunchbox here.
+
+>east
+Petting Zoo
+
+A cheerful open-air enclosure filled with friendly animals. Pygmy goats trot around nibbling at visitors' shoelaces, while a pair of fluffy rabbits hop lazily near a hay bale. A feed dispenser is mounted on a post. An info plaque is posted by the gate. The main path is back to the west.
+
+You can see hay bale, info plaque, bag of animal feed, feed dispenser, pygmy goats, rabbits, zookeeper here.
+
+>wait
+Time passes...
+
+>wait
+Time passes...
+
+>wait
+Time passes...
+*DING DONG* "Attention visitors! Two hours until closing. Don't forget to stop by the gift shop for souvenirs!"
+
+>wait
+Time passes...
+*DING DONG* "It's FEEDING TIME at the Petting Zoo! Come watch our pygmy goats and rabbits enjoy their favorite snacks!"
+
+>wait
+Time passes...
+The pygmy goats are bleating loudly and headbutting the fence. They seem very hungry!
+
+>take feed
+Taken.
+The pygmy goats are bleating loudly and headbutting the fence. They seem very hungry!
+
+>feed goats
+You scatter some feed on the ground. The pygmy goats rush over, bleating excitedly, and devour the corn and pellets in seconds. The smallest goat looks up at you with big grateful eyes.

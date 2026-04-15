@@ -1,0 +1,35 @@
+# Auto-generated walkthrough guide
+
+# look Family Zoo By Sharpee Tutorial Type HELP for instructions. Zoo Entrance
+#   You stand before the wrought-iron gates of the Willowbrook Family Zoo.
+> look
+# take map Taken.
+> take map
+# inventory You are carrying: zoo map
+> inventory
+# south Main Path A wide gravel path winds through the heart of the zoo.
+#   Colorful direction signs point every which way. A park bench sits beside
+#   the path.
+> south
+# take penny Taken. *DING DONG* "Attention visitors! The Willowbrook Family
+#   Zoo will be closing in three hours.
+> take penny
+# inventory You are carrying: zoo map, souvenir penny
+> inventory
+# drop map Dropped.
+> drop map
+# look Main Path A wide gravel path winds through the heart of the zoo.
+#   Colorful direction signs point every which way. A park bench sits beside
+#   the path.
+> look
+# east Petting Zoo A cheerful open-air enclosure filled with friendly animals.
+> east
+# take feed Taken. *DING DONG* "Attention visitors! Two hours until closing.
+#   Don't forget to stop by the gift shop for souvenirs!"
+> take feed
+# inventory You are carrying: souvenir penny, bag of animal feed *DING DONG*
+#   "It's FEEDING TIME at the Petting Zoo!
+> inventory
+# take goats pygmy goats is fixed in place. The pygmy goats are bleating
+#   loudly and headbutting the fence. They seem very hungry!
+> take goats

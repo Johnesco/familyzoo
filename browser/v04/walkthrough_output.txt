@@ -1,0 +1,64 @@
+>look
+Family Zoo
+By Sharpee Tutorial
+
+Type HELP for instructions.
+
+Zoo Entrance
+
+You stand before the wrought-iron gates of the Willowbrook Family Zoo. A cheerful welcome sign arches over the entrance, and a small ticket booth sits to one side. A sturdy iron fence runs along either side of the gates. The main path leads south into the zoo grounds.
+
+You can see staff keycard, welcome sign, ticket booth, iron fence, zoo brochure, zoo map, backpack here.
+
+>take map
+Taken.
+
+>inventory
+You are carrying:
+  zoo map
+
+>south
+Main Path
+
+A wide gravel path winds through the heart of the zoo. Colorful direction signs point every which way. A park bench sits beside the path. To the east, the petting zoo. To the west, the aviary. A staff gate blocks the path to the south. The entrance is back to the north.
+
+You can see staff gate, direction signs, flower beds, souvenir penny, park bench, lunchbox here.
+
+>take penny
+Taken.
+*DING DONG* "Attention visitors! The Willowbrook Family Zoo will be closing in three hours. Please make sure to visit all exhibits before closing time!"
+
+>inventory
+You are carrying:
+  zoo map, souvenir penny
+
+>drop map
+Dropped.
+
+>look
+Main Path
+
+A wide gravel path winds through the heart of the zoo. Colorful direction signs point every which way. A park bench sits beside the path. To the east, the petting zoo. To the west, the aviary. A staff gate blocks the path to the south. The entrance is back to the north.
+
+You can see staff gate, direction signs, flower beds, zoo map, park bench, lunchbox here.
+
+>east
+Petting Zoo
+
+A cheerful open-air enclosure filled with friendly animals. Pygmy goats trot around nibbling at visitors' shoelaces, while a pair of fluffy rabbits hop lazily near a hay bale. A feed dispenser is mounted on a post. An info plaque is posted by the gate. The main path is back to the west.
+
+You can see hay bale, info plaque, bag of animal feed, feed dispenser, pygmy goats, rabbits here.
+
+>take feed
+Taken.
+*DING DONG* "Attention visitors! Two hours until closing. Don't forget to stop by the gift shop for souvenirs!"
+
+>inventory
+You are carrying:
+  souvenir penny, bag of animal feed
+*DING DONG* "It's FEEDING TIME at the Petting Zoo! Come watch our pygmy goats and rabbits enjoy their favorite snacks!"
+
+>take goats
+pygmy goats is fixed in place.
+
+The pygmy goats are bleating loudly and headbutting the fence. They seem very hungry!

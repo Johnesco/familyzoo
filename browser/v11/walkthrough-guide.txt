@@ -1,0 +1,27 @@
+# Auto-generated walkthrough guide
+
+# look Family Zoo By Sharpee Tutorial Type HELP for instructions. Zoo Entrance
+#   You stand before the wrought-iron gates of the Willowbrook Family Zoo.
+> look
+# south Main Path A wide gravel path winds through the heart of the zoo.
+#   Colorful direction signs point every which way. A park bench sits beside
+#   the path.
+> south
+# examine zookeeper A friendly zookeeper in khaki overalls. A name tag reads
+#   "Sam."
+> examine zookeeper
+# west Aviary You step inside a soaring mesh dome. Brilliantly colored parrots
+#   chatter from rope perches, and a toucan eyes you curiously from a branch
+#   overhead.
+> west
+# examine parrot A magnificent scarlet macaw perched on a rope. It tilts its
+#   head and watches you with one bright eye.
+> examine parrot
+# wait Time passes...
+> wait
+# wait Time passes...
+> wait
+# east Main Path A wide gravel path winds through the heart of the zoo.
+#   Colorful direction signs point every which way. A park bench sits beside
+#   the path.
+> east

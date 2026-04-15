@@ -1,0 +1,27 @@
+# Auto-generated walkthrough guide
+
+# take keycard Family Zoo By Sharpee Tutorial Type HELP for instructions.
+#   Taken.
+> take keycard
+# south Main Path A wide gravel path winds through the heart of the zoo.
+#   Colorful direction signs point every which way. A park bench sits beside
+#   the path.
+> south
+# Unlock the gate
+# unlock gate with keycard You unlock staff gate with staff keycard.
+> unlock gate with keycard
+# open gate You open staff gate.
+> open gate
+# south Supply Room A cluttered storage room behind the staff gate. Metal
+#   shelves line the walls. A cork board on the wall is covered with staff
+#   schedules.
+> south
+# examine radio A battered portable radio held together with duct tape. The
+#   antenna is bent at a jaunty angle.
+> examine radio
+# switch on radio radio hums to life.
+> switch on radio
+# switch off radio radio powers down with a soft whir.
+> switch off radio
+# take radio radio is fixed in place.
+> take radio

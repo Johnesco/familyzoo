@@ -1,0 +1,45 @@
+>look
+Family Zoo
+By Sharpee Tutorial
+
+Type HELP for instructions.
+
+Zoo Entrance
+
+You stand before the wrought-iron gates of the Willowbrook Family Zoo. A cheerful welcome sign arches over the entrance, and a small ticket booth sits to one side. A sturdy iron fence runs along either side of the gates. The main path leads south into the zoo grounds.
+
+You can see staff keycard, welcome sign, ticket booth, iron fence, zoo brochure, zoo map, backpack here.
+
+>south
+Main Path
+
+A wide gravel path winds through the heart of the zoo. Colorful direction signs point every which way. A park bench sits beside the path. To the east, the petting zoo. To the west, the aviary. A staff gate blocks the path to the south. The entrance is back to the north.
+
+You can see staff gate, direction signs, flower beds, souvenir penny, park bench, lunchbox, zookeeper here.
+
+>examine zookeeper
+A friendly zookeeper in khaki overalls. A name tag reads "Sam."
+
+>west
+Aviary
+
+You step inside a soaring mesh dome. Brilliantly colored parrots chatter from rope perches, and a toucan eyes you curiously from a branch overhead. A small waterfall splashes into a stone basin. An info plaque hangs near the entrance. The gift shop is to the west. The main path is back to the east.
+
+You can see toucan, waterfall, rope perches, aviary plaque, parrot, parrots here.
+
+>examine parrot
+A magnificent scarlet macaw perched on a rope. It tilts its head and watches you with one bright eye.
+*DING DONG* "Attention visitors! The Willowbrook Family Zoo will be closing in three hours. Please make sure to visit all exhibits before closing time!"
+
+>wait
+Time passes...
+
+>wait
+Time passes...
+
+>east
+Main Path
+
+A wide gravel path winds through the heart of the zoo. Colorful direction signs point every which way. A park bench sits beside the path. To the east, the petting zoo. To the west, the aviary. A staff gate blocks the path to the south. The entrance is back to the north.
+
+You can see staff gate, direction signs, flower beds, souvenir penny, park bench, lunchbox here.

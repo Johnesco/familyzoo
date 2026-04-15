@@ -1,0 +1,77 @@
+>take keycard
+Family Zoo
+By Sharpee Tutorial
+
+Type HELP for instructions.
+
+Taken.
+
+>south
+Main Path
+
+A wide gravel path winds through the heart of the zoo. Colorful direction signs point every which way. A park bench sits beside the path. To the east, the petting zoo. To the west, the aviary. A staff gate blocks the path to the south. The entrance is back to the north.
+
+You can see staff gate, direction signs, flower beds, souvenir penny, park bench, lunchbox, zookeeper here.
+
+>unlock gate with keycard
+You unlock staff gate with staff keycard.
+
+>open gate
+You open staff gate.
+
+>south
+Supply Room
+
+A cluttered storage room behind the staff gate. Metal shelves line the walls. A cork board on the wall is covered with staff schedules. A battered radio sits on one of the shelves. The staff gate leads back north.
+
+You can see metal shelves, cork board, warning sign, flashlight, radio here.
+*DING DONG* "Attention visitors! The Willowbrook Family Zoo will be closing in three hours. Please make sure to visit all exhibits before closing time!"
+
+>take flashlight
+Taken.
+
+>south
+It is pitch dark. You are likely to be eaten by a grue.
+
+>look
+It's pitch dark, and you can't see a thing.
+
+>north
+Supply Room
+
+A cluttered storage room behind the staff gate. Metal shelves line the walls. A cork board on the wall is covered with staff schedules. A battered radio sits on one of the shelves. The staff gate leads back north.
+
+You can see metal shelves, cork board, warning sign, radio here.
+
+>switch on flashlight
+The flashlight switches on, banishing the darkness.
+*DING DONG* "Attention visitors! Two hours until closing. Don't forget to stop by the gift shop for souvenirs!"
+
+>south
+Nocturnal Animals Exhibit
+
+A cool, dimly lit cavern designed to simulate nighttime. Glass enclosures line both walls with soft red lights. You can see sugar gliders, bush babies, and a barn owl. A warning sign is posted near the entrance. The exit leads back north to the supply room.
+
+You can see sugar gliders, bush babies, barn owl here.
+*DING DONG* "It's FEEDING TIME at the Petting Zoo! Come watch our pygmy goats and rabbits enjoy their favorite snacks!"
+
+>look
+Nocturnal Animals Exhibit
+
+A cool, dimly lit cavern designed to simulate nighttime. Glass enclosures line both walls with soft red lights. You can see sugar gliders, bush babies, and a barn owl. A warning sign is posted near the entrance. The exit leads back north to the supply room.
+
+You can see sugar gliders, bush babies, barn owl here.
+
+>examine owl
+An enormous barn owl with a heart-shaped white face.
+
+>examine galagos
+Two bush babies with impossibly large round eyes.
+
+>north
+Supply Room
+
+A cluttered storage room behind the staff gate. Metal shelves line the walls. A cork board on the wall is covered with staff schedules. A battered radio sits on one of the shelves. The staff gate leads back north.
+
+You can see metal shelves, cork board, warning sign, radio here.
+*DING DONG* "Attention visitors! One hour until closing. Please begin making your way toward the exit."

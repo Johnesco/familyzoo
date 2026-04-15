@@ -1,0 +1,33 @@
+# Auto-generated walkthrough guide
+
+# look Family Zoo By Sharpee Tutorial Type HELP for instructions. Zoo Entrance
+#   You stand before the wrought-iron gates of the Willowbrook Family Zoo.
+> look
+# south Main Path A wide gravel path winds through the heart of the zoo.
+#   Colorful direction signs point every which way. A park bench sits beside
+#   the path.
+> south
+# examine signs Arrow signs: PETTING ZOO (east), AVIARY (west), EXIT (north).
+> examine signs
+# east Petting Zoo A cheerful open-air enclosure filled with friendly animals.
+> east
+# examine goats Three pygmy goats hoping you have food. *DING DONG* "Attention
+#   visitors! The Willowbrook Family Zoo will be closing in three hours.
+> examine goats
+# west Main Path A wide gravel path winds through the heart of the zoo.
+#   Colorful direction signs point every which way. A park bench sits beside
+#   the path.
+> west
+# west Aviary You step inside a soaring mesh dome. Brilliantly colored parrots
+#   chatter from rope perches, and a toucan eyes you curiously from a branch
+#   overhead.
+> west
+# examine toucan A Toco toucan with an enormous orange-and-black bill.
+> examine toucan
+# east Main Path A wide gravel path winds through the heart of the zoo.
+#   Colorful direction signs point every which way. A park bench sits beside
+#   the path.
+> east
+# north Zoo Entrance You stand before the wrought-iron gates of the
+#   Willowbrook Family Zoo.
+> north

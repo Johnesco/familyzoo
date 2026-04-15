@@ -1,0 +1,15 @@
+# Auto-generated walkthrough guide
+
+# look Family Zoo By Sharpee Tutorial Type HELP for instructions. Zoo Entrance
+#   You stand before the wrought-iron gates of the Willowbrook Family Zoo.
+> look
+# examine sign A brightly painted wooden sign reads: "WELCOME TO WILLOWBROOK
+#   FAMILY ZOO."
+> examine sign
+# examine booth A small wooden booth with a "Self-Guided Tours" sign.
+> examine booth
+# take sign welcome sign is fixed in place.
+> take sign
+# look Zoo Entrance You stand before the wrought-iron gates of the Willowbrook
+#   Family Zoo.
+> look

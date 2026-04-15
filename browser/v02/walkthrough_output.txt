@@ -1,0 +1,64 @@
+>look
+Family Zoo
+By Sharpee Tutorial
+
+Type HELP for instructions.
+
+Zoo Entrance
+
+You stand before the wrought-iron gates of the Willowbrook Family Zoo. A cheerful welcome sign arches over the entrance, and a small ticket booth sits to one side. A sturdy iron fence runs along either side of the gates. The main path leads south into the zoo grounds.
+
+You can see staff keycard, welcome sign, ticket booth, iron fence, zoo brochure, zoo map, backpack here.
+
+>south
+Main Path
+
+A wide gravel path winds through the heart of the zoo. Colorful direction signs point every which way. A park bench sits beside the path. To the east, the petting zoo. To the west, the aviary. A staff gate blocks the path to the south. The entrance is back to the north.
+
+You can see staff gate, direction signs, flower beds, souvenir penny, park bench, lunchbox, zookeeper here.
+
+>examine signs
+Arrow signs: PETTING ZOO (east), AVIARY (west), EXIT (north).
+
+>east
+Petting Zoo
+
+A cheerful open-air enclosure filled with friendly animals. Pygmy goats trot around nibbling at visitors' shoelaces, while a pair of fluffy rabbits hop lazily near a hay bale. A feed dispenser is mounted on a post. An info plaque is posted by the gate. The main path is back to the west.
+
+You can see hay bale, info plaque, bag of animal feed, feed dispenser, pygmy goats, rabbits, zookeeper here.
+
+>examine goats
+Three pygmy goats hoping you have food.
+*DING DONG* "Attention visitors! The Willowbrook Family Zoo will be closing in three hours. Please make sure to visit all exhibits before closing time!"
+
+>west
+Main Path
+
+A wide gravel path winds through the heart of the zoo. Colorful direction signs point every which way. A park bench sits beside the path. To the east, the petting zoo. To the west, the aviary. A staff gate blocks the path to the south. The entrance is back to the north.
+
+You can see staff gate, direction signs, flower beds, souvenir penny, park bench, lunchbox here.
+
+>west
+Aviary
+
+You step inside a soaring mesh dome. Brilliantly colored parrots chatter from rope perches, and a toucan eyes you curiously from a branch overhead. A small waterfall splashes into a stone basin. An info plaque hangs near the entrance. The gift shop is to the west. The main path is back to the east.
+
+You can see toucan, waterfall, rope perches, aviary plaque, parrot, parrots here.
+
+>examine toucan
+A Toco toucan with an enormous orange-and-black bill.
+
+>east
+Main Path
+
+A wide gravel path winds through the heart of the zoo. Colorful direction signs point every which way. A park bench sits beside the path. To the east, the petting zoo. To the west, the aviary. A staff gate blocks the path to the south. The entrance is back to the north.
+
+You can see staff gate, direction signs, flower beds, souvenir penny, park bench, lunchbox, zookeeper here.
+
+>north
+Zoo Entrance
+
+You stand before the wrought-iron gates of the Willowbrook Family Zoo. A cheerful welcome sign arches over the entrance, and a small ticket booth sits to one side. A sturdy iron fence runs along either side of the gates. The main path leads south into the zoo grounds.
+
+You can see staff keycard, welcome sign, ticket booth, iron fence, zoo brochure, zoo map, backpack here.
+*DING DONG* "Attention visitors! Two hours until closing. Don't forget to stop by the gift shop for souvenirs!"

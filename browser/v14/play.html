@@ -1,173 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Family Zoo Tutorial v14: Capability Dispatch</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="ifhub:title" content="Fever Dream (Sharpee)">
-<meta name="ifhub:meta" content="John Googol">
-<meta name="ifhub:description" content="A perceptual horror. Three items alter your perception. The world stays the same. You do not.">
-
-<style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-html {
-  height: 100%;
-  background: var(--page-bg, #0a0a0a);
-  color: var(--page-fg, #d4c5a9);
-  font-family: Georgia, "Times New Roman", serif;
-}
-
-body {
-  min-height: 100%;
-  max-width: 740px;
-  margin: 0 auto;
-  padding: 60px 24px 80px;
-  line-height: 1.7;
-}
-
-.breadcrumb {
-  font-size: 0.85em;
-  color: #887755;
-  margin-bottom: 24px;
-}
-
-.breadcrumb a {
-  color: #887755;
-  border-bottom-color: #3a3020;
-}
-
-.breadcrumb a:hover {
-  color: var(--accent, #e8d090);
-}
-
-h1 {
-  font-size: 1.8em;
-  color: var(--heading, #e8d8b0);
-  letter-spacing: 1px;
-  margin-bottom: 6px;
-}
-
-.subtitle {
-  font-style: italic;
-  color: #aa9966;
-  margin-bottom: 40px;
-}
-
-h2 {
-  font-size: 1.2em;
-  color: #c4b48a;
-  margin-top: 48px;
-  margin-bottom: 16px;
-  padding-bottom: 6px;
-  border-bottom: 1px solid #2a2418;
-}
-
-p {
-  margin-bottom: 16px;
-}
-
-a {
-  color: var(--accent, #e8d090);
-  text-decoration: none;
-  border-bottom: 1px solid #5a4a30;
-  transition: color 0.15s, border-color 0.15s;
-}
-
-a:hover {
-  color: #ffe8a0;
-  border-bottom-color: #aa9966;
-}
-
-.btn-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 32px;
-}
-
-.btn-play-hub {
-  display: inline-block;
-  padding: 14px 36px;
-  background: var(--accent, #e8d090);
-  color: var(--page-bg, #0a0a0a);
-  border: none;
-  border-radius: 4px;
-  font-family: inherit;
-  font-size: 1.1em;
-  font-weight: bold;
-  letter-spacing: 0.5px;
-  text-decoration: none;
-  transition: background 0.15s, color 0.15s;
-}
-
-.btn-play-hub:hover {
-  background: #ffe8a0;
-  color: #0a0a0a;
-  border-bottom-color: transparent;
-}
-
-.btn-secondary {
-  display: inline-block;
-  padding: 10px 24px;
-  background: #2a2010;
-  border: 1px solid #5a4a30;
-  border-radius: 4px;
-  color: var(--accent, #e8d090);
-  font-family: inherit;
-  font-size: 0.95em;
-  letter-spacing: 0.5px;
-  text-decoration: none;
-  transition: background 0.15s, color 0.15s, border-color 0.15s;
-}
-
-.btn-secondary:hover {
-  background: #3a3018;
-  color: #ffe8a0;
-  border-color: #aa9966;
-}
-
-code {
-  font-family: "Consolas", "Monaco", monospace;
-  font-size: 0.9em;
-  color: #c8b888;
-  background: #1a1510;
-  padding: 1px 5px;
-  border-radius: 3px;
-}
-</style>
-<script>
-// Apply saved IF Hub theme
-(function() {
-  try {
-    var themeId = localStorage.getItem('ifhub-theme');
-    if (!themeId || themeId === 'classic') return;
-    // Load themes.js from hub to get theme data
-    var s = document.createElement('script');
-    s.src = '../../ifhub/themes.js';
-    s.onload = function() {
-      if (typeof initTheme === 'function') initTheme('library');
-    };
-    document.head.appendChild(s);
-  } catch(e) {}
-})();
-</script>
+<meta name="ifhub:title" content="Family Zoo - Sharpee Tutorial">
+<meta name="ifhub:meta" content="A progressive Sharpee engine walkthrough">
+<meta name="ifhub:description" content="Family Zoo &mdash; a 17-version progressive walkthrough of the Sharpee TypeScript IF engine.">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <div id="game-container">
+    <div id="status-line">
+      <span id="location-name"></span>
+      <span id="score-turns">Score: 0 | Turns: 0</span>
+    </div>
+    <div id="main-window">
+      <div id="text-content"></div>
+    </div>
+    <div id="input-area">
+      <span class="prompt">&gt;</span>
+      <input id="command-input" type="text"
+             autocomplete="off" autocapitalize="none"
+             spellcheck="false" autofocus>
+    </div>
+  </div>
 
-<nav class="breadcrumb"><a href="../../ifhub/">IF Hub</a> &rsaquo; Fever Dream (Sharpee)</nav>
+  <div id="modal-overlay" class="modal-hidden">
+    <div id="save-dialog" class="modal-dialog modal-hidden">
+      <div class="modal-title">SAVE GAME</div>
+      <div class="modal-content">
+        <div class="save-input-row">
+          <label for="save-name-input">Save name:</label>
+          <input type="text" id="save-name-input" maxlength="30"
+                 autocomplete="off" spellcheck="false">
+        </div>
+        <div class="saves-list-label">Existing saves (click to overwrite):</div>
+        <div id="save-slots-list" class="saves-list"></div>
+      </div>
+      <div class="modal-buttons">
+        <button id="save-confirm-btn" class="modal-btn">Save</button>
+        <button id="save-cancel-btn" class="modal-btn">Cancel</button>
+      </div>
+    </div>
 
-<h1>Fever Dream (Sharpee)</h1>
+    <div id="restore-dialog" class="modal-dialog modal-hidden">
+      <div class="modal-title">RESTORE GAME</div>
+      <div class="modal-content">
+        <div class="saves-list-label">Select a saved game:</div>
+        <div id="restore-slots-list" class="saves-list"></div>
+        <div id="no-saves-message" class="no-saves-message modal-hidden">No saved games found.</div>
+      </div>
+      <div class="modal-buttons">
+        <button id="restore-confirm-btn" class="modal-btn">Restore</button>
+        <button id="restore-cancel-btn" class="modal-btn">Cancel</button>
+      </div>
+    </div>
 
-<div class="btn-row">
-  <a class="btn-play-hub" href="../../ifhub/app.html?game=feverdream-sharpee">Play in IF Hub</a>
-  <a class="btn-secondary" href="play.html">Play Standalone</a>
-  <a class="btn-secondary" href="source.html">Source</a>
-  <a class="btn-secondary" href="walkthrough.html">Walkthrough</a>
-</div>
-
-<p>A perceptual horror. Three items alter your perception. The world stays the same. You do not.</p>
-
+    <div id="startup-dialog" class="modal-dialog modal-hidden">
+      <div class="modal-title">CONTINUE GAME?</div>
+      <div class="modal-content">
+        <p id="startup-save-info" class="startup-info"></p>
+        <p class="startup-question">Continue where you left off?</p>
+      </div>
+      <div class="modal-buttons">
+        <button id="startup-continue-btn" class="modal-btn">Continue</button>
+        <button id="startup-new-btn" class="modal-btn">New Game</button>
+      </div>
+    </div>
+  </div>
+  <script src="familyzoo-14.js"></script>
 
 <script src="theme-listener.js"></script>
 <script>

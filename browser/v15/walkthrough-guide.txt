@@ -1,0 +1,31 @@
+# Auto-generated walkthrough guide
+
+# Repeat: wait (5 times)
+# wait Family Zoo By Sharpee Tutorial Type HELP for instructions. Time
+#   passes...
+> wait
+> wait
+> wait
+> wait
+> wait
+
+# south Main Path A wide gravel path winds through the heart of the zoo.
+#   Colorful direction signs point every which way. A park bench sits beside
+#   the path.
+> south
+# east Petting Zoo A cheerful open-air enclosure filled with friendly animals.
+> east
+# Repeat: wait (5 times)
+# wait Time passes...
+> wait
+> wait
+> wait
+> wait
+> wait
+
+# take feed Taken. The pygmy goats are bleating loudly and headbutting the
+#   fence. They seem very hungry!
+> take feed
+# feed goats You scatter some feed on the ground. The pygmy goats rush over,
+#   bleating excitedly, and devour the corn and pellets in seconds.
+> feed goats

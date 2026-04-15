@@ -1,0 +1,38 @@
+>take keycard
+Family Zoo
+By Sharpee Tutorial
+
+Type HELP for instructions.
+
+Taken.
+
+>south
+Main Path
+
+A wide gravel path winds through the heart of the zoo. Colorful direction signs point every which way. A park bench sits beside the path. To the east, the petting zoo. To the west, the aviary. A staff gate blocks the path to the south. The entrance is back to the north.
+
+You can see staff gate, direction signs, flower beds, souvenir penny, park bench, lunchbox, zookeeper here.
+
+>south
+The staff gate is locked.
+
+>unlock gate with keycard
+You unlock staff gate with staff keycard.
+
+>open gate
+You open staff gate.
+*DING DONG* "Attention visitors! The Willowbrook Family Zoo will be closing in three hours. Please make sure to visit all exhibits before closing time!"
+
+>south
+Supply Room
+
+A cluttered storage room behind the staff gate. Metal shelves line the walls. A cork board on the wall is covered with staff schedules. A battered radio sits on one of the shelves. The staff gate leads back north.
+
+You can see metal shelves, cork board, warning sign, flashlight, radio here.
+
+>north
+Main Path
+
+A wide gravel path winds through the heart of the zoo. Colorful direction signs point every which way. A park bench sits beside the path. To the east, the petting zoo. To the west, the aviary. A staff gate blocks the path to the south. The entrance is back to the north.
+
+You can see staff gate, direction signs, flower beds, souvenir penny, park bench, lunchbox here.
