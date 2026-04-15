@@ -1,0 +1,5 @@
+node_modules/
+dist/
+browser/v*/
+*.pyc
+__pycache__/

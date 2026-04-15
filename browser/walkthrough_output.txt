@@ -1,0 +1,105 @@
+>look
+Fever Dream
+By John Googol
+
+Type HELP for instructions.
+
+Receiving Room
+
+Fluorescent tubes buzz overhead, one flickering at the far end. A long counter divides the room — scuffed linoleum on your side, dark wood on the other. A door leads east.
+
+You can see fluorescent tubes, long counter, intake form, spectacles here.
+
+>take spectacles
+Taken.
+
+>wear spectacles
+You put on spectacles.
+You settle the spectacles on your nose. The lenses are thick, heavy. The room sharpens at its edges — details you missed before push forward into clarity.
+
+>east
+Corridor
+
+A long hallway tiled in white. Several tiles are cracked, revealing raw concrete beneath. The receiving room is west. The treatment room is east.
+
+You can see white tiles, trapdoor here.
+
+>down
+Stairwell
+
+Concrete steps descend to a landing. The air turns cold and damp. Pipes run along the ceiling, sweating with condensation. The trapdoor opens above. A passage continues south to the laboratory.
+
+You can see sweating pipes, pipe wrench here.
+
+>take wrench
+Taken.
+
+>south
+Laboratory
+
+A long room lined with workbenches and glass-fronted cabinets. Everything is labeled in the same careful handwriting. The stairwell is north. A heavy door leads east to cold storage.
+
+You can see workbenches, lab plaque, glass case here.
+
+>read plaque
+Lab plaque reads:
+CISTERN MAINTENANCE — Valve operation: LEFT drains. RIGHT floods. Do not operate without authorization.
+
+>break glass case with wrench
+You swing the wrench. The glass shatters cleanly. The brass key drops into your hand.
+
+>east
+Cold Storage
+
+The temperature drops immediately. Your breath fogs. Racks of specimen jars line the walls, filled with amber fluid. A heavy metal cabinet stands against the far wall, marked with a snowflake. The laboratory is west.
+
+You can see specimen jars, metal cabinet here.
+
+>unlock cabinet with brass key
+You unlock metal cabinet with brass key.
+
+>open cabinet
+You open metal cabinet.
+Inside the metal cabinet you see glass dish, grey fungus.
+
+>take fungus
+You take grey fungus from metal cabinet.
+
+>west
+Laboratory
+
+A long room lined with workbenches and glass-fronted cabinets. Everything is labeled in the same careful handwriting. The stairwell is north. A heavy door leads east to cold storage.
+
+You can see workbenches, lab plaque, glass case here.
+
+>eat fungus
+You eat grey fungus.
+It tastes of nothing. Then of everything. The walls ripple once and settle into new shapes. You understand, now, that this is not distortion. This is clarity. The world has not changed. Your ability to see it has.
+
+>south
+Cistern
+
+The chamber is alive. The bricks are teeth in a circular jaw. The dark water below is a throat, swallowing and unswallowing in slow rhythm. The pipes overhead are arteries, pulsing with something that is not water. An iron valve grows from the north wall like a bone spur. Beside it, a sign hangs from the flesh of the wall. The passage back north climbs toward the laboratory.
+
+You can see dark water, iron valve, instructional sign, drainage grate here.
+A hiss from the cracked pipes overhead. Something cold and chemical settles on your skin, your eyes, your tongue. You blink. The letters on the sign shift. The walls flicker like a signal losing coherence.
+
+When your vision steadies, the world has not returned to normal. It has gone further.
+
+>turn valve left
+Metal screams against metal as you force the valve left. The water shudders, then begins to drain — slowly at first, then in a sudden rush. The dark water drops, revealing walls coated in pale slime. A drainage grate stands open in the floor, revealing a narrow passage descending further.
+
+>down
+Source
+
+A space that should not exist beneath a building this size. The walls are membranes, translucent and veined. Light comes from inside them — a slow amber pulse. A low stone basin sits in the center, holding something luminous, warm, and waiting.
+
+You can see membrane walls, stone basin here.
+
+>touch basin
+You reach in. It reaches back.
+
+The light expands. It fills your hands, your arms, your chest. You feel it behind your eyes — not heat, not cold, but recognition. The building above you does not exist. The rooms, the corridors, the instruments — they were always this. Membrane and bone and light, folded into shapes you could almost name.
+
+You understand now. You have always been the patient. The treatment is complete.
+*** You have won ***

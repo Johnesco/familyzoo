@@ -1,0 +1,32 @@
+{
+  "name": "familyzoo",
+  "version": "1.0.0",
+  "description": "Family Zoo — progressive Sharpee tutorial, v01 through v17+",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "dependencies": {
+    "@sharpee/core": "^0.9.111",
+    "@sharpee/engine": "^0.9.111",
+    "@sharpee/helpers": "^0.9.111",
+    "@sharpee/lang-en-us": "^0.9.111",
+    "@sharpee/media": "^0.9.111",
+    "@sharpee/parser-en-us": "^0.9.111",
+    "@sharpee/platform-browser": "^0.9.111",
+    "@sharpee/plugin-npc": "^0.9.111",
+    "@sharpee/plugin-scheduler": "^0.9.111",
+    "@sharpee/sharpee": "^0.9.111",
+    "@sharpee/stdlib": "^0.9.111",
+    "@sharpee/text-service": "^0.9.111",
+    "@sharpee/world-model": "^0.9.111"
+  },
+  "devDependencies": {
+    "@sharpee/transcript-tester": "^0.9.111",
+    "esbuild": "^0.20.0",
+    "typescript": "^5.3.3"
+  },
+  "author": "John Googol",
+  "license": "MIT"
+}
