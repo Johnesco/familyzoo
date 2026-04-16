@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "familyzoo-preview",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["C:/code/portman/portman.py"],
+      "port": 9000
+    }
+  ]
+}
