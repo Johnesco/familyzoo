@@ -321,6 +321,10 @@ Quick map:
 - **Browser preview** via `.claude/launch.json` (portman-backed) for visual/UX checks. Each version lives at `http://127.0.0.1:9000/familyzoo/vNN/play.html`.
 - **Gotcha:** probe + transcript-test both load `dist/index.js` (= default export, currently v17). For v01-specific testing you'll need to swap the re-export or build a per-version variant. See `docs/testing.md` for the full list.
 
+### Modernization passes
+
+Bringing a version up to the currently-pinned `@sharpee/*` release follows the **canonical modernization checklist**: [`docs/modernization-checklist.md`](docs/modernization-checklist.md). Every per-version modernization ticket follows the same six phases (Scope → Source audit → Comment/teaching audit → Behavior audit → One-concept-per-version guard → Artifact audit) and posts the Phase 7 report template as a comment on the issue before a PR opens. If you encounter a drift the checklist didn't anticipate, add the check to the checklist as part of the same ticket — the document is living.
+
 ### Maintaining Documentation
 
 **UPDATE the Functional Specification** (`docs/functional-spec.md`) when you:

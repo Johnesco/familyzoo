@@ -467,7 +467,18 @@ Theme selection persists per version via `<storagePrefix>-theme`.
 
 Today v01–v16 are Published and v17 is Published-with-Gaps (missing transcript walkthrough and per-version doc — see §13).
 
-### 6.2 Reader Progression
+### 6.2 Modernization Procedure
+
+Every version will need to be revisited when the pinned Sharpee release changes. The canonical procedure for that pass is [`docs/modernization-checklist.md`](modernization-checklist.md), which defines seven phases (Scope → Source audit → Comment/teaching audit → Behavior audit → One-concept-per-version guard → Artifact audit → Report).
+
+**Invariants the procedure protects:**
+- The guide wins when tutorial and guide disagree (§2.3 decision #7).
+- One concept per version (§2.3 decision #3) — modernization is never cover for scope creep.
+- Every artifact listed in §3 stays in sync with the source version file.
+
+The checklist is living — each pass adds any checks it discovers to the document before closing the ticket.
+
+### 6.3 Reader Progression
 
 A reader is expected to:
 
