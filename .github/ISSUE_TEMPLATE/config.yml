@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Sharpee Engine
+    url: https://github.com/Johnesco/npmsharpee
+    about: Questions about the underlying Sharpee engine belong upstream, not in the tutorial repo
