@@ -258,7 +258,7 @@ Each version is one feature of this project. The full progression is also summar
 
 **Concept:** Non-portable environmental detail.
 
-**Teaches:** `SceneryTrait` vs. `EntityType.SCENERY`; generous alias lists.
+**Teaches:** `SceneryTrait` with `EntityType.OBJECT`; generous alias lists.
 
 **Content:** Every room gets scenery objects (fences, flowers, hay bales, waterfalls).
 

@@ -15,7 +15,7 @@ V2 had a few scenery objects (sign, booth, goats, toucan). V3 fills out the worl
 SceneryTrait is one of the simplest traits, but it's one you'll use constantly. It does exactly one thing: **prevents the player from taking the entity.**
 
 ```typescript
-const fence = world.createEntity('iron fence', EntityType.SCENERY);
+const fence = world.createEntity('iron fence', EntityType.OBJECT);
 fence.add(new IdentityTrait({
   name: 'iron fence',
   description: 'A tall wrought-iron fence with animal silhouettes.',
@@ -31,18 +31,18 @@ But `examine fence` still works — SceneryTrait doesn't block examining. The en
 
 ### Why Scenery Matters
 
-In Sharpee, **items are portable by default.** If you create an entity with IdentityTrait and nothing else, the player can pick it up, carry it around, and drop it wherever they want.
+In Sharpee, **all objects are portable by default.** If you create an `EntityType.OBJECT` with IdentityTrait and nothing else, the player can pick it up, carry it around, and drop it wherever they want.
 
-That's usually not what you want for environmental objects. You don't want the player stuffing a park bench into their backpack. SceneryTrait is how you say "this is part of the world, not a collectible."
+That's usually not what you want for environmental objects. You don't want the player stuffing a park bench into their backpack. `SceneryTrait` is how you say "this is part of the world, not a collectible."
 
-### EntityType.SCENERY vs SceneryTrait
+### EntityType.OBJECT + SceneryTrait
 
-These are two different things that happen to have the same name:
+Scenery uses the same generic `EntityType.OBJECT` as portable items. It's the **trait** that makes the difference:
 
-- **`EntityType.SCENERY`** is a *label*. It tells the engine "this entity represents scenery." But by itself, it doesn't prevent taking.
-- **`SceneryTrait`** is a *mechanism*. It's the thing that actually blocks the taking action.
+- **`EntityType.OBJECT`** is the general-purpose entity type for things in the world. By itself, it's portable.
+- **`SceneryTrait`** is the mechanism that blocks the taking action and marks the entity as fixed in place.
 
-You need both for a proper scenery object. `EntityType.SCENERY` without `SceneryTrait` would be scenery that the player can pick up — which is almost never what you want.
+The entity type is just a hint — `SceneryTrait` is what does the real work.
 
 ### When to Use SceneryTrait
 

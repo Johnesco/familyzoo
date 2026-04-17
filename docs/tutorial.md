@@ -96,7 +96,7 @@ mainPath.get(RoomTrait)!.exits = {
 Scenery entities can be examined but not picked up. Use them for environmental detail.
 
 ```typescript
-const fence = world.createEntity('iron fence', EntityType.SCENERY);
+const fence = world.createEntity('iron fence', EntityType.OBJECT);
 fence.add(new IdentityTrait({ name: 'iron fence', description: '...', aliases: ['fence'] }));
 fence.add(new SceneryTrait());
 world.moveEntity(fence.id, room.id);

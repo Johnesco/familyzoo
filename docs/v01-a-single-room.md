@@ -29,9 +29,9 @@ Entities have a **type** that gives the engine a hint about what they are:
 | Type | What It Is |
 |------|-----------|
 | `EntityType.ROOM` | A location the player can be in |
-| `EntityType.ITEM` | A portable object |
+| `EntityType.OBJECT` | A generic object (portable by default; add `SceneryTrait` to fix in place) |
+| `EntityType.ITEM` | A portable object (synonym for OBJECT in most contexts) |
 | `EntityType.ACTOR` | A character (player or NPC) |
-| `EntityType.SCENERY` | A fixed object that can't be picked up |
 | `EntityType.CONTAINER` | An object that holds other objects |
 | `EntityType.SUPPORTER` | An object things can be placed on |
 

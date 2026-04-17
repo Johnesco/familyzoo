@@ -21,8 +21,9 @@
  *   > pet parrot                    (ouch!)
  *
  * BUILD & RUN:
- *   ./build.sh -s familyzoo
- *   node dist/cli/sharpee.js --story tutorials/familyzoo --play
+ *   npm run build
+ *   npx transcript-test . tests/transcripts/v14-capability-dispatch.transcript
+ *   # Or play interactively:  npx transcript-test . --play
  */
 
 // ============================================================================
@@ -481,14 +482,14 @@ class FamilyZooStory implements Story {
       ['stuffed animals', 'Shelves of plush tigers, pandas, and penguins.', ['stuffed animals', 'plush', 'toys'], giftShop],
       ['postcards', 'A spinning rack of postcards showing the zoo\'s greatest hits.', ['postcards', 'cards', 'postcard rack'], giftShop],
     ] as [string, string, string[], IFEntity][]) {
-      const e = world.createEntity(name, EntityType.SCENERY);
+      const e = world.createEntity(name, EntityType.OBJECT);
       e.add(new IdentityTrait({ name, description: desc, aliases, properName: false, article: 'a' }));
       e.add(new SceneryTrait());
       world.moveEntity(e.id, room.id);
     }
 
     // Additional scenery with special traits (readable, switchable)
-    const corkBoard = world.createEntity('cork board', EntityType.SCENERY);
+    const corkBoard = world.createEntity('cork board', EntityType.OBJECT);
     corkBoard.add(new IdentityTrait({ name: 'cork board', description: 'A cork board with staff schedules. A note in red marker: "DON\'T FORGET: nocturnal exhibit lights need new batteries!"', aliases: ['cork board', 'board', 'notices'], properName: false, article: 'a' }));
     corkBoard.add(new SceneryTrait());
     world.moveEntity(corkBoard.id, supplyRoom.id);
@@ -499,19 +500,19 @@ class FamilyZooStory implements Story {
     radio.add(new SceneryTrait());
     world.moveEntity(radio.id, supplyRoom.id);
 
-    const pettingPlaque = world.createEntity('info plaque', EntityType.SCENERY);
+    const pettingPlaque = world.createEntity('info plaque', EntityType.OBJECT);
     pettingPlaque.add(new IdentityTrait({ name: 'info plaque', description: 'A brass plaque mounted on a wooden post near the petting zoo gate.', aliases: ['plaque', 'info plaque', 'brass plaque'], properName: false, article: 'an' }));
     pettingPlaque.add(new ReadableTrait({ text: 'PYGMY GOATS — These Nigerian Dwarf goats are gentle, curious, and always hungry.\n\nHOLLAND LOP RABBITS — Known for their floppy ears. Our pair, Biscuit and Marmalade, were born here in 2023.' }));
     pettingPlaque.add(new SceneryTrait());
     world.moveEntity(pettingPlaque.id, pettingZoo.id);
 
-    const aviaryPlaque = world.createEntity('aviary plaque', EntityType.SCENERY);
+    const aviaryPlaque = world.createEntity('aviary plaque', EntityType.OBJECT);
     aviaryPlaque.add(new IdentityTrait({ name: 'aviary plaque', description: 'A colorful information board near the aviary entrance.', aliases: ['plaque', 'aviary plaque', 'information board'], properName: false, article: 'an' }));
     aviaryPlaque.add(new ReadableTrait({ text: 'WELCOME TO THE AVIARY — Home to over 30 species!\n\nTOCO TOUCAN — Its bill weighs less than a smartphone.\n\nSCARLET MACAW — Can live over 75 years. Our oldest, Captain, is 42.' }));
     aviaryPlaque.add(new SceneryTrait());
     world.moveEntity(aviaryPlaque.id, aviary.id);
 
-    const warningSign = world.createEntity('warning sign', EntityType.SCENERY);
+    const warningSign = world.createEntity('warning sign', EntityType.OBJECT);
     warningSign.add(new IdentityTrait({ name: 'warning sign', description: 'A yellow warning sign near the nocturnal exhibit entrance.', aliases: ['warning', 'warning sign', 'yellow sign'], properName: false, article: 'a' }));
     warningSign.add(new ReadableTrait({ text: 'CAUTION: The Nocturnal Animals Exhibit is kept dark. Please use a flashlight. Do NOT use camera flash. (We don\'t talk about the Great Owl Incident of 2022.)' }));
     warningSign.add(new SceneryTrait());
@@ -528,19 +529,19 @@ class FamilyZooStory implements Story {
     // that they respond to the 'zoo.action.petting' capability.
     // Each gets a different behavior registered below.
 
-    const goats = world.createEntity('pygmy goats', EntityType.SCENERY);
+    const goats = world.createEntity('pygmy goats', EntityType.OBJECT);
     goats.add(new IdentityTrait({ name: 'pygmy goats', description: 'Three pygmy goats hoping you have food.', aliases: ['goats', 'pygmy goats', 'goat'], properName: false, article: 'some' }));
     goats.add(new SceneryTrait());
     goats.add(new PettableTrait('goats'));  // ← PettableTrait with 'goats' kind
     world.moveEntity(goats.id, pettingZoo.id);
 
-    const rabbits = world.createEntity('rabbits', EntityType.SCENERY);
+    const rabbits = world.createEntity('rabbits', EntityType.OBJECT);
     rabbits.add(new IdentityTrait({ name: 'rabbits', description: 'A pair of Holland Lop rabbits with floppy ears.', aliases: ['rabbits', 'rabbit', 'bunnies'], properName: false, article: 'some' }));
     rabbits.add(new SceneryTrait());
     rabbits.add(new PettableTrait('rabbits'));  // ← PettableTrait with 'rabbits' kind
     world.moveEntity(rabbits.id, pettingZoo.id);
 
-    const parrots = world.createEntity('parrots', EntityType.SCENERY);
+    const parrots = world.createEntity('parrots', EntityType.OBJECT);
     parrots.add(new IdentityTrait({ name: 'parrots', description: 'A raucous flock of scarlet macaws and grey African parrots.', aliases: ['parrots', 'macaws', 'birds'], properName: false, article: 'some' }));
     parrots.add(new SceneryTrait());
     world.moveEntity(parrots.id, aviary.id);

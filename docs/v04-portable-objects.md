@@ -72,12 +72,12 @@ Scenery objects are NOT listed this way — they're expected to be mentioned in 
 
 ### EntityType.ITEM
 
-`EntityType.ITEM` is the type for generic portable objects. It's the counterpart to `EntityType.SCENERY`:
+`EntityType.ITEM` is a type specifically for portable objects. In practice, `EntityType.OBJECT` works the same way — all objects are portable by default:
 
 | Entity Type | Portable by Default | Example |
 |------------|-------------------|---------|
-| `EntityType.ITEM` | Yes | Maps, keys, coins |
-| `EntityType.SCENERY` | No (with SceneryTrait) | Fences, benches, animals |
+| `EntityType.ITEM` / `EntityType.OBJECT` | Yes | Maps, keys, coins |
+| `EntityType.OBJECT` + `SceneryTrait` | No | Fences, benches, animals |
 
 ## Commands to Try
 

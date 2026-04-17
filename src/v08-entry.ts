@@ -1,5 +1,5 @@
 /**
- * Browser Entry Point for Family Zoo Tutorial
+ * Browser Entry Point — Family Zoo v08: Light & Dark
  */
 
 import { GameEngine } from '@sharpee/engine';
@@ -34,33 +34,20 @@ const client = new BrowserClient({
     title,
     description,
     authors,
+    version: config.version,
+    engineVersion: '0.9.111',
+    buildDate: new Date().toISOString().slice(0, 10),
   },
   callbacks: {
-    getHelpText: () =>
-      `Commands are simple sentences like LOOK, TAKE KEY, or GO NORTH.
-
-Common commands:
-  LOOK (L)        Describe surroundings
-  INVENTORY (I)   List what you're carrying
-  EXAMINE (X)     Look closely at something
-  TAKE / DROP     Pick up or put down items
-  OPEN / CLOSE    Open or close containers
-  UNLOCK X WITH Y Unlock with a key
-  GO <direction>  Move (N, S, E, W, U, D)
-  SCORE           Check your score
-  SAVE / RESTORE  Save or load your game
-  QUIT            Leave the game`,
-    getAboutText: () =>
-      [title, description, `By ${authors}`, 'Sharpee Tutorial V16'].filter(Boolean).join('\n'),
-    handleStoryEvent: (event: any, display: any) => {
+    handleStoryEvent: (event, client) => {
       if (event.type === 'command.failed') {
-        const reason = event.data?.reason || '';
+        const reason = (event.data as any)?.reason || '';
         if (reason.includes('UNKNOWN_VERB')) {
-          display.displayText("I don't know that word.");
+          client.displayText("I don't know that word.");
         } else if (reason.includes('ENTITY_NOT_FOUND')) {
-          display.displayText("You don't see that here.");
+          client.displayText("You don't see that here.");
         } else {
-          display.displayText("I don't understand that.");
+          client.displayText("I don't understand that.");
         }
         return true;
       }
@@ -86,7 +73,7 @@ async function start(): Promise<void> {
     noSavesMessage: document.getElementById('no-saves-message'),
     startupSaveInfo: document.getElementById('startup-save-info'),
     menuBar: document.getElementById('menu-bar'),
-  } as any);
+  });
 
   const world = new WorldModel();
   const player = world.createEntity('player', EntityType.ACTOR);
@@ -95,8 +82,8 @@ async function start(): Promise<void> {
   const language = new LanguageProvider();
   const parser = new Parser(language);
 
-  if (story.extendParser) story.extendParser(parser);
-  if (story.extendLanguage) story.extendLanguage(language);
+  if ('extendParser' in story) (story as any).extendParser(parser);
+  if ('extendLanguage' in story) (story as any).extendLanguage(language);
 
   const perceptionService = new PerceptionService();
 

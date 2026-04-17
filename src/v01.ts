@@ -16,8 +16,9 @@
  *   > take sign           (can't — it's scenery!)
  *
  * BUILD & RUN:
- *   ./build.sh -s familyzoo
- *   node dist/cli/sharpee.js --story tutorials/familyzoo --play
+ *   npm run build
+ *   npx transcript-test . tests/transcripts/v01-single-room.transcript
+ *   # Or play interactively:  npx transcript-test . --play
  */
 
 // ============================================================================
@@ -34,7 +35,6 @@ import {
   WorldModel,
   IFEntity,
   EntityType,
-  Direction,
 } from '@sharpee/world-model';
 
 // Traits are components you attach to entities to give them capabilities.
@@ -157,9 +157,14 @@ class FamilyZooStory implements Story {
     // ========================================================================
     // Scenery objects are things the player can examine but NOT pick up.
     // They're part of the environment — signs, furniture, walls, etc.
+    //
+    // In Sharpee, all objects are portable by default. To make something
+    // non-portable, you create it as EntityType.OBJECT and add SceneryTrait.
+    // The trait is what prevents picking it up — the entity type alone
+    // doesn't control that.
 
     // --- The Welcome Sign ---
-    const sign = world.createEntity('welcome sign', EntityType.SCENERY);
+    const sign = world.createEntity('welcome sign', EntityType.OBJECT);
 
     sign.add(new IdentityTrait({
       name: 'welcome sign',
@@ -179,7 +184,7 @@ class FamilyZooStory implements Story {
 
 
     // --- The Ticket Booth ---
-    const booth = world.createEntity('ticket booth', EntityType.SCENERY);
+    const booth = world.createEntity('ticket booth', EntityType.OBJECT);
 
     booth.add(new IdentityTrait({
       name: 'ticket booth',

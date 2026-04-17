@@ -44,8 +44,8 @@
  *     Hear the snake:           5 pts
  *
  * BUILD & RUN:
- *   ./build.sh -s familyzoo
- *   node dist/cli/sharpee.js --story tutorials/familyzoo --play
+ *   npm run build
+ *   npx transcript-test . --play
  */
 
 // ============================================================================
