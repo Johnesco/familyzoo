@@ -14,13 +14,17 @@
 
 ## How to use this checklist
 
-1. Pick a version `vNN`. Open the matching GitHub Issue (or file one if it doesn't exist yet).
-2. Work the phases in order — **Scope → Source audit → Comment/teaching audit → Behavior audit → Artifact audit → Report**.
-3. Fill in the **Report template** at the bottom. Paste it into the issue.
-4. Only after the report is posted and accepted do you open the modernization PR.
-5. Keep this file living. When you hit a check not already listed, add it.
+1. **Work in order, v01 → v02 → … → v17.** Each version *is* the previous version plus one concept. A change to v01 must propagate forward through every subsequent version. Modernizing out of order risks building on stale foundations. The earlier the fix, the wider the ripple — and that ripple is intentional, not optional.
+2. Pick the next un-modernized version `vNN`. Open the matching GitHub Issue (or file one if it doesn't exist yet).
+3. Work the phases in order — **Scope → Source audit → Comment/teaching audit → Behavior audit → One-concept guard → Artifact audit → Report**.
+4. **Propagate changes forward.** After modernizing `vNN`, every change (API rename, import path, comment wording) that also appears in `v(N+1)` through `v17` must be carried forward into those files. These forward-propagation edits are part of the same PR or tracked as immediate follow-up tickets — never deferred indefinitely. This may be tedious, but all versions must stay in sync because each step builds on the previous one.
+5. Fill in the **Report template** at the bottom. Paste it into the issue.
+6. Only after the report is posted and accepted do you open the modernization PR.
+7. Keep this file living. When you hit a check not already listed, add it.
 
 A full pass on one version is typically half a day of reading + change + verification. Do not combine two versions into one PR — the "one concept per version" invariant depends on isolating diffs.
+
+> **Why propagation matters:** If v01 changes `EntityType.SCENERY` → `EntityType.OBJECT`, but v03 still says `EntityType.SCENERY`, the reader hits a jarring inconsistency mid-tutorial. Worse: v03's code is supposed to *be* v02's code plus one concept — if the base doesn't match, the diff is noise. Propagation is the teaching contract.
 
 ---
 
@@ -182,6 +186,7 @@ The core tutorial invariant. Easy to break accidentally when bringing code "up t
 - [ ] No imports introducing a trait or plugin that belongs to a later version.
 - [ ] No code sneaking in a concept that's the subject of `v(N+1)` or later — compare the import list against `docs/functional-spec.md` §4.
 - [ ] If a new current-API idiom would pull in an earlier concept (e.g. a refactor that forces a scheduler usage into v08), **stop and ticket it as a spec change**.
+- [ ] **Forward-propagation check:** every modernization change that also exists in `v(N+1)` through `v17` is either (a) applied in this same PR, or (b) tracked as an immediate follow-up ticket. The reader's experience is progressive — if v01 changes an import or entity type and v03 still uses the old form, the tutorial is broken even though each file compiles individually.
 
 ---
 
@@ -189,6 +194,7 @@ The core tutorial invariant. Easy to break accidentally when bringing code "up t
 
 Before writing the PR, confirm every touch-site is accounted for.
 
+**This version's artifacts:**
 - [ ] `src/vNN.ts` (or `src/vNN/*.ts`)
 - [ ] `src/vNN-entry.ts` — browser bootstrap
 - [ ] `tests/transcripts/vNN-*.transcript` — walkthrough
@@ -200,6 +206,12 @@ Before writing the PR, confirm every touch-site is accounted for.
 - [ ] `docs/functional-spec.md` §4.`NN` — only if the version's scope changed (rare; tickets as a scope change)
 - [ ] `CLAUDE.md` — only if the change reveals a new project-wide convention
 - [ ] This file — if the check you ran isn't already listed, add it
+
+**Forward-propagation artifacts (v(N+1) through v17):**
+- [ ] For every code-level change made to `vNN` (import paths, entity types, trait constructors, API calls), confirm the same pattern appears in later versions and carry the fix forward. List every later file touched or note that the pattern doesn't recur.
+- [ ] For every comment-level change (BUILD & RUN banner, section dividers, first-use wording), propagate the same fix into later files where the comment was inherited verbatim.
+- [ ] Transcripts for later versions — re-run `transcript-test --all` after propagation to confirm no regressions.
+- [ ] Document the propagation scope in the PR description: "Changed X in v01; propagated to v02–v17" or "Changed X in v08; propagated to v09–v17; not present in v01–v07."
 
 ---
 
@@ -234,6 +246,11 @@ v`NN` teaches **<concept>**. Current guide: [<guide>](...). Scope unchanged / sc
 
 ### Leakage check
 - No concepts from v(N+1)+ detected / concept X sneaks in — see below.
+
+### Forward propagation
+- Changed X in vNN; propagated to v(N+1)–v17 / not present in later versions.
+- Transcript regression sweep (`--all`): PASS / FAIL at …
+- Files touched by propagation: `src/vNN+1.ts`, `src/vNN+2.ts`, …
 
 ### Follow-up tickets filed
 - #… (spec change for …)
