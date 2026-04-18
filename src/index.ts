@@ -6,4 +6,4 @@
  *
  * Currently: V17 (After Hours & Multi-File Organization)
  */
-export { story, default } from './v17';
+export { story, story as default } from './v17/index.js';

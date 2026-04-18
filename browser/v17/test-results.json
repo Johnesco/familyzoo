@@ -1,0 +1,520 @@
+{
+  "version": "v17",
+  "storyId": "familyzoo-17",
+  "timestamp": "2026-04-18T10:03:15.817Z",
+  "transcripts": [
+    {
+      "file": "v17-after-hours.transcript",
+      "title": "V17 — After Hours & Multi-File Organization",
+      "description": "Golden-path walkthrough covering base scoring and the after-hours phase with candid animal dialogue",
+      "commands": [
+        {
+          "lineNumber": 17,
+          "input": "take map",
+          "output": "Family Zoo\nBy Sharpee Tutorial\n\nType HELP for instructions.\n\nTaken.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Taken"
+            }
+          ],
+          "comment": "Collect map and brochure at Zoo Entrance"
+        },
+        {
+          "lineNumber": 20,
+          "input": "take brochure",
+          "output": "Taken.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Taken"
+            }
+          ],
+          "comment": "========================================================================="
+        },
+        {
+          "lineNumber": 23,
+          "input": "read brochure",
+          "output": "Zoo brochure reads:\nWILLOWBROOK FAMILY ZOO — Your Guide\n\nEXHIBITS:\n  Petting Zoo — East from Main Path\n  Aviary — West from Main Path\n  Gift Shop — West from Aviary\n  Nocturnal Animals — Staff Area\n\n\"Where every visit is a wild adventure!\"\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "WILLOWBROOK"
+            }
+          ],
+          "comment": "PHASE 1: BASE GAME — score 60 of the 75 base points"
+        },
+        {
+          "lineNumber": 27,
+          "input": "take keycard",
+          "output": "Taken.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Taken"
+            }
+          ],
+          "comment": "Grab keycard for later"
+        },
+        {
+          "lineNumber": 31,
+          "input": "south",
+          "output": "Main Path\n\nA wide gravel path winds through the heart of the zoo. Colorful direction signs point every which way. A park bench sits beside the path. To the east, the petting zoo. To the west, the aviary. A staff gate blocks the path to the south. The entrance is back to the north.\n\nYou can see staff gate, direction signs, flower beds, souvenir penny, park bench, lunchbox here.\n*DING DONG* \"Attention visitors! The Willowbrook Family Zoo will be closing in three hours. Please make sure to visit all exhibits before closing time!\"\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Main Path"
+            }
+          ],
+          "comment": "Head south to Main Path"
+        },
+        {
+          "lineNumber": 35,
+          "input": "take penny",
+          "output": "Taken.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Taken"
+            }
+          ],
+          "comment": "Grab the souvenir penny for the press"
+        },
+        {
+          "lineNumber": 39,
+          "input": "west",
+          "output": "Aviary\n\nYou step inside a soaring mesh dome. Brilliantly colored parrots chatter from rope perches, and a toucan eyes you curiously from a branch overhead. A small waterfall splashes into a stone basin. An info plaque hangs near the entrance. The gift shop is to the west. The main path is back to the east.\n\nYou can see toucan, waterfall, rope perches, aviary plaque, parrot, parrots here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Aviary"
+            }
+          ],
+          "comment": "Visit Aviary (5 pts)"
+        },
+        {
+          "lineNumber": 43,
+          "input": "west",
+          "output": "Gift Shop\n\nA small zoo gift shop crammed with stuffed animals and postcards. A large souvenir penny press machine stands near the door. A disposable camera sits on the counter. The aviary is back to the east.\n\nYou can see stuffed animals, postcards, disposable camera, souvenir press here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Gift Shop"
+            }
+          ],
+          "comment": "Visit Gift Shop (5 pts)"
+        },
+        {
+          "lineNumber": 47,
+          "input": "take camera",
+          "output": "Taken.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Taken"
+            }
+          ],
+          "comment": "Take camera and press the penny"
+        },
+        {
+          "lineNumber": 50,
+          "input": "put penny in press",
+          "output": "You put souvenir penny in souvenir press.\n*DING DONG* \"Attention visitors! Two hours until closing. Don't forget to stop by the gift shop for souvenirs!\"\nCLUNK! CRUNCH! WHIRRR! The souvenir press produces a beautiful pressed penny with an embossed toucan.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "CLUNK"
+            }
+          ],
+          "comment": "========================================================================="
+        },
+        {
+          "lineNumber": 54,
+          "input": "east",
+          "output": "Aviary\n\nYou step inside a soaring mesh dome. Brilliantly colored parrots chatter from rope perches, and a toucan eyes you curiously from a branch overhead. A small waterfall splashes into a stone basin. An info plaque hangs near the entrance. The gift shop is to the west. The main path is back to the east.\n\nYou can see toucan, waterfall, rope perches, aviary plaque, parrot, parrots here.\n*DING DONG* \"It's FEEDING TIME at the Petting Zoo! Come watch our pygmy goats and rabbits enjoy their favorite snacks!\"\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Aviary"
+            }
+          ],
+          "comment": "Back to Aviary to photograph the parrot (5 pts)"
+        },
+        {
+          "lineNumber": 57,
+          "input": "photograph parrot",
+          "output": "Click! You snap a photo of parrot. That one's going on the fridge.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "photo"
+            }
+          ],
+          "comment": "after-hours phase gated on world state, bonus scoring for animal dialogue"
+        },
+        {
+          "lineNumber": 61,
+          "input": "east",
+          "output": "Main Path\n\nA wide gravel path winds through the heart of the zoo. Colorful direction signs point every which way. A park bench sits beside the path. To the east, the petting zoo. To the west, the aviary. A staff gate blocks the path to the south. The entrance is back to the north.\n\nYou can see staff gate, direction signs, flower beds, park bench, lunchbox here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Main Path"
+            }
+          ],
+          "comment": "Back to Main Path"
+        },
+        {
+          "lineNumber": 65,
+          "input": "east",
+          "output": "Petting Zoo\n\nA cheerful open-air enclosure filled with friendly animals. Pygmy goats trot around nibbling at visitors' shoelaces, while a pair of fluffy rabbits hop lazily near a hay bale. A feed dispenser is mounted on a post. An info plaque is posted by the gate. The main path is back to the west.\n\nYou can see hay bale, info plaque, bag of animal feed, feed dispenser, pygmy goats, rabbits, zookeeper here.\nThe pygmy goats are bleating loudly and headbutting the fence. They seem very hungry!\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Petting Zoo"
+            }
+          ],
+          "comment": "Visit Petting Zoo (5 pts)"
+        },
+        {
+          "lineNumber": 69,
+          "input": "take feed",
+          "output": "Taken.\n*DING DONG* \"Attention visitors! One hour until closing. Please begin making your way toward the exit.\"\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Taken"
+            }
+          ],
+          "comment": "Feed the animals"
+        },
+        {
+          "lineNumber": 72,
+          "input": "feed goats",
+          "output": "You scatter some feed on the ground. The pygmy goats rush over, bleating excitedly, and devour the corn and pellets in seconds. The smallest goat looks up at you with big grateful eyes.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "feed"
+            }
+          ],
+          "comment": "V17 teaches: multi-file organization, runtime NPC behavior swap,"
+        },
+        {
+          "lineNumber": 75,
+          "input": "feed rabbits",
+          "output": "You sprinkle some pellets near the rabbits. Biscuit and Marmalade hop over cautiously, then munch away happily.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "pellets"
+            }
+          ]
+        },
+        {
+          "lineNumber": 79,
+          "input": "pet goats",
+          "output": "You reach down and pet the nearest goat. It leans into your hand and bleats happily. The others crowd around, demanding equal attention.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "pet"
+            }
+          ],
+          "comment": "Pet the goats (action works, produces narrative)"
+        },
+        {
+          "lineNumber": 87,
+          "input": "west",
+          "output": "Main Path\n\nA wide gravel path winds through the heart of the zoo. Colorful direction signs point every which way. A park bench sits beside the path. To the east, the petting zoo. To the west, the aviary. A staff gate blocks the path to the south. The entrance is back to the north.\n\nYou can see staff gate, direction signs, flower beds, park bench, lunchbox, zookeeper here.\n*DING DONG* \"It's FEEDING TIME at the Petting Zoo! Come watch our pygmy goats and rabbits enjoy their favorite snacks!\"\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Main Path"
+            }
+          ],
+          "comment": "Return to Main Path — feeding-time fuse fires on this turn"
+        },
+        {
+          "lineNumber": 91,
+          "input": "wait",
+          "output": "Time passes...\n*DING DONG* \"The Willowbrook Family Zoo is now closed. Thank you for visiting! We hope to see you again soon!\"\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "closed"
+            }
+          ],
+          "comment": "Wait one turn — PA4 fires, zoo is now closed"
+        },
+        {
+          "lineNumber": 99,
+          "input": "east",
+          "output": "Petting Zoo\n\nA cheerful open-air enclosure filled with friendly animals. Pygmy goats trot around nibbling at visitors' shoelaces, while a pair of fluffy rabbits hop lazily near a hay bale. A feed dispenser is mounted on a post. An info plaque is posted by the gate. The main path is back to the west.\n\nYou can see hay bale, info plaque, feed dispenser, pygmy goats, rabbits, zookeeper here.\nNow that the keeper is gone, the goats exchange glances. The largest one turns to you and bleats in a very deliberate pattern. You could swear it sounds like: \"Finally. Do you have any idea what it's like being called 'cute' six hundred times a day? We are MAJESTIC.\"\nThe rabbits stop mid-hop and look at each other. Biscuit twitches her nose disapprovingly. Marmalade thumps his foot twice. You get the distinct impression they're critiquing the quality of today's pellets. \"Barely adequate,\" the thumping seems to say. \"Last Tuesday's batch was far superior.\"\nThe zookeeper glances at the clock, unclips the walkie-talkie from his belt, and stretches. \"Well, that's me done for the day. Zoo's all yours, I guess!\" He gives you a friendly wave and ambles off toward the staff parking lot. A moment later, you hear an engine start and fade into the distance.\nThe pygmy goats are bleating loudly and headbutting the fence. They seem very hungry!\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Petting Zoo"
+            },
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "zookeeper"
+            },
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "done for the day"
+            },
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "MAJESTIC"
+            },
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Last Tuesday"
+            }
+          ],
+          "comment": "Visit Petting Zoo — keeper departure fires + goats/rabbits speak candidly"
+        },
+        {
+          "lineNumber": 107,
+          "input": "score",
+          "output": "You have scored 75 out of 100, earning you the rank of Expert.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "out of 100"
+            }
+          ],
+          "comment": "Check score — should reflect after-hours bonuses"
+        },
+        {
+          "lineNumber": 111,
+          "input": "west",
+          "output": "Main Path\n\nA wide gravel path winds through the heart of the zoo. Colorful direction signs point every which way. A park bench sits beside the path. To the east, the petting zoo. To the west, the aviary. A staff gate blocks the path to the south. The entrance is back to the north.\n\nYou can see staff gate, direction signs, flower beds, park bench, lunchbox here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Main Path"
+            }
+          ],
+          "comment": "Back west to Main Path, then west to Aviary — parrot speaks candidly"
+        },
+        {
+          "lineNumber": 114,
+          "input": "west",
+          "output": "Aviary\n\nYou step inside a soaring mesh dome. Brilliantly colored parrots chatter from rope perches, and a toucan eyes you curiously from a branch overhead. A small waterfall splashes into a stone basin. An info plaque hangs near the entrance. The gift shop is to the west. The main path is back to the east.\n\nYou can see toucan, waterfall, rope perches, aviary plaque, parrot, parrots here.\nThe parrot clears its throat — actually clears its throat — and fixes you with a knowing look. \"Right then. Now that the performative squawking is over, let me tell you something: that toucan? Complete fraud. Can't even crack a nut properly. And don't get me started on the gift shop markup.\"\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Aviary"
+            },
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "performative squawking"
+            },
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "toucan"
+            }
+          ],
+          "comment": "========================================================================="
+        },
+        {
+          "lineNumber": 120,
+          "input": "east",
+          "output": "Main Path\n\nA wide gravel path winds through the heart of the zoo. Colorful direction signs point every which way. A park bench sits beside the path. To the east, the petting zoo. To the west, the aviary. A staff gate blocks the path to the south. The entrance is back to the north.\n\nYou can see staff gate, direction signs, flower beds, park bench, lunchbox here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Main Path"
+            }
+          ],
+          "comment": "Return east and unlock the supply room gate"
+        },
+        {
+          "lineNumber": 123,
+          "input": "unlock gate with keycard",
+          "output": "You unlock staff gate with staff keycard.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "unlock"
+            }
+          ],
+          "comment": "PHASE 3: AFTER HOURS — candid animal dialogue + bonus scoring"
+        },
+        {
+          "lineNumber": 126,
+          "input": "open gate",
+          "output": "You open staff gate.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "open"
+            }
+          ],
+          "comment": "========================================================================="
+        },
+        {
+          "lineNumber": 130,
+          "input": "south",
+          "output": "Supply Room\n\nA cluttered storage room behind the staff gate. Metal shelves line the walls. A cork board on the wall is covered with staff schedules. A battered radio sits on one of the shelves. The staff gate leads back north.\n\nYou can see metal shelves, cork board, warning sign, flashlight, radio here.\n*DING DONG* \"It's FEEDING TIME at the Petting Zoo! Come watch our pygmy goats and rabbits enjoy their favorite snacks!\"\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Supply Room"
+            }
+          ],
+          "comment": "Visit Supply Room (5 pts)"
+        },
+        {
+          "lineNumber": 134,
+          "input": "south",
+          "output": "It is pitch dark. You are likely to be eaten by a grue.\nA soft, sibilant voice drifts from behind the glass of the snake enclosure. \"Ssso... you're the one who stayed. Good. Do you know what it's like in here? They keep the lights on 'dim' and call it 'nocturnal.' I haven't seen actual moonlight in three years. Three. Years.\"\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Nocturnal"
+            },
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "moonlight"
+            },
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Three. Years"
+            }
+          ],
+          "comment": "Visit Nocturnal Exhibit (5 pts) — snake speaks candidly"
+        },
+        {
+          "lineNumber": 140,
+          "input": "score",
+          "output": "You have scored 95 out of 100, earning you the rank of Master.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "95"
+            },
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "out of 100"
+            }
+          ],
+          "comment": "Final score check — 95/100 (keeper witness bonus is position-dependent)"
+        }
+      ],
+      "summary": {
+        "passed": 30,
+        "failed": 0,
+        "skipped": 0,
+        "duration": 69
+      }
+    }
+  ],
+  "summary": {
+    "totalPassed": 30,
+    "totalFailed": 0,
+    "totalSkipped": 0,
+    "totalDuration": 69
+  }
+}

@@ -1,0 +1,142 @@
+title: V17 — After Hours & Multi-File Organization
+story: familyzoo
+entry: v17
+author: Sharpee Tutorial
+description: Golden-path walkthrough covering base scoring and the after-hours phase with candid animal dialogue
+
+---
+
+# V17 teaches: multi-file organization, runtime NPC behavior swap,
+# after-hours phase gated on world state, bonus scoring for animal dialogue
+
+# =========================================================================
+# PHASE 1: BASE GAME — score 60 of the 75 base points
+# =========================================================================
+
+# Collect map and brochure at Zoo Entrance
+> take map
+[OK: contains "Taken"]
+
+> take brochure
+[OK: contains "Taken"]
+
+> read brochure
+[OK: contains "WILLOWBROOK"]
+
+# Grab keycard for later
+> take keycard
+[OK: contains "Taken"]
+
+# Head south to Main Path
+> south
+[OK: contains "Main Path"]
+
+# Grab the souvenir penny for the press
+> take penny
+[OK: contains "Taken"]
+
+# Visit Aviary (5 pts)
+> west
+[OK: contains "Aviary"]
+
+# Visit Gift Shop (5 pts)
+> west
+[OK: contains "Gift Shop"]
+
+# Take camera and press the penny
+> take camera
+[OK: contains "Taken"]
+
+> put penny in press
+[OK: contains "CLUNK"]
+
+# Back to Aviary to photograph the parrot (5 pts)
+> east
+[OK: contains "Aviary"]
+
+> photograph parrot
+[OK: contains "photo"]
+
+# Back to Main Path
+> east
+[OK: contains "Main Path"]
+
+# Visit Petting Zoo (5 pts)
+> east
+[OK: contains "Petting Zoo"]
+
+# Feed the animals
+> take feed
+[OK: contains "Taken"]
+
+> feed goats
+[OK: contains "feed"]
+
+> feed rabbits
+[OK: contains "pellets"]
+
+# Pet the goats (action works, produces narrative)
+> pet goats
+[OK: contains "pet"]
+
+# =========================================================================
+# PHASE 2: ZOO CLOSES — PA4 fires, after_hours flag set
+# =========================================================================
+
+# Return to Main Path — feeding-time fuse fires on this turn
+> west
+[OK: contains "Main Path"]
+
+# Wait one turn — PA4 fires, zoo is now closed
+> wait
+[OK: contains "closed"]
+
+# =========================================================================
+# PHASE 3: AFTER HOURS — candid animal dialogue + bonus scoring
+# =========================================================================
+
+# Visit Petting Zoo — keeper departure fires + goats/rabbits speak candidly
+> east
+[OK: contains "Petting Zoo"]
+[OK: contains "zookeeper"]
+[OK: contains "done for the day"]
+[OK: contains "MAJESTIC"]
+[OK: contains "Last Tuesday"]
+
+# Check score — should reflect after-hours bonuses
+> score
+[OK: contains "out of 100"]
+
+# Back west to Main Path, then west to Aviary — parrot speaks candidly
+> west
+[OK: contains "Main Path"]
+
+> west
+[OK: contains "Aviary"]
+[OK: contains "performative squawking"]
+[OK: contains "toucan"]
+
+# Return east and unlock the supply room gate
+> east
+[OK: contains "Main Path"]
+
+> unlock gate with keycard
+[OK: contains "unlock"]
+
+> open gate
+[OK: contains "open"]
+
+# Visit Supply Room (5 pts)
+> south
+[OK: contains "Supply Room"]
+
+# Visit Nocturnal Exhibit (5 pts) — snake speaks candidly
+> south
+[OK: contains "Nocturnal"]
+[OK: contains "moonlight"]
+[OK: contains "Three. Years"]
+
+# Final score check — 95/100 (keeper witness bonus is position-dependent)
+> score
+[OK: contains "95"]
+[OK: contains "out of 100"]
