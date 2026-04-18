@@ -53,7 +53,7 @@ description: Verify scenery objects can be examined but not taken
 [OK: contains "Aviary"]
 
 > examine parrots
-[OK: contains "macaws"]
+[OK: contains "macaw"]
 
 > examine waterfall
 [OK: contains "waterfall"]

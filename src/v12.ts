@@ -299,11 +299,6 @@ class FamilyZooStory implements Story {
     toucan.add(new SceneryTrait());
     world.moveEntity(toucan.id, aviary.id);
 
-    const parrots = world.createEntity('parrots', EntityType.OBJECT);
-    parrots.add(new IdentityTrait({ name: 'parrots', description: 'A raucous flock of scarlet macaws and grey African parrots.', aliases: ['parrots', 'macaws', 'birds'], properName: false, article: 'some' }));
-    parrots.add(new SceneryTrait());
-    world.moveEntity(parrots.id, aviary.id);
-
     const waterfall = world.createEntity('waterfall', EntityType.OBJECT);
     waterfall.add(new IdentityTrait({ name: 'waterfall', description: 'A gentle artificial waterfall cascading into a stone basin.', aliases: ['waterfall', 'water', 'basin'], properName: false, article: 'a' }));
     waterfall.add(new SceneryTrait());
@@ -496,7 +491,7 @@ class FamilyZooStory implements Story {
     world.moveEntity(zookeeper.id, mainPath.id);
 
     const parrot = world.createEntity('parrot', EntityType.ACTOR);
-    parrot.add(new IdentityTrait({ name: 'parrot', description: 'A magnificent scarlet macaw perched on a rope near the entrance. It tilts its head and watches you with one bright eye.', aliases: ['parrot', 'macaw', 'scarlet macaw'], properName: false, article: 'a' }));
+    parrot.add(new IdentityTrait({ name: 'parrot', description: 'A magnificent scarlet macaw perched on a rope near the entrance. It tilts its head and watches you with one bright eye.', aliases: ['parrot', 'parrots', 'macaw', 'macaws', 'scarlet macaw', 'birds'], properName: false, article: 'a' }));
     parrot.add(new ActorTrait({ isPlayer: false }));
     parrot.add(new NpcTrait({ behaviorId: 'zoo-parrot', canMove: false, isAlive: true, isConscious: true }));
     world.moveEntity(parrot.id, aviary.id);

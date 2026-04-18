@@ -615,11 +615,6 @@ class FamilyZooStory implements Story {
     rabbits.add(new PettableTrait('rabbits'));
     world.moveEntity(rabbits.id, pettingZoo.id);
 
-    const parrots = world.createEntity('parrots', EntityType.OBJECT);
-    parrots.add(new IdentityTrait({ name: 'parrots', description: 'A raucous flock of scarlet macaws and grey African parrots.', aliases: ['parrots', 'macaws', 'birds'], properName: false, article: 'some' }));
-    parrots.add(new SceneryTrait());
-    world.moveEntity(parrots.id, aviary.id);
-
     // PORTABLE OBJECTS — Same as V14
     const zooMap = world.createEntity('zoo map', EntityType.ITEM);
     zooMap.add(new IdentityTrait({ name: 'zoo map', description: 'A colorful folding map of the Willowbrook Family Zoo.', aliases: ['map', 'zoo map', 'folding map'], properName: false, article: 'a' }));
@@ -691,7 +686,7 @@ class FamilyZooStory implements Story {
     world.moveEntity(zookeeper.id, mainPath.id);
 
     const parrot = world.createEntity('parrot', EntityType.ACTOR);
-    parrot.add(new IdentityTrait({ name: 'parrot', description: 'A magnificent scarlet macaw perched on a rope. It tilts its head and watches you with one bright eye.', aliases: ['parrot', 'macaw', 'scarlet macaw'], properName: false, article: 'a' }));
+    parrot.add(new IdentityTrait({ name: 'parrot', description: 'A magnificent scarlet macaw perched on a rope. It tilts its head and watches you with one bright eye.', aliases: ['parrot', 'parrots', 'macaw', 'macaws', 'scarlet macaw', 'birds'], properName: false, article: 'a' }));
     parrot.add(new ActorTrait({ isPlayer: false }));
     parrot.add(new NpcTrait({ behaviorId: 'zoo-parrot', canMove: false, isAlive: true, isConscious: true }));
     parrot.add(new PettableTrait('parrot'));
