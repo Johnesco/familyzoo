@@ -1,0 +1,250 @@
+{
+  "version": "v08",
+  "storyId": "familyzoo-08",
+  "timestamp": "2026-04-17T12:38:56.758Z",
+  "transcripts": [
+    {
+      "file": "v08-light.transcript",
+      "title": "V08 — Light & Dark",
+      "description": "Verify dark nocturnal exhibit and flashlight illumination",
+      "commands": [
+        {
+          "lineNumber": 11,
+          "input": "take keycard",
+          "output": "Family Zoo\nBy Sharpee Tutorial\n\nType HELP for instructions.\n\nTaken.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Taken"
+            }
+          ],
+          "comment": "Get the keycard and unlock the staff gate"
+        },
+        {
+          "lineNumber": 14,
+          "input": "south",
+          "output": "Main Path\n\nA wide gravel path winds through the heart of the zoo. Colorful direction signs point every which way. A park bench sits beside the path. To the east, the petting zoo. To the west, the aviary. A staff gate blocks the path to the south. The entrance is back to the north.\n\nYou can see staff gate, direction signs, flower beds, souvenir penny, park bench, lunchbox here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Main Path"
+            }
+          ],
+          "comment": "V8 teaches: isDark rooms, LightSourceTrait, SwitchableTrait"
+        },
+        {
+          "lineNumber": 17,
+          "input": "unlock gate with keycard",
+          "output": "You unlock staff gate with staff keycard.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "unlock"
+            }
+          ]
+        },
+        {
+          "lineNumber": 20,
+          "input": "open gate",
+          "output": "You open staff gate.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "open"
+            }
+          ]
+        },
+        {
+          "lineNumber": 23,
+          "input": "south",
+          "output": "Supply Room\n\nA cluttered storage room behind the staff gate. Metal shelves line the walls, stacked with bags of feed, cleaning supplies, and spare parts for the exhibits. A cork board on the wall is covered with staff schedules. A heavy door to the south leads to the nocturnal exhibit. The staff gate leads back north.\n\nYou can see metal shelves, cork board, flashlight here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Supply Room"
+            }
+          ]
+        },
+        {
+          "lineNumber": 27,
+          "input": "take flashlight",
+          "output": "Taken.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Taken"
+            }
+          ],
+          "comment": "Take the flashlight"
+        },
+        {
+          "lineNumber": 31,
+          "input": "south",
+          "output": "It is pitch dark. You are likely to be eaten by a grue.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "dark"
+            }
+          ],
+          "comment": "Go to the nocturnal exhibit (dark!)"
+        },
+        {
+          "lineNumber": 35,
+          "input": "look",
+          "output": "It's pitch dark, and you can't see a thing.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "dark"
+            }
+          ],
+          "comment": "Can't see anything"
+        },
+        {
+          "lineNumber": 39,
+          "input": "north",
+          "output": "Supply Room\n\nA cluttered storage room behind the staff gate. Metal shelves line the walls, stacked with bags of feed, cleaning supplies, and spare parts for the exhibits. A cork board on the wall is covered with staff schedules. A heavy door to the south leads to the nocturnal exhibit. The staff gate leads back north.\n\nYou can see metal shelves, cork board here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Supply Room"
+            }
+          ],
+          "comment": "Go back and switch on the flashlight"
+        },
+        {
+          "lineNumber": 42,
+          "input": "switch on flashlight",
+          "output": "The flashlight switches on, banishing the darkness.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "on"
+            }
+          ]
+        },
+        {
+          "lineNumber": 46,
+          "input": "south",
+          "output": "Nocturnal Animals Exhibit\n\nA cool, dimly lit cavern designed to simulate nighttime. Glass enclosures line both walls, each with a soft red light inside. You can see a family of sugar gliders leaping between branches, a pair of wide-eyed bush babies clinging to a rope, and an enormous barn owl perched motionless on a fake tree stump. The exit leads back north to the supply room.\n\nYou can see sugar gliders, bush babies, barn owl here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Nocturnal Animals"
+            }
+          ],
+          "comment": "Now re-enter the nocturnal exhibit"
+        },
+        {
+          "lineNumber": 50,
+          "input": "look",
+          "output": "Nocturnal Animals Exhibit\n\nA cool, dimly lit cavern designed to simulate nighttime. Glass enclosures line both walls, each with a soft red light inside. You can see a family of sugar gliders leaping between branches, a pair of wide-eyed bush babies clinging to a rope, and an enormous barn owl perched motionless on a fake tree stump. The exit leads back north to the supply room.\n\nYou can see sugar gliders, bush babies, barn owl here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "sugar gliders"
+            }
+          ],
+          "comment": "With the flashlight on, we can see the animals!"
+        },
+        {
+          "lineNumber": 53,
+          "input": "examine owl",
+          "output": "An enormous barn owl with a heart-shaped white face, perched motionless on a fake tree stump. It swivels its head to follow your movement with unsettling precision.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "barn owl"
+            },
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "heart-shaped"
+            }
+          ]
+        },
+        {
+          "lineNumber": 57,
+          "input": "examine galagos",
+          "output": "Two bush babies with impossibly large round eyes, clinging to a rope with tiny hands. They freeze and stare at you with an expression of perpetual surprise.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "large round eyes"
+            }
+          ]
+        },
+        {
+          "lineNumber": 61,
+          "input": "north",
+          "output": "Supply Room\n\nA cluttered storage room behind the staff gate. Metal shelves line the walls, stacked with bags of feed, cleaning supplies, and spare parts for the exhibits. A cork board on the wall is covered with staff schedules. A heavy door to the south leads to the nocturnal exhibit. The staff gate leads back north.\n\nYou can see metal shelves, cork board here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Supply Room"
+            }
+          ],
+          "comment": "Go back out"
+        }
+      ],
+      "summary": {
+        "passed": 15,
+        "failed": 0,
+        "skipped": 0,
+        "duration": 64
+      }
+    }
+  ],
+  "summary": {
+    "totalPassed": 15,
+    "totalFailed": 0,
+    "totalSkipped": 0,
+    "totalDuration": 64
+  }
+}

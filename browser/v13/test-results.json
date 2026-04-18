@@ -1,0 +1,231 @@
+{
+  "version": "v13",
+  "storyId": "familyzoo-13",
+  "timestamp": "2026-04-17T12:40:15.820Z",
+  "transcripts": [
+    {
+      "file": "v13-custom-actions.transcript",
+      "title": "V13 — Custom Actions",
+      "description": "Verify custom feed and photograph actions with grammar extension",
+      "commands": [
+        {
+          "lineNumber": 12,
+          "input": "south",
+          "output": "Family Zoo\nBy Sharpee Tutorial\n\nType HELP for instructions.\n\nMain Path\n\nA wide gravel path winds through the heart of the zoo. Colorful direction signs point every which way. A park bench sits beside the path. To the east, the petting zoo. To the west, the aviary. A staff gate blocks the path to the south. The gift shop is also to the west, past the aviary. The entrance is back to the north.\n\nYou can see staff gate, direction signs, flower beds, souvenir penny, park bench, lunchbox, zookeeper here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Main Path"
+            }
+          ],
+          "comment": "Go to petting zoo and get feed"
+        },
+        {
+          "lineNumber": 15,
+          "input": "east",
+          "output": "Petting Zoo\n\nA cheerful open-air enclosure filled with friendly animals. Pygmy goats trot around nibbling at visitors' shoelaces, while a pair of fluffy rabbits hop lazily near a hay bale. A feed dispenser is mounted on a post. An info plaque is posted by the gate. The main path is back to the west.\n\nYou can see pygmy goats, hay bale, rabbits, info plaque, bag of animal feed, feed dispenser here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Petting Zoo"
+            }
+          ],
+          "comment": "V13 teaches: Story-specific actions, grammar extension, language messages"
+        },
+        {
+          "lineNumber": 18,
+          "input": "take feed",
+          "output": "Taken.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Taken"
+            }
+          ]
+        },
+        {
+          "lineNumber": 22,
+          "input": "feed goats",
+          "output": "You scatter some feed on the ground. The pygmy goats rush over, bleating excitedly, and devour the corn and pellets in seconds. The smallest goat looks up at you with big grateful eyes.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "goats"
+            },
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "bleating"
+            }
+          ],
+          "comment": "Feed the goats"
+        },
+        {
+          "lineNumber": 27,
+          "input": "feed goats",
+          "output": "You've already fed them. They look contentedly full.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "already fed"
+            }
+          ],
+          "comment": "Try to feed again — already fed"
+        },
+        {
+          "lineNumber": 31,
+          "input": "photograph goats",
+          "output": "You don't have a camera. There's one in the gift shop.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "camera"
+            }
+          ],
+          "comment": "Try to photograph without a camera — blocked"
+        },
+        {
+          "lineNumber": 35,
+          "input": "west",
+          "output": "Main Path\n\nA wide gravel path winds through the heart of the zoo. Colorful direction signs point every which way. A park bench sits beside the path. To the east, the petting zoo. To the west, the aviary. A staff gate blocks the path to the south. The gift shop is also to the west, past the aviary. The entrance is back to the north.\n\nYou can see staff gate, direction signs, flower beds, souvenir penny, park bench, lunchbox here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Main Path"
+            }
+          ],
+          "comment": "Go get the camera from the gift shop"
+        },
+        {
+          "lineNumber": 38,
+          "input": "west",
+          "output": "Aviary\n\nYou step inside a soaring mesh dome. Brilliantly colored parrots chatter from rope perches, and a toucan eyes you curiously from a branch overhead. A small waterfall splashes into a stone basin. An info plaque hangs near the entrance. The gift shop is to the west. The main path is back to the east.\n\nYou can see toucan, parrots, waterfall, rope perches, aviary plaque, parrot here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Aviary"
+            }
+          ]
+        },
+        {
+          "lineNumber": 41,
+          "input": "west",
+          "output": "Gift Shop\n\nA small zoo gift shop crammed with stuffed animals and postcards. A large souvenir penny press machine stands near the door. A disposable camera sits on the counter. The aviary is back to the east.\n\nYou can see stuffed animals, postcards, disposable camera, souvenir press here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Gift Shop"
+            }
+          ]
+        },
+        {
+          "lineNumber": 44,
+          "input": "take camera",
+          "output": "Taken.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Taken"
+            }
+          ]
+        },
+        {
+          "lineNumber": 48,
+          "input": "photograph postcards",
+          "output": "Click! You snap a photo of postcards. That one's going on the fridge.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Click"
+            },
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "postcards"
+            }
+          ],
+          "comment": "Photograph the postcards"
+        },
+        {
+          "lineNumber": 53,
+          "input": "east",
+          "output": "Aviary\n\nYou step inside a soaring mesh dome. Brilliantly colored parrots chatter from rope perches, and a toucan eyes you curiously from a branch overhead. A small waterfall splashes into a stone basin. An info plaque hangs near the entrance. The gift shop is to the west. The main path is back to the east.\n\nYou can see toucan, parrots, waterfall, rope perches, aviary plaque, parrot here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Aviary"
+            }
+          ],
+          "comment": "Go to aviary and photograph the toucan"
+        },
+        {
+          "lineNumber": 56,
+          "input": "photograph toucan",
+          "output": "Click! You snap a photo of toucan. That one's going on the fridge.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Click"
+            },
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "toucan"
+            }
+          ]
+        }
+      ],
+      "summary": {
+        "passed": 13,
+        "failed": 0,
+        "skipped": 0,
+        "duration": 53
+      }
+    }
+  ],
+  "summary": {
+    "totalPassed": 13,
+    "totalFailed": 0,
+    "totalSkipped": 0,
+    "totalDuration": 53
+  }
+}

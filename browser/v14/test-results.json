@@ -1,0 +1,159 @@
+{
+  "version": "v14",
+  "storyId": "familyzoo-14",
+  "timestamp": "2026-04-17T12:40:27.899Z",
+  "transcripts": [
+    {
+      "file": "v14-capability-dispatch.transcript",
+      "title": "V14 — Capability Dispatch",
+      "description": "Verify capability dispatch with different petting responses per animal",
+      "commands": [
+        {
+          "lineNumber": 12,
+          "input": "south",
+          "output": "Family Zoo\nBy Sharpee Tutorial\n\nType HELP for instructions.\n\nMain Path\n\nA wide gravel path winds through the heart of the zoo. Colorful direction signs point every which way. A park bench sits beside the path. To the east, the petting zoo. To the west, the aviary. A staff gate blocks the path to the south. The entrance is back to the north.\n\nYou can see staff gate, direction signs, flower beds, souvenir penny, park bench, lunchbox, zookeeper here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Main Path"
+            }
+          ],
+          "comment": "Go to petting zoo"
+        },
+        {
+          "lineNumber": 15,
+          "input": "east",
+          "output": "Petting Zoo\n\nA cheerful open-air enclosure filled with friendly animals. Pygmy goats trot around nibbling at visitors' shoelaces, while a pair of fluffy rabbits hop lazily near a hay bale. A feed dispenser is mounted on a post. An info plaque is posted by the gate. The main path is back to the west.\n\nYou can see hay bale, info plaque, pygmy goats, rabbits, bag of animal feed, feed dispenser here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Petting Zoo"
+            }
+          ],
+          "comment": "V14 teaches: Capability dispatch — same verb, different behavior per entity"
+        },
+        {
+          "lineNumber": 19,
+          "input": "pet goats",
+          "output": "You reach down and pet the nearest goat. It leans into your hand and bleats happily. The others crowd around, demanding equal attention.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "pet"
+            },
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "bleats happily"
+            }
+          ],
+          "comment": "Pet the goats — affectionate response"
+        },
+        {
+          "lineNumber": 24,
+          "input": "pet rabbits",
+          "output": "You gently stroke one of the rabbits. Its fur is incredibly soft. It twitches its nose at you contentedly.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "soft"
+            },
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "nose"
+            }
+          ],
+          "comment": "Pet the rabbits — soft and fuzzy"
+        },
+        {
+          "lineNumber": 29,
+          "input": "pet hay bale",
+          "output": "You can't pet that.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "can't pet"
+            }
+          ],
+          "comment": "Try to pet the hay bale — blocked (no PettableTrait)"
+        },
+        {
+          "lineNumber": 33,
+          "input": "west",
+          "output": "Main Path\n\nA wide gravel path winds through the heart of the zoo. Colorful direction signs point every which way. A park bench sits beside the path. To the east, the petting zoo. To the west, the aviary. A staff gate blocks the path to the south. The entrance is back to the north.\n\nYou can see staff gate, direction signs, flower beds, souvenir penny, park bench, lunchbox here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Main Path"
+            }
+          ],
+          "comment": "Go to aviary and pet the parrot — it bites!"
+        },
+        {
+          "lineNumber": 36,
+          "input": "west",
+          "output": "Aviary\n\nYou step inside a soaring mesh dome. Brilliantly colored parrots chatter from rope perches, and a toucan eyes you curiously from a branch overhead. A small waterfall splashes into a stone basin. An info plaque hangs near the entrance. The gift shop is to the west. The main path is back to the east.\n\nYou can see toucan, waterfall, rope perches, aviary plaque, parrots, parrot here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Aviary"
+            }
+          ]
+        },
+        {
+          "lineNumber": 39,
+          "input": "pet parrot",
+          "output": "You reach toward the parrot. CHOMP! It nips your finger with its beak. \"NO TOUCHING!\" it squawks indignantly.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "CHOMP"
+            },
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "NO TOUCHING"
+            }
+          ]
+        }
+      ],
+      "summary": {
+        "passed": 8,
+        "failed": 0,
+        "skipped": 0,
+        "duration": 62
+      }
+    }
+  ],
+  "summary": {
+    "totalPassed": 8,
+    "totalFailed": 0,
+    "totalSkipped": 0,
+    "totalDuration": 62
+  }
+}

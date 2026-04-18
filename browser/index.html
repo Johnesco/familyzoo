@@ -89,19 +89,28 @@ a:hover { color: #ffe8a0; border-bottom-color: #aa9966; }
 .version-action {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 6px;
   margin-top: 14px;
   flex-wrap: wrap;
 }
-.version-action select {
-  padding: 6px 10px;
-  font-size: 0.9em;
-  font-family: inherit;
+.va-btn {
+  display: inline-block;
+  padding: 5px 12px;
+  font-size: 0.85em;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   background: #1a1610;
-  color: #d4c5a9;
+  color: #b0a080;
   border: 1px solid #2a2418;
   border-radius: 4px;
   cursor: pointer;
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  white-space: nowrap;
+}
+.va-btn:hover {
+  background: #2a2010;
+  color: #e8d090;
+  border-color: #5a4a30;
 }
 .version-action label {
   display: flex;
@@ -111,6 +120,7 @@ a:hover { color: #ffe8a0; border-bottom-color: #aa9966; }
   color: #aa9966;
   cursor: pointer;
   border-bottom: none;
+  margin-left: 4px;
 }
 .version-action input[type="checkbox"] {
   accent-color: #e8d090;
@@ -118,20 +128,6 @@ a:hover { color: #ffe8a0; border-bottom-color: #aa9966; }
   height: 14px;
   cursor: pointer;
 }
-.version-action button {
-  padding: 6px 18px;
-  font-size: 0.9em;
-  font-family: inherit;
-  font-weight: bold;
-  letter-spacing: 1px;
-  background: #e8d090;
-  color: #0a0a0a;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background 0.15s;
-}
-.version-action button:hover { background: #ffe8a0; }
 
 .version-nav { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 32px; }
 .version-nav a, .version-nav span {
@@ -200,10 +196,12 @@ footer a { color: #887755; border-bottom-color: #3a3020; }
     <li>25-point after-hours bonus for witnessing closing events (max 100)</li>
     <li>getRunnerState/restoreRunnerState hooks so behavior swaps survive save/restore</li>
   </ul>
-  <div class="version-action" data-gid="familyzoo-17" data-play="/familyzoo/v17/play.html" data-source="/familyzoo/v17/source.html" data-walkthrough="/familyzoo/v17/walkthrough.html">
-    <select class="va-action"><option value="play">Play Game</option><option value="source">View Source</option><option value="walkthrough">View Walkthrough</option></select>
+  <div class="version-action" data-gid="familyzoo-17" data-play="/familyzoo/v17/play.html" data-source="/familyzoo/v17/source.html" data-walkthrough="/familyzoo/v17/walkthrough.html" data-tests="/familyzoo/v17/tests.html">
+    <a class="va-btn" data-view="play">&#9654; Play</a>
+    <a class="va-btn" data-view="source">&lt;/&gt; Source</a>
+    <a class="va-btn" data-view="walkthrough">&#9776; Walk</a>
+    <a class="va-btn" data-view="tests">&#10003; Tests</a>
     <label class="va-fs"><input type="checkbox"> Fullscreen</label>
-    <button class="va-go" type="button">GO</button>
   </div>
 </div>
 
@@ -217,10 +215,12 @@ footer a { color: #887755; border-bottom-color: #3a3020; }
     <li>A high-priority victory daemon driving endgame state flags</li>
     <li>Designing a balanced scoring table across exploration and action</li>
   </ul>
-  <div class="version-action" data-gid="familyzoo-16" data-play="/familyzoo/v16/play.html" data-source="/familyzoo/v16/source.html" data-walkthrough="/familyzoo/v16/walkthrough.html">
-    <select class="va-action"><option value="play">Play Game</option><option value="source">View Source</option><option value="walkthrough">View Walkthrough</option></select>
+  <div class="version-action" data-gid="familyzoo-16" data-play="/familyzoo/v16/play.html" data-source="/familyzoo/v16/source.html" data-walkthrough="/familyzoo/v16/walkthrough.html" data-tests="/familyzoo/v16/tests.html">
+    <a class="va-btn" data-view="play">&#9654; Play</a>
+    <a class="va-btn" data-view="source">&lt;/&gt; Source</a>
+    <a class="va-btn" data-view="walkthrough">&#9776; Walk</a>
+    <a class="va-btn" data-view="tests">&#10003; Tests</a>
     <label class="va-fs"><input type="checkbox"> Fullscreen</label>
-    <button class="va-go" type="button">GO</button>
   </div>
 </div>
 
@@ -234,10 +234,12 @@ footer a { color: #887755; border-bottom-color: #3a3020; }
     <li>game.message events with narrate: true for auto-rendered text</li>
     <li>Gotchas around turn offsets and the fuse skipNextTick behavior</li>
   </ul>
-  <div class="version-action" data-gid="familyzoo-15" data-play="/familyzoo/v15/play.html" data-source="/familyzoo/v15/source.html" data-walkthrough="/familyzoo/v15/walkthrough.html">
-    <select class="va-action"><option value="play">Play Game</option><option value="source">View Source</option><option value="walkthrough">View Walkthrough</option></select>
+  <div class="version-action" data-gid="familyzoo-15" data-play="/familyzoo/v15/play.html" data-source="/familyzoo/v15/source.html" data-walkthrough="/familyzoo/v15/walkthrough.html" data-tests="/familyzoo/v15/tests.html">
+    <a class="va-btn" data-view="play">&#9654; Play</a>
+    <a class="va-btn" data-view="source">&lt;/&gt; Source</a>
+    <a class="va-btn" data-view="walkthrough">&#9776; Walk</a>
+    <a class="va-btn" data-view="tests">&#10003; Tests</a>
     <label class="va-fs"><input type="checkbox"> Fullscreen</label>
-    <button class="va-go" type="button">GO</button>
   </div>
 </div>
 
@@ -251,10 +253,12 @@ footer a { color: #887755; border-bottom-color: #3a3020; }
     <li>Per-entity behavior selection via trait data like animalKind</li>
     <li>The verb vs entity responsibility split vs. plain custom actions</li>
   </ul>
-  <div class="version-action" data-gid="familyzoo-14" data-play="/familyzoo/v14/play.html" data-source="/familyzoo/v14/source.html" data-walkthrough="/familyzoo/v14/walkthrough.html">
-    <select class="va-action"><option value="play">Play Game</option><option value="source">View Source</option><option value="walkthrough">View Walkthrough</option></select>
+  <div class="version-action" data-gid="familyzoo-14" data-play="/familyzoo/v14/play.html" data-source="/familyzoo/v14/source.html" data-walkthrough="/familyzoo/v14/walkthrough.html" data-tests="/familyzoo/v14/tests.html">
+    <a class="va-btn" data-view="play">&#9654; Play</a>
+    <a class="va-btn" data-view="source">&lt;/&gt; Source</a>
+    <a class="va-btn" data-view="walkthrough">&#9776; Walk</a>
+    <a class="va-btn" data-view="tests">&#10003; Tests</a>
     <label class="va-fs"><input type="checkbox"> Fullscreen</label>
-    <button class="va-go" type="button">GO</button>
   </div>
 </div>
 
@@ -268,10 +272,12 @@ footer a { color: #887755; border-bottom-color: #3a3020; }
     <li>extendLanguage for registering message IDs and text</li>
     <li>context.sharedData for passing state between phases</li>
   </ul>
-  <div class="version-action" data-gid="familyzoo-13" data-play="/familyzoo/v13/play.html" data-source="/familyzoo/v13/source.html" data-walkthrough="/familyzoo/v13/walkthrough.html">
-    <select class="va-action"><option value="play">Play Game</option><option value="source">View Source</option><option value="walkthrough">View Walkthrough</option></select>
+  <div class="version-action" data-gid="familyzoo-13" data-play="/familyzoo/v13/play.html" data-source="/familyzoo/v13/source.html" data-walkthrough="/familyzoo/v13/walkthrough.html" data-tests="/familyzoo/v13/tests.html">
+    <a class="va-btn" data-view="play">&#9654; Play</a>
+    <a class="va-btn" data-view="source">&lt;/&gt; Source</a>
+    <a class="va-btn" data-view="walkthrough">&#9776; Walk</a>
+    <a class="va-btn" data-view="tests">&#10003; Tests</a>
     <label class="va-fs"><input type="checkbox"> Fullscreen</label>
-    <button class="va-go" type="button">GO</button>
   </div>
 </div>
 
@@ -285,10 +291,12 @@ footer a { color: #887755; border-bottom-color: #3a3020; }
     <li>The item-transformation pattern: remove input, create output, message the player</li>
     <li>Unique handler keys for each chain registration</li>
   </ul>
-  <div class="version-action" data-gid="familyzoo-12" data-play="/familyzoo/v12/play.html" data-source="/familyzoo/v12/source.html" data-walkthrough="/familyzoo/v12/walkthrough.html">
-    <select class="va-action"><option value="play">Play Game</option><option value="source">View Source</option><option value="walkthrough">View Walkthrough</option></select>
+  <div class="version-action" data-gid="familyzoo-12" data-play="/familyzoo/v12/play.html" data-source="/familyzoo/v12/source.html" data-walkthrough="/familyzoo/v12/walkthrough.html" data-tests="/familyzoo/v12/tests.html">
+    <a class="va-btn" data-view="play">&#9654; Play</a>
+    <a class="va-btn" data-view="source">&lt;/&gt; Source</a>
+    <a class="va-btn" data-view="walkthrough">&#9776; Walk</a>
+    <a class="va-btn" data-view="tests">&#10003; Tests</a>
     <label class="va-fs"><input type="checkbox"> Fullscreen</label>
-    <button class="va-go" type="button">GO</button>
   </div>
 </div>
 
@@ -302,10 +310,12 @@ footer a { color: #887755; border-bottom-color: #3a3020; }
     <li>NpcAction types: move, speak, emote, wait, take, drop</li>
     <li>NpcContext giving behaviors access to world, npc, and player state</li>
   </ul>
-  <div class="version-action" data-gid="familyzoo-11" data-play="/familyzoo/v11/play.html" data-source="/familyzoo/v11/source.html" data-walkthrough="/familyzoo/v11/walkthrough.html">
-    <select class="va-action"><option value="play">Play Game</option><option value="source">View Source</option><option value="walkthrough">View Walkthrough</option></select>
+  <div class="version-action" data-gid="familyzoo-11" data-play="/familyzoo/v11/play.html" data-source="/familyzoo/v11/source.html" data-walkthrough="/familyzoo/v11/walkthrough.html" data-tests="/familyzoo/v11/tests.html">
+    <a class="va-btn" data-view="play">&#9654; Play</a>
+    <a class="va-btn" data-view="source">&lt;/&gt; Source</a>
+    <a class="va-btn" data-view="walkthrough">&#9776; Walk</a>
+    <a class="va-btn" data-view="tests">&#10003; Tests</a>
     <label class="va-fs"><input type="checkbox"> Fullscreen</label>
-    <button class="va-go" type="button">GO</button>
   </div>
 </div>
 
@@ -319,10 +329,12 @@ footer a { color: #887755; border-bottom-color: #3a3020; }
     <li>Combining SwitchableTrait with SceneryTrait for fixed appliances</li>
     <li>Patterns for future device combinations</li>
   </ul>
-  <div class="version-action" data-gid="familyzoo-10" data-play="/familyzoo/v10/play.html" data-source="/familyzoo/v10/source.html" data-walkthrough="/familyzoo/v10/walkthrough.html">
-    <select class="va-action"><option value="play">Play Game</option><option value="source">View Source</option><option value="walkthrough">View Walkthrough</option></select>
+  <div class="version-action" data-gid="familyzoo-10" data-play="/familyzoo/v10/play.html" data-source="/familyzoo/v10/source.html" data-walkthrough="/familyzoo/v10/walkthrough.html" data-tests="/familyzoo/v10/tests.html">
+    <a class="va-btn" data-view="play">&#9654; Play</a>
+    <a class="va-btn" data-view="source">&lt;/&gt; Source</a>
+    <a class="va-btn" data-view="walkthrough">&#9776; Walk</a>
+    <a class="va-btn" data-view="tests">&#10003; Tests</a>
     <label class="va-fs"><input type="checkbox"> Fullscreen</label>
-    <button class="va-go" type="button">GO</button>
   </div>
 </div>
 
@@ -336,10 +348,12 @@ footer a { color: #887755; border-bottom-color: #3a3020; }
     <li>Portable readables like brochures, letters, and books</li>
     <li>Guidance on when to use ReadableTrait vs. a long description</li>
   </ul>
-  <div class="version-action" data-gid="familyzoo-09" data-play="/familyzoo/v09/play.html" data-source="/familyzoo/v09/source.html" data-walkthrough="/familyzoo/v09/walkthrough.html">
-    <select class="va-action"><option value="play">Play Game</option><option value="source">View Source</option><option value="walkthrough">View Walkthrough</option></select>
+  <div class="version-action" data-gid="familyzoo-09" data-play="/familyzoo/v09/play.html" data-source="/familyzoo/v09/source.html" data-walkthrough="/familyzoo/v09/walkthrough.html" data-tests="/familyzoo/v09/tests.html">
+    <a class="va-btn" data-view="play">&#9654; Play</a>
+    <a class="va-btn" data-view="source">&lt;/&gt; Source</a>
+    <a class="va-btn" data-view="walkthrough">&#9776; Walk</a>
+    <a class="va-btn" data-view="tests">&#10003; Tests</a>
     <label class="va-fs"><input type="checkbox"> Fullscreen</label>
-    <button class="va-go" type="button">GO</button>
   </div>
 </div>
 
@@ -353,10 +367,12 @@ footer a { color: #887755; border-bottom-color: #3a3020; }
     <li>The flashlight pattern combining three traits</li>
     <li>Alternative patterns for always-on, consumable, and adjustable lights</li>
   </ul>
-  <div class="version-action" data-gid="familyzoo-08" data-play="/familyzoo/v08/play.html" data-source="/familyzoo/v08/source.html" data-walkthrough="/familyzoo/v08/walkthrough.html">
-    <select class="va-action"><option value="play">Play Game</option><option value="source">View Source</option><option value="walkthrough">View Walkthrough</option></select>
+  <div class="version-action" data-gid="familyzoo-08" data-play="/familyzoo/v08/play.html" data-source="/familyzoo/v08/source.html" data-walkthrough="/familyzoo/v08/walkthrough.html" data-tests="/familyzoo/v08/tests.html">
+    <a class="va-btn" data-view="play">&#9654; Play</a>
+    <a class="va-btn" data-view="source">&lt;/&gt; Source</a>
+    <a class="va-btn" data-view="walkthrough">&#9776; Walk</a>
+    <a class="va-btn" data-view="tests">&#10003; Tests</a>
     <label class="va-fs"><input type="checkbox"> Fullscreen</label>
-    <button class="va-go" type="button">GO</button>
   </div>
 </div>
 
@@ -370,10 +386,12 @@ footer a { color: #887755; border-bottom-color: #3a3020; }
     <li>The take, unlock, open, go player sequence</li>
     <li>Ordinary items serving as keys — no special trait needed</li>
   </ul>
-  <div class="version-action" data-gid="familyzoo-07" data-play="/familyzoo/v07/play.html" data-source="/familyzoo/v07/source.html" data-walkthrough="/familyzoo/v07/walkthrough.html">
-    <select class="va-action"><option value="play">Play Game</option><option value="source">View Source</option><option value="walkthrough">View Walkthrough</option></select>
+  <div class="version-action" data-gid="familyzoo-07" data-play="/familyzoo/v07/play.html" data-source="/familyzoo/v07/source.html" data-walkthrough="/familyzoo/v07/walkthrough.html" data-tests="/familyzoo/v07/tests.html">
+    <a class="va-btn" data-view="play">&#9654; Play</a>
+    <a class="va-btn" data-view="source">&lt;/&gt; Source</a>
+    <a class="va-btn" data-view="walkthrough">&#9776; Walk</a>
+    <a class="va-btn" data-view="tests">&#10003; Tests</a>
     <label class="va-fs"><input type="checkbox"> Fullscreen</label>
-    <button class="va-go" type="button">GO</button>
   </div>
 </div>
 
@@ -387,10 +405,12 @@ footer a { color: #887755; border-bottom-color: #3a3020; }
     <li>Temporarily opening a container during initializeWorld to seed items</li>
     <li>Pattern preview for combining OpenableTrait with LockableTrait</li>
   </ul>
-  <div class="version-action" data-gid="familyzoo-06" data-play="/familyzoo/v06/play.html" data-source="/familyzoo/v06/source.html" data-walkthrough="/familyzoo/v06/walkthrough.html">
-    <select class="va-action"><option value="play">Play Game</option><option value="source">View Source</option><option value="walkthrough">View Walkthrough</option></select>
+  <div class="version-action" data-gid="familyzoo-06" data-play="/familyzoo/v06/play.html" data-source="/familyzoo/v06/source.html" data-walkthrough="/familyzoo/v06/walkthrough.html" data-tests="/familyzoo/v06/tests.html">
+    <a class="va-btn" data-view="play">&#9654; Play</a>
+    <a class="va-btn" data-view="source">&lt;/&gt; Source</a>
+    <a class="va-btn" data-view="walkthrough">&#9776; Walk</a>
+    <a class="va-btn" data-view="tests">&#10003; Tests</a>
     <label class="va-fs"><input type="checkbox"> Fullscreen</label>
-    <button class="va-go" type="button">GO</button>
   </div>
 </div>
 
@@ -404,10 +424,12 @@ footer a { color: #887755; border-bottom-color: #3a3020; }
     <li>Capacity limits via maxItems</li>
     <li>Composing multiple traits (e.g. SupporterTrait + SceneryTrait) on one entity</li>
   </ul>
-  <div class="version-action" data-gid="familyzoo-05" data-play="/familyzoo/v05/play.html" data-source="/familyzoo/v05/source.html" data-walkthrough="/familyzoo/v05/walkthrough.html">
-    <select class="va-action"><option value="play">Play Game</option><option value="source">View Source</option><option value="walkthrough">View Walkthrough</option></select>
+  <div class="version-action" data-gid="familyzoo-05" data-play="/familyzoo/v05/play.html" data-source="/familyzoo/v05/source.html" data-walkthrough="/familyzoo/v05/walkthrough.html" data-tests="/familyzoo/v05/tests.html">
+    <a class="va-btn" data-view="play">&#9654; Play</a>
+    <a class="va-btn" data-view="source">&lt;/&gt; Source</a>
+    <a class="va-btn" data-view="walkthrough">&#9776; Walk</a>
+    <a class="va-btn" data-view="tests">&#10003; Tests</a>
     <label class="va-fs"><input type="checkbox"> Fullscreen</label>
-    <button class="va-go" type="button">GO</button>
   </div>
 </div>
 
@@ -421,27 +443,31 @@ footer a { color: #887755; border-bottom-color: #3a3020; }
     <li>Loose objects appearing in room listings</li>
     <li>The portable-by-default design philosophy</li>
   </ul>
-  <div class="version-action" data-gid="familyzoo-04" data-play="/familyzoo/v04/play.html" data-source="/familyzoo/v04/source.html" data-walkthrough="/familyzoo/v04/walkthrough.html">
-    <select class="va-action"><option value="play">Play Game</option><option value="source">View Source</option><option value="walkthrough">View Walkthrough</option></select>
+  <div class="version-action" data-gid="familyzoo-04" data-play="/familyzoo/v04/play.html" data-source="/familyzoo/v04/source.html" data-walkthrough="/familyzoo/v04/walkthrough.html" data-tests="/familyzoo/v04/tests.html">
+    <a class="va-btn" data-view="play">&#9654; Play</a>
+    <a class="va-btn" data-view="source">&lt;/&gt; Source</a>
+    <a class="va-btn" data-view="walkthrough">&#9776; Walk</a>
+    <a class="va-btn" data-view="tests">&#10003; Tests</a>
     <label class="va-fs"><input type="checkbox"> Fullscreen</label>
-    <button class="va-go" type="button">GO</button>
   </div>
 </div>
 
 <div class="version-entry" id="familyzoo-03">
   <h3>v03 — Scenery</h3>
-  <p>Populates every room with environmental detail — fences, flowers, hay bales, waterfalls — that the player can examine but not pick up. Makes the distinction between EntityType.SCENERY as a label and SceneryTrait as the mechanism that actually blocks taking.</p>
+  <p>Populates every room with environmental detail — fences, flowers, hay bales, waterfalls — that the player can examine but not pick up. Shows how EntityType.OBJECT + SceneryTrait is the modern pattern for non-portable entities.</p>
   <ul>
     <li>SceneryTrait to prevent items from being taken</li>
-    <li>Distinction between EntityType.SCENERY and SceneryTrait</li>
+    <li>EntityType.OBJECT + SceneryTrait — the modern scenery pattern</li>
     <li>Generous alias lists for natural player phrasing</li>
     <li>Guidance on what belongs as scenery vs. portable items</li>
     <li>Scenery-only descriptions that stay hidden from room object listings</li>
   </ul>
-  <div class="version-action" data-gid="familyzoo-03" data-play="/familyzoo/v03/play.html" data-source="/familyzoo/v03/source.html" data-walkthrough="/familyzoo/v03/walkthrough.html">
-    <select class="va-action"><option value="play">Play Game</option><option value="source">View Source</option><option value="walkthrough">View Walkthrough</option></select>
+  <div class="version-action" data-gid="familyzoo-03" data-play="/familyzoo/v03/play.html" data-source="/familyzoo/v03/source.html" data-walkthrough="/familyzoo/v03/walkthrough.html" data-tests="/familyzoo/v03/tests.html">
+    <a class="va-btn" data-view="play">&#9654; Play</a>
+    <a class="va-btn" data-view="source">&lt;/&gt; Source</a>
+    <a class="va-btn" data-view="walkthrough">&#9776; Walk</a>
+    <a class="va-btn" data-view="tests">&#10003; Tests</a>
     <label class="va-fs"><input type="checkbox"> Fullscreen</label>
-    <button class="va-go" type="button">GO</button>
   </div>
 </div>
 
@@ -455,10 +481,12 @@ footer a { color: #887755; border-bottom-color: #3a3020; }
     <li>Retrieving traits with entity.get(Trait)</li>
     <li>Automatic handling by the stdlib going action</li>
   </ul>
-  <div class="version-action" data-gid="familyzoo-02" data-play="/familyzoo/v02/play.html" data-source="/familyzoo/v02/source.html" data-walkthrough="/familyzoo/v02/walkthrough.html">
-    <select class="va-action"><option value="play">Play Game</option><option value="source">View Source</option><option value="walkthrough">View Walkthrough</option></select>
+  <div class="version-action" data-gid="familyzoo-02" data-play="/familyzoo/v02/play.html" data-source="/familyzoo/v02/source.html" data-walkthrough="/familyzoo/v02/walkthrough.html" data-tests="/familyzoo/v02/tests.html">
+    <a class="va-btn" data-view="play">&#9654; Play</a>
+    <a class="va-btn" data-view="source">&lt;/&gt; Source</a>
+    <a class="va-btn" data-view="walkthrough">&#9776; Walk</a>
+    <a class="va-btn" data-view="tests">&#10003; Tests</a>
     <label class="va-fs"><input type="checkbox"> Fullscreen</label>
-    <button class="va-go" type="button">GO</button>
   </div>
 </div>
 
@@ -472,10 +500,12 @@ footer a { color: #887755; border-bottom-color: #3a3020; }
     <li>SceneryTrait and RoomTrait basics</li>
     <li>Explicit entity placement via world.moveEntity</li>
   </ul>
-  <div class="version-action" data-gid="familyzoo-01" data-play="/familyzoo/v01/play.html" data-source="/familyzoo/v01/source.html" data-walkthrough="/familyzoo/v01/walkthrough.html">
-    <select class="va-action"><option value="play">Play Game</option><option value="source">View Source</option><option value="walkthrough">View Walkthrough</option></select>
+  <div class="version-action" data-gid="familyzoo-01" data-play="/familyzoo/v01/play.html" data-source="/familyzoo/v01/source.html" data-walkthrough="/familyzoo/v01/walkthrough.html" data-tests="/familyzoo/v01/tests.html">
+    <a class="va-btn" data-view="play">&#9654; Play</a>
+    <a class="va-btn" data-view="source">&lt;/&gt; Source</a>
+    <a class="va-btn" data-view="walkthrough">&#9776; Walk</a>
+    <a class="va-btn" data-view="tests">&#10003; Tests</a>
     <label class="va-fs"><input type="checkbox"> Fullscreen</label>
-    <button class="va-go" type="button">GO</button>
   </div>
 </div>
 
@@ -486,20 +516,26 @@ footer a { color: #887755; border-bottom-color: #3a3020; }
 </footer>
 
 <script>
-// Delegated handler for version-action GO buttons. Mirrors the IF Hub card:
-// fullscreen -> direct URL; otherwise -> /ifhub/app.html?game=<id>&view=<view>.
+// Delegated handler for version-action .va-btn clicks.
+// Fullscreen -> standalone URL; otherwise -> IF Hub app.html with view toggle.
 document.addEventListener('click', function(ev) {
-  var btn = ev.target.closest('.version-action .va-go');
+  var btn = ev.target.closest('.version-action .va-btn');
   if (!btn) return;
+  ev.preventDefault();
   var box = btn.closest('.version-action');
-  var action = box.querySelector('.va-action').value;
+  var action = btn.getAttribute('data-view');
   var fullscreen = box.querySelector('.va-fs input').checked;
   var gid = box.getAttribute('data-gid');
   var url = box.getAttribute('data-' + action) || box.getAttribute('data-play');
-  var view = action === 'source' ? 'source'
-           : action === 'walkthrough' ? 'walkthrough'
-           : 'game';
-  window.location.href = fullscreen ? url : ('/ifhub/app.html?game=' + gid + '&view=' + view);
+  if (fullscreen) {
+    window.location.href = url;
+  } else {
+    var view = action === 'source' ? 'game+source'
+             : action === 'walkthrough' ? 'game+walkthrough'
+             : action === 'tests' ? 'game+tests'
+             : 'game';
+    window.location.href = '/ifhub/app.html?game=' + gid + '&view=' + view;
+  }
 });
 </script>
 

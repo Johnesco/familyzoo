@@ -1,0 +1,196 @@
+{
+  "version": "v05",
+  "storyId": "familyzoo-05",
+  "timestamp": "2026-04-17T12:38:19.138Z",
+  "transcripts": [
+    {
+      "file": "v05-containers.transcript",
+      "title": "V05 — Containers & Supporters",
+      "description": "Verify containers (backpack, dispenser) and supporters (bench)",
+      "commands": [
+        {
+          "lineNumber": 11,
+          "input": "take backpack",
+          "output": "Family Zoo\nBy Sharpee Tutorial\n\nType HELP for instructions.\n\nTaken.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Taken"
+            }
+          ],
+          "comment": "Take the backpack (portable container)"
+        },
+        {
+          "lineNumber": 15,
+          "input": "take map",
+          "output": "Taken.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Taken"
+            }
+          ],
+          "comment": "Take the map"
+        },
+        {
+          "lineNumber": 19,
+          "input": "put map in backpack",
+          "output": "You put zoo map in backpack.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "put"
+            }
+          ],
+          "comment": "Put map inside backpack"
+        },
+        {
+          "lineNumber": 23,
+          "input": "look in backpack",
+          "output": "In backpack you see: zoo map.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "zoo map"
+            }
+          ],
+          "comment": "Look inside backpack to see contents"
+        },
+        {
+          "lineNumber": 27,
+          "input": "south",
+          "output": "Main Path\n\nA wide gravel path winds through the heart of the zoo. Colorful direction signs point every which way. A park bench sits beside the path, and neat flower beds add splashes of color. To the east, a white picket fence surrounds the petting zoo. To the west, a tall mesh enclosure rises above the treetops — the aviary. The entrance gates are back to the north.\n\nYou can see direction signs, flower beds, souvenir penny, park bench here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Main Path"
+            }
+          ],
+          "comment": "Go to Main Path for the supporter test"
+        },
+        {
+          "lineNumber": 31,
+          "input": "take penny",
+          "output": "Taken.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Taken"
+            }
+          ],
+          "comment": "Take the penny"
+        },
+        {
+          "lineNumber": 35,
+          "input": "put penny on bench",
+          "output": "You put souvenir penny on park bench.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "put"
+            }
+          ],
+          "comment": "Put penny on the park bench (supporter)"
+        },
+        {
+          "lineNumber": 39,
+          "input": "examine bench",
+          "output": "A sturdy park bench painted forest green. A small brass plaque reads: \"In memory of Mr. Whiskers, the world's friendliest capybara, 2019–2024.\"\nOn park bench you see souvenir penny.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "park bench"
+            }
+          ],
+          "comment": "The bench should show the penny"
+        },
+        {
+          "lineNumber": 43,
+          "input": "east",
+          "output": "Petting Zoo\n\nA cheerful open-air enclosure filled with friendly animals. Pygmy goats trot around nibbling at visitors' shoelaces, while a pair of fluffy rabbits hop lazily near a hay bale. A feed dispenser is mounted on a post near the entrance. The main path is back to the west.\n\nYou can see pygmy goats, hay bale, rabbits, bag of animal feed, feed dispenser here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Petting Zoo"
+            }
+          ],
+          "comment": "Go to Petting Zoo for the scenery container"
+        },
+        {
+          "lineNumber": 47,
+          "input": "take dispenser",
+          "output": "feed dispenser is fixed in place.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "fixed in place"
+            }
+          ],
+          "comment": "The dispenser is a scenery container — can't take it"
+        },
+        {
+          "lineNumber": 51,
+          "input": "examine dispenser",
+          "output": "A coin-operated feed dispenser mounted on a wooden post. It's a clear plastic globe filled with animal feed pellets, with a crank handle on the side. A sign reads \"FREE — Just Turn!\"\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "feed dispenser"
+            },
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "FREE"
+            }
+          ],
+          "comment": "But we can examine it"
+        }
+      ],
+      "summary": {
+        "passed": 11,
+        "failed": 0,
+        "skipped": 0,
+        "duration": 62
+      }
+    }
+  ],
+  "summary": {
+    "totalPassed": 11,
+    "totalFailed": 0,
+    "totalSkipped": 0,
+    "totalDuration": 62
+  }
+}

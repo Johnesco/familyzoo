@@ -1,0 +1,131 @@
+{
+  "version": "v06",
+  "storyId": "familyzoo-06",
+  "timestamp": "2026-04-17T12:38:31.612Z",
+  "transcripts": [
+    {
+      "file": "v06-openable.transcript",
+      "title": "V06 — Openable Things",
+      "description": "Verify OpenableTrait on lunchbox and feed dispenser",
+      "commands": [
+        {
+          "lineNumber": 11,
+          "input": "south",
+          "output": "Family Zoo\nBy Sharpee Tutorial\n\nType HELP for instructions.\n\nMain Path\n\nA wide gravel path winds through the heart of the zoo. Colorful direction signs point every which way. A park bench sits beside the path, and neat flower beds add splashes of color. To the east, a white picket fence surrounds the petting zoo. To the west, a tall mesh enclosure rises above the treetops — the aviary. The entrance gates are back to the north.\n\nYou can see direction signs, flower beds, souvenir penny, park bench, lunchbox here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Main Path"
+            }
+          ],
+          "comment": "Go to Main Path where the lunchbox is"
+        },
+        {
+          "lineNumber": 15,
+          "input": "open lunchbox",
+          "output": "You open lunchbox.\nInside the lunchbox you see juice box.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "open"
+            }
+          ],
+          "comment": "The lunchbox is closed"
+        },
+        {
+          "lineNumber": 19,
+          "input": "look in lunchbox",
+          "output": "In lunchbox you see: juice box.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "juice box"
+            }
+          ],
+          "comment": "Now we can see inside"
+        },
+        {
+          "lineNumber": 23,
+          "input": "close lunchbox",
+          "output": "You close lunchbox.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "close"
+            }
+          ],
+          "comment": "Close it again"
+        },
+        {
+          "lineNumber": 27,
+          "input": "east",
+          "output": "Petting Zoo\n\nA cheerful open-air enclosure filled with friendly animals. Pygmy goats trot around nibbling at visitors' shoelaces, while a pair of fluffy rabbits hop lazily near a hay bale. A feed dispenser is mounted on a post near the entrance. The main path is back to the west.\n\nYou can see pygmy goats, hay bale, rabbits, bag of animal feed, feed dispenser here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Petting Zoo"
+            }
+          ],
+          "comment": "Go to Petting Zoo for the feed dispenser"
+        },
+        {
+          "lineNumber": 31,
+          "input": "open dispenser",
+          "output": "You open feed dispenser, which is empty.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "open"
+            }
+          ],
+          "comment": "Dispenser starts closed"
+        },
+        {
+          "lineNumber": 35,
+          "input": "take dispenser",
+          "output": "feed dispenser is fixed in place.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "fixed in place"
+            }
+          ],
+          "comment": "Try to take it — it's scenery"
+        }
+      ],
+      "summary": {
+        "passed": 7,
+        "failed": 0,
+        "skipped": 0,
+        "duration": 50
+      }
+    }
+  ],
+  "summary": {
+    "totalPassed": 7,
+    "totalFailed": 0,
+    "totalSkipped": 0,
+    "totalDuration": 50
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "version": "v01",
+  "storyId": "familyzoo-01",
+  "timestamp": "2026-04-17T12:37:30.389Z",
+  "transcripts": [
+    {
+      "file": "v01-single-room.transcript",
+      "title": "V01 — A Single Room",
+      "description": "Verify that the Zoo Entrance room exists with scenery objects",
+      "commands": [
+        {
+          "lineNumber": 11,
+          "input": "look",
+          "output": "Family Zoo\nBy Sharpee Tutorial\n\nType HELP for instructions.\n\nZoo Entrance\n\nYou stand before the gates of the Willowbrook Family Zoo. A cheerful welcome sign arches over the entrance, and a small ticket booth sits to one side. Beyond the gates, you can hear the distant calls of exotic birds and the chatter of monkeys.\n\nYou can see welcome sign, ticket booth here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Zoo Entrance"
+            },
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Willowbrook Family Zoo"
+            },
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "welcome sign"
+            },
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "ticket booth"
+            }
+          ],
+          "comment": "The game starts at the Zoo Entrance"
+        },
+        {
+          "lineNumber": 18,
+          "input": "examine sign",
+          "output": "A brightly painted wooden sign reads: \"WELCOME TO WILLOWBROOK FAMILY ZOO — Home to over 50 amazing animals! Open daily, rain or shine.\" Cartoon animals dance along the border.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "WELCOME TO WILLOWBROOK"
+            }
+          ],
+          "comment": "Examine the welcome sign"
+        },
+        {
+          "lineNumber": 22,
+          "input": "examine booth",
+          "output": "A small wooden booth with a sliding glass window. A sign in the window reads \"Self-Guided Tours — No Ticket Needed Today!\" A friendly cartoon giraffe is painted on the side.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Self-Guided Tours"
+            }
+          ],
+          "comment": "Examine the ticket booth"
+        },
+        {
+          "lineNumber": 26,
+          "input": "take sign",
+          "output": "welcome sign is fixed in place.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "fixed in place"
+            }
+          ],
+          "comment": "Scenery can't be taken"
+        },
+        {
+          "lineNumber": 30,
+          "input": "look",
+          "output": "Zoo Entrance\n\nYou stand before the gates of the Willowbrook Family Zoo. A cheerful welcome sign arches over the entrance, and a small ticket booth sits to one side. Beyond the gates, you can hear the distant calls of exotic birds and the chatter of monkeys.\n\nYou can see welcome sign, ticket booth here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Zoo Entrance"
+            }
+          ],
+          "comment": "Try looking again to confirm the room is stable"
+        }
+      ],
+      "summary": {
+        "passed": 5,
+        "failed": 0,
+        "skipped": 0,
+        "duration": 38
+      }
+    }
+  ],
+  "summary": {
+    "totalPassed": 5,
+    "totalFailed": 0,
+    "totalSkipped": 0,
+    "totalDuration": 38
+  }
+}

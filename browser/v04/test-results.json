@@ -1,0 +1,215 @@
+{
+  "version": "v04",
+  "storyId": "familyzoo-04",
+  "timestamp": "2026-04-17T12:38:04.457Z",
+  "transcripts": [
+    {
+      "file": "v04-portable.transcript",
+      "title": "V04 — Portable Objects",
+      "description": "Verify taking, dropping, and inventory with portable items",
+      "commands": [
+        {
+          "lineNumber": 11,
+          "input": "look",
+          "output": "Family Zoo\nBy Sharpee Tutorial\n\nType HELP for instructions.\n\nZoo Entrance\n\nYou stand before the wrought-iron gates of the Willowbrook Family Zoo. A cheerful welcome sign arches over the entrance, and a small ticket booth sits to one side. A sturdy iron fence runs along either side of the gates. The main path leads south into the zoo grounds.\n\nYou can see welcome sign, ticket booth, iron fence, zoo map here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Zoo Entrance"
+            }
+          ],
+          "comment": "Start at entrance — zoo map should be here"
+        },
+        {
+          "lineNumber": 15,
+          "input": "take map",
+          "output": "Taken.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Taken"
+            }
+          ],
+          "comment": "Take the map"
+        },
+        {
+          "lineNumber": 19,
+          "input": "inventory",
+          "output": "You are carrying:\n  zoo map\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "zoo map"
+            }
+          ],
+          "comment": "Check inventory"
+        },
+        {
+          "lineNumber": 23,
+          "input": "south",
+          "output": "Main Path\n\nA wide gravel path winds through the heart of the zoo. Colorful direction signs point every which way. Wooden benches line the path, and neat flower beds add splashes of color. To the east, a white picket fence surrounds the petting zoo. To the west, a tall mesh enclosure rises above the treetops — the aviary. The entrance gates are back to the north.\n\nYou can see direction signs, wooden benches, flower beds, souvenir penny here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Main Path"
+            }
+          ],
+          "comment": "Carry map to another room"
+        },
+        {
+          "lineNumber": 27,
+          "input": "take penny",
+          "output": "Taken.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Taken"
+            }
+          ],
+          "comment": "Take the penny"
+        },
+        {
+          "lineNumber": 31,
+          "input": "inventory",
+          "output": "You are carrying:\n  zoo map, souvenir penny\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "zoo map"
+            },
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "souvenir penny"
+            }
+          ],
+          "comment": "Inventory should show both"
+        },
+        {
+          "lineNumber": 36,
+          "input": "drop map",
+          "output": "Dropped.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Dropped"
+            }
+          ],
+          "comment": "Drop the map in this room"
+        },
+        {
+          "lineNumber": 40,
+          "input": "look",
+          "output": "Main Path\n\nA wide gravel path winds through the heart of the zoo. Colorful direction signs point every which way. Wooden benches line the path, and neat flower beds add splashes of color. To the east, a white picket fence surrounds the petting zoo. To the west, a tall mesh enclosure rises above the treetops — the aviary. The entrance gates are back to the north.\n\nYou can see direction signs, wooden benches, flower beds, zoo map here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "zoo map"
+            }
+          ],
+          "comment": "Map should appear in room now"
+        },
+        {
+          "lineNumber": 44,
+          "input": "east",
+          "output": "Petting Zoo\n\nA cheerful open-air enclosure filled with friendly animals. Pygmy goats trot around nibbling at visitors' shoelaces, while a pair of fluffy rabbits hop lazily near a hay bale. A low wooden fence separates you from a muddy pig pen. The main path is back to the west.\n\nYou can see pygmy goats, hay bale, rabbits, bag of animal feed here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Petting Zoo"
+            }
+          ],
+          "comment": "Go to Petting Zoo and take the feed"
+        },
+        {
+          "lineNumber": 47,
+          "input": "take feed",
+          "output": "Taken.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Taken"
+            }
+          ],
+          "comment": "V4 teaches: portable items, take, drop, inventory"
+        },
+        {
+          "lineNumber": 50,
+          "input": "inventory",
+          "output": "You are carrying:\n  souvenir penny, bag of animal feed\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "souvenir penny"
+            },
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "bag of animal feed"
+            }
+          ]
+        },
+        {
+          "lineNumber": 55,
+          "input": "take goats",
+          "output": "pygmy goats is fixed in place.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "fixed in place"
+            }
+          ],
+          "comment": "Scenery is still not takeable"
+        }
+      ],
+      "summary": {
+        "passed": 12,
+        "failed": 0,
+        "skipped": 0,
+        "duration": 41
+      }
+    }
+  ],
+  "summary": {
+    "totalPassed": 12,
+    "totalFailed": 0,
+    "totalSkipped": 0,
+    "totalDuration": 41
+  }
+}

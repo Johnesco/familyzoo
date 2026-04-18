@@ -1,0 +1,236 @@
+{
+  "version": "v15",
+  "storyId": "familyzoo-15",
+  "timestamp": "2026-04-17T12:40:39.297Z",
+  "transcripts": [
+    {
+      "file": "v15-timed-events.transcript",
+      "title": "V15 — Timed Events (Daemons and Fuses)",
+      "description": "Verify PA announcements, feeding time fuse, and goat bleating daemon",
+      "commands": [
+        {
+          "lineNumber": 12,
+          "input": "wait",
+          "output": "Family Zoo\nBy Sharpee Tutorial\n\nType HELP for instructions.\n\nTime passes...\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Time passes"
+            }
+          ],
+          "comment": "Wait turns 1-4 — nothing fires yet"
+        },
+        {
+          "lineNumber": 15,
+          "input": "wait",
+          "output": "Time passes...\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Time passes"
+            }
+          ],
+          "comment": "V15 teaches: Daemons (every-turn) and fuses (countdown timers)"
+        },
+        {
+          "lineNumber": 18,
+          "input": "wait",
+          "output": "Time passes...\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Time passes"
+            }
+          ]
+        },
+        {
+          "lineNumber": 21,
+          "input": "wait",
+          "output": "Time passes...\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Time passes"
+            }
+          ]
+        },
+        {
+          "lineNumber": 25,
+          "input": "wait",
+          "output": "Time passes...\n*DING DONG* \"Attention visitors! The Willowbrook Family Zoo will be closing in three hours. Please make sure to visit all exhibits before closing time!\"\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "DING DONG"
+            },
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "closing"
+            }
+          ],
+          "comment": "Turn 5 — PA announcement daemon fires (ctx.turn % 5 === 0)"
+        },
+        {
+          "lineNumber": 30,
+          "input": "south",
+          "output": "Main Path\n\nA wide gravel path winds through the heart of the zoo. Colorful direction signs point every which way. A park bench sits beside the path. To the east, the petting zoo. To the west, the aviary. A staff gate blocks the path to the south. The entrance is back to the north.\n\nYou can see staff gate, direction signs, flower beds, souvenir penny, park bench, lunchbox here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Main Path"
+            }
+          ],
+          "comment": "Move to petting zoo (turns 6-7)"
+        },
+        {
+          "lineNumber": 33,
+          "input": "east",
+          "output": "Petting Zoo\n\nA cheerful open-air enclosure filled with friendly animals. Pygmy goats trot around nibbling at visitors' shoelaces, while a pair of fluffy rabbits hop lazily near a hay bale. A feed dispenser is mounted on a post. An info plaque is posted by the gate. The main path is back to the west.\n\nYou can see hay bale, info plaque, pygmy goats, rabbits, bag of animal feed, feed dispenser, zookeeper here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Petting Zoo"
+            }
+          ]
+        },
+        {
+          "lineNumber": 37,
+          "input": "wait",
+          "output": "Time passes...\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Time passes"
+            }
+          ],
+          "comment": "Wait turns 8-9"
+        },
+        {
+          "lineNumber": 40,
+          "input": "wait",
+          "output": "Time passes...\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Time passes"
+            }
+          ]
+        },
+        {
+          "lineNumber": 44,
+          "input": "wait",
+          "output": "Time passes...\n*DING DONG* \"Attention visitors! Two hours until closing. Don't forget to stop by the gift shop for souvenirs!\"\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "DING DONG"
+            }
+          ],
+          "comment": "Turn 10 — second PA announcement"
+        },
+        {
+          "lineNumber": 48,
+          "input": "wait",
+          "output": "Time passes...\n*DING DONG* \"It's FEEDING TIME at the Petting Zoo! Come watch our pygmy goats and rabbits enjoy their favorite snacks!\"\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "FEEDING TIME"
+            }
+          ],
+          "comment": "Turn 11 — feeding time fuse triggers (10 turns + skipNextTick)"
+        },
+        {
+          "lineNumber": 52,
+          "input": "wait",
+          "output": "Time passes...\nThe pygmy goats are bleating loudly and headbutting the fence. They seem very hungry!\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "bleating"
+            }
+          ],
+          "comment": "Turn 12 — goat bleating daemon fires (we're in petting zoo)"
+        },
+        {
+          "lineNumber": 56,
+          "input": "take feed",
+          "output": "Taken.\nThe pygmy goats are bleating loudly and headbutting the fence. They seem very hungry!\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Taken"
+            }
+          ],
+          "comment": "Feed the goats — stops bleating"
+        },
+        {
+          "lineNumber": 59,
+          "input": "feed goats",
+          "output": "You scatter some feed on the ground. The pygmy goats rush over, bleating excitedly, and devour the corn and pellets in seconds. The smallest goat looks up at you with big grateful eyes.\nThe pygmy goats are bleating loudly and headbutting the fence. They seem very hungry!\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "pygmy goats"
+            }
+          ]
+        }
+      ],
+      "summary": {
+        "passed": 14,
+        "failed": 0,
+        "skipped": 0,
+        "duration": 50
+      }
+    }
+  ],
+  "summary": {
+    "totalPassed": 14,
+    "totalFailed": 0,
+    "totalSkipped": 0,
+    "totalDuration": 50
+  }
+}

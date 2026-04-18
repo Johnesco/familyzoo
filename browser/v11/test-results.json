@@ -1,0 +1,156 @@
+{
+  "version": "v11",
+  "storyId": "familyzoo-11",
+  "timestamp": "2026-04-17T12:39:38.549Z",
+  "transcripts": [
+    {
+      "file": "v11-npcs.transcript",
+      "title": "V11 — Non-Player Characters (NPCs)",
+      "description": "Verify zookeeper patrol behavior and parrot NPC in the aviary",
+      "commands": [
+        {
+          "lineNumber": 12,
+          "input": "look",
+          "output": "Family Zoo\nBy Sharpee Tutorial\n\nType HELP for instructions.\n\nZoo Entrance\n\nYou stand before the wrought-iron gates of the Willowbrook Family Zoo. A cheerful welcome sign arches over the entrance, and a small ticket booth sits to one side. A sturdy iron fence runs along either side of the gates. The main path leads south into the zoo grounds.\n\nYou can see staff keycard, welcome sign, ticket booth, iron fence, zoo brochure, zoo map, backpack here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Zoo Entrance"
+            }
+          ],
+          "comment": "The player starts at the Zoo Entrance"
+        },
+        {
+          "lineNumber": 16,
+          "input": "south",
+          "output": "Main Path\n\nA wide gravel path winds through the heart of the zoo. Colorful direction signs point every which way. A park bench sits beside the path. To the east, the petting zoo. To the west, the aviary. A staff gate blocks the path to the south. The entrance is back to the north.\n\nYou can see staff gate, direction signs, flower beds, souvenir penny, park bench, lunchbox, zookeeper here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Main Path"
+            }
+          ],
+          "comment": "Go south to Main Path — the zookeeper starts here"
+        },
+        {
+          "lineNumber": 20,
+          "input": "examine zookeeper",
+          "output": "A friendly zookeeper in khaki overalls and a wide-brimmed hat, carrying a bucket of mixed animal feed. A name tag reads \"Sam.\"\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "khaki overalls"
+            },
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Sam"
+            }
+          ],
+          "comment": "The zookeeper should be visible in the room"
+        },
+        {
+          "lineNumber": 25,
+          "input": "west",
+          "output": "Aviary\n\nYou step inside a soaring mesh dome. Brilliantly colored parrots chatter from rope perches, and a toucan eyes you curiously from a branch overhead. A small waterfall splashes into a stone basin. An info plaque hangs near the entrance. The exit back to the main path is to the east.\n\nYou can see toucan, parrots, waterfall, rope perches, aviary plaque, parrot here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Aviary"
+            }
+          ],
+          "comment": "Go west to the Aviary — the parrot lives here"
+        },
+        {
+          "lineNumber": 29,
+          "input": "examine parrot",
+          "output": "A magnificent scarlet macaw perched on a rope near the entrance. It tilts its head and watches you with one bright eye.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "scarlet macaw"
+            },
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "bright eye"
+            }
+          ],
+          "comment": "The parrot should be visible"
+        },
+        {
+          "lineNumber": 35,
+          "input": "wait",
+          "output": "Time passes...\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Time passes"
+            }
+          ],
+          "comment": "We just confirm the wait command works without errors"
+        },
+        {
+          "lineNumber": 38,
+          "input": "wait",
+          "output": "Time passes...\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Time passes"
+            }
+          ],
+          "comment": "Wait a few turns — the parrot may speak (behavior is random)"
+        },
+        {
+          "lineNumber": 42,
+          "input": "east",
+          "output": "Main Path\n\nA wide gravel path winds through the heart of the zoo. Colorful direction signs point every which way. A park bench sits beside the path. To the east, the petting zoo. To the west, the aviary. A staff gate blocks the path to the south. The entrance is back to the north.\n\nYou can see staff gate, direction signs, flower beds, souvenir penny, park bench, lunchbox here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Main Path"
+            }
+          ],
+          "comment": "Go back east to Main Path"
+        }
+      ],
+      "summary": {
+        "passed": 8,
+        "failed": 0,
+        "skipped": 0,
+        "duration": 83
+      }
+    }
+  ],
+  "summary": {
+    "totalPassed": 8,
+    "totalFailed": 0,
+    "totalSkipped": 0,
+    "totalDuration": 83
+  }
+}

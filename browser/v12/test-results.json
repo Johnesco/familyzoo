@@ -1,0 +1,265 @@
+{
+  "version": "v12",
+  "storyId": "familyzoo-12",
+  "timestamp": "2026-04-17T12:39:54.574Z",
+  "transcripts": [
+    {
+      "file": "v12-event-handlers.transcript",
+      "title": "V12 — Event Handlers",
+      "description": "Verify event chain handlers for feed-dropping and penny-pressing",
+      "commands": [
+        {
+          "lineNumber": 12,
+          "input": "south",
+          "output": "Family Zoo\nBy Sharpee Tutorial\n\nType HELP for instructions.\n\nMain Path\n\nA wide gravel path winds through the heart of the zoo. Colorful direction signs point every which way. A park bench sits beside the path. To the east, the petting zoo. To the west, the aviary. A staff gate blocks the path to the south. The gift shop is also to the west, past the aviary. The entrance is back to the north.\n\nYou can see staff gate, direction signs, flower beds, souvenir penny, park bench, lunchbox, zookeeper here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Main Path"
+            }
+          ],
+          "comment": "Go to the Petting Zoo and pick up the feed"
+        },
+        {
+          "lineNumber": 15,
+          "input": "east",
+          "output": "Petting Zoo\n\nA cheerful open-air enclosure filled with friendly animals. Pygmy goats trot around nibbling at visitors' shoelaces, while a pair of fluffy rabbits hop lazily near a hay bale. A feed dispenser is mounted on a post. An info plaque is posted by the gate. The main path is back to the west.\n\nYou can see pygmy goats, hay bale, rabbits, info plaque, bag of animal feed, feed dispenser here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Petting Zoo"
+            }
+          ],
+          "comment": "V12 teaches: world.chainEvent() for reacting to stdlib actions"
+        },
+        {
+          "lineNumber": 18,
+          "input": "take feed",
+          "output": "Taken.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Taken"
+            }
+          ]
+        },
+        {
+          "lineNumber": 22,
+          "input": "drop feed",
+          "output": "Dropped.\nThe pygmy goats spot the bag of feed and rush over! They crowd around, bleating excitedly, and devour the corn and pellets in seconds. The smallest goat looks up at you with big grateful eyes.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "goats"
+            },
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "bleating"
+            }
+          ],
+          "comment": "Drop the feed — the goats should react"
+        },
+        {
+          "lineNumber": 27,
+          "input": "west",
+          "output": "Main Path\n\nA wide gravel path winds through the heart of the zoo. Colorful direction signs point every which way. A park bench sits beside the path. To the east, the petting zoo. To the west, the aviary. A staff gate blocks the path to the south. The gift shop is also to the west, past the aviary. The entrance is back to the north.\n\nYou can see staff gate, direction signs, flower beds, souvenir penny, park bench, lunchbox here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Main Path"
+            }
+          ],
+          "comment": "Go to the Gift Shop via Aviary"
+        },
+        {
+          "lineNumber": 30,
+          "input": "west",
+          "output": "Aviary\n\nYou step inside a soaring mesh dome. Brilliantly colored parrots chatter from rope perches, and a toucan eyes you curiously from a branch overhead. A small waterfall splashes into a stone basin. An info plaque hangs near the entrance. The gift shop is to the west. The main path is back to the east.\n\nYou can see toucan, parrots, waterfall, rope perches, aviary plaque, parrot here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Aviary"
+            }
+          ]
+        },
+        {
+          "lineNumber": 33,
+          "input": "west",
+          "output": "Gift Shop\n\nA small zoo gift shop crammed with stuffed animals and postcards. A large souvenir penny press machine stands near the door, its handle gleaming invitingly. A sign above it reads: \"INSERT PENNY, TURN HANDLE, KEEP FOREVER!\" The aviary is back to the east.\n\nYou can see stuffed animals, postcards, souvenir press here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Gift Shop"
+            }
+          ]
+        },
+        {
+          "lineNumber": 37,
+          "input": "examine press",
+          "output": "A heavy cast-iron machine with a big crank handle. A slot on top accepts pennies, and the mechanism stamps them with a zoo animal design. A sign reads: \"INSERT PENNY, TURN HANDLE, KEEP FOREVER!\"\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "cast-iron"
+            },
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "INSERT PENNY"
+            }
+          ],
+          "comment": "Examine the souvenir press"
+        },
+        {
+          "lineNumber": 42,
+          "input": "east",
+          "output": "Aviary\n\nYou step inside a soaring mesh dome. Brilliantly colored parrots chatter from rope perches, and a toucan eyes you curiously from a branch overhead. A small waterfall splashes into a stone basin. An info plaque hangs near the entrance. The gift shop is to the west. The main path is back to the east.\n\nYou can see toucan, parrots, waterfall, rope perches, aviary plaque, parrot here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Aviary"
+            }
+          ],
+          "comment": "Go get the penny from Main Path"
+        },
+        {
+          "lineNumber": 45,
+          "input": "east",
+          "output": "Main Path\n\nA wide gravel path winds through the heart of the zoo. Colorful direction signs point every which way. A park bench sits beside the path. To the east, the petting zoo. To the west, the aviary. A staff gate blocks the path to the south. The gift shop is also to the west, past the aviary. The entrance is back to the north.\n\nYou can see staff gate, direction signs, flower beds, souvenir penny, park bench, lunchbox, zookeeper here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Main Path"
+            }
+          ]
+        },
+        {
+          "lineNumber": 48,
+          "input": "take penny",
+          "output": "Taken.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Taken"
+            }
+          ]
+        },
+        {
+          "lineNumber": 52,
+          "input": "west",
+          "output": "Aviary\n\nYou step inside a soaring mesh dome. Brilliantly colored parrots chatter from rope perches, and a toucan eyes you curiously from a branch overhead. A small waterfall splashes into a stone basin. An info plaque hangs near the entrance. The gift shop is to the west. The main path is back to the east.\n\nYou can see toucan, parrots, waterfall, rope perches, aviary plaque, parrot here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Aviary"
+            }
+          ],
+          "comment": "Go back to the Gift Shop"
+        },
+        {
+          "lineNumber": 55,
+          "input": "west",
+          "output": "Gift Shop\n\nA small zoo gift shop crammed with stuffed animals and postcards. A large souvenir penny press machine stands near the door, its handle gleaming invitingly. A sign above it reads: \"INSERT PENNY, TURN HANDLE, KEEP FOREVER!\" The aviary is back to the east.\n\nYou can see stuffed animals, postcards, souvenir press here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Gift Shop"
+            }
+          ]
+        },
+        {
+          "lineNumber": 59,
+          "input": "put penny in press",
+          "output": "You put souvenir penny in souvenir press.\nCLUNK! CRUNCH! WHIRRR! The souvenir press swallows the penny and spits out a beautiful pressed penny with an embossed toucan design. You pocket it proudly.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "CLUNK"
+            },
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "pressed penny"
+            },
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "toucan"
+            }
+          ],
+          "comment": "Put the penny in the press — should trigger transformation"
+        },
+        {
+          "lineNumber": 65,
+          "input": "inventory",
+          "output": "You are carrying:\n  pressed penny\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "pressed penny"
+            }
+          ],
+          "comment": "Check inventory — the pressed penny should be there"
+        }
+      ],
+      "summary": {
+        "passed": 15,
+        "failed": 0,
+        "skipped": 0,
+        "duration": 58
+      }
+    }
+  ],
+  "summary": {
+    "totalPassed": 15,
+    "totalFailed": 0,
+    "totalSkipped": 0,
+    "totalDuration": 58
+  }
+}

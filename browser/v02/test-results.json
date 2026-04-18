@@ -1,0 +1,211 @@
+{
+  "version": "v02",
+  "storyId": "familyzoo-02",
+  "timestamp": "2026-04-17T12:37:37.594Z",
+  "transcripts": [
+    {
+      "file": "v02-navigation.transcript",
+      "title": "V02 — Multiple Rooms & Navigation",
+      "description": "Verify room connections and compass navigation between zoo areas",
+      "commands": [
+        {
+          "lineNumber": 11,
+          "input": "look",
+          "output": "Family Zoo\nBy Sharpee Tutorial\n\nType HELP for instructions.\n\nZoo Entrance\n\nYou stand before the gates of the Willowbrook Family Zoo. A cheerful welcome sign arches over the entrance, and a small ticket booth sits to one side. The main path leads south into the zoo grounds.\n\nYou can see welcome sign, ticket booth here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Zoo Entrance"
+            }
+          ],
+          "comment": "Start at Zoo Entrance"
+        },
+        {
+          "lineNumber": 15,
+          "input": "south",
+          "output": "Main Path\n\nA wide gravel path winds through the heart of the zoo. Colorful direction signs point every which way. To the east, a white picket fence surrounds the petting zoo. To the west, a tall mesh enclosure rises above the treetops — the aviary. The entrance gates are back to the north.\n\nYou can see direction signs here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Main Path"
+            },
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "gravel path"
+            },
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "petting zoo"
+            },
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "aviary"
+            }
+          ],
+          "comment": "Go south to Main Path"
+        },
+        {
+          "lineNumber": 22,
+          "input": "examine signs",
+          "output": "A cluster of brightly colored arrow signs nailed to a wooden post. They point to: PETTING ZOO (east), AVIARY (west), REPTILE HOUSE (south — coming soon!), and EXIT (north).\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "PETTING ZOO"
+            },
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "AVIARY"
+            }
+          ],
+          "comment": "Examine the direction signs"
+        },
+        {
+          "lineNumber": 27,
+          "input": "east",
+          "output": "Petting Zoo\n\nA cheerful open-air enclosure filled with friendly animals. Pygmy goats trot around nibbling at visitors' shoelaces, while a pair of fluffy rabbits hop lazily near a hay bale. A low wooden fence separates you from a muddy pig pen. The main path is back to the west.\n\nYou can see pygmy goats here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Petting Zoo"
+            },
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "goats"
+            }
+          ],
+          "comment": "Go east to Petting Zoo"
+        },
+        {
+          "lineNumber": 32,
+          "input": "examine goats",
+          "output": "Three pygmy goats with stubby legs and expressive faces. They stare at you with their weird rectangular pupils, clearly hoping you have food. One of them is chewing on a visitor's dropped map.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "pygmy goats"
+            }
+          ],
+          "comment": "Examine the goats"
+        },
+        {
+          "lineNumber": 36,
+          "input": "west",
+          "output": "Main Path\n\nA wide gravel path winds through the heart of the zoo. Colorful direction signs point every which way. To the east, a white picket fence surrounds the petting zoo. To the west, a tall mesh enclosure rises above the treetops — the aviary. The entrance gates are back to the north.\n\nYou can see direction signs here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Main Path"
+            }
+          ],
+          "comment": "Go back west to Main Path"
+        },
+        {
+          "lineNumber": 40,
+          "input": "west",
+          "output": "Aviary\n\nYou step inside a soaring mesh dome that stretches high above the treetops. Brilliantly colored parrots chatter from rope perches, and a toucan eyes you curiously from a branch overhead. A small waterfall splashes into a stone basin where finches bathe. The exit back to the main path is to the east.\n\nYou can see toucan here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Aviary"
+            },
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "mesh dome"
+            }
+          ],
+          "comment": "Go west to Aviary"
+        },
+        {
+          "lineNumber": 45,
+          "input": "examine toucan",
+          "output": "A Toco toucan with an enormous orange-and-black bill. It tilts its head and regards you with one intelligent eye, as if deciding whether you're interesting enough to fly closer to.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "toucan"
+            },
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "orange"
+            }
+          ],
+          "comment": "Examine the toucan"
+        },
+        {
+          "lineNumber": 50,
+          "input": "east",
+          "output": "Main Path\n\nA wide gravel path winds through the heart of the zoo. Colorful direction signs point every which way. To the east, a white picket fence surrounds the petting zoo. To the west, a tall mesh enclosure rises above the treetops — the aviary. The entrance gates are back to the north.\n\nYou can see direction signs here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Main Path"
+            }
+          ],
+          "comment": "Go back east to Main Path"
+        },
+        {
+          "lineNumber": 54,
+          "input": "north",
+          "output": "Zoo Entrance\n\nYou stand before the gates of the Willowbrook Family Zoo. A cheerful welcome sign arches over the entrance, and a small ticket booth sits to one side. The main path leads south into the zoo grounds.\n\nYou can see welcome sign, ticket booth here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Zoo Entrance"
+            }
+          ],
+          "comment": "Go north back to entrance"
+        }
+      ],
+      "summary": {
+        "passed": 10,
+        "failed": 0,
+        "skipped": 0,
+        "duration": 32
+      }
+    }
+  ],
+  "summary": {
+    "totalPassed": 10,
+    "totalFailed": 0,
+    "totalSkipped": 0,
+    "totalDuration": 32
+  }
+}

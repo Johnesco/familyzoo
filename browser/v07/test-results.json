@@ -1,0 +1,136 @@
+{
+  "version": "v07",
+  "storyId": "familyzoo-07",
+  "timestamp": "2026-04-17T12:38:45.912Z",
+  "transcripts": [
+    {
+      "file": "v07-locked.transcript",
+      "title": "V07 — Locked Doors & Keys",
+      "description": "Verify locked staff gate, keycard, unlock, and supply room access",
+      "commands": [
+        {
+          "lineNumber": 11,
+          "input": "take keycard",
+          "output": "Family Zoo\nBy Sharpee Tutorial\n\nType HELP for instructions.\n\nTaken.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Taken"
+            }
+          ],
+          "comment": "Pick up the keycard at the entrance"
+        },
+        {
+          "lineNumber": 15,
+          "input": "south",
+          "output": "Main Path\n\nA wide gravel path winds through the heart of the zoo. Colorful direction signs point every which way. A park bench sits beside the path. To the east, the petting zoo. To the west, the aviary. A staff gate blocks the path to the south. The entrance is back to the north.\n\nYou can see staff gate, direction signs, flower beds, souvenir penny, park bench, lunchbox here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Main Path"
+            }
+          ],
+          "comment": "Go to Main Path"
+        },
+        {
+          "lineNumber": 19,
+          "input": "south",
+          "output": "The staff gate is locked.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "locked"
+            }
+          ],
+          "comment": "Try to go south — blocked by the locked gate"
+        },
+        {
+          "lineNumber": 23,
+          "input": "unlock gate with keycard",
+          "output": "You unlock staff gate with staff keycard.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "unlock"
+            }
+          ],
+          "comment": "Unlock the gate with the keycard"
+        },
+        {
+          "lineNumber": 27,
+          "input": "open gate",
+          "output": "You open staff gate.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "open"
+            }
+          ],
+          "comment": "Open the gate"
+        },
+        {
+          "lineNumber": 31,
+          "input": "south",
+          "output": "Supply Room\n\nA cluttered storage room behind the staff gate. Metal shelves line the walls, stacked with bags of feed, cleaning supplies, and spare parts for the exhibits. A cork board on the wall is covered with staff schedules and animal care notes. The staff gate leads back north to the main path.\n\nYou can see metal shelves, cork board here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Supply Room"
+            },
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "shelves"
+            }
+          ],
+          "comment": "Now walk through"
+        },
+        {
+          "lineNumber": 36,
+          "input": "north",
+          "output": "Main Path\n\nA wide gravel path winds through the heart of the zoo. Colorful direction signs point every which way. A park bench sits beside the path. To the east, the petting zoo. To the west, the aviary. A staff gate blocks the path to the south. The entrance is back to the north.\n\nYou can see staff gate, direction signs, flower beds, souvenir penny, park bench, lunchbox here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Main Path"
+            }
+          ],
+          "comment": "We can go back north through the open gate"
+        }
+      ],
+      "summary": {
+        "passed": 7,
+        "failed": 0,
+        "skipped": 0,
+        "duration": 49
+      }
+    }
+  ],
+  "summary": {
+    "totalPassed": 7,
+    "totalFailed": 0,
+    "totalSkipped": 0,
+    "totalDuration": 49
+  }
+}

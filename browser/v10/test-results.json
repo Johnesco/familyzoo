@@ -1,0 +1,163 @@
+{
+  "version": "v10",
+  "storyId": "familyzoo-10",
+  "timestamp": "2026-04-17T12:39:22.643Z",
+  "transcripts": [
+    {
+      "file": "v10-switchable.transcript",
+      "title": "V10 — Switchable Devices",
+      "description": "Verify SwitchableTrait on radio (standalone, no light)",
+      "commands": [
+        {
+          "lineNumber": 11,
+          "input": "take keycard",
+          "output": "Family Zoo\nBy Sharpee Tutorial\n\nType HELP for instructions.\n\nTaken.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Taken"
+            }
+          ],
+          "comment": "Navigate to supply room"
+        },
+        {
+          "lineNumber": 14,
+          "input": "south",
+          "output": "Main Path\n\nA wide gravel path winds through the heart of the zoo. Colorful direction signs point every which way. A park bench sits beside the path. To the east, the petting zoo. To the west, the aviary. A staff gate blocks the path to the south. The entrance is back to the north.\n\nYou can see staff gate, direction signs, flower beds, souvenir penny, park bench, lunchbox here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Main Path"
+            }
+          ],
+          "comment": "V10 teaches: SwitchableTrait standalone (on/off without light)"
+        },
+        {
+          "lineNumber": 17,
+          "input": "unlock gate with keycard",
+          "output": "You unlock staff gate with staff keycard.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "unlock"
+            }
+          ]
+        },
+        {
+          "lineNumber": 20,
+          "input": "open gate",
+          "output": "You open staff gate.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "open"
+            }
+          ]
+        },
+        {
+          "lineNumber": 23,
+          "input": "south",
+          "output": "Supply Room\n\nA cluttered storage room behind the staff gate. Metal shelves line the walls. A cork board on the wall is covered with staff schedules. A battered radio sits on one of the shelves. The staff gate leads back north.\n\nYou can see metal shelves, cork board, warning sign, radio, flashlight here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Supply Room"
+            }
+          ]
+        },
+        {
+          "lineNumber": 27,
+          "input": "examine radio",
+          "output": "A battered portable radio held together with duct tape. The antenna is bent at a jaunty angle. A faded sticker on the side reads \"ZOO FM — All Animals, All The Time.\"\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "duct tape"
+            },
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "ZOO FM"
+            }
+          ],
+          "comment": "Examine the radio"
+        },
+        {
+          "lineNumber": 32,
+          "input": "switch on radio",
+          "output": "radio hums to life.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "hums to life"
+            }
+          ],
+          "comment": "Switch on the radio"
+        },
+        {
+          "lineNumber": 36,
+          "input": "switch off radio",
+          "output": "radio powers down with a soft whir.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "powers down"
+            }
+          ],
+          "comment": "Switch off the radio"
+        },
+        {
+          "lineNumber": 40,
+          "input": "take radio",
+          "output": "radio is fixed in place.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "fixed in place"
+            }
+          ],
+          "comment": "Can't take it — it's scenery"
+        }
+      ],
+      "summary": {
+        "passed": 9,
+        "failed": 0,
+        "skipped": 0,
+        "duration": 51
+      }
+    }
+  ],
+  "summary": {
+    "totalPassed": 9,
+    "totalFailed": 0,
+    "totalSkipped": 0,
+    "totalDuration": 51
+  }
+}

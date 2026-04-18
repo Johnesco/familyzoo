@@ -1,0 +1,279 @@
+{
+  "version": "v03",
+  "storyId": "familyzoo-03",
+  "timestamp": "2026-04-17T12:37:51.411Z",
+  "transcripts": [
+    {
+      "file": "v03-scenery.transcript",
+      "title": "V03 — Scenery",
+      "description": "Verify scenery objects can be examined but not taken",
+      "commands": [
+        {
+          "lineNumber": 11,
+          "input": "look",
+          "output": "Family Zoo\nBy Sharpee Tutorial\n\nType HELP for instructions.\n\nZoo Entrance\n\nYou stand before the wrought-iron gates of the Willowbrook Family Zoo. A cheerful welcome sign arches over the entrance, and a small ticket booth sits to one side. A sturdy iron fence runs along either side of the gates. The main path leads south into the zoo grounds.\n\nYou can see welcome sign, ticket booth, iron fence here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Zoo Entrance"
+            },
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "iron fence"
+            }
+          ],
+          "comment": "Check scenery at the entrance"
+        },
+        {
+          "lineNumber": 15,
+          "input": "examine fence",
+          "output": "A tall wrought-iron fence with decorative animal silhouettes cut into every other bar — a giraffe here, an elephant there. It runs the full perimeter of the zoo grounds.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "wrought-iron"
+            },
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "animal silhouettes"
+            }
+          ],
+          "comment": "V3 teaches: SceneryTrait — examine yes, take no"
+        },
+        {
+          "lineNumber": 19,
+          "input": "take fence",
+          "output": "iron fence is fixed in place.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "fixed in place"
+            }
+          ]
+        },
+        {
+          "lineNumber": 23,
+          "input": "south",
+          "output": "Main Path\n\nA wide gravel path winds through the heart of the zoo. Colorful direction signs point every which way. Wooden benches line the path, and neat flower beds add splashes of color. To the east, a white picket fence surrounds the petting zoo. To the west, a tall mesh enclosure rises above the treetops — the aviary. The entrance gates are back to the north.\n\nYou can see direction signs, wooden benches, flower beds here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Main Path"
+            }
+          ],
+          "comment": "Go to Main Path and check new scenery"
+        },
+        {
+          "lineNumber": 26,
+          "input": "examine bench",
+          "output": "Sturdy park benches painted forest green, each with a small brass plaque thanking a zoo donor. One reads: \"In memory of Mr. Whiskers, the world's friendliest capybara, 2019–2024.\"\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "park bench"
+            }
+          ]
+        },
+        {
+          "lineNumber": 29,
+          "input": "examine flowers",
+          "output": "Tidy beds of marigolds and petunias in alternating orange and purple stripes. A hand-painted sign stuck in the soil reads: \"Planted by Willowbrook Elementary, Grade 3.\"\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "marigolds"
+            }
+          ]
+        },
+        {
+          "lineNumber": 32,
+          "input": "take bench",
+          "output": "wooden benches is fixed in place.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "fixed in place"
+            }
+          ]
+        },
+        {
+          "lineNumber": 36,
+          "input": "east",
+          "output": "Petting Zoo\n\nA cheerful open-air enclosure filled with friendly animals. Pygmy goats trot around nibbling at visitors' shoelaces, while a pair of fluffy rabbits hop lazily near a hay bale. A low wooden fence separates you from a muddy pig pen. The main path is back to the west.\n\nYou can see pygmy goats, hay bale, rabbits, picket fence here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Petting Zoo"
+            }
+          ],
+          "comment": "Go to Petting Zoo and check animal scenery"
+        },
+        {
+          "lineNumber": 39,
+          "input": "examine hay bale",
+          "output": "A large round bale of golden hay, slightly nibbled around the edges by enthusiastic goats. Two rabbits are nestled in a hollow they've carved into the side.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "golden hay"
+            }
+          ]
+        },
+        {
+          "lineNumber": 42,
+          "input": "take hay bale",
+          "output": "hay bale is fixed in place.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "fixed in place"
+            }
+          ]
+        },
+        {
+          "lineNumber": 45,
+          "input": "examine rabbits",
+          "output": "A pair of Holland Lop rabbits with floppy ears and twitching noses. One is pure white, the other a patchwork of brown and cream. They seem utterly unbothered by the goats.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Holland Lop"
+            }
+          ]
+        },
+        {
+          "lineNumber": 49,
+          "input": "west",
+          "output": "Main Path\n\nA wide gravel path winds through the heart of the zoo. Colorful direction signs point every which way. Wooden benches line the path, and neat flower beds add splashes of color. To the east, a white picket fence surrounds the petting zoo. To the west, a tall mesh enclosure rises above the treetops — the aviary. The entrance gates are back to the north.\n\nYou can see direction signs, wooden benches, flower beds here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Main Path"
+            }
+          ],
+          "comment": "Go to Aviary and check scenery"
+        },
+        {
+          "lineNumber": 52,
+          "input": "west",
+          "output": "Aviary\n\nYou step inside a soaring mesh dome that stretches high above the treetops. Brilliantly colored parrots chatter from rope perches, and a toucan eyes you curiously from a branch overhead. A small waterfall splashes into a stone basin where finches bathe. The exit back to the main path is to the east.\n\nYou can see toucan, parrots, waterfall, rope perches here.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "Aviary"
+            }
+          ]
+        },
+        {
+          "lineNumber": 55,
+          "input": "examine parrots",
+          "output": "A raucous flock of scarlet macaws, green Amazons, and grey African parrots. They squabble over perching spots and crack seeds with powerful beaks. One grey parrot bobs its head and mutters something that sounds suspiciously like \"budget cuts.\"\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "macaws"
+            }
+          ]
+        },
+        {
+          "lineNumber": 58,
+          "input": "examine waterfall",
+          "output": "A gentle artificial waterfall cascading over smooth rocks into a shallow stone basin. Tiny finches splash and preen in the mist. The quiet sound of running water is almost drowned out by the parrots.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "waterfall"
+            }
+          ]
+        },
+        {
+          "lineNumber": 61,
+          "input": "take waterfall",
+          "output": "waterfall is fixed in place.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "fixed in place"
+            }
+          ]
+        },
+        {
+          "lineNumber": 64,
+          "input": "examine perches",
+          "output": "Thick sisal ropes strung between wooden posts at various heights, creating a jungle gym for the birds. The ropes are frayed and chewed in spots — the parrots treat them as both furniture and snacks.\n",
+          "passed": true,
+          "skipped": false,
+          "assertions": [
+            {
+              "type": "ok-contains",
+              "passed": true,
+              "value": "sisal rope"
+            }
+          ]
+        }
+      ],
+      "summary": {
+        "passed": 17,
+        "failed": 0,
+        "skipped": 0,
+        "duration": 63
+      }
+    }
+  ],
+  "summary": {
+    "totalPassed": 17,
+    "totalFailed": 0,
+    "totalSkipped": 0,
+    "totalDuration": 63
+  }
+}
