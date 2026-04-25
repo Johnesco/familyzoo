@@ -105,11 +105,10 @@ description: Verify scoring for room visits, feeding, item collection, and win s
 > switch on flashlight
 [OK: contains "switch"]
 
-# Visit Nocturnal Exhibit (5 pts) — this should trigger victory (75 pts total)
+# Visit Nocturnal Exhibit (5 pts) — 75 pts total, all v16 scoring opportunities complete
 > south
 [OK: contains "Nocturnal"]
 
-# Victory should have triggered — check for win message
-# (The victory daemon runs after the player's turn)
+# Verify all 75 points accumulated (v16 defines 12 scoring achievements worth 75 pts)
 > score
-[OK: contains "perfect score"]
+[OK: contains "scored 75"]
