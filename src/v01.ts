@@ -145,7 +145,7 @@ class FamilyZooStory implements Story {
         'You stand before the gates of the Willowbrook Family Zoo. ' +
         'A cheerful welcome sign arches over the entrance, and a small ' +
         'ticket booth sits to one side. Beyond the gates, you can hear ' +
-        'the distant calls of exotic birds and the chatter of monkeys.',
+        'the distant calls of exotic birds and the chatter of monkeys. [Built for @sharpee/sharpee v0.9.111]',
       aliases: ['entrance', 'gates', 'gate'],
       properName: false,    // Not a proper noun
       article: 'the',      // "the Zoo Entrance"

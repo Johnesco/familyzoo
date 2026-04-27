@@ -7,9 +7,10 @@
     "build": "tsc",
     "dev": "tsc --watch",
     "build:all": "python C:/code/npmsharpee/tools/ship.py familyzoo local --no-test",
-    "test:all": "npx transcript-test . --all",
+    "test:all": "python scripts/test-all.py",
     "ship:local": "python C:/code/npmsharpee/tools/ship.py familyzoo hub-local --no-test",
-    "ship:hub": "python C:/code/npmsharpee/tools/ship.py familyzoo hub --no-test"
+    "ship:hub": "python C:/code/npmsharpee/tools/ship.py familyzoo hub --no-test",
+    "sync:banner": "python scripts/sync-sharpee-banner.py"
   },
   "dependencies": {
     "@sharpee/core": "^0.9.111",

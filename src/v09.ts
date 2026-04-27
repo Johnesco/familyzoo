@@ -91,7 +91,7 @@ class FamilyZooStory implements Story {
 
     const entrance = world.createEntity('Zoo Entrance', EntityType.ROOM);
     entrance.add(new RoomTrait({ exits: {}, isDark: false }));
-    entrance.add(new IdentityTrait({ name: 'Zoo Entrance', description: 'You stand before the wrought-iron gates of the Willowbrook Family Zoo. A cheerful welcome sign arches over the entrance, and a small ticket booth sits to one side. A sturdy iron fence runs along either side of the gates. The main path leads south into the zoo grounds.', aliases: ['entrance', 'gates', 'gate'], properName: false, article: 'the' }));
+    entrance.add(new IdentityTrait({ name: 'Zoo Entrance', description: 'You stand before the wrought-iron gates of the Willowbrook Family Zoo. A cheerful welcome sign arches over the entrance, and a small ticket booth sits to one side. A sturdy iron fence runs along either side of the gates. The main path leads south into the zoo grounds. [Built for @sharpee/sharpee v0.9.111]', aliases: ['entrance', 'gates', 'gate'], properName: false, article: 'the' }));
 
     const mainPath = world.createEntity('Main Path', EntityType.ROOM);
     mainPath.add(new RoomTrait({ exits: {}, isDark: false }));

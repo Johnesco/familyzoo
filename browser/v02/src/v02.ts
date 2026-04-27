@@ -101,7 +101,7 @@ class FamilyZooStory implements Story {
         'You stand before the gates of the Willowbrook Family Zoo. ' +
         'A cheerful welcome sign arches over the entrance, and a small ' +
         'ticket booth sits to one side. The main path leads south into ' +
-        'the zoo grounds.',
+        'the zoo grounds. [Built for @sharpee/sharpee v0.9.111]',
       aliases: ['entrance', 'gates', 'gate'],
       properName: false,
       article: 'the',
