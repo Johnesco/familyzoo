@@ -36,7 +36,8 @@
 #   chatter from rope perches, and a toucan eyes you curiously from a branch
 #   overhead.
 > west
-# examine parrots A raucous flock of scarlet macaws and grey African parrots.
+# examine parrots A magnificent scarlet macaw perched on a rope. It tilts its
+#   head and watches you with one bright eye.
 > examine parrots
 # examine waterfall A gentle artificial waterfall cascading into a stone
 #   basin. *DING DONG* "Attention visitors! One hour until closing.

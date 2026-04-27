@@ -64,10 +64,10 @@ Aviary
 
 You step inside a soaring mesh dome. Brilliantly colored parrots chatter from rope perches, and a toucan eyes you curiously from a branch overhead. A small waterfall splashes into a stone basin. An info plaque hangs near the entrance. The gift shop is to the west. The main path is back to the east.
 
-You can see toucan, waterfall, rope perches, aviary plaque, parrot, parrots here.
+You can see toucan, waterfall, rope perches, aviary plaque, parrot here.
 
 >examine parrots
-A raucous flock of scarlet macaws and grey African parrots.
+A magnificent scarlet macaw perched on a rope. It tilts its head and watches you with one bright eye.
 
 >examine waterfall
 A gentle artificial waterfall cascading into a stone basin.

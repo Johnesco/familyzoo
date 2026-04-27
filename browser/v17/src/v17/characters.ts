@@ -148,7 +148,7 @@ export function createCharacters(world: WorldModel, rooms: RoomIds): CharacterId
 
   const parrot = actor('parrot')
     .description('A magnificent scarlet macaw perched on a rope. It tilts its head and watches you with one bright eye.')
-    .aliases('parrot', 'macaw', 'scarlet macaw')
+    .aliases('parrot', 'parrots', 'macaw', 'macaws', 'scarlet macaw', 'birds')
     .addTrait(new NpcTrait({ behaviorId: 'zoo-parrot', canMove: false, isAlive: true, isConscious: true }))
     .addTrait(new PettableTrait('parrot'))
     .in(aviaryEntity)
@@ -170,13 +170,6 @@ export function createCharacters(world: WorldModel, rooms: RoomIds): CharacterId
     .scenery()
     .addTrait(new PettableTrait('rabbits'))
     .in(pettingZooEntity)
-    .build();
-
-  const parrotsScenery = object('parrots')
-    .description('A raucous flock of scarlet macaws and grey African parrots.')
-    .aliases('parrots', 'macaws', 'birds')
-    .scenery()
-    .in(aviaryEntity)
     .build();
 
   return {

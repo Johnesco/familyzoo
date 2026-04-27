@@ -5,7 +5,11 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
-    "dev": "tsc --watch"
+    "dev": "tsc --watch",
+    "build:all": "bash C:/code/npmsharpee/ship.sh familyzoo local --no-test",
+    "test:all": "npx transcript-test . --all",
+    "ship:local": "bash C:/code/npmsharpee/ship.sh familyzoo hub-local --no-test",
+    "ship:hub": "bash C:/code/npmsharpee/ship.sh familyzoo hub --no-test"
   },
   "dependencies": {
     "@sharpee/core": "^0.9.111",

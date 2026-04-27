@@ -23,8 +23,9 @@
  *   > west                (walk to the Aviary)
  *
  * BUILD & RUN:
- *   ./build.sh -s familyzoo
- *   node dist/cli/sharpee.js --story tutorials/familyzoo --play
+ *   npm run build
+ *   npx transcript-test . tests/transcripts/v02-navigation.transcript
+ *   # Or play interactively:  npx transcript-test . --play
  */
 
 // ============================================================================
@@ -200,7 +201,7 @@ class FamilyZooStory implements Story {
     // ========================================================================
 
     // --- Welcome Sign (Zoo Entrance) ---
-    const sign = world.createEntity('welcome sign', EntityType.SCENERY);
+    const sign = world.createEntity('welcome sign', EntityType.OBJECT);
     sign.add(new IdentityTrait({
       name: 'welcome sign',
       description:
@@ -215,7 +216,7 @@ class FamilyZooStory implements Story {
     world.moveEntity(sign.id, entrance.id);
 
     // --- Ticket Booth (Zoo Entrance) ---
-    const booth = world.createEntity('ticket booth', EntityType.SCENERY);
+    const booth = world.createEntity('ticket booth', EntityType.OBJECT);
     booth.add(new IdentityTrait({
       name: 'ticket booth',
       description:
@@ -230,7 +231,7 @@ class FamilyZooStory implements Story {
     world.moveEntity(booth.id, entrance.id);
 
     // --- Direction Signs (Main Path) ---
-    const directionSigns = world.createEntity('direction signs', EntityType.SCENERY);
+    const directionSigns = world.createEntity('direction signs', EntityType.OBJECT);
     directionSigns.add(new IdentityTrait({
       name: 'direction signs',
       description:
@@ -245,7 +246,7 @@ class FamilyZooStory implements Story {
     world.moveEntity(directionSigns.id, mainPath.id);
 
     // --- Goats (Petting Zoo) ---
-    const goats = world.createEntity('pygmy goats', EntityType.SCENERY);
+    const goats = world.createEntity('pygmy goats', EntityType.OBJECT);
     goats.add(new IdentityTrait({
       name: 'pygmy goats',
       description:
@@ -261,7 +262,7 @@ class FamilyZooStory implements Story {
     world.moveEntity(goats.id, pettingZoo.id);
 
     // --- Toucan (Aviary) ---
-    const toucan = world.createEntity('toucan', EntityType.SCENERY);
+    const toucan = world.createEntity('toucan', EntityType.OBJECT);
     toucan.add(new IdentityTrait({
       name: 'toucan',
       description:

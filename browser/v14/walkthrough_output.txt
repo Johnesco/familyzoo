@@ -40,7 +40,7 @@ Aviary
 
 You step inside a soaring mesh dome. Brilliantly colored parrots chatter from rope perches, and a toucan eyes you curiously from a branch overhead. A small waterfall splashes into a stone basin. An info plaque hangs near the entrance. The gift shop is to the west. The main path is back to the east.
 
-You can see toucan, waterfall, rope perches, aviary plaque, parrot, parrots here.
+You can see toucan, waterfall, rope perches, aviary plaque, parrot here.
 
 >pet parrot
 You reach toward the parrot. CHOMP! It nips your finger with its beak. "NO TOUCHING!" it squawks indignantly.

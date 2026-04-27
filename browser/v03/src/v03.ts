@@ -10,7 +10,7 @@
  * WHAT YOU'LL LEARN:
  *   - SceneryTrait prevents taking ("fixed in place")
  *   - Scenery can still be examined — it has IdentityTrait with a description
- *   - EntityType.SCENERY vs EntityType.ITEM — the difference matters
+ *   - EntityType.OBJECT + SceneryTrait — the modern scenery pattern
  *   - Scenery makes rooms feel alive without cluttering the inventory
  *
  * TRY IT:
@@ -21,8 +21,9 @@
  *   > take hay bale        (still can't take it)
  *
  * BUILD & RUN:
- *   ./build.sh -s familyzoo
- *   node dist/cli/sharpee.js --story tutorials/familyzoo --play
+ *   npm run build
+ *   npx transcript-test . tests/transcripts/v03-scenery.transcript
+ *   # Or play interactively:  npx transcript-test . --play
  */
 
 // ============================================================================
@@ -198,16 +199,17 @@ class FamilyZooStory implements Story {
     //   ✓ Architectural features (walls, doors, windows)
     //   ✗ DON'T use for items the player should pick up (maps, keys, tools)
     //
-    // EntityType.SCENERY vs SceneryTrait:
-    //   EntityType.SCENERY is just a label — it hints at what the entity IS
-    //   but doesn't actually DO anything on its own.
-    //   SceneryTrait is the actual mechanism that blocks taking.
-    //   You need BOTH for a proper scenery object.
+    // EntityType.OBJECT + SceneryTrait:
+    //   Scenery uses EntityType.OBJECT — the same type as portable items.
+    //   It's the SceneryTrait that actually makes something non-portable.
+    //   EntityType.OBJECT is the general-purpose type for things in the world;
+    //   SceneryTrait is the mechanism that blocks taking and marks it as
+    //   fixed in place. The trait does all the work — the type is just a label.
 
 
     // --- Zoo Entrance Scenery ---
 
-    const sign = world.createEntity('welcome sign', EntityType.SCENERY);
+    const sign = world.createEntity('welcome sign', EntityType.OBJECT);
     sign.add(new IdentityTrait({
       name: 'welcome sign',
       description:
@@ -221,7 +223,7 @@ class FamilyZooStory implements Story {
     sign.add(new SceneryTrait());
     world.moveEntity(sign.id, entrance.id);
 
-    const booth = world.createEntity('ticket booth', EntityType.SCENERY);
+    const booth = world.createEntity('ticket booth', EntityType.OBJECT);
     booth.add(new IdentityTrait({
       name: 'ticket booth',
       description:
@@ -236,7 +238,7 @@ class FamilyZooStory implements Story {
     world.moveEntity(booth.id, entrance.id);
 
     // NEW: The iron fence around the zoo grounds
-    const fence = world.createEntity('iron fence', EntityType.SCENERY);
+    const fence = world.createEntity('iron fence', EntityType.OBJECT);
     fence.add(new IdentityTrait({
       name: 'iron fence',
       description:
@@ -253,7 +255,7 @@ class FamilyZooStory implements Story {
 
     // --- Main Path Scenery ---
 
-    const directionSigns = world.createEntity('direction signs', EntityType.SCENERY);
+    const directionSigns = world.createEntity('direction signs', EntityType.OBJECT);
     directionSigns.add(new IdentityTrait({
       name: 'direction signs',
       description:
@@ -268,7 +270,7 @@ class FamilyZooStory implements Story {
     world.moveEntity(directionSigns.id, mainPath.id);
 
     // NEW: Benches along the path
-    const benches = world.createEntity('wooden benches', EntityType.SCENERY);
+    const benches = world.createEntity('wooden benches', EntityType.OBJECT);
     benches.add(new IdentityTrait({
       name: 'wooden benches',
       description:
@@ -283,7 +285,7 @@ class FamilyZooStory implements Story {
     world.moveEntity(benches.id, mainPath.id);
 
     // NEW: Flower beds
-    const flowerBeds = world.createEntity('flower beds', EntityType.SCENERY);
+    const flowerBeds = world.createEntity('flower beds', EntityType.OBJECT);
     flowerBeds.add(new IdentityTrait({
       name: 'flower beds',
       description:
@@ -300,7 +302,7 @@ class FamilyZooStory implements Story {
 
     // --- Petting Zoo Scenery ---
 
-    const goats = world.createEntity('pygmy goats', EntityType.SCENERY);
+    const goats = world.createEntity('pygmy goats', EntityType.OBJECT);
     goats.add(new IdentityTrait({
       name: 'pygmy goats',
       description:
@@ -316,7 +318,7 @@ class FamilyZooStory implements Story {
     world.moveEntity(goats.id, pettingZoo.id);
 
     // NEW: The hay bale
-    const hayBale = world.createEntity('hay bale', EntityType.SCENERY);
+    const hayBale = world.createEntity('hay bale', EntityType.OBJECT);
     hayBale.add(new IdentityTrait({
       name: 'hay bale',
       description:
@@ -331,7 +333,7 @@ class FamilyZooStory implements Story {
     world.moveEntity(hayBale.id, pettingZoo.id);
 
     // NEW: The rabbits
-    const rabbits = world.createEntity('rabbits', EntityType.SCENERY);
+    const rabbits = world.createEntity('rabbits', EntityType.OBJECT);
     rabbits.add(new IdentityTrait({
       name: 'rabbits',
       description:
@@ -346,7 +348,7 @@ class FamilyZooStory implements Story {
     world.moveEntity(rabbits.id, pettingZoo.id);
 
     // NEW: The picket fence / pig pen
-    const picketFence = world.createEntity('picket fence', EntityType.SCENERY);
+    const picketFence = world.createEntity('picket fence', EntityType.OBJECT);
     picketFence.add(new IdentityTrait({
       name: 'picket fence',
       description:
@@ -363,7 +365,7 @@ class FamilyZooStory implements Story {
 
     // --- Aviary Scenery ---
 
-    const toucan = world.createEntity('toucan', EntityType.SCENERY);
+    const toucan = world.createEntity('toucan', EntityType.OBJECT);
     toucan.add(new IdentityTrait({
       name: 'toucan',
       description:
@@ -378,7 +380,7 @@ class FamilyZooStory implements Story {
     world.moveEntity(toucan.id, aviary.id);
 
     // NEW: The parrots
-    const parrots = world.createEntity('parrots', EntityType.SCENERY);
+    const parrots = world.createEntity('parrots', EntityType.OBJECT);
     parrots.add(new IdentityTrait({
       name: 'parrots',
       description:
@@ -394,7 +396,7 @@ class FamilyZooStory implements Story {
     world.moveEntity(parrots.id, aviary.id);
 
     // NEW: The waterfall
-    const waterfall = world.createEntity('waterfall', EntityType.SCENERY);
+    const waterfall = world.createEntity('waterfall', EntityType.OBJECT);
     waterfall.add(new IdentityTrait({
       name: 'waterfall',
       description:
@@ -410,7 +412,7 @@ class FamilyZooStory implements Story {
     world.moveEntity(waterfall.id, aviary.id);
 
     // NEW: Rope perches
-    const perches = world.createEntity('rope perches', EntityType.SCENERY);
+    const perches = world.createEntity('rope perches', EntityType.OBJECT);
     perches.add(new IdentityTrait({
       name: 'rope perches',
       description:
