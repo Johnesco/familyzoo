@@ -45,7 +45,7 @@ export function createZooMap(world: WorldModel): { rooms: RoomIds; keycardId: st
   // --- Rooms ---
 
   const entrance = room('Zoo Entrance')
-    .description('You stand before the wrought-iron gates of the Willowbrook Family Zoo. A cheerful welcome sign arches over the entrance, and a small ticket booth sits to one side. A sturdy iron fence runs along either side of the gates. The main path leads south into the zoo grounds. [Built for @sharpee/sharpee v0.9.111]')
+    .description('You stand before the wrought-iron gates of the Willowbrook Family Zoo. A cheerful welcome sign arches over the entrance, and a small ticket booth sits to one side. A sturdy iron fence runs along either side of the gates. The main path leads south into the zoo grounds. [Built for @sharpee/sharpee v0.9.113]')
     .aliases('entrance', 'gates', 'gate')
     .build();
 
