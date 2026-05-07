@@ -1,11 +1,11 @@
 title: V01 — A Single Room
 story: familyzoo
 author: Sharpee Tutorial
-description: Verify that the Zoo Entrance room exists with scenery objects
+description: Verify the Zoo Entrance room exists, scenery is examineable but unliftable, the player has a working inventory, and a roomless world refuses navigation gracefully.
 
 ---
 
-# V1 teaches: look and examine in a single room
+# V1 teaches: look + examine + scenery + player setup + empty-exits room
 
 # The game starts at the Zoo Entrance
 > look
@@ -14,18 +14,61 @@ description: Verify that the Zoo Entrance room exists with scenery objects
 [OK: contains "welcome sign"]
 [OK: contains "ticket booth"]
 
-# Examine the welcome sign
+# Scenery has descriptions
 > examine sign
 [OK: contains "WELCOME TO WILLOWBROOK"]
 
-# Examine the ticket booth
 > examine booth
 [OK: contains "Self-Guided Tours"]
 
-# Scenery can't be taken
+# Aliases on IdentityTrait are real, not decoration
+# (the welcome sign declares aliases: ['sign', 'welcome sign', 'wooden sign'])
+> examine wooden sign
+[OK: contains "WELCOME TO WILLOWBROOK"]
+
+# SceneryTrait applies per-entity — both pieces of scenery must reject 'take'
 > take sign
 [OK: contains "fixed in place"]
 
-# Try looking again to confirm the room is stable
+> take booth
+[OK: contains "fixed in place"]
+
+# Player has ContainerTrait and starts empty.
+# lang-en-us has 5 empty-inventory variants — engine picks one per run, and the
+# choice is not deterministic across runs. "empty" appears in 2 of them
+# (hands/pockets); "carrying" in the other 3. Use contains_any so any variant
+# satisfies the assertion.
+> inventory
+[OK: contains_any "empty" "carrying"]
+
+# RoomTrait with no exits refuses movement gracefully
+> north
+[OK: contains "no obvious exits"]
+
+# Looking again confirms room stability
 > look
 [OK: contains "Zoo Entrance"]
+
+
+# === Currently FAILING — these assertions encode the v01 doc's promises    ===
+# === but hit upstream bugs in @sharpee/sharpee@0.9.113. They turn red in   ===
+# === the test viewer until upstream fixes land, then go green as regression ===
+# === protection. See ChicagoDave/sharpee#107 + #108.                        ===
+
+# Player aliases (declared as ['self', 'myself', 'me']) — should resolve to
+# the player's IdentityTrait description. Currently fails: "you can't see any
+# such thing." Will go green when actor-alias resolution is fixed.
+> examine yourself
+[OK: contains "ordinary visitor"]
+
+# Room aliases (declared as ['entrance', 'gates', 'gate']) — should resolve to
+# the room's IdentityTrait description. Currently fails for the same reason.
+> examine entrance
+[OK: contains "Willowbrook"]
+
+# Silent turn — the inserting action emits a messageId
+# (if.action.inserting.fixed_in_place) that has no template registered, so
+# the player sees nothing. Tracked as #107. Will go green once the helper's
+# error key is namespaced and a template lands.
+> put sign in booth
+[OK: contains "fixed in place"]

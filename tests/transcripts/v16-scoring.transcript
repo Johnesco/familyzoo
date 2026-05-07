@@ -109,6 +109,9 @@ description: Verify scoring for room visits, feeding, item collection, and win s
 > south
 [OK: contains "Nocturnal"]
 
-# Verify all 75 points accumulated (v16 defines 12 scoring achievements worth 75 pts)
+# Verify all 75 points accumulated (v16 defines 12 scoring achievements worth 75 pts).
+# Engine renders the perfect-score case as "perfect score of 75 points" in
+# lang-en-us; assert "75 points" so the test stays robust if the prefix wording
+# shifts between "perfect score of", "scored", "achieved", etc.
 > score
-[OK: contains "scored 75"]
+[OK: contains "75 points"]

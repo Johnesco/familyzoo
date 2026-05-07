@@ -1,0 +1,176 @@
+title: V01 — Comprehensive playthrough (blank-output sweep)
+story: familyzoo
+author: Sharpee Tutorial
+description: Exercise v01's command surface to flag blank/silent responses or other engine glitches in the simplest possible Sharpee story.
+
+---
+
+# === Documented commands from the tutorial ===
+
+> look
+[OK: contains "Zoo Entrance"]
+
+> examine sign
+[OK: contains "WELCOME"]
+
+> examine booth
+[OK: contains "Self-Guided"]
+
+> take sign
+[OK: contains "fixed in place"]
+
+> inventory
+[OK: contains "carry"]
+
+# === Aliases — should resolve to scenery ===
+
+> examine wooden sign
+[OK: contains "WELCOME"]
+
+> examine welcome sign
+[OK: contains "WELCOME"]
+
+> examine window
+[OK: contains "Self-Guided"]
+
+> x sign
+
+> x booth
+
+# === Self-examination ===
+
+> examine yourself
+
+> examine me
+
+> examine self
+
+# === Room-targeting ===
+
+> examine entrance
+
+> examine gates
+
+> examine gate
+
+# === Look variants ===
+
+> l
+
+> look around
+
+# === Scenery — second take target (booth) ===
+
+> take booth
+[OK: contains "fixed in place"]
+
+> take welcome sign
+[OK: contains "fixed in place"]
+
+# === Try-to-take by alias ===
+
+> get sign
+
+> grab booth
+
+# === Drop / put when nothing held ===
+
+> drop sign
+
+> put sign in booth
+
+# === Movement when no exits ===
+
+> north
+
+> n
+
+> south
+
+> east
+
+> west
+
+> up
+
+> down
+
+> go north
+
+> go up
+
+# === Verbs the engine should know about, even though nothing matches ===
+
+> read sign
+
+> open sign
+
+> close sign
+
+> unlock sign
+
+> lock sign
+
+> turn on sign
+
+> push sign
+
+> pull sign
+
+> wear sign
+
+> wait
+
+> z
+
+# === Sensing verbs ===
+
+> smell
+
+> smell sign
+
+> listen
+
+> listen to sign
+
+> touch sign
+
+> taste sign
+
+# === Targets that don't exist ===
+
+> examine penguin
+
+> take elephant
+
+> examine the moon
+
+# === Empty / weird input ===
+
+>
+
+> .
+
+> hello
+
+> xyzzy
+
+> asdf
+
+# === Long compound input ===
+
+> take the welcome sign and the ticket booth
+
+> examine the small wooden welcome sign
+
+# === Meta / engine commands ===
+
+> score
+
+> verbose
+
+> brief
+
+> help
+
+> about

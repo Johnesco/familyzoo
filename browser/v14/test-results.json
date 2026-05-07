@@ -1,7 +1,7 @@
 {
   "version": "v14",
   "storyId": "familyzoo-14",
-  "timestamp": "2026-04-17T12:40:27.899Z",
+  "timestamp": "2026-05-05T14:07:03.056Z",
   "transcripts": [
     {
       "file": "v14-capability-dispatch.transcript",
@@ -21,7 +21,7 @@
               "value": "Main Path"
             }
           ],
-          "comment": "Go to petting zoo"
+          "comment": "V14 teaches: Capability dispatch — same verb, different behavior per entity\nGo to petting zoo"
         },
         {
           "lineNumber": 15,
@@ -35,8 +35,7 @@
               "passed": true,
               "value": "Petting Zoo"
             }
-          ],
-          "comment": "V14 teaches: Capability dispatch — same verb, different behavior per entity"
+          ]
         },
         {
           "lineNumber": 19,
@@ -111,7 +110,7 @@
         {
           "lineNumber": 36,
           "input": "west",
-          "output": "Aviary\n\nYou step inside a soaring mesh dome. Brilliantly colored parrots chatter from rope perches, and a toucan eyes you curiously from a branch overhead. A small waterfall splashes into a stone basin. An info plaque hangs near the entrance. The gift shop is to the west. The main path is back to the east.\n\nYou can see toucan, waterfall, rope perches, aviary plaque, parrots, parrot here.\n",
+          "output": "Aviary\n\nYou step inside a soaring mesh dome. Brilliantly colored parrots chatter from rope perches, and a toucan eyes you curiously from a branch overhead. A small waterfall splashes into a stone basin. An info plaque hangs near the entrance. The gift shop is to the west. The main path is back to the east.\n\nYou can see toucan, waterfall, rope perches, aviary plaque, parrot here.\n",
           "passed": true,
           "skipped": false,
           "assertions": [
@@ -146,7 +145,7 @@
         "passed": 8,
         "failed": 0,
         "skipped": 0,
-        "duration": 62
+        "duration": 145
       }
     }
   ],
@@ -154,6 +153,6 @@
     "totalPassed": 8,
     "totalFailed": 0,
     "totalSkipped": 0,
-    "totalDuration": 62
+    "totalDuration": 145
   }
 }

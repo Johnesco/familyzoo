@@ -1,7 +1,7 @@
 {
   "version": "v08",
   "storyId": "familyzoo-08",
-  "timestamp": "2026-04-17T12:38:56.758Z",
+  "timestamp": "2026-05-05T14:04:45.165Z",
   "transcripts": [
     {
       "file": "v08-light.transcript",
@@ -21,7 +21,7 @@
               "value": "Taken"
             }
           ],
-          "comment": "Get the keycard and unlock the staff gate"
+          "comment": "V8 teaches: isDark rooms, LightSourceTrait, SwitchableTrait\nGet the keycard and unlock the staff gate"
         },
         {
           "lineNumber": 14,
@@ -35,13 +35,12 @@
               "passed": true,
               "value": "Main Path"
             }
-          ],
-          "comment": "V8 teaches: isDark rooms, LightSourceTrait, SwitchableTrait"
+          ]
         },
         {
           "lineNumber": 17,
           "input": "unlock gate with keycard",
-          "output": "You unlock staff gate with staff keycard.\n",
+          "output": "You unlock the staff gate with the staff keycard.\n",
           "passed": true,
           "skipped": false,
           "assertions": [
@@ -55,7 +54,7 @@
         {
           "lineNumber": 20,
           "input": "open gate",
-          "output": "You open staff gate.\n",
+          "output": "You open the staff gate.\n",
           "passed": true,
           "skipped": false,
           "assertions": [
@@ -237,7 +236,7 @@
         "passed": 15,
         "failed": 0,
         "skipped": 0,
-        "duration": 64
+        "duration": 141
       }
     }
   ],
@@ -245,6 +244,6 @@
     "totalPassed": 15,
     "totalFailed": 0,
     "totalSkipped": 0,
-    "totalDuration": 64
+    "totalDuration": 141
   }
 }

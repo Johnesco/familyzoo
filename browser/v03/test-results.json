@@ -1,7 +1,7 @@
 {
   "version": "v03",
   "storyId": "familyzoo-03",
-  "timestamp": "2026-04-17T12:37:51.411Z",
+  "timestamp": "2026-05-05T14:03:07.338Z",
   "transcripts": [
     {
       "file": "v03-scenery.transcript",
@@ -11,7 +11,7 @@
         {
           "lineNumber": 11,
           "input": "look",
-          "output": "Family Zoo\nBy Sharpee Tutorial\n\nType HELP for instructions.\n\nZoo Entrance\n\nYou stand before the wrought-iron gates of the Willowbrook Family Zoo. A cheerful welcome sign arches over the entrance, and a small ticket booth sits to one side. A sturdy iron fence runs along either side of the gates. The main path leads south into the zoo grounds.\n\nYou can see welcome sign, ticket booth, iron fence here.\n",
+          "output": "Family Zoo\nBy Sharpee Tutorial\n\nType HELP for instructions.\n\nZoo Entrance\n\nYou stand before the wrought-iron gates of the Willowbrook Family Zoo. A cheerful welcome sign arches over the entrance, and a small ticket booth sits to one side. A sturdy iron fence runs along either side of the gates. The main path leads south into the zoo grounds. [Built for @sharpee/sharpee v0.9.113]\n\nYou can see welcome sign, ticket booth, iron fence here.\n",
           "passed": true,
           "skipped": false,
           "assertions": [
@@ -26,7 +26,7 @@
               "value": "iron fence"
             }
           ],
-          "comment": "Check scenery at the entrance"
+          "comment": "V3 teaches: SceneryTrait — examine yes, take no\nCheck scenery at the entrance"
         },
         {
           "lineNumber": 15,
@@ -45,13 +45,12 @@
               "passed": true,
               "value": "animal silhouettes"
             }
-          ],
-          "comment": "V3 teaches: SceneryTrait — examine yes, take no"
+          ]
         },
         {
           "lineNumber": 19,
           "input": "take fence",
-          "output": "iron fence is fixed in place.\n",
+          "output": "The iron fence is fixed in place.\n",
           "passed": true,
           "skipped": false,
           "assertions": [
@@ -108,7 +107,7 @@
         {
           "lineNumber": 32,
           "input": "take bench",
-          "output": "wooden benches is fixed in place.\n",
+          "output": "The wooden benches is fixed in place.\n",
           "passed": true,
           "skipped": false,
           "assertions": [
@@ -151,7 +150,7 @@
         {
           "lineNumber": 42,
           "input": "take hay bale",
-          "output": "hay bale is fixed in place.\n",
+          "output": "The hay bale is fixed in place.\n",
           "passed": true,
           "skipped": false,
           "assertions": [
@@ -215,7 +214,7 @@
             {
               "type": "ok-contains",
               "passed": true,
-              "value": "macaws"
+              "value": "macaw"
             }
           ]
         },
@@ -236,7 +235,7 @@
         {
           "lineNumber": 61,
           "input": "take waterfall",
-          "output": "waterfall is fixed in place.\n",
+          "output": "The waterfall is fixed in place.\n",
           "passed": true,
           "skipped": false,
           "assertions": [
@@ -266,7 +265,7 @@
         "passed": 17,
         "failed": 0,
         "skipped": 0,
-        "duration": 63
+        "duration": 135
       }
     }
   ],
@@ -274,6 +273,6 @@
     "totalPassed": 17,
     "totalFailed": 0,
     "totalSkipped": 0,
-    "totalDuration": 63
+    "totalDuration": 135
   }
 }

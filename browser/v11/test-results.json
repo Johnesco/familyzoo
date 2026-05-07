@@ -1,7 +1,7 @@
 {
   "version": "v11",
   "storyId": "familyzoo-11",
-  "timestamp": "2026-04-17T12:39:38.549Z",
+  "timestamp": "2026-05-05T14:05:55.132Z",
   "transcripts": [
     {
       "file": "v11-npcs.transcript",
@@ -11,7 +11,7 @@
         {
           "lineNumber": 12,
           "input": "look",
-          "output": "Family Zoo\nBy Sharpee Tutorial\n\nType HELP for instructions.\n\nZoo Entrance\n\nYou stand before the wrought-iron gates of the Willowbrook Family Zoo. A cheerful welcome sign arches over the entrance, and a small ticket booth sits to one side. A sturdy iron fence runs along either side of the gates. The main path leads south into the zoo grounds.\n\nYou can see staff keycard, welcome sign, ticket booth, iron fence, zoo brochure, zoo map, backpack here.\n",
+          "output": "Family Zoo\nBy Sharpee Tutorial\n\nType HELP for instructions.\n\nZoo Entrance\n\nYou stand before the wrought-iron gates of the Willowbrook Family Zoo. A cheerful welcome sign arches over the entrance, and a small ticket booth sits to one side. A sturdy iron fence runs along either side of the gates. The main path leads south into the zoo grounds. [Built for @sharpee/sharpee v0.9.113]\n\nYou can see staff keycard, welcome sign, ticket booth, iron fence, zoo brochure, zoo map, backpack here.\n",
           "passed": true,
           "skipped": false,
           "assertions": [
@@ -21,7 +21,7 @@
               "value": "Zoo Entrance"
             }
           ],
-          "comment": "The player starts at the Zoo Entrance"
+          "comment": "V11 teaches: NPCs with NpcTrait, NpcPlugin, patrol and custom behaviors\nThe player starts at the Zoo Entrance"
         },
         {
           "lineNumber": 16,
@@ -61,7 +61,7 @@
         {
           "lineNumber": 25,
           "input": "west",
-          "output": "Aviary\n\nYou step inside a soaring mesh dome. Brilliantly colored parrots chatter from rope perches, and a toucan eyes you curiously from a branch overhead. A small waterfall splashes into a stone basin. An info plaque hangs near the entrance. The exit back to the main path is to the east.\n\nYou can see toucan, parrots, waterfall, rope perches, aviary plaque, parrot here.\n",
+          "output": "Aviary\n\nYou step inside a soaring mesh dome. Brilliantly colored parrots chatter from rope perches, and a toucan eyes you curiously from a branch overhead. A small waterfall splashes into a stone basin. An info plaque hangs near the entrance. The exit back to the main path is to the east.\n\nYou can see toucan, waterfall, rope perches, aviary plaque, parrot here.\n",
           "passed": true,
           "skipped": false,
           "assertions": [
@@ -106,7 +106,7 @@
               "value": "Time passes"
             }
           ],
-          "comment": "We just confirm the wait command works without errors"
+          "comment": "Wait a few turns — the parrot may speak (behavior is random)\nWe just confirm the wait command works without errors"
         },
         {
           "lineNumber": 38,
@@ -120,8 +120,7 @@
               "passed": true,
               "value": "Time passes"
             }
-          ],
-          "comment": "Wait a few turns — the parrot may speak (behavior is random)"
+          ]
         },
         {
           "lineNumber": 42,
@@ -143,7 +142,7 @@
         "passed": 8,
         "failed": 0,
         "skipped": 0,
-        "duration": 83
+        "duration": 116
       }
     }
   ],
@@ -151,6 +150,6 @@
     "totalPassed": 8,
     "totalFailed": 0,
     "totalSkipped": 0,
-    "totalDuration": 83
+    "totalDuration": 116
   }
 }

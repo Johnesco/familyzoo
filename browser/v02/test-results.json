@@ -1,7 +1,7 @@
 {
   "version": "v02",
   "storyId": "familyzoo-02",
-  "timestamp": "2026-04-17T12:37:37.594Z",
+  "timestamp": "2026-05-05T14:02:48.997Z",
   "transcripts": [
     {
       "file": "v02-navigation.transcript",
@@ -11,7 +11,7 @@
         {
           "lineNumber": 11,
           "input": "look",
-          "output": "Family Zoo\nBy Sharpee Tutorial\n\nType HELP for instructions.\n\nZoo Entrance\n\nYou stand before the gates of the Willowbrook Family Zoo. A cheerful welcome sign arches over the entrance, and a small ticket booth sits to one side. The main path leads south into the zoo grounds.\n\nYou can see welcome sign, ticket booth here.\n",
+          "output": "Family Zoo\nBy Sharpee Tutorial\n\nType HELP for instructions.\n\nZoo Entrance\n\nYou stand before the gates of the Willowbrook Family Zoo. A cheerful welcome sign arches over the entrance, and a small ticket booth sits to one side. The main path leads south into the zoo grounds. [Built for @sharpee/sharpee v0.9.113]\n\nYou can see welcome sign, ticket booth here.\n",
           "passed": true,
           "skipped": false,
           "assertions": [
@@ -21,7 +21,7 @@
               "value": "Zoo Entrance"
             }
           ],
-          "comment": "Start at Zoo Entrance"
+          "comment": "V2 teaches: multiple rooms, Direction exits, going action\nStart at Zoo Entrance"
         },
         {
           "lineNumber": 15,
@@ -181,7 +181,7 @@
         {
           "lineNumber": 54,
           "input": "north",
-          "output": "Zoo Entrance\n\nYou stand before the gates of the Willowbrook Family Zoo. A cheerful welcome sign arches over the entrance, and a small ticket booth sits to one side. The main path leads south into the zoo grounds.\n\nYou can see welcome sign, ticket booth here.\n",
+          "output": "Zoo Entrance\n\nYou stand before the gates of the Willowbrook Family Zoo. A cheerful welcome sign arches over the entrance, and a small ticket booth sits to one side. The main path leads south into the zoo grounds. [Built for @sharpee/sharpee v0.9.113]\n\nYou can see welcome sign, ticket booth here.\n",
           "passed": true,
           "skipped": false,
           "assertions": [
@@ -198,7 +198,7 @@
         "passed": 10,
         "failed": 0,
         "skipped": 0,
-        "duration": 32
+        "duration": 101
       }
     }
   ],
@@ -206,6 +206,6 @@
     "totalPassed": 10,
     "totalFailed": 0,
     "totalSkipped": 0,
-    "totalDuration": 32
+    "totalDuration": 101
   }
 }

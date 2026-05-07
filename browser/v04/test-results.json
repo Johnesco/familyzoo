@@ -1,7 +1,7 @@
 {
   "version": "v04",
   "storyId": "familyzoo-04",
-  "timestamp": "2026-04-17T12:38:04.457Z",
+  "timestamp": "2026-05-05T14:03:27.083Z",
   "transcripts": [
     {
       "file": "v04-portable.transcript",
@@ -11,7 +11,7 @@
         {
           "lineNumber": 11,
           "input": "look",
-          "output": "Family Zoo\nBy Sharpee Tutorial\n\nType HELP for instructions.\n\nZoo Entrance\n\nYou stand before the wrought-iron gates of the Willowbrook Family Zoo. A cheerful welcome sign arches over the entrance, and a small ticket booth sits to one side. A sturdy iron fence runs along either side of the gates. The main path leads south into the zoo grounds.\n\nYou can see welcome sign, ticket booth, iron fence, zoo map here.\n",
+          "output": "Family Zoo\nBy Sharpee Tutorial\n\nType HELP for instructions.\n\nZoo Entrance\n\nYou stand before the wrought-iron gates of the Willowbrook Family Zoo. A cheerful welcome sign arches over the entrance, and a small ticket booth sits to one side. A sturdy iron fence runs along either side of the gates. The main path leads south into the zoo grounds. [Built for @sharpee/sharpee v0.9.113]\n\nYou can see welcome sign, ticket booth, iron fence, zoo map here.\n",
           "passed": true,
           "skipped": false,
           "assertions": [
@@ -21,7 +21,7 @@
               "value": "Zoo Entrance"
             }
           ],
-          "comment": "Start at entrance — zoo map should be here"
+          "comment": "V4 teaches: portable items, take, drop, inventory\nStart at entrance — zoo map should be here"
         },
         {
           "lineNumber": 15,
@@ -160,8 +160,7 @@
               "passed": true,
               "value": "Taken"
             }
-          ],
-          "comment": "V4 teaches: portable items, take, drop, inventory"
+          ]
         },
         {
           "lineNumber": 50,
@@ -185,7 +184,7 @@
         {
           "lineNumber": 55,
           "input": "take goats",
-          "output": "pygmy goats is fixed in place.\n",
+          "output": "The pygmy goats is fixed in place.\n",
           "passed": true,
           "skipped": false,
           "assertions": [
@@ -202,7 +201,7 @@
         "passed": 12,
         "failed": 0,
         "skipped": 0,
-        "duration": 41
+        "duration": 76
       }
     }
   ],
@@ -210,6 +209,6 @@
     "totalPassed": 12,
     "totalFailed": 0,
     "totalSkipped": 0,
-    "totalDuration": 41
+    "totalDuration": 76
   }
 }

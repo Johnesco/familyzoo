@@ -76,20 +76,21 @@ for VER in "${VERSIONS[@]}"; do
     continue
   fi
 
-  # Step 3: Run transcript-test with JSON output
+  # Step 3: Run transcript-test with JSON output.
+  # Note: a non-zero exit code from transcript-test means at least one
+  # assertion failed — that's a *valid result*, not a build failure. We
+  # only treat it as a build failure if no JSON gets written. Failing
+  # assertions need to land in test-results.json so the viewer can show
+  # them red (regression markers, expected-failure tracking, etc.).
   RESULT_DIR="$TMP_DIR/$VER"
   mkdir -p "$RESULT_DIR"
 
-  if ! npx transcript-test . "${TRANSCRIPT_FILES[@]}" -o "$RESULT_DIR" 2>/dev/null; then
-    echo "TEST RUN FAILED"
-    FAILED=$((FAILED + 1))
-    continue
-  fi
+  npx transcript-test . "${TRANSCRIPT_FILES[@]}" -o "$RESULT_DIR" 2>/dev/null || true
 
   # Find the generated JSON file (timestamped)
   RESULT_JSON=$(ls "$RESULT_DIR"/results_*.json 2>/dev/null | head -1)
   if [ -z "$RESULT_JSON" ]; then
-    echo "NO JSON OUTPUT"
+    echo "NO JSON OUTPUT (test runner produced no result file)"
     FAILED=$((FAILED + 1))
     continue
   fi

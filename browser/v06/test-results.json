@@ -1,7 +1,7 @@
 {
   "version": "v06",
   "storyId": "familyzoo-06",
-  "timestamp": "2026-04-17T12:38:31.612Z",
+  "timestamp": "2026-05-05T14:04:10.086Z",
   "transcripts": [
     {
       "file": "v06-openable.transcript",
@@ -21,12 +21,12 @@
               "value": "Main Path"
             }
           ],
-          "comment": "Go to Main Path where the lunchbox is"
+          "comment": "V6 teaches: OpenableTrait — open and close containers\nGo to Main Path where the lunchbox is"
         },
         {
           "lineNumber": 15,
           "input": "open lunchbox",
-          "output": "You open lunchbox.\nInside the lunchbox you see juice box.\n",
+          "output": "You open the lunchbox.\nInside the lunchbox you see juice box.\n",
           "passed": true,
           "skipped": false,
           "assertions": [
@@ -41,7 +41,7 @@
         {
           "lineNumber": 19,
           "input": "look in lunchbox",
-          "output": "In lunchbox you see: juice box.\n",
+          "output": "In the lunchbox you see: juice box.\n",
           "passed": true,
           "skipped": false,
           "assertions": [
@@ -56,7 +56,7 @@
         {
           "lineNumber": 23,
           "input": "close lunchbox",
-          "output": "You close lunchbox.\n",
+          "output": "You close the lunchbox.\n",
           "passed": true,
           "skipped": false,
           "assertions": [
@@ -86,7 +86,7 @@
         {
           "lineNumber": 31,
           "input": "open dispenser",
-          "output": "You open feed dispenser, which is empty.\n",
+          "output": "You open the feed dispenser, which is empty.\n",
           "passed": true,
           "skipped": false,
           "assertions": [
@@ -101,7 +101,7 @@
         {
           "lineNumber": 35,
           "input": "take dispenser",
-          "output": "feed dispenser is fixed in place.\n",
+          "output": "The feed dispenser is fixed in place.\n",
           "passed": true,
           "skipped": false,
           "assertions": [
@@ -118,7 +118,7 @@
         "passed": 7,
         "failed": 0,
         "skipped": 0,
-        "duration": 50
+        "duration": 56
       }
     }
   ],
@@ -126,6 +126,6 @@
     "totalPassed": 7,
     "totalFailed": 0,
     "totalSkipped": 0,
-    "totalDuration": 50
+    "totalDuration": 56
   }
 }

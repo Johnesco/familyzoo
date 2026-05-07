@@ -1,7 +1,7 @@
 {
   "version": "v05",
   "storyId": "familyzoo-05",
-  "timestamp": "2026-04-17T12:38:19.138Z",
+  "timestamp": "2026-05-05T14:03:49.860Z",
   "transcripts": [
     {
       "file": "v05-containers.transcript",
@@ -21,7 +21,7 @@
               "value": "Taken"
             }
           ],
-          "comment": "Take the backpack (portable container)"
+          "comment": "V5 teaches: ContainerTrait, SupporterTrait, put in, put on\nTake the backpack (portable container)"
         },
         {
           "lineNumber": 15,
@@ -41,7 +41,7 @@
         {
           "lineNumber": 19,
           "input": "put map in backpack",
-          "output": "You put zoo map in backpack.\n",
+          "output": "You put the zoo map in the backpack.\n",
           "passed": true,
           "skipped": false,
           "assertions": [
@@ -56,7 +56,7 @@
         {
           "lineNumber": 23,
           "input": "look in backpack",
-          "output": "In backpack you see: zoo map.\n",
+          "output": "In the backpack you see: zoo map.\n",
           "passed": true,
           "skipped": false,
           "assertions": [
@@ -101,7 +101,7 @@
         {
           "lineNumber": 35,
           "input": "put penny on bench",
-          "output": "You put souvenir penny on park bench.\n",
+          "output": "You put the souvenir penny on the park bench.\n",
           "passed": true,
           "skipped": false,
           "assertions": [
@@ -116,7 +116,7 @@
         {
           "lineNumber": 39,
           "input": "examine bench",
-          "output": "A sturdy park bench painted forest green. A small brass plaque reads: \"In memory of Mr. Whiskers, the world's friendliest capybara, 2019–2024.\"\nOn park bench you see souvenir penny.\n",
+          "output": "A sturdy park bench painted forest green. A small brass plaque reads: \"In memory of Mr. Whiskers, the world's friendliest capybara, 2019–2024.\"\nOn the park bench you see souvenir penny.\n",
           "passed": true,
           "skipped": false,
           "assertions": [
@@ -146,7 +146,7 @@
         {
           "lineNumber": 47,
           "input": "take dispenser",
-          "output": "feed dispenser is fixed in place.\n",
+          "output": "The feed dispenser is fixed in place.\n",
           "passed": true,
           "skipped": false,
           "assertions": [
@@ -183,7 +183,7 @@
         "passed": 11,
         "failed": 0,
         "skipped": 0,
-        "duration": 62
+        "duration": 123
       }
     }
   ],
@@ -191,6 +191,6 @@
     "totalPassed": 11,
     "totalFailed": 0,
     "totalSkipped": 0,
-    "totalDuration": 62
+    "totalDuration": 123
   }
 }

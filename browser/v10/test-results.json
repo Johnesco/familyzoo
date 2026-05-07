@@ -1,7 +1,7 @@
 {
   "version": "v10",
   "storyId": "familyzoo-10",
-  "timestamp": "2026-04-17T12:39:22.643Z",
+  "timestamp": "2026-05-05T14:05:28.322Z",
   "transcripts": [
     {
       "file": "v10-switchable.transcript",
@@ -21,7 +21,7 @@
               "value": "Taken"
             }
           ],
-          "comment": "Navigate to supply room"
+          "comment": "V10 teaches: SwitchableTrait standalone (on/off without light)\nNavigate to supply room"
         },
         {
           "lineNumber": 14,
@@ -35,13 +35,12 @@
               "passed": true,
               "value": "Main Path"
             }
-          ],
-          "comment": "V10 teaches: SwitchableTrait standalone (on/off without light)"
+          ]
         },
         {
           "lineNumber": 17,
           "input": "unlock gate with keycard",
-          "output": "You unlock staff gate with staff keycard.\n",
+          "output": "You unlock the staff gate with the staff keycard.\n",
           "passed": true,
           "skipped": false,
           "assertions": [
@@ -55,7 +54,7 @@
         {
           "lineNumber": 20,
           "input": "open gate",
-          "output": "You open staff gate.\n",
+          "output": "You open the staff gate.\n",
           "passed": true,
           "skipped": false,
           "assertions": [
@@ -103,7 +102,7 @@
         {
           "lineNumber": 32,
           "input": "switch on radio",
-          "output": "radio hums to life.\n",
+          "output": "The radio hums to life.\n",
           "passed": true,
           "skipped": false,
           "assertions": [
@@ -118,7 +117,7 @@
         {
           "lineNumber": 36,
           "input": "switch off radio",
-          "output": "radio powers down with a soft whir.\n",
+          "output": "The radio powers down with a soft whir.\n",
           "passed": true,
           "skipped": false,
           "assertions": [
@@ -133,7 +132,7 @@
         {
           "lineNumber": 40,
           "input": "take radio",
-          "output": "radio is fixed in place.\n",
+          "output": "The radio is fixed in place.\n",
           "passed": true,
           "skipped": false,
           "assertions": [
@@ -150,7 +149,7 @@
         "passed": 9,
         "failed": 0,
         "skipped": 0,
-        "duration": 51
+        "duration": 237
       }
     }
   ],
@@ -158,6 +157,6 @@
     "totalPassed": 9,
     "totalFailed": 0,
     "totalSkipped": 0,
-    "totalDuration": 51
+    "totalDuration": 237
   }
 }

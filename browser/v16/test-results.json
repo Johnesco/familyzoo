@@ -1,7 +1,7 @@
 {
   "version": "v16",
   "storyId": "familyzoo-16",
-  "timestamp": "2026-04-17T12:40:51.131Z",
+  "timestamp": "2026-05-06T10:15:21.821Z",
   "transcripts": [
     {
       "file": "v16-scoring.transcript",
@@ -21,7 +21,7 @@
               "value": "scored 0"
             }
           ],
-          "comment": "Check initial score"
+          "comment": "V16 teaches: Scoring with world.awardScore() and victory daemon\nCheck initial score"
         },
         {
           "lineNumber": 16,
@@ -50,13 +50,12 @@
               "passed": true,
               "value": "Taken"
             }
-          ],
-          "comment": "V16 teaches: Scoring with world.awardScore() and victory daemon"
+          ]
         },
         {
           "lineNumber": 23,
           "input": "read brochure",
-          "output": "Zoo brochure reads:\nWILLOWBROOK FAMILY ZOO — Your Guide\n\nEXHIBITS:\n  Petting Zoo — East from Main Path\n  Aviary — West from Main Path\n  Gift Shop — West from Aviary\n  Nocturnal Animals — Staff Area\n\n\"Where every visit is a wild adventure!\"\n",
+          "output": "The zoo brochure reads:\nWILLOWBROOK FAMILY ZOO — Your Guide\n\nEXHIBITS:\n  Petting Zoo — East from Main Path\n  Aviary — West from Main Path\n  Gift Shop — West from Aviary\n  Nocturnal Animals — Staff Area\n\n\"Where every visit is a wild adventure!\"\n",
           "passed": true,
           "skipped": false,
           "assertions": [
@@ -190,7 +189,7 @@
         {
           "lineNumber": 57,
           "input": "west",
-          "output": "Aviary\n\nYou step inside a soaring mesh dome. Brilliantly colored parrots chatter from rope perches, and a toucan eyes you curiously from a branch overhead. A small waterfall splashes into a stone basin. An info plaque hangs near the entrance. The gift shop is to the west. The main path is back to the east.\n\nYou can see toucan, waterfall, rope perches, aviary plaque, parrots, parrot here.\n",
+          "output": "Aviary\n\nYou step inside a soaring mesh dome. Brilliantly colored parrots chatter from rope perches, and a toucan eyes you curiously from a branch overhead. A small waterfall splashes into a stone basin. An info plaque hangs near the entrance. The gift shop is to the west. The main path is back to the east.\n\nYou can see toucan, waterfall, rope perches, aviary plaque, parrot here.\n",
           "passed": true,
           "skipped": false,
           "assertions": [
@@ -248,7 +247,7 @@
         {
           "lineNumber": 72,
           "input": "put penny in press",
-          "output": "You put souvenir penny in souvenir press.\nCLUNK! CRUNCH! WHIRRR! The souvenir press produces a beautiful pressed penny with an embossed toucan.\n",
+          "output": "You put the souvenir penny in the souvenir press.\nCLUNK! CRUNCH! WHIRRR! The souvenir press produces a beautiful pressed penny with an embossed toucan.\n",
           "passed": true,
           "skipped": false,
           "assertions": [
@@ -263,7 +262,7 @@
         {
           "lineNumber": 76,
           "input": "east",
-          "output": "Aviary\n\nYou step inside a soaring mesh dome. Brilliantly colored parrots chatter from rope perches, and a toucan eyes you curiously from a branch overhead. A small waterfall splashes into a stone basin. An info plaque hangs near the entrance. The gift shop is to the west. The main path is back to the east.\n\nYou can see toucan, waterfall, rope perches, aviary plaque, parrots, parrot here.\n",
+          "output": "Aviary\n\nYou step inside a soaring mesh dome. Brilliantly colored parrots chatter from rope perches, and a toucan eyes you curiously from a branch overhead. A small waterfall splashes into a stone basin. An info plaque hangs near the entrance. The gift shop is to the west. The main path is back to the east.\n\nYou can see toucan, waterfall, rope perches, aviary plaque, parrot here.\n",
           "passed": true,
           "skipped": false,
           "assertions": [
@@ -292,7 +291,7 @@
         {
           "lineNumber": 82,
           "input": "north",
-          "output": "Zoo Entrance\n\nYou stand before the wrought-iron gates of the Willowbrook Family Zoo. A cheerful welcome sign arches over the entrance, and a small ticket booth sits to one side. A sturdy iron fence runs along either side of the gates. The main path leads south into the zoo grounds.\n\nYou can see staff keycard, welcome sign, ticket booth, iron fence, backpack here.\n*DING DONG* \"It's FEEDING TIME at the Petting Zoo! Come watch our pygmy goats and rabbits enjoy their favorite snacks!\"\n",
+          "output": "Zoo Entrance\n\nYou stand before the wrought-iron gates of the Willowbrook Family Zoo. A cheerful welcome sign arches over the entrance, and a small ticket booth sits to one side. A sturdy iron fence runs along either side of the gates. The main path leads south into the zoo grounds. [Built for @sharpee/sharpee v0.9.113]\n\nYou can see staff keycard, welcome sign, ticket booth, iron fence, backpack here.\n*DING DONG* \"It's FEEDING TIME at the Petting Zoo! Come watch our pygmy goats and rabbits enjoy their favorite snacks!\"\n",
           "passed": true,
           "skipped": false,
           "assertions": [
@@ -334,7 +333,7 @@
         {
           "lineNumber": 91,
           "input": "unlock gate with keycard",
-          "output": "You unlock staff gate with staff keycard.\n",
+          "output": "You unlock the staff gate with the staff keycard.\n",
           "passed": true,
           "skipped": false,
           "assertions": [
@@ -348,7 +347,7 @@
         {
           "lineNumber": 94,
           "input": "open gate",
-          "output": "You open staff gate.\n",
+          "output": "You open the staff gate.\n",
           "passed": true,
           "skipped": false,
           "assertions": [
@@ -416,10 +415,10 @@
               "value": "Nocturnal"
             }
           ],
-          "comment": "Visit Nocturnal Exhibit (5 pts) — this should trigger victory (75 pts total)"
+          "comment": "Visit Nocturnal Exhibit (5 pts) — 75 pts total, all v16 scoring opportunities complete"
         },
         {
-          "lineNumber": 114,
+          "lineNumber": 116,
           "input": "score",
           "output": "You have achieved a perfect score of 75 points!\n",
           "passed": true,
@@ -428,17 +427,17 @@
             {
               "type": "ok-contains",
               "passed": true,
-              "value": "perfect score"
+              "value": "75 points"
             }
           ],
-          "comment": "(The victory daemon runs after the player's turn)"
+          "comment": "Verify all 75 points accumulated (v16 defines 12 scoring achievements worth 75 pts).\nEngine renders the perfect-score case as \"perfect score of 75 points\" in\nlang-en-us; assert \"75 points\" so the test stays robust if the prefix wording\nshifts between \"perfect score of\", \"scored\", \"achieved\", etc."
         }
       ],
       "summary": {
         "passed": 29,
         "failed": 0,
         "skipped": 0,
-        "duration": 102
+        "duration": 153
       }
     }
   ],
@@ -446,6 +445,6 @@
     "totalPassed": 29,
     "totalFailed": 0,
     "totalSkipped": 0,
-    "totalDuration": 102
+    "totalDuration": 153
   }
 }

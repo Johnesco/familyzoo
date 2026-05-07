@@ -415,164 +415,74 @@ html, body {
   white-space: nowrap;
 }
 
-/* --- Detail view --- */
-.detail-transcript {
-  margin-bottom: 32px;
+/* --- Unified row: clickable summary header that expands inline to detail --- */
+.summary-cmd {
+  cursor: pointer;
+  border-radius: 3px;
+  transition: background 0.1s;
 }
-
-.detail-transcript-header {
-  font-size: 1.15em;
-  font-weight: bold;
-  color: #e8d8b0;
-  margin-bottom: 6px;
-  padding-bottom: 6px;
-  border-bottom: 1px solid #2a2418;
+.summary-cmd:hover { background: #1a1810; }
+.summary-cmd-expand-icon {
+  width: 14px;
+  flex-shrink: 0;
+  text-align: center;
+  color: #665544;
+  font-size: 0.7em;
+  user-select: none;
+  margin-right: 2px;
+  transition: transform 0.15s;
+  display: inline-block;
 }
+.summary-cmd.expanded .summary-cmd-expand-icon { transform: rotate(90deg); }
 
-.detail-transcript-desc {
-  font-size: 0.85em;
-  color: #887755;
-  margin-bottom: 16px;
-  line-height: 1.4;
+.summary-cmd-body {
+  display: none;
+  margin: 4px 0 12px 34px;
+  padding: 8px 12px;
+  background: #090908;
+  border-left: 2px solid #2a2418;
+  border-radius: 0 3px 3px 0;
+  font-family: "SF Mono", "Fira Code", Consolas, "Courier New", monospace;
+  font-size: 0.82em;
+  line-height: 1.5;
 }
-
-.detail-command {
-  margin-bottom: 12px;
-  padding: 12px 16px;
-  background: #0e0e0c;
-  border: 1px solid #1e1a14;
-  border-radius: 4px;
-}
-
-.detail-command.has-failure {
-  border-color: #3a2418;
-}
-
-.detail-comment {
-  font-size: 0.8em;
+.summary-cmd.expanded + .summary-cmd-body { display: block; }
+.summary-cmd-body .body-comment {
   color: #776655;
   font-style: italic;
   margin-bottom: 6px;
-  padding-left: 2px;
 }
-
-.detail-cmd-line {
+.summary-cmd-body .body-asserts { margin-bottom: 8px; }
+.summary-cmd-body .body-assert {
   display: flex;
-  align-items: baseline;
-  font-family: "SF Mono", "Fira Code", Consolas, "Courier New", monospace;
-  font-size: 0.9em;
-  margin-bottom: 8px;
-}
-
-.detail-cmd-num {
-  min-width: 28px;
-  text-align: right;
-  padding-right: 10px;
-  color: #7a6a50;
-  user-select: none;
-  font-size: 0.85em;
-}
-
-.detail-cmd-prompt {
-  color: #e8d090;
-  margin-right: 6px;
-  user-select: none;
-  font-weight: bold;
-}
-
-.detail-cmd-text {
-  color: #e8d090;
-  font-weight: bold;
-}
-
-.detail-assertions {
-  margin: 8px 0;
-  padding-left: 38px;
-}
-
-.detail-assertion {
-  display: flex;
-  align-items: baseline;
   gap: 8px;
-  padding: 2px 0;
-  font-family: "SF Mono", "Fira Code", Consolas, "Courier New", monospace;
-  font-size: 0.82em;
-  line-height: 1.5;
+  padding: 1px 0;
 }
-
-.assert-icon {
-  flex-shrink: 0;
-  font-weight: bold;
-  width: 16px;
-  text-align: center;
-}
-
-.assert-icon.pass { color: #8bab6e; }
-.assert-icon.fail { color: #cc6644; }
-
-.assert-text { color: #b8a888; }
-.assert-text.fail { color: #cc6644; }
-
-.detail-output-toggle {
-  display: inline-block;
-  margin-top: 6px;
-  margin-left: 38px;
-  font-family: "SF Mono", "Fira Code", Consolas, "Courier New", monospace;
-  font-size: 0.78em;
+.summary-cmd-body .body-assert .assert-icon { width: 14px; text-align: center; flex-shrink: 0; font-weight: bold; }
+.summary-cmd-body .body-assert .assert-icon.pass { color: #8bab6e; }
+.summary-cmd-body .body-assert .assert-icon.fail { color: #cc6644; }
+.summary-cmd-body .body-assert .assert-text { color: #b8a888; }
+.summary-cmd-body .body-assert .assert-text.fail { color: #cc6644; }
+.summary-cmd-body .body-output-label {
   color: #665544;
-  cursor: pointer;
-  border-bottom: 1px solid transparent;
+  font-size: 0.92em;
+  margin-top: 4px;
+  margin-bottom: 4px;
   user-select: none;
-  transition: color 0.1s;
 }
-
-.detail-output-toggle:hover {
-  color: #aa9966;
-  border-bottom-color: #aa9966;
-}
-
-.detail-output {
-  display: none;
-  margin-top: 8px;
-  margin-left: 38px;
-  padding: 10px 14px;
-  background: #090908;
-  border: 1px solid #1e1a14;
-  border-radius: 3px;
-  font-family: "SF Mono", "Fira Code", Consolas, "Courier New", monospace;
-  font-size: 0.82em;
+.summary-cmd-body .body-output {
+  background: #050505;
+  border: 1px solid #1a1612;
+  border-radius: 2px;
+  padding: 8px 12px;
   color: #998866;
   white-space: pre-wrap;
   word-wrap: break-word;
-  line-height: 1.5;
 }
-
-.detail-output.visible {
-  display: block;
-}
-
-.detail-output .room-name {
-  color: #e8d8b0;
-  font-weight: bold;
-}
-
-.detail-output .score-line {
-  color: #aa9966;
-  font-style: italic;
-}
-
-/* --- Detail collapse/expand --- */
-.detail-command-header { cursor: pointer; user-select: none; }
-.detail-command-header:hover { background: #151510; }
-.detail-command-body { display: none; }
-.detail-command.expanded .detail-command-body { display: block; }
-.detail-command.has-failure .detail-command-body { display: block; }
-.detail-expand-icon { color: #665544; font-size: 0.8em; margin-right: 4px; transition: transform 0.15s; display: inline-block; }
-.detail-command.expanded .detail-expand-icon { transform: rotate(90deg); }
 
 /* --- Failures-only filter --- */
-.detail-command.hidden-by-filter,
 .summary-cmd.hidden-by-filter,
+.summary-cmd-body.hidden-by-filter,
 .summary-card.hidden-by-filter { display: none; }
 
 /* --- Search highlights --- */
@@ -659,10 +569,8 @@ html, body {
     </div>
     <div class="main">
       <div class="toolbar">
-        <button class="toggle-btn active" id="btn-summary">Summary</button>
-        <button class="toggle-btn" id="btn-detail">Detail</button>
-        <button class="toggle-btn" id="btn-expand-all" style="display:none">Expand All</button>
-        <button class="toggle-btn" id="btn-collapse-all" style="display:none">Collapse All</button>
+        <button class="toggle-btn" id="btn-expand-all">Expand all</button>
+        <button class="toggle-btn" id="btn-collapse-all">Collapse all</button>
         <button class="toggle-btn" id="btn-failures-only">Failures only</button>
         <input type="text" class="search-box" id="search" placeholder="Search... (Ctrl+F)">
         <span class="spacer"></span>
@@ -678,7 +586,6 @@ html, body {
 <script>
 var DATA_URL = 'test-results.json';
 var testData = null;
-var currentView = 'summary';
 var activeTranscriptIndex = -1;
 var failuresOnly = false;
 
@@ -897,40 +804,27 @@ function buildNav() {
 
 /* ---- Scroll to a transcript section ---- */
 function scrollToTranscript(index) {
-  var target;
-  if (currentView === 'summary') {
-    target = document.getElementById('summary-' + index);
-  } else {
-    target = document.getElementById('detail-' + index);
-  }
+  var target = document.getElementById('summary-' + index);
   if (target) target.scrollIntoView({ block: 'start', behavior: 'smooth' });
 }
 
-/* ---- Scroll to a specific command ---- */
+/* ---- Scroll to a specific command + auto-expand it ---- */
 function scrollToCommand(transcriptIndex, commandIndex) {
   var target = document.getElementById('cmd-' + transcriptIndex + '-' + commandIndex);
-  if (target) {
-    target.scrollIntoView({ block: 'start', behavior: 'smooth' });
-    // Brief highlight
-    target.style.outline = '1px solid #5a4a30';
-    setTimeout(function() { target.style.outline = ''; }, 1500);
-  } else {
-    // If in summary view, switch to detail for the scroll
-    if (currentView === 'summary') {
-      showDetail();
-      setTimeout(function() {
-        var el = document.getElementById('cmd-' + transcriptIndex + '-' + commandIndex);
-        if (el) {
-          el.scrollIntoView({ block: 'start', behavior: 'smooth' });
-          el.style.outline = '1px solid #5a4a30';
-          setTimeout(function() { el.style.outline = ''; }, 1500);
-        }
-      }, 50);
-    }
-  }
+  if (!target) return;
+  // Make sure it's expanded so the body is visible after scroll.
+  target.classList.add('expanded');
+  target.scrollIntoView({ block: 'start', behavior: 'smooth' });
+  target.style.outline = '1px solid #5a4a30';
+  setTimeout(function() { target.style.outline = ''; }, 1500);
 }
 
-/* ---- Render Summary view ---- */
+/* ---- Render the unified view: compact rows that expand inline. ----
+ * Each command renders TWO sibling elements:
+ *   1. .summary-cmd          \u2014 clickable header (always visible)
+ *   2. .summary-cmd-body     \u2014 assertions + output (hidden until .expanded)
+ * Failed rows start expanded so the user immediately sees what went wrong.
+ */
 function renderSummary() {
   if (!testData || !testData.transcripts) return '<div class="empty-msg">No transcripts found.</div>';
 
@@ -938,11 +832,10 @@ function renderSummary() {
 
   for (var t = 0; t < testData.transcripts.length; t++) {
     var tr = testData.transcripts[t];
-    var hasFail = tr.summary.failed > 0;
 
     html += '<div class="summary-card" id="summary-' + t + '">';
 
-    // Header
+    // Transcript header
     html += '<div class="summary-card-header">';
     html += '<div>';
     html += '<div class="summary-card-title">' + esc(tr.title || tr.file) + '</div>';
@@ -964,7 +857,7 @@ function renderSummary() {
     html += '</div>';
     html += '</div>';
 
-    // Commands list
+    // Commands \u2014 compact rows + hidden expanded bodies
     html += '<div class="summary-commands">';
     for (var c = 0; c < tr.commands.length; c++) {
       var cmd = tr.commands[c];
@@ -973,8 +866,11 @@ function renderSummary() {
       var iconClass = cmdFail ? 'fail' : 'pass';
       var textClass = cmdFail ? ' fail' : '';
       var assertCount = commandAssertionCount(cmd);
+      var rowId = 'cmd-' + t + '-' + c;
 
-      html += '<div class="summary-cmd" id="cmd-' + t + '-' + c + '">';
+      // 1. Clickable header
+      html += '<div class="summary-cmd' + (cmdFail ? ' expanded' : '') + '" id="' + rowId + '">';
+      html += '<span class="summary-cmd-expand-icon">\u25b8</span>';
       html += '<span class="summary-cmd-icon ' + iconClass + '">' + icon + '</span>';
       html += '<span class="summary-cmd-num">' + (c + 1) + '</span>';
       html += '<span class="summary-cmd-prompt">&gt;</span>';
@@ -987,93 +883,39 @@ function renderSummary() {
         html += '<span class="summary-cmd-assert-count">' + passedCount + '/' + assertCount + '</span>';
       }
       html += '</div>';
-    }
-    html += '</div>';
 
-    html += '</div>';
-  }
-
-  return html;
-}
-
-/* ---- Render Detail view ---- */
-function renderDetail() {
-  if (!testData || !testData.transcripts) return '<div class="empty-msg">No transcripts found.</div>';
-
-  var html = '';
-
-  for (var t = 0; t < testData.transcripts.length; t++) {
-    var tr = testData.transcripts[t];
-
-    html += '<div class="detail-transcript" id="detail-' + t + '">';
-
-    // Transcript header
-    html += '<div class="detail-transcript-header">' + esc(tr.title || tr.file) + '</div>';
-    if (tr.description) {
-      html += '<div class="detail-transcript-desc">' + esc(tr.description) + '</div>';
-    }
-
-    // Commands
-    for (var c = 0; c < tr.commands.length; c++) {
-      var cmd = tr.commands[c];
-      var cmdFail = commandFailed(cmd);
-      var outputId = 'output-' + t + '-' + c;
-
-      html += '<div class="detail-command' + (cmdFail ? ' has-failure' : '') + '" id="cmd-' + t + '-' + c + '">';
-
-      // Clickable header: expand icon + comment + command line
-      html += '<div class="detail-command-header">';
-      var expandIcon = cmdFail ? '\u25be' : '\u25b8';
+      // 2. Expanded body \u2014 assertions + output. CSS shows it iff the preceding
+      //    .summary-cmd has .expanded.
+      html += '<div class="summary-cmd-body" data-row="' + rowId + '">';
       if (cmd.comment) {
-        html += '<div class="detail-comment"><span class="detail-expand-icon">' + expandIcon + '</span>' + esc(cmd.comment) + '</div>';
+        html += '<div class="body-comment">' + esc(cmd.comment) + '</div>';
       }
-      html += '<div class="detail-cmd-line">';
-      if (!cmd.comment) {
-        html += '<span class="detail-expand-icon">' + expandIcon + '</span>';
-      }
-      html += '<span class="detail-cmd-num">' + (c + 1) + '</span>';
-      html += '<span class="detail-cmd-prompt">&gt;</span>';
-      html += '<span class="detail-cmd-text">' + esc(cmd.input) + '</span>';
-      html += '</div>';
-      html += '</div>';
-
-      // Collapsible body: assertions + output
-      html += '<div class="detail-command-body">';
-
-      // Assertions
       if (cmd.assertions && cmd.assertions.length > 0) {
-        html += '<div class="detail-assertions">';
-        for (var a = 0; a < cmd.assertions.length; a++) {
-          var assertion = cmd.assertions[a];
+        html += '<div class="body-asserts">';
+        for (var a2 = 0; a2 < cmd.assertions.length; a2++) {
+          var assertion = cmd.assertions[a2];
           var aIcon = assertion.passed ? '\u2713' : '\u2717';
           var aClass = assertion.passed ? 'pass' : 'fail';
-
-          html += '<div class="detail-assertion">';
+          html += '<div class="body-assert">';
           html += '<span class="assert-icon ' + aClass + '">' + aIcon + '</span>';
           html += '<span class="assert-text' + (assertion.passed ? '' : ' fail') + '">' + esc(formatAssertion(assertion)) + '</span>';
           html += '</div>';
         }
         html += '</div>';
       }
-
-      // Output toggle
       if (cmd.output) {
-        html += '<span class="detail-output-toggle" data-output="' + outputId + '">Show output</span>';
-
         var outputLines = cmd.output.split('\n');
         var outputHtml = '';
         for (var o = 0; o < outputLines.length; o++) {
           outputHtml += renderOutputLine(outputLines[o], o, outputLines);
           if (o < outputLines.length - 1) outputHtml += '\n';
         }
-
-        html += '<div class="detail-output" id="' + outputId + '">' + outputHtml + '</div>';
+        html += '<div class="body-output-label">output</div>';
+        html += '<div class="body-output">' + outputHtml + '</div>';
       }
-
-      html += '</div>'; // end detail-command-body
-
       html += '</div>';
     }
+    html += '</div>';
 
     html += '</div>';
   }
@@ -1094,56 +936,15 @@ function renderEmpty() {
   return html;
 }
 
-/* ---- View switching ---- */
-function showSummary() {
-  currentView = 'summary';
+/* ---- Render: single unified view (compact rows that expand inline) ---- */
+function render() {
   var wrap = document.getElementById('content-wrap');
   wrap.innerHTML = testData ? renderSummary() : renderEmpty();
-  document.getElementById('btn-summary').classList.add('active');
-  document.getElementById('btn-detail').classList.remove('active');
-  document.getElementById('btn-expand-all').style.display = 'none';
-  document.getElementById('btn-collapse-all').style.display = 'none';
-  saveViewPref('summary');
-  applyFailuresFilter();
-  clearSearch();
-  var q = document.getElementById('search').value;
-  if (q && q.length >= 2) doSearch(q);
-}
 
-function showDetail() {
-  currentView = 'detail';
-  var wrap = document.getElementById('content-wrap');
-  wrap.innerHTML = testData ? renderDetail() : renderEmpty();
-  document.getElementById('btn-summary').classList.remove('active');
-  document.getElementById('btn-detail').classList.add('active');
-  document.getElementById('btn-expand-all').style.display = '';
-  document.getElementById('btn-collapse-all').style.display = '';
-  saveViewPref('detail');
-
-  // Attach header click handlers for collapse/expand
-  document.querySelectorAll('.detail-command-header').forEach(function(el) {
-    el.addEventListener('click', function() {
-      var cmd = this.closest('.detail-command');
-      cmd.classList.toggle('expanded');
-      // Update expand icon
-      var icon = cmd.querySelector('.detail-expand-icon');
-      if (icon) {
-        icon.textContent = cmd.classList.contains('expanded') || cmd.classList.contains('has-failure') ? '\u25be' : '\u25b8';
-      }
-    });
-  });
-
-  // Attach output toggle handlers
-  document.querySelectorAll('.detail-output-toggle').forEach(function(el) {
-    el.addEventListener('click', function(e) {
-      e.stopPropagation();
-      var outputId = this.getAttribute('data-output');
-      var outputEl = document.getElementById(outputId);
-      if (outputEl) {
-        var isVisible = outputEl.classList.contains('visible');
-        outputEl.classList.toggle('visible');
-        this.textContent = isVisible ? 'Show output' : 'Hide output';
-      }
+  // Attach click handler \u2014 toggle .expanded on each row.
+  document.querySelectorAll('.summary-cmd').forEach(function(row) {
+    row.addEventListener('click', function() {
+      this.classList.toggle('expanded');
     });
   });
 
@@ -1151,22 +952,6 @@ function showDetail() {
   clearSearch();
   var q = document.getElementById('search').value;
   if (q && q.length >= 2) doSearch(q);
-}
-
-/* ---- localStorage for view preference ---- */
-function getStorageKey() {
-  if (testData && testData.storyId) {
-    return testData.storyId + '-tests-view';
-  }
-  return 'familyzoo-tests-view';
-}
-
-function saveViewPref(view) {
-  try { localStorage.setItem(getStorageKey(), view); } catch (e) { /* noop */ }
-}
-
-function loadViewPref() {
-  try { return localStorage.getItem(getStorageKey()); } catch (e) { return null; }
 }
 
 /* ---- Search ---- */
@@ -1265,48 +1050,41 @@ function prevHit() {
 /* ---- Failures-only filter ---- */
 function applyFailuresFilter() {
   if (!failuresOnly) {
-    // Remove all filter classes
     document.querySelectorAll('.hidden-by-filter').forEach(function(el) {
       el.classList.remove('hidden-by-filter');
     });
     return;
   }
 
-  if (currentView === 'summary') {
-    // Hide passing commands
-    document.querySelectorAll('.summary-cmd').forEach(function(el) {
-      var icon = el.querySelector('.summary-cmd-icon');
-      var isPass = icon && icon.classList.contains('pass');
-      if (isPass) {
-        el.classList.add('hidden-by-filter');
-      } else {
-        el.classList.remove('hidden-by-filter');
+  // Hide passing rows (and the body that follows each).
+  document.querySelectorAll('.summary-cmd').forEach(function(el) {
+    var icon = el.querySelector('.summary-cmd-icon');
+    var isPass = icon && icon.classList.contains('pass');
+    if (isPass) {
+      el.classList.add('hidden-by-filter');
+      var body = el.nextElementSibling;
+      if (body && body.classList.contains('summary-cmd-body')) {
+        body.classList.add('hidden-by-filter');
       }
-    });
-    // Hide summary cards where all commands pass
-    document.querySelectorAll('.summary-card').forEach(function(el) {
-      var cmds = el.querySelectorAll('.summary-cmd');
-      var allPass = true;
-      cmds.forEach(function(cmd) {
-        var icon = cmd.querySelector('.summary-cmd-icon');
-        if (icon && icon.classList.contains('fail')) allPass = false;
-      });
-      if (allPass) {
-        el.classList.add('hidden-by-filter');
-      } else {
-        el.classList.remove('hidden-by-filter');
+    } else {
+      el.classList.remove('hidden-by-filter');
+      var body2 = el.nextElementSibling;
+      if (body2 && body2.classList.contains('summary-cmd-body')) {
+        body2.classList.remove('hidden-by-filter');
       }
+    }
+  });
+  // Hide entire transcript cards if all their commands pass.
+  document.querySelectorAll('.summary-card').forEach(function(el) {
+    var cmds = el.querySelectorAll('.summary-cmd');
+    var allPass = true;
+    cmds.forEach(function(cmd) {
+      var icon = cmd.querySelector('.summary-cmd-icon');
+      if (icon && icon.classList.contains('fail')) allPass = false;
     });
-  } else {
-    // Detail view: hide commands without has-failure
-    document.querySelectorAll('.detail-command').forEach(function(el) {
-      if (!el.classList.contains('has-failure')) {
-        el.classList.add('hidden-by-filter');
-      } else {
-        el.classList.remove('hidden-by-filter');
-      }
-    });
-  }
+    if (allPass) el.classList.add('hidden-by-filter');
+    else el.classList.remove('hidden-by-filter');
+  });
 }
 
 /* ---- Init ---- */
@@ -1345,31 +1123,18 @@ async function init() {
   // Build sidebar
   buildNav();
 
-  // Restore view preference
-  var pref = loadViewPref();
-  if (pref === 'detail') {
-    showDetail();
-  } else {
-    showSummary();
-  }
+  // Initial render \u2014 failed rows auto-expand, passing rows stay collapsed.
+  render();
 
-  // Toggle buttons
-  document.getElementById('btn-summary').addEventListener('click', showSummary);
-  document.getElementById('btn-detail').addEventListener('click', showDetail);
-
-  // Expand All / Collapse All
+  // Expand All / Collapse All operate on the unified rows.
   document.getElementById('btn-expand-all').addEventListener('click', function() {
-    document.querySelectorAll('.detail-command').forEach(function(el) {
+    document.querySelectorAll('.summary-cmd').forEach(function(el) {
       el.classList.add('expanded');
-      var icon = el.querySelector('.detail-expand-icon');
-      if (icon) icon.textContent = '\u25be';
     });
   });
   document.getElementById('btn-collapse-all').addEventListener('click', function() {
-    document.querySelectorAll('.detail-command').forEach(function(el) {
+    document.querySelectorAll('.summary-cmd').forEach(function(el) {
       el.classList.remove('expanded');
-      var icon = el.querySelector('.detail-expand-icon');
-      if (icon) icon.textContent = el.classList.contains('has-failure') ? '\u25be' : '\u25b8';
     });
   });
 

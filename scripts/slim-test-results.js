@@ -106,54 +106,84 @@ function inferVersion(fullJson) {
 // ---------------------------------------------------------------------------
 
 /**
- * Build a map from command lineNumber to the nearest preceding comment.
+ * Build a map from command lineNumber to the nearest preceding comment block.
  *
  * The transcript.items array interleaves comments and commands, but its
  * ordering may not match source-line order (the parser can batch comments).
- * We use line numbers to do a correct nearest-preceding-comment match:
- * for each command at line N, find the comment whose lineNumber is the
- * largest value still < N.
+ * We work in source-line space: comments are first folded into "blocks" —
+ * runs of consecutive comment lines with no command between them — and each
+ * command then attaches the nearest preceding block. The block's text is the
+ * member lines joined with `\n`, so multi-line teaching prose comes through
+ * intact instead of only the last `#` line.
  */
 function buildCommentMap(items) {
-  const map = new Map(); // command lineNumber -> comment text
+  const map = new Map(); // command lineNumber -> joined comment text
 
   if (!items || !Array.isArray(items)) return map;
 
-  // Collect all comments and commands with their line numbers
-  const comments = [];
+  // Collect comments + commands with line numbers.
+  const rawComments = [];
   const commands = [];
   for (const item of items) {
     if (item.type === 'comment' && item.comment) {
-      comments.push({ line: item.comment.lineNumber, text: item.comment.text || '' });
+      rawComments.push({ line: item.comment.lineNumber, text: item.comment.text || '' });
     } else if (item.type === 'command' && item.command) {
       commands.push({ line: item.command.lineNumber });
     }
   }
 
-  // Sort both by line number ascending
-  comments.sort((a, b) => a.line - b.line);
+  rawComments.sort((a, b) => a.line - b.line);
   commands.sort((a, b) => a.line - b.line);
 
-  // For each command, find the nearest preceding comment by line number.
-  // Once a comment is used, remove it so it doesn't attach to a later command.
+  // Fold consecutive comment lines (no command between them) into one block.
+  // A block is keyed by the LAST line in the run; its text joins all member
+  // lines with newlines. Authors' multi-line `# ...` blocks survive intact.
+  const commandLines = new Set(commands.map(c => c.line));
+  const blocks = [];
+  let cur = null;
+  for (const c of rawComments) {
+    if (cur && hasCommandBetween(cur.lastLine, c.line, commandLines)) {
+      blocks.push(cur);
+      cur = null;
+    }
+    if (cur === null) {
+      cur = { firstLine: c.line, lastLine: c.line, lines: [c.text] };
+    } else {
+      cur.lastLine = c.line;
+      cur.lines.push(c.text);
+    }
+  }
+  if (cur !== null) blocks.push(cur);
+
+  // For each command, attach the nearest preceding block (by lastLine).
+  // Once attached, remove the block so it doesn't bind to a later command.
   for (const cmd of commands) {
     let best = null;
     let bestIdx = -1;
-    for (let i = 0; i < comments.length; i++) {
-      if (comments[i].line < cmd.line) {
-        best = comments[i];
+    for (let i = 0; i < blocks.length; i++) {
+      if (blocks[i].lastLine < cmd.line) {
+        best = blocks[i];
         bestIdx = i;
       } else {
-        break; // comments are sorted, no point continuing
+        break;
       }
     }
     if (best) {
-      map.set(cmd.line, best.text);
-      comments.splice(bestIdx, 1);
+      map.set(cmd.line, best.lines.join('\n'));
+      blocks.splice(bestIdx, 1);
     }
   }
 
   return map;
+}
+
+// True if any command line sits strictly between `lo` and `hi` (exclusive).
+// Used to detect when a run of consecutive comment lines is broken by a command.
+function hasCommandBetween(lo, hi, commandLines) {
+  for (let n = lo + 1; n < hi; n++) {
+    if (commandLines.has(n)) return true;
+  }
+  return false;
 }
 
 // ---------------------------------------------------------------------------

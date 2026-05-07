@@ -1,0 +1,1657 @@
+{
+  "transcripts": [
+    {
+      "transcript": {
+        "filePath": "tests/transcripts/v01-single-room.transcript",
+        "header": {
+          "title": "V01 — A Single Room",
+          "story": "familyzoo",
+          "author": "Sharpee Tutorial",
+          "description": "Verify the Zoo Entrance room exists, scenery is examineable but unliftable, the player has a working inventory, and a roomless world refuses navigation gracefully."
+        },
+        "commands": [
+          {
+            "lineNumber": 11,
+            "input": "look",
+            "expectedOutput": [],
+            "assertions": [
+              {
+                "type": "ok-contains",
+                "value": "Zoo Entrance"
+              },
+              {
+                "type": "ok-contains",
+                "value": "Willowbrook Family Zoo"
+              },
+              {
+                "type": "ok-contains",
+                "value": "welcome sign"
+              },
+              {
+                "type": "ok-contains",
+                "value": "ticket booth"
+              }
+            ]
+          },
+          {
+            "lineNumber": 18,
+            "input": "examine sign",
+            "expectedOutput": [],
+            "assertions": [
+              {
+                "type": "ok-contains",
+                "value": "WELCOME TO WILLOWBROOK"
+              }
+            ]
+          },
+          {
+            "lineNumber": 21,
+            "input": "examine booth",
+            "expectedOutput": [],
+            "assertions": [
+              {
+                "type": "ok-contains",
+                "value": "Self-Guided Tours"
+              }
+            ]
+          },
+          {
+            "lineNumber": 26,
+            "input": "examine wooden sign",
+            "expectedOutput": [],
+            "assertions": [
+              {
+                "type": "ok-contains",
+                "value": "WELCOME TO WILLOWBROOK"
+              }
+            ]
+          },
+          {
+            "lineNumber": 30,
+            "input": "take sign",
+            "expectedOutput": [],
+            "assertions": [
+              {
+                "type": "ok-contains",
+                "value": "fixed in place"
+              }
+            ]
+          },
+          {
+            "lineNumber": 33,
+            "input": "take booth",
+            "expectedOutput": [],
+            "assertions": [
+              {
+                "type": "ok-contains",
+                "value": "fixed in place"
+              }
+            ]
+          },
+          {
+            "lineNumber": 37,
+            "input": "inventory",
+            "expectedOutput": [],
+            "assertions": [
+              {
+                "type": "ok-contains",
+                "value": "carry"
+              }
+            ]
+          },
+          {
+            "lineNumber": 41,
+            "input": "north",
+            "expectedOutput": [],
+            "assertions": [
+              {
+                "type": "ok-contains",
+                "value": "no obvious exits"
+              }
+            ]
+          },
+          {
+            "lineNumber": 45,
+            "input": "look",
+            "expectedOutput": [],
+            "assertions": [
+              {
+                "type": "ok-contains",
+                "value": "Zoo Entrance"
+              }
+            ]
+          },
+          {
+            "lineNumber": 57,
+            "input": "examine yourself",
+            "expectedOutput": [],
+            "assertions": [
+              {
+                "type": "ok-contains",
+                "value": "ordinary visitor"
+              }
+            ]
+          },
+          {
+            "lineNumber": 62,
+            "input": "examine entrance",
+            "expectedOutput": [],
+            "assertions": [
+              {
+                "type": "ok-contains",
+                "value": "Willowbrook"
+              }
+            ]
+          },
+          {
+            "lineNumber": 69,
+            "input": "put sign in booth",
+            "expectedOutput": [],
+            "assertions": [
+              {
+                "type": "ok-contains",
+                "value": "fixed in place"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "type": "comment",
+            "comment": {
+              "lineNumber": 8,
+              "text": "V1 teaches: look + examine + scenery + player setup + empty-exits room"
+            }
+          },
+          {
+            "type": "comment",
+            "comment": {
+              "lineNumber": 10,
+              "text": "The game starts at the Zoo Entrance"
+            }
+          },
+          {
+            "type": "comment",
+            "comment": {
+              "lineNumber": 17,
+              "text": "Scenery has descriptions"
+            }
+          },
+          {
+            "type": "command",
+            "command": {
+              "lineNumber": 11,
+              "input": "look",
+              "expectedOutput": [],
+              "assertions": [
+                {
+                  "type": "ok-contains",
+                  "value": "Zoo Entrance"
+                },
+                {
+                  "type": "ok-contains",
+                  "value": "Willowbrook Family Zoo"
+                },
+                {
+                  "type": "ok-contains",
+                  "value": "welcome sign"
+                },
+                {
+                  "type": "ok-contains",
+                  "value": "ticket booth"
+                }
+              ]
+            }
+          },
+          {
+            "type": "command",
+            "command": {
+              "lineNumber": 18,
+              "input": "examine sign",
+              "expectedOutput": [],
+              "assertions": [
+                {
+                  "type": "ok-contains",
+                  "value": "WELCOME TO WILLOWBROOK"
+                }
+              ]
+            }
+          },
+          {
+            "type": "comment",
+            "comment": {
+              "lineNumber": 24,
+              "text": "Aliases on IdentityTrait are real, not decoration"
+            }
+          },
+          {
+            "type": "comment",
+            "comment": {
+              "lineNumber": 25,
+              "text": "(the welcome sign declares aliases: ['sign', 'welcome sign', 'wooden sign'])"
+            }
+          },
+          {
+            "type": "command",
+            "command": {
+              "lineNumber": 21,
+              "input": "examine booth",
+              "expectedOutput": [],
+              "assertions": [
+                {
+                  "type": "ok-contains",
+                  "value": "Self-Guided Tours"
+                }
+              ]
+            }
+          },
+          {
+            "type": "comment",
+            "comment": {
+              "lineNumber": 29,
+              "text": "SceneryTrait applies per-entity — both pieces of scenery must reject 'take'"
+            }
+          },
+          {
+            "type": "command",
+            "command": {
+              "lineNumber": 26,
+              "input": "examine wooden sign",
+              "expectedOutput": [],
+              "assertions": [
+                {
+                  "type": "ok-contains",
+                  "value": "WELCOME TO WILLOWBROOK"
+                }
+              ]
+            }
+          },
+          {
+            "type": "command",
+            "command": {
+              "lineNumber": 30,
+              "input": "take sign",
+              "expectedOutput": [],
+              "assertions": [
+                {
+                  "type": "ok-contains",
+                  "value": "fixed in place"
+                }
+              ]
+            }
+          },
+          {
+            "type": "comment",
+            "comment": {
+              "lineNumber": 36,
+              "text": "Player has ContainerTrait and starts empty"
+            }
+          },
+          {
+            "type": "command",
+            "command": {
+              "lineNumber": 33,
+              "input": "take booth",
+              "expectedOutput": [],
+              "assertions": [
+                {
+                  "type": "ok-contains",
+                  "value": "fixed in place"
+                }
+              ]
+            }
+          },
+          {
+            "type": "comment",
+            "comment": {
+              "lineNumber": 40,
+              "text": "RoomTrait with no exits refuses movement gracefully"
+            }
+          },
+          {
+            "type": "command",
+            "command": {
+              "lineNumber": 37,
+              "input": "inventory",
+              "expectedOutput": [],
+              "assertions": [
+                {
+                  "type": "ok-contains",
+                  "value": "carry"
+                }
+              ]
+            }
+          },
+          {
+            "type": "comment",
+            "comment": {
+              "lineNumber": 44,
+              "text": "Looking again confirms room stability"
+            }
+          },
+          {
+            "type": "command",
+            "command": {
+              "lineNumber": 41,
+              "input": "north",
+              "expectedOutput": [],
+              "assertions": [
+                {
+                  "type": "ok-contains",
+                  "value": "no obvious exits"
+                }
+              ]
+            }
+          },
+          {
+            "type": "comment",
+            "comment": {
+              "lineNumber": 49,
+              "text": "=== Currently FAILING — these assertions encode the v01 doc's promises    ==="
+            }
+          },
+          {
+            "type": "comment",
+            "comment": {
+              "lineNumber": 50,
+              "text": "=== but hit upstream bugs in @sharpee/sharpee@0.9.113. They turn red in   ==="
+            }
+          },
+          {
+            "type": "comment",
+            "comment": {
+              "lineNumber": 51,
+              "text": "=== the test viewer until upstream fixes land, then go green as regression ==="
+            }
+          },
+          {
+            "type": "comment",
+            "comment": {
+              "lineNumber": 52,
+              "text": "=== protection. See ChicagoDave/sharpee#107 + #108.                        ==="
+            }
+          },
+          {
+            "type": "comment",
+            "comment": {
+              "lineNumber": 54,
+              "text": "Player aliases (declared as ['self', 'myself', 'me']) — should resolve to"
+            }
+          },
+          {
+            "type": "comment",
+            "comment": {
+              "lineNumber": 55,
+              "text": "the player's IdentityTrait description. Currently fails: \"you can't see any"
+            }
+          },
+          {
+            "type": "comment",
+            "comment": {
+              "lineNumber": 56,
+              "text": "such thing.\" Will go green when actor-alias resolution is fixed."
+            }
+          },
+          {
+            "type": "command",
+            "command": {
+              "lineNumber": 45,
+              "input": "look",
+              "expectedOutput": [],
+              "assertions": [
+                {
+                  "type": "ok-contains",
+                  "value": "Zoo Entrance"
+                }
+              ]
+            }
+          },
+          {
+            "type": "comment",
+            "comment": {
+              "lineNumber": 60,
+              "text": "Room aliases (declared as ['entrance', 'gates', 'gate']) — should resolve to"
+            }
+          },
+          {
+            "type": "comment",
+            "comment": {
+              "lineNumber": 61,
+              "text": "the room's IdentityTrait description. Currently fails for the same reason."
+            }
+          },
+          {
+            "type": "command",
+            "command": {
+              "lineNumber": 57,
+              "input": "examine yourself",
+              "expectedOutput": [],
+              "assertions": [
+                {
+                  "type": "ok-contains",
+                  "value": "ordinary visitor"
+                }
+              ]
+            }
+          },
+          {
+            "type": "comment",
+            "comment": {
+              "lineNumber": 65,
+              "text": "Silent turn — the inserting action emits a messageId"
+            }
+          },
+          {
+            "type": "comment",
+            "comment": {
+              "lineNumber": 66,
+              "text": "(if.action.inserting.fixed_in_place) that has no template registered, so"
+            }
+          },
+          {
+            "type": "comment",
+            "comment": {
+              "lineNumber": 67,
+              "text": "the player sees nothing. Tracked as #107. Will go green once the helper's"
+            }
+          },
+          {
+            "type": "comment",
+            "comment": {
+              "lineNumber": 68,
+              "text": "error key is namespaced and a template lands."
+            }
+          },
+          {
+            "type": "command",
+            "command": {
+              "lineNumber": 62,
+              "input": "examine entrance",
+              "expectedOutput": [],
+              "assertions": [
+                {
+                  "type": "ok-contains",
+                  "value": "Willowbrook"
+                }
+              ]
+            }
+          },
+          {
+            "type": "command",
+            "command": {
+              "lineNumber": 69,
+              "input": "put sign in booth",
+              "expectedOutput": [],
+              "assertions": [
+                {
+                  "type": "ok-contains",
+                  "value": "fixed in place"
+                }
+              ]
+            }
+          }
+        ],
+        "goals": [],
+        "comments": [
+          "V1 teaches: look + examine + scenery + player setup + empty-exits room",
+          "The game starts at the Zoo Entrance",
+          "Scenery has descriptions",
+          "Aliases on IdentityTrait are real, not decoration",
+          "(the welcome sign declares aliases: ['sign', 'welcome sign', 'wooden sign'])",
+          "SceneryTrait applies per-entity — both pieces of scenery must reject 'take'",
+          "Player has ContainerTrait and starts empty",
+          "RoomTrait with no exits refuses movement gracefully",
+          "Looking again confirms room stability",
+          "=== Currently FAILING — these assertions encode the v01 doc's promises    ===",
+          "=== but hit upstream bugs in @sharpee/sharpee@0.9.113. They turn red in   ===",
+          "=== the test viewer until upstream fixes land, then go green as regression ===",
+          "=== protection. See ChicagoDave/sharpee#107 + #108.                        ===",
+          "Player aliases (declared as ['self', 'myself', 'me']) — should resolve to",
+          "the player's IdentityTrait description. Currently fails: \"you can't see any",
+          "such thing.\" Will go green when actor-alias resolution is fixed.",
+          "Room aliases (declared as ['entrance', 'gates', 'gate']) — should resolve to",
+          "the room's IdentityTrait description. Currently fails for the same reason.",
+          "Silent turn — the inserting action emits a messageId",
+          "(if.action.inserting.fixed_in_place) that has no template registered, so",
+          "the player sees nothing. Tracked as #107. Will go green once the helper's",
+          "error key is namespaced and a template lands."
+        ]
+      },
+      "commands": [
+        {
+          "command": {
+            "lineNumber": 11,
+            "input": "look",
+            "expectedOutput": [],
+            "assertions": [
+              {
+                "type": "ok-contains",
+                "value": "Zoo Entrance"
+              },
+              {
+                "type": "ok-contains",
+                "value": "Willowbrook Family Zoo"
+              },
+              {
+                "type": "ok-contains",
+                "value": "welcome sign"
+              },
+              {
+                "type": "ok-contains",
+                "value": "ticket booth"
+              }
+            ]
+          },
+          "actualOutput": "Family Zoo\nBy Sharpee Tutorial\n\nType HELP for instructions.\n\nZoo Entrance\n\nYou stand before the gates of the Willowbrook Family Zoo. A cheerful welcome sign arches over the entrance, and a small ticket booth sits to one side. Beyond the gates, you can hear the distant calls of exotic birds and the chatter of monkeys. [Built for @sharpee/sharpee v0.9.113]\n\nYou can see welcome sign, ticket booth here.\n\n> ",
+          "actualEvents": [
+            {
+              "type": "if.event.looked",
+              "data": {
+                "actorId": "a02",
+                "room": {
+                  "id": "r01",
+                  "name": "Zoo Entrance",
+                  "description": "You stand before the gates of the Willowbrook Family Zoo. A cheerful welcome sign arches over the entrance, and a small ticket booth sits to one side. Beyond the gates, you can hear the distant calls of exotic birds and the chatter of monkeys. [Built for @sharpee/sharpee v0.9.113]",
+                  "isDark": false,
+                  "isVisited": true,
+                  "traits": {
+                    "attributes": {
+                      "displayName": "Zoo Entrance",
+                      "name": "Zoo Entrance",
+                      "entityType": "room"
+                    },
+                    "relationships": {},
+                    "traits": {},
+                    "scopePriorities": {},
+                    "minimumScopes": {},
+                    "annotations": {}
+                  }
+                },
+                "visibleItems": [
+                  {
+                    "id": "o01",
+                    "name": "welcome sign",
+                    "description": "A brightly painted wooden sign reads: \"WELCOME TO WILLOWBROOK FAMILY ZOO — Home to over 50 amazing animals! Open daily, rain or shine.\" Cartoon animals dance along the border.",
+                    "location": "r01",
+                    "isScenery": true,
+                    "traits": {
+                      "attributes": {
+                        "displayName": "welcome sign",
+                        "name": "welcome sign",
+                        "entityType": "object"
+                      },
+                      "relationships": {},
+                      "traits": {},
+                      "scopePriorities": {},
+                      "minimumScopes": {},
+                      "annotations": {}
+                    }
+                  },
+                  {
+                    "id": "o02",
+                    "name": "ticket booth",
+                    "description": "A small wooden booth with a sliding glass window. A sign in the window reads \"Self-Guided Tours — No Ticket Needed Today!\" A friendly cartoon giraffe is painted on the side.",
+                    "location": "r01",
+                    "isScenery": true,
+                    "traits": {
+                      "attributes": {
+                        "displayName": "ticket booth",
+                        "name": "ticket booth",
+                        "entityType": "object"
+                      },
+                      "relationships": {},
+                      "traits": {},
+                      "scopePriorities": {},
+                      "minimumScopes": {},
+                      "annotations": {}
+                    }
+                  }
+                ],
+                "locationId": "r01",
+                "locationName": "Zoo Entrance",
+                "locationDescription": "You stand before the gates of the Willowbrook Family Zoo. A cheerful welcome sign arches over the entrance, and a small ticket booth sits to one side. Beyond the gates, you can hear the distant calls of exotic birds and the chatter of monkeys. [Built for @sharpee/sharpee v0.9.113]",
+                "isDark": false,
+                "inVehicle": null,
+                "contents": [
+                  {
+                    "id": "o01",
+                    "name": "welcome sign",
+                    "description": "A brightly painted wooden sign reads: \"WELCOME TO WILLOWBROOK FAMILY ZOO — Home to over 50 amazing animals! Open daily, rain or shine.\" Cartoon animals dance along the border."
+                  },
+                  {
+                    "id": "o02",
+                    "name": "ticket booth",
+                    "description": "A small wooden booth with a sliding glass window. A sign in the window reads \"Self-Guided Tours — No Ticket Needed Today!\" A friendly cartoon giraffe is painted on the side."
+                  }
+                ],
+                "timestamp": 1777769146599,
+                "actionId": "if.action.looking",
+                "turn": 1
+              }
+            },
+            {
+              "type": "if.event.room.description",
+              "data": {
+                "room": {
+                  "id": "r01",
+                  "name": "Zoo Entrance",
+                  "description": "You stand before the gates of the Willowbrook Family Zoo. A cheerful welcome sign arches over the entrance, and a small ticket booth sits to one side. Beyond the gates, you can hear the distant calls of exotic birds and the chatter of monkeys. [Built for @sharpee/sharpee v0.9.113]",
+                  "isDark": false,
+                  "isVisited": true,
+                  "traits": {
+                    "attributes": {
+                      "displayName": "Zoo Entrance",
+                      "name": "Zoo Entrance",
+                      "entityType": "room"
+                    },
+                    "relationships": {},
+                    "traits": {},
+                    "scopePriorities": {},
+                    "minimumScopes": {},
+                    "annotations": {}
+                  }
+                },
+                "visibleItems": [
+                  {
+                    "id": "o01",
+                    "name": "welcome sign",
+                    "description": "A brightly painted wooden sign reads: \"WELCOME TO WILLOWBROOK FAMILY ZOO — Home to over 50 amazing animals! Open daily, rain or shine.\" Cartoon animals dance along the border.",
+                    "location": "r01",
+                    "isScenery": true,
+                    "traits": {
+                      "attributes": {
+                        "displayName": "welcome sign",
+                        "name": "welcome sign",
+                        "entityType": "object"
+                      },
+                      "relationships": {},
+                      "traits": {},
+                      "scopePriorities": {},
+                      "minimumScopes": {},
+                      "annotations": {}
+                    }
+                  },
+                  {
+                    "id": "o02",
+                    "name": "ticket booth",
+                    "description": "A small wooden booth with a sliding glass window. A sign in the window reads \"Self-Guided Tours — No Ticket Needed Today!\" A friendly cartoon giraffe is painted on the side.",
+                    "location": "r01",
+                    "isScenery": true,
+                    "traits": {
+                      "attributes": {
+                        "displayName": "ticket booth",
+                        "name": "ticket booth",
+                        "entityType": "object"
+                      },
+                      "relationships": {},
+                      "traits": {},
+                      "scopePriorities": {},
+                      "minimumScopes": {},
+                      "annotations": {}
+                    }
+                  }
+                ],
+                "roomId": "r01",
+                "roomName": "Zoo Entrance",
+                "roomDescription": "You stand before the gates of the Willowbrook Family Zoo. A cheerful welcome sign arches over the entrance, and a small ticket booth sits to one side. Beyond the gates, you can hear the distant calls of exotic birds and the chatter of monkeys. [Built for @sharpee/sharpee v0.9.113]",
+                "includeContents": true,
+                "verbose": true,
+                "inVehicle": null,
+                "contents": [
+                  {
+                    "id": "o01",
+                    "name": "welcome sign",
+                    "description": "A brightly painted wooden sign reads: \"WELCOME TO WILLOWBROOK FAMILY ZOO — Home to over 50 amazing animals! Open daily, rain or shine.\" Cartoon animals dance along the border."
+                  },
+                  {
+                    "id": "o02",
+                    "name": "ticket booth",
+                    "description": "A small wooden booth with a sliding glass window. A sign in the window reads \"Self-Guided Tours — No Ticket Needed Today!\" A friendly cartoon giraffe is painted on the side."
+                  }
+                ],
+                "timestamp": 1777769146600,
+                "actionId": "if.action.looking",
+                "turn": 1
+              }
+            },
+            {
+              "type": "if.event.list.contents",
+              "data": {
+                "messageId": "if.action.looking.contents_list",
+                "params": {
+                  "items": "welcome sign, ticket booth",
+                  "count": 2,
+                  "hasItems": true,
+                  "name": "Zoo Entrance",
+                  "description": "You stand before the gates of the Willowbrook Family Zoo. A cheerful welcome sign arches over the entrance, and a small ticket booth sits to one side. Beyond the gates, you can hear the distant calls of exotic birds and the chatter of monkeys. [Built for @sharpee/sharpee v0.9.113]",
+                  "location": "Zoo Entrance"
+                },
+                "allItems": [
+                  {
+                    "id": "o01",
+                    "name": "welcome sign",
+                    "description": "A brightly painted wooden sign reads: \"WELCOME TO WILLOWBROOK FAMILY ZOO — Home to over 50 amazing animals! Open daily, rain or shine.\" Cartoon animals dance along the border.",
+                    "location": "r01",
+                    "isScenery": true,
+                    "traits": {
+                      "attributes": {
+                        "displayName": "welcome sign",
+                        "name": "welcome sign",
+                        "entityType": "object"
+                      },
+                      "relationships": {},
+                      "traits": {},
+                      "scopePriorities": {},
+                      "minimumScopes": {},
+                      "annotations": {}
+                    }
+                  },
+                  {
+                    "id": "o02",
+                    "name": "ticket booth",
+                    "description": "A small wooden booth with a sliding glass window. A sign in the window reads \"Self-Guided Tours — No Ticket Needed Today!\" A friendly cartoon giraffe is painted on the side.",
+                    "location": "r01",
+                    "isScenery": true,
+                    "traits": {
+                      "attributes": {
+                        "displayName": "ticket booth",
+                        "name": "ticket booth",
+                        "entityType": "object"
+                      },
+                      "relationships": {},
+                      "traits": {},
+                      "scopePriorities": {},
+                      "minimumScopes": {},
+                      "annotations": {}
+                    }
+                  }
+                ],
+                "location": {
+                  "id": "r01",
+                  "name": "Zoo Entrance",
+                  "description": "You stand before the gates of the Willowbrook Family Zoo. A cheerful welcome sign arches over the entrance, and a small ticket booth sits to one side. Beyond the gates, you can hear the distant calls of exotic birds and the chatter of monkeys. [Built for @sharpee/sharpee v0.9.113]",
+                  "isDark": false,
+                  "isVisited": true,
+                  "traits": {
+                    "attributes": {
+                      "displayName": "Zoo Entrance",
+                      "name": "Zoo Entrance",
+                      "entityType": "room"
+                    },
+                    "relationships": {},
+                    "traits": {},
+                    "scopePriorities": {},
+                    "minimumScopes": {},
+                    "annotations": {}
+                  }
+                },
+                "items": [
+                  "o01",
+                  "o02"
+                ],
+                "directItems": [
+                  "o01",
+                  "o02"
+                ],
+                "directItemNames": [
+                  "welcome sign",
+                  "ticket booth"
+                ],
+                "npcs": [],
+                "containers": [],
+                "supporters": [],
+                "other": [
+                  "o01",
+                  "o02"
+                ],
+                "openContainerContents": [],
+                "context": "room",
+                "locationName": "Zoo Entrance",
+                "timestamp": 1777769146600,
+                "actionId": "if.action.looking",
+                "turn": 1
+              }
+            }
+          ],
+          "passed": true,
+          "expectedFailure": false,
+          "skipped": false,
+          "assertionResults": [
+            {
+              "assertion": {
+                "type": "ok-contains",
+                "value": "Zoo Entrance"
+              },
+              "passed": true
+            },
+            {
+              "assertion": {
+                "type": "ok-contains",
+                "value": "Willowbrook Family Zoo"
+              },
+              "passed": true
+            },
+            {
+              "assertion": {
+                "type": "ok-contains",
+                "value": "welcome sign"
+              },
+              "passed": true
+            },
+            {
+              "assertion": {
+                "type": "ok-contains",
+                "value": "ticket booth"
+              },
+              "passed": true
+            }
+          ]
+        },
+        {
+          "command": {
+            "lineNumber": 18,
+            "input": "examine sign",
+            "expectedOutput": [],
+            "assertions": [
+              {
+                "type": "ok-contains",
+                "value": "WELCOME TO WILLOWBROOK"
+              }
+            ]
+          },
+          "actualOutput": "A brightly painted wooden sign reads: \"WELCOME TO WILLOWBROOK FAMILY ZOO — Home to over 50 amazing animals! Open daily, rain or shine.\" Cartoon animals dance along the border.\n\n> ",
+          "actualEvents": [
+            {
+              "type": "if.event.examined",
+              "data": {
+                "messageId": "if.action.examining.examined",
+                "params": {
+                  "description": "A brightly painted wooden sign reads: \"WELCOME TO WILLOWBROOK FAMILY ZOO — Home to over 50 amazing animals! Open daily, rain or shine.\" Cartoon animals dance along the border.",
+                  "target": {
+                    "name": "welcome sign",
+                    "article": "a"
+                  }
+                },
+                "target": {
+                  "id": "o01",
+                  "name": "welcome sign",
+                  "description": "A brightly painted wooden sign reads: \"WELCOME TO WILLOWBROOK FAMILY ZOO — Home to over 50 amazing animals! Open daily, rain or shine.\" Cartoon animals dance along the border.",
+                  "location": "r01",
+                  "isScenery": true,
+                  "traits": {
+                    "attributes": {
+                      "displayName": "welcome sign",
+                      "name": "welcome sign",
+                      "entityType": "object"
+                    },
+                    "relationships": {},
+                    "traits": {},
+                    "scopePriorities": {},
+                    "minimumScopes": {},
+                    "annotations": {}
+                  }
+                },
+                "targetId": "o01",
+                "targetName": "welcome sign",
+                "hasDescription": true,
+                "hasBrief": false,
+                "actionId": "if.action.examining",
+                "turn": 2
+              }
+            }
+          ],
+          "passed": true,
+          "expectedFailure": false,
+          "skipped": false,
+          "assertionResults": [
+            {
+              "assertion": {
+                "type": "ok-contains",
+                "value": "WELCOME TO WILLOWBROOK"
+              },
+              "passed": true
+            }
+          ]
+        },
+        {
+          "command": {
+            "lineNumber": 21,
+            "input": "examine booth",
+            "expectedOutput": [],
+            "assertions": [
+              {
+                "type": "ok-contains",
+                "value": "Self-Guided Tours"
+              }
+            ]
+          },
+          "actualOutput": "A small wooden booth with a sliding glass window. A sign in the window reads \"Self-Guided Tours — No Ticket Needed Today!\" A friendly cartoon giraffe is painted on the side.\n\n> ",
+          "actualEvents": [
+            {
+              "type": "if.event.examined",
+              "data": {
+                "messageId": "if.action.examining.examined",
+                "params": {
+                  "description": "A small wooden booth with a sliding glass window. A sign in the window reads \"Self-Guided Tours — No Ticket Needed Today!\" A friendly cartoon giraffe is painted on the side.",
+                  "target": {
+                    "name": "ticket booth",
+                    "article": "a"
+                  }
+                },
+                "target": {
+                  "id": "o02",
+                  "name": "ticket booth",
+                  "description": "A small wooden booth with a sliding glass window. A sign in the window reads \"Self-Guided Tours — No Ticket Needed Today!\" A friendly cartoon giraffe is painted on the side.",
+                  "location": "r01",
+                  "isScenery": true,
+                  "traits": {
+                    "attributes": {
+                      "displayName": "ticket booth",
+                      "name": "ticket booth",
+                      "entityType": "object"
+                    },
+                    "relationships": {},
+                    "traits": {},
+                    "scopePriorities": {},
+                    "minimumScopes": {},
+                    "annotations": {}
+                  }
+                },
+                "targetId": "o02",
+                "targetName": "ticket booth",
+                "hasDescription": true,
+                "hasBrief": false,
+                "actionId": "if.action.examining",
+                "turn": 3
+              }
+            }
+          ],
+          "passed": true,
+          "expectedFailure": false,
+          "skipped": false,
+          "assertionResults": [
+            {
+              "assertion": {
+                "type": "ok-contains",
+                "value": "Self-Guided Tours"
+              },
+              "passed": true
+            }
+          ]
+        },
+        {
+          "command": {
+            "lineNumber": 26,
+            "input": "examine wooden sign",
+            "expectedOutput": [],
+            "assertions": [
+              {
+                "type": "ok-contains",
+                "value": "WELCOME TO WILLOWBROOK"
+              }
+            ]
+          },
+          "actualOutput": "A brightly painted wooden sign reads: \"WELCOME TO WILLOWBROOK FAMILY ZOO — Home to over 50 amazing animals! Open daily, rain or shine.\" Cartoon animals dance along the border.\n\n> ",
+          "actualEvents": [
+            {
+              "type": "if.event.examined",
+              "data": {
+                "messageId": "if.action.examining.examined",
+                "params": {
+                  "description": "A brightly painted wooden sign reads: \"WELCOME TO WILLOWBROOK FAMILY ZOO — Home to over 50 amazing animals! Open daily, rain or shine.\" Cartoon animals dance along the border.",
+                  "target": {
+                    "name": "welcome sign",
+                    "article": "a"
+                  }
+                },
+                "target": {
+                  "id": "o01",
+                  "name": "welcome sign",
+                  "description": "A brightly painted wooden sign reads: \"WELCOME TO WILLOWBROOK FAMILY ZOO — Home to over 50 amazing animals! Open daily, rain or shine.\" Cartoon animals dance along the border.",
+                  "location": "r01",
+                  "isScenery": true,
+                  "traits": {
+                    "attributes": {
+                      "displayName": "welcome sign",
+                      "name": "welcome sign",
+                      "entityType": "object"
+                    },
+                    "relationships": {},
+                    "traits": {},
+                    "scopePriorities": {},
+                    "minimumScopes": {},
+                    "annotations": {}
+                  }
+                },
+                "targetId": "o01",
+                "targetName": "welcome sign",
+                "hasDescription": true,
+                "hasBrief": false,
+                "actionId": "if.action.examining",
+                "turn": 4
+              }
+            }
+          ],
+          "passed": true,
+          "expectedFailure": false,
+          "skipped": false,
+          "assertionResults": [
+            {
+              "assertion": {
+                "type": "ok-contains",
+                "value": "WELCOME TO WILLOWBROOK"
+              },
+              "passed": true
+            }
+          ]
+        },
+        {
+          "command": {
+            "lineNumber": 30,
+            "input": "take sign",
+            "expectedOutput": [],
+            "assertions": [
+              {
+                "type": "ok-contains",
+                "value": "fixed in place"
+              }
+            ]
+          },
+          "actualOutput": "The welcome sign is fixed in place.\n\n> ",
+          "actualEvents": [
+            {
+              "type": "if.event.take_blocked",
+              "data": {
+                "messageId": "if.action.taking.fixed_in_place",
+                "params": {
+                  "item": {
+                    "name": "welcome sign",
+                    "article": "a"
+                  }
+                },
+                "item": "welcome sign",
+                "itemId": "o01",
+                "reason": "fixed_in_place",
+                "actionId": "if.action.taking",
+                "turn": 5
+              }
+            }
+          ],
+          "passed": true,
+          "expectedFailure": false,
+          "skipped": false,
+          "assertionResults": [
+            {
+              "assertion": {
+                "type": "ok-contains",
+                "value": "fixed in place"
+              },
+              "passed": true
+            }
+          ]
+        },
+        {
+          "command": {
+            "lineNumber": 33,
+            "input": "take booth",
+            "expectedOutput": [],
+            "assertions": [
+              {
+                "type": "ok-contains",
+                "value": "fixed in place"
+              }
+            ]
+          },
+          "actualOutput": "The ticket booth is fixed in place.\n\n> ",
+          "actualEvents": [
+            {
+              "type": "if.event.take_blocked",
+              "data": {
+                "messageId": "if.action.taking.fixed_in_place",
+                "params": {
+                  "item": {
+                    "name": "ticket booth",
+                    "article": "a"
+                  }
+                },
+                "item": "ticket booth",
+                "itemId": "o02",
+                "reason": "fixed_in_place",
+                "actionId": "if.action.taking",
+                "turn": 6
+              }
+            }
+          ],
+          "passed": true,
+          "expectedFailure": false,
+          "skipped": false,
+          "assertionResults": [
+            {
+              "assertion": {
+                "type": "ok-contains",
+                "value": "fixed in place"
+              },
+              "passed": true
+            }
+          ]
+        },
+        {
+          "command": {
+            "lineNumber": 37,
+            "input": "inventory",
+            "expectedOutput": [],
+            "assertions": [
+              {
+                "type": "ok-contains",
+                "value": "carry"
+              }
+            ]
+          },
+          "actualOutput": "You aren't carrying anything at all.\n\n> ",
+          "actualEvents": [
+            {
+              "type": "if.event.inventory",
+              "data": {
+                "messageId": "if.action.inventory.nothing_at_all",
+                "params": {},
+                "actorId": "a02",
+                "locationId": "r01",
+                "totalItems": 0,
+                "heldItems": 0,
+                "wornItems": 0,
+                "isEmpty": true,
+                "carried": [],
+                "worn": [],
+                "items": [],
+                "actionId": "if.action.inventory",
+                "turn": 7
+              }
+            }
+          ],
+          "passed": true,
+          "expectedFailure": false,
+          "skipped": false,
+          "assertionResults": [
+            {
+              "assertion": {
+                "type": "ok-contains",
+                "value": "carry"
+              },
+              "passed": true
+            }
+          ]
+        },
+        {
+          "command": {
+            "lineNumber": 41,
+            "input": "north",
+            "expectedOutput": [],
+            "assertions": [
+              {
+                "type": "ok-contains",
+                "value": "no obvious exits"
+              }
+            ]
+          },
+          "actualOutput": "There are no obvious exits.\n\n> ",
+          "actualEvents": [
+            {
+              "type": "if.event.went",
+              "data": {
+                "blocked": true,
+                "reason": "no_exits",
+                "messageId": "if.action.going.no_exits",
+                "params": {},
+                "actorId": "a02",
+                "actionId": "if.action.going",
+                "turn": 8
+              }
+            }
+          ],
+          "passed": true,
+          "expectedFailure": false,
+          "skipped": false,
+          "assertionResults": [
+            {
+              "assertion": {
+                "type": "ok-contains",
+                "value": "no obvious exits"
+              },
+              "passed": true
+            }
+          ]
+        },
+        {
+          "command": {
+            "lineNumber": 45,
+            "input": "look",
+            "expectedOutput": [],
+            "assertions": [
+              {
+                "type": "ok-contains",
+                "value": "Zoo Entrance"
+              }
+            ]
+          },
+          "actualOutput": "Zoo Entrance\n\nYou stand before the gates of the Willowbrook Family Zoo. A cheerful welcome sign arches over the entrance, and a small ticket booth sits to one side. Beyond the gates, you can hear the distant calls of exotic birds and the chatter of monkeys. [Built for @sharpee/sharpee v0.9.113]\n\nYou can see welcome sign, ticket booth here.\n\n> ",
+          "actualEvents": [
+            {
+              "type": "if.event.looked",
+              "data": {
+                "actorId": "a02",
+                "room": {
+                  "id": "r01",
+                  "name": "Zoo Entrance",
+                  "description": "You stand before the gates of the Willowbrook Family Zoo. A cheerful welcome sign arches over the entrance, and a small ticket booth sits to one side. Beyond the gates, you can hear the distant calls of exotic birds and the chatter of monkeys. [Built for @sharpee/sharpee v0.9.113]",
+                  "isDark": false,
+                  "isVisited": true,
+                  "traits": {
+                    "attributes": {
+                      "displayName": "Zoo Entrance",
+                      "name": "Zoo Entrance",
+                      "entityType": "room"
+                    },
+                    "relationships": {},
+                    "traits": {},
+                    "scopePriorities": {},
+                    "minimumScopes": {},
+                    "annotations": {}
+                  }
+                },
+                "visibleItems": [
+                  {
+                    "id": "o01",
+                    "name": "welcome sign",
+                    "description": "A brightly painted wooden sign reads: \"WELCOME TO WILLOWBROOK FAMILY ZOO — Home to over 50 amazing animals! Open daily, rain or shine.\" Cartoon animals dance along the border.",
+                    "location": "r01",
+                    "isScenery": true,
+                    "traits": {
+                      "attributes": {
+                        "displayName": "welcome sign",
+                        "name": "welcome sign",
+                        "entityType": "object"
+                      },
+                      "relationships": {},
+                      "traits": {},
+                      "scopePriorities": {},
+                      "minimumScopes": {},
+                      "annotations": {}
+                    }
+                  },
+                  {
+                    "id": "o02",
+                    "name": "ticket booth",
+                    "description": "A small wooden booth with a sliding glass window. A sign in the window reads \"Self-Guided Tours — No Ticket Needed Today!\" A friendly cartoon giraffe is painted on the side.",
+                    "location": "r01",
+                    "isScenery": true,
+                    "traits": {
+                      "attributes": {
+                        "displayName": "ticket booth",
+                        "name": "ticket booth",
+                        "entityType": "object"
+                      },
+                      "relationships": {},
+                      "traits": {},
+                      "scopePriorities": {},
+                      "minimumScopes": {},
+                      "annotations": {}
+                    }
+                  }
+                ],
+                "locationId": "r01",
+                "locationName": "Zoo Entrance",
+                "locationDescription": "You stand before the gates of the Willowbrook Family Zoo. A cheerful welcome sign arches over the entrance, and a small ticket booth sits to one side. Beyond the gates, you can hear the distant calls of exotic birds and the chatter of monkeys. [Built for @sharpee/sharpee v0.9.113]",
+                "isDark": false,
+                "inVehicle": null,
+                "contents": [
+                  {
+                    "id": "o01",
+                    "name": "welcome sign",
+                    "description": "A brightly painted wooden sign reads: \"WELCOME TO WILLOWBROOK FAMILY ZOO — Home to over 50 amazing animals! Open daily, rain or shine.\" Cartoon animals dance along the border."
+                  },
+                  {
+                    "id": "o02",
+                    "name": "ticket booth",
+                    "description": "A small wooden booth with a sliding glass window. A sign in the window reads \"Self-Guided Tours — No Ticket Needed Today!\" A friendly cartoon giraffe is painted on the side."
+                  }
+                ],
+                "timestamp": 1777769146625,
+                "actionId": "if.action.looking",
+                "turn": 9
+              }
+            },
+            {
+              "type": "if.event.room.description",
+              "data": {
+                "room": {
+                  "id": "r01",
+                  "name": "Zoo Entrance",
+                  "description": "You stand before the gates of the Willowbrook Family Zoo. A cheerful welcome sign arches over the entrance, and a small ticket booth sits to one side. Beyond the gates, you can hear the distant calls of exotic birds and the chatter of monkeys. [Built for @sharpee/sharpee v0.9.113]",
+                  "isDark": false,
+                  "isVisited": true,
+                  "traits": {
+                    "attributes": {
+                      "displayName": "Zoo Entrance",
+                      "name": "Zoo Entrance",
+                      "entityType": "room"
+                    },
+                    "relationships": {},
+                    "traits": {},
+                    "scopePriorities": {},
+                    "minimumScopes": {},
+                    "annotations": {}
+                  }
+                },
+                "visibleItems": [
+                  {
+                    "id": "o01",
+                    "name": "welcome sign",
+                    "description": "A brightly painted wooden sign reads: \"WELCOME TO WILLOWBROOK FAMILY ZOO — Home to over 50 amazing animals! Open daily, rain or shine.\" Cartoon animals dance along the border.",
+                    "location": "r01",
+                    "isScenery": true,
+                    "traits": {
+                      "attributes": {
+                        "displayName": "welcome sign",
+                        "name": "welcome sign",
+                        "entityType": "object"
+                      },
+                      "relationships": {},
+                      "traits": {},
+                      "scopePriorities": {},
+                      "minimumScopes": {},
+                      "annotations": {}
+                    }
+                  },
+                  {
+                    "id": "o02",
+                    "name": "ticket booth",
+                    "description": "A small wooden booth with a sliding glass window. A sign in the window reads \"Self-Guided Tours — No Ticket Needed Today!\" A friendly cartoon giraffe is painted on the side.",
+                    "location": "r01",
+                    "isScenery": true,
+                    "traits": {
+                      "attributes": {
+                        "displayName": "ticket booth",
+                        "name": "ticket booth",
+                        "entityType": "object"
+                      },
+                      "relationships": {},
+                      "traits": {},
+                      "scopePriorities": {},
+                      "minimumScopes": {},
+                      "annotations": {}
+                    }
+                  }
+                ],
+                "roomId": "r01",
+                "roomName": "Zoo Entrance",
+                "roomDescription": "You stand before the gates of the Willowbrook Family Zoo. A cheerful welcome sign arches over the entrance, and a small ticket booth sits to one side. Beyond the gates, you can hear the distant calls of exotic birds and the chatter of monkeys. [Built for @sharpee/sharpee v0.9.113]",
+                "includeContents": true,
+                "verbose": true,
+                "inVehicle": null,
+                "contents": [
+                  {
+                    "id": "o01",
+                    "name": "welcome sign",
+                    "description": "A brightly painted wooden sign reads: \"WELCOME TO WILLOWBROOK FAMILY ZOO — Home to over 50 amazing animals! Open daily, rain or shine.\" Cartoon animals dance along the border."
+                  },
+                  {
+                    "id": "o02",
+                    "name": "ticket booth",
+                    "description": "A small wooden booth with a sliding glass window. A sign in the window reads \"Self-Guided Tours — No Ticket Needed Today!\" A friendly cartoon giraffe is painted on the side."
+                  }
+                ],
+                "timestamp": 1777769146625,
+                "actionId": "if.action.looking",
+                "turn": 9
+              }
+            },
+            {
+              "type": "if.event.list.contents",
+              "data": {
+                "messageId": "if.action.looking.contents_list",
+                "params": {
+                  "items": "welcome sign, ticket booth",
+                  "count": 2,
+                  "hasItems": true,
+                  "name": "Zoo Entrance",
+                  "description": "You stand before the gates of the Willowbrook Family Zoo. A cheerful welcome sign arches over the entrance, and a small ticket booth sits to one side. Beyond the gates, you can hear the distant calls of exotic birds and the chatter of monkeys. [Built for @sharpee/sharpee v0.9.113]",
+                  "location": "Zoo Entrance"
+                },
+                "allItems": [
+                  {
+                    "id": "o01",
+                    "name": "welcome sign",
+                    "description": "A brightly painted wooden sign reads: \"WELCOME TO WILLOWBROOK FAMILY ZOO — Home to over 50 amazing animals! Open daily, rain or shine.\" Cartoon animals dance along the border.",
+                    "location": "r01",
+                    "isScenery": true,
+                    "traits": {
+                      "attributes": {
+                        "displayName": "welcome sign",
+                        "name": "welcome sign",
+                        "entityType": "object"
+                      },
+                      "relationships": {},
+                      "traits": {},
+                      "scopePriorities": {},
+                      "minimumScopes": {},
+                      "annotations": {}
+                    }
+                  },
+                  {
+                    "id": "o02",
+                    "name": "ticket booth",
+                    "description": "A small wooden booth with a sliding glass window. A sign in the window reads \"Self-Guided Tours — No Ticket Needed Today!\" A friendly cartoon giraffe is painted on the side.",
+                    "location": "r01",
+                    "isScenery": true,
+                    "traits": {
+                      "attributes": {
+                        "displayName": "ticket booth",
+                        "name": "ticket booth",
+                        "entityType": "object"
+                      },
+                      "relationships": {},
+                      "traits": {},
+                      "scopePriorities": {},
+                      "minimumScopes": {},
+                      "annotations": {}
+                    }
+                  }
+                ],
+                "location": {
+                  "id": "r01",
+                  "name": "Zoo Entrance",
+                  "description": "You stand before the gates of the Willowbrook Family Zoo. A cheerful welcome sign arches over the entrance, and a small ticket booth sits to one side. Beyond the gates, you can hear the distant calls of exotic birds and the chatter of monkeys. [Built for @sharpee/sharpee v0.9.113]",
+                  "isDark": false,
+                  "isVisited": true,
+                  "traits": {
+                    "attributes": {
+                      "displayName": "Zoo Entrance",
+                      "name": "Zoo Entrance",
+                      "entityType": "room"
+                    },
+                    "relationships": {},
+                    "traits": {},
+                    "scopePriorities": {},
+                    "minimumScopes": {},
+                    "annotations": {}
+                  }
+                },
+                "items": [
+                  "o01",
+                  "o02"
+                ],
+                "directItems": [
+                  "o01",
+                  "o02"
+                ],
+                "directItemNames": [
+                  "welcome sign",
+                  "ticket booth"
+                ],
+                "npcs": [],
+                "containers": [],
+                "supporters": [],
+                "other": [
+                  "o01",
+                  "o02"
+                ],
+                "openContainerContents": [],
+                "context": "room",
+                "locationName": "Zoo Entrance",
+                "timestamp": 1777769146625,
+                "actionId": "if.action.looking",
+                "turn": 9
+              }
+            }
+          ],
+          "passed": true,
+          "expectedFailure": false,
+          "skipped": false,
+          "assertionResults": [
+            {
+              "assertion": {
+                "type": "ok-contains",
+                "value": "Zoo Entrance"
+              },
+              "passed": true
+            }
+          ]
+        },
+        {
+          "command": {
+            "lineNumber": 57,
+            "input": "examine yourself",
+            "expectedOutput": [],
+            "assertions": [
+              {
+                "type": "ok-contains",
+                "value": "ordinary visitor"
+              }
+            ]
+          },
+          "actualOutput": "You can't see any such thing.\n\n> ",
+          "actualEvents": [
+            {
+              "type": "command.failed",
+              "data": {
+                "reason": "Validation failed: ENTITY_NOT_FOUND",
+                "input": "examine yourself"
+              }
+            }
+          ],
+          "passed": false,
+          "expectedFailure": false,
+          "skipped": false,
+          "assertionResults": [
+            {
+              "assertion": {
+                "type": "ok-contains",
+                "value": "ordinary visitor"
+              },
+              "passed": false,
+              "message": "Output does not contain \"ordinary visitor\""
+            }
+          ]
+        },
+        {
+          "command": {
+            "lineNumber": 62,
+            "input": "examine entrance",
+            "expectedOutput": [],
+            "assertions": [
+              {
+                "type": "ok-contains",
+                "value": "Willowbrook"
+              }
+            ]
+          },
+          "actualOutput": "You can't see any such thing.\n\n> ",
+          "actualEvents": [
+            {
+              "type": "command.failed",
+              "data": {
+                "reason": "Validation failed: ENTITY_NOT_FOUND",
+                "input": "examine entrance"
+              }
+            }
+          ],
+          "passed": false,
+          "expectedFailure": false,
+          "skipped": false,
+          "assertionResults": [
+            {
+              "assertion": {
+                "type": "ok-contains",
+                "value": "Willowbrook"
+              },
+              "passed": false,
+              "message": "Output does not contain \"Willowbrook\""
+            }
+          ]
+        },
+        {
+          "command": {
+            "lineNumber": 69,
+            "input": "put sign in booth",
+            "expectedOutput": [],
+            "assertions": [
+              {
+                "type": "ok-contains",
+                "value": "fixed in place"
+              }
+            ]
+          },
+          "actualOutput": "> ",
+          "actualEvents": [
+            {
+              "type": "if.event.insert_blocked",
+              "data": {
+                "messageId": "if.action.inserting.fixed_in_place",
+                "params": {
+                  "item": {
+                    "name": "welcome sign",
+                    "article": "a"
+                  },
+                  "container": {
+                    "name": "ticket booth",
+                    "article": "a"
+                  }
+                },
+                "itemId": "o01",
+                "itemName": "welcome sign",
+                "containerId": "o02",
+                "containerName": "ticket booth",
+                "reason": "fixed_in_place",
+                "actionId": "if.action.inserting",
+                "turn": 12
+              }
+            }
+          ],
+          "passed": false,
+          "expectedFailure": false,
+          "skipped": false,
+          "assertionResults": [
+            {
+              "assertion": {
+                "type": "ok-contains",
+                "value": "fixed in place"
+              },
+              "passed": false,
+              "message": "Output does not contain \"fixed in place\""
+            }
+          ]
+        }
+      ],
+      "passed": 9,
+      "failed": 3,
+      "expectedFailures": 0,
+      "skipped": 0,
+      "duration": 36
+    }
+  ],
+  "totalPassed": 9,
+  "totalFailed": 3,
+  "totalExpectedFailures": 0,
+  "totalSkipped": 0,
+  "totalDuration": 36
+}

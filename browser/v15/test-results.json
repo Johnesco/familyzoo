@@ -1,7 +1,7 @@
 {
   "version": "v15",
   "storyId": "familyzoo-15",
-  "timestamp": "2026-04-17T12:40:39.297Z",
+  "timestamp": "2026-05-05T14:07:28.275Z",
   "transcripts": [
     {
       "file": "v15-timed-events.transcript",
@@ -21,7 +21,7 @@
               "value": "Time passes"
             }
           ],
-          "comment": "Wait turns 1-4 — nothing fires yet"
+          "comment": "V15 teaches: Daemons (every-turn) and fuses (countdown timers)\nWait turns 1-4 — nothing fires yet"
         },
         {
           "lineNumber": 15,
@@ -35,8 +35,7 @@
               "passed": true,
               "value": "Time passes"
             }
-          ],
-          "comment": "V15 teaches: Daemons (every-turn) and fuses (countdown timers)"
+          ]
         },
         {
           "lineNumber": 18,
@@ -223,7 +222,7 @@
         "passed": 14,
         "failed": 0,
         "skipped": 0,
-        "duration": 50
+        "duration": 122
       }
     }
   ],
@@ -231,6 +230,6 @@
     "totalPassed": 14,
     "totalFailed": 0,
     "totalSkipped": 0,
-    "totalDuration": 50
+    "totalDuration": 122
   }
 }

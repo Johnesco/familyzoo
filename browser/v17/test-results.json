@@ -1,7 +1,7 @@
 {
   "version": "v17",
   "storyId": "familyzoo-17",
-  "timestamp": "2026-04-18T10:03:15.817Z",
+  "timestamp": "2026-05-06T09:32:30.156Z",
   "transcripts": [
     {
       "file": "v17-after-hours.transcript",
@@ -21,7 +21,7 @@
               "value": "Taken"
             }
           ],
-          "comment": "Collect map and brochure at Zoo Entrance"
+          "comment": "V17 teaches: multi-file organization, runtime NPC behavior swap,\nafter-hours phase gated on world state, bonus scoring for animal dialogue\n=========================================================================\nPHASE 1: BASE GAME — score 60 of the 75 base points\n=========================================================================\nCollect map and brochure at Zoo Entrance"
         },
         {
           "lineNumber": 20,
@@ -35,13 +35,12 @@
               "passed": true,
               "value": "Taken"
             }
-          ],
-          "comment": "========================================================================="
+          ]
         },
         {
           "lineNumber": 23,
           "input": "read brochure",
-          "output": "Zoo brochure reads:\nWILLOWBROOK FAMILY ZOO — Your Guide\n\nEXHIBITS:\n  Petting Zoo — East from Main Path\n  Aviary — West from Main Path\n  Gift Shop — West from Aviary\n  Nocturnal Animals — Staff Area\n\n\"Where every visit is a wild adventure!\"\n",
+          "output": "The zoo brochure reads:\nWILLOWBROOK FAMILY ZOO — Your Guide\n\nEXHIBITS:\n  Petting Zoo — East from Main Path\n  Aviary — West from Main Path\n  Gift Shop — West from Aviary\n  Nocturnal Animals — Staff Area\n\n\"Where every visit is a wild adventure!\"\n",
           "passed": true,
           "skipped": false,
           "assertions": [
@@ -50,8 +49,7 @@
               "passed": true,
               "value": "WILLOWBROOK"
             }
-          ],
-          "comment": "PHASE 1: BASE GAME — score 60 of the 75 base points"
+          ]
         },
         {
           "lineNumber": 27,
@@ -101,7 +99,7 @@
         {
           "lineNumber": 39,
           "input": "west",
-          "output": "Aviary\n\nYou step inside a soaring mesh dome. Brilliantly colored parrots chatter from rope perches, and a toucan eyes you curiously from a branch overhead. A small waterfall splashes into a stone basin. An info plaque hangs near the entrance. The gift shop is to the west. The main path is back to the east.\n\nYou can see toucan, waterfall, rope perches, aviary plaque, parrot, parrots here.\n",
+          "output": "Aviary\n\nYou step inside a soaring mesh dome. Brilliantly colored parrots chatter from rope perches, and a toucan eyes you curiously from a branch overhead. A small waterfall splashes into a stone basin. An info plaque hangs near the entrance. The gift shop is to the west. The main path is back to the east.\n\nYou can see toucan, waterfall, rope perches, aviary plaque, parrot here.\n",
           "passed": true,
           "skipped": false,
           "assertions": [
@@ -146,7 +144,7 @@
         {
           "lineNumber": 50,
           "input": "put penny in press",
-          "output": "You put souvenir penny in souvenir press.\n*DING DONG* \"Attention visitors! Two hours until closing. Don't forget to stop by the gift shop for souvenirs!\"\nCLUNK! CRUNCH! WHIRRR! The souvenir press produces a beautiful pressed penny with an embossed toucan.\n",
+          "output": "You put the souvenir penny in the souvenir press.\n*DING DONG* \"Attention visitors! Two hours until closing. Don't forget to stop by the gift shop for souvenirs!\"\nCLUNK! CRUNCH! WHIRRR! The souvenir press produces a beautiful pressed penny with an embossed toucan.\n",
           "passed": true,
           "skipped": false,
           "assertions": [
@@ -155,13 +153,12 @@
               "passed": true,
               "value": "CLUNK"
             }
-          ],
-          "comment": "========================================================================="
+          ]
         },
         {
           "lineNumber": 54,
           "input": "east",
-          "output": "Aviary\n\nYou step inside a soaring mesh dome. Brilliantly colored parrots chatter from rope perches, and a toucan eyes you curiously from a branch overhead. A small waterfall splashes into a stone basin. An info plaque hangs near the entrance. The gift shop is to the west. The main path is back to the east.\n\nYou can see toucan, waterfall, rope perches, aviary plaque, parrot, parrots here.\n*DING DONG* \"It's FEEDING TIME at the Petting Zoo! Come watch our pygmy goats and rabbits enjoy their favorite snacks!\"\n",
+          "output": "Aviary\n\nYou step inside a soaring mesh dome. Brilliantly colored parrots chatter from rope perches, and a toucan eyes you curiously from a branch overhead. A small waterfall splashes into a stone basin. An info plaque hangs near the entrance. The gift shop is to the west. The main path is back to the east.\n\nYou can see toucan, waterfall, rope perches, aviary plaque, parrot here.\n*DING DONG* \"It's FEEDING TIME at the Petting Zoo! Come watch our pygmy goats and rabbits enjoy their favorite snacks!\"\n",
           "passed": true,
           "skipped": false,
           "assertions": [
@@ -185,8 +182,7 @@
               "passed": true,
               "value": "photo"
             }
-          ],
-          "comment": "after-hours phase gated on world state, bonus scoring for animal dialogue"
+          ]
         },
         {
           "lineNumber": 61,
@@ -245,8 +241,7 @@
               "passed": true,
               "value": "feed"
             }
-          ],
-          "comment": "V17 teaches: multi-file organization, runtime NPC behavior swap,"
+          ]
         },
         {
           "lineNumber": 75,
@@ -290,7 +285,7 @@
               "value": "Main Path"
             }
           ],
-          "comment": "Return to Main Path — feeding-time fuse fires on this turn"
+          "comment": "=========================================================================\nPHASE 2: ZOO CLOSES — PA4 fires, after_hours flag set\n=========================================================================\nReturn to Main Path — feeding-time fuse fires on this turn"
         },
         {
           "lineNumber": 91,
@@ -340,7 +335,7 @@
               "value": "Last Tuesday"
             }
           ],
-          "comment": "Visit Petting Zoo — keeper departure fires + goats/rabbits speak candidly"
+          "comment": "=========================================================================\nPHASE 3: AFTER HOURS — candid animal dialogue + bonus scoring\n=========================================================================\nVisit Petting Zoo — keeper departure fires + goats/rabbits speak candidly"
         },
         {
           "lineNumber": 107,
@@ -375,7 +370,7 @@
         {
           "lineNumber": 114,
           "input": "west",
-          "output": "Aviary\n\nYou step inside a soaring mesh dome. Brilliantly colored parrots chatter from rope perches, and a toucan eyes you curiously from a branch overhead. A small waterfall splashes into a stone basin. An info plaque hangs near the entrance. The gift shop is to the west. The main path is back to the east.\n\nYou can see toucan, waterfall, rope perches, aviary plaque, parrot, parrots here.\nThe parrot clears its throat — actually clears its throat — and fixes you with a knowing look. \"Right then. Now that the performative squawking is over, let me tell you something: that toucan? Complete fraud. Can't even crack a nut properly. And don't get me started on the gift shop markup.\"\n",
+          "output": "Aviary\n\nYou step inside a soaring mesh dome. Brilliantly colored parrots chatter from rope perches, and a toucan eyes you curiously from a branch overhead. A small waterfall splashes into a stone basin. An info plaque hangs near the entrance. The gift shop is to the west. The main path is back to the east.\n\nYou can see toucan, waterfall, rope perches, aviary plaque, parrot here.\nThe parrot clears its throat — actually clears its throat — and fixes you with a knowing look. \"Right then. Now that the performative squawking is over, let me tell you something: that toucan? Complete fraud. Can't even crack a nut properly. And don't get me started on the gift shop markup.\"\n",
           "passed": true,
           "skipped": false,
           "assertions": [
@@ -394,8 +389,7 @@
               "passed": true,
               "value": "toucan"
             }
-          ],
-          "comment": "========================================================================="
+          ]
         },
         {
           "lineNumber": 120,
@@ -415,7 +409,7 @@
         {
           "lineNumber": 123,
           "input": "unlock gate with keycard",
-          "output": "You unlock staff gate with staff keycard.\n",
+          "output": "You unlock the staff gate with the staff keycard.\n",
           "passed": true,
           "skipped": false,
           "assertions": [
@@ -424,13 +418,12 @@
               "passed": true,
               "value": "unlock"
             }
-          ],
-          "comment": "PHASE 3: AFTER HOURS — candid animal dialogue + bonus scoring"
+          ]
         },
         {
           "lineNumber": 126,
           "input": "open gate",
-          "output": "You open staff gate.\n",
+          "output": "You open the staff gate.\n",
           "passed": true,
           "skipped": false,
           "assertions": [
@@ -439,8 +432,7 @@
               "passed": true,
               "value": "open"
             }
-          ],
-          "comment": "========================================================================="
+          ]
         },
         {
           "lineNumber": 130,
@@ -507,7 +499,7 @@
         "passed": 30,
         "failed": 0,
         "skipped": 0,
-        "duration": 69
+        "duration": 274
       }
     }
   ],
@@ -515,6 +507,6 @@
     "totalPassed": 30,
     "totalFailed": 0,
     "totalSkipped": 0,
-    "totalDuration": 69
+    "totalDuration": 274
   }
 }
