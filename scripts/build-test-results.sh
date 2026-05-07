@@ -100,7 +100,8 @@ for VER in "${VERSIONS[@]}"; do
   mkdir -p "$BROWSER_DIR"
   OUTPUT_JSON="$BROWSER_DIR/test-results.json"
 
-  if ! node "$SCRIPT_DIR/slim-test-results.js" "$RESULT_JSON" "$OUTPUT_JSON" --version "$VER" 2>/dev/null; then
+  SLIM_SCRIPT="${SCRIPT_DIR}/../../../../npmsharpee/tools/slim-test-results.js"
+  if ! node "$SLIM_SCRIPT" "$RESULT_JSON" "$OUTPUT_JSON" --version "$VER" --story-id "familyzoo-${NUM}" 2>/dev/null; then
     echo "SLIM FAILED"
     FAILED=$((FAILED + 1))
     continue

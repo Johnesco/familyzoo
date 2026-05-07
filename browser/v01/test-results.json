@@ -1,7 +1,7 @@
 {
   "version": "v01",
   "storyId": "familyzoo-01",
-  "timestamp": "2026-05-05T14:02:31.391Z",
+  "timestamp": "2026-05-07T12:47:28.926Z",
   "transcripts": [
     {
       "file": "v01-single-room.transcript",
@@ -114,7 +114,7 @@
         {
           "lineNumber": 41,
           "input": "inventory",
-          "output": "Your pockets are empty.\n",
+          "output": "You aren't carrying anything at all.\n",
           "passed": true,
           "skipped": false,
           "assertions": [
@@ -205,7 +205,7 @@
         "passed": 9,
         "failed": 3,
         "skipped": 0,
-        "duration": 115
+        "duration": 148
       }
     }
   ],
@@ -213,6 +213,6 @@
     "totalPassed": 9,
     "totalFailed": 3,
     "totalSkipped": 0,
-    "totalDuration": 115
+    "totalDuration": 148
   }
 }

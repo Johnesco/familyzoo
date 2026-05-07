@@ -1,7 +1,7 @@
 {
   "version": "v05",
   "storyId": "familyzoo-05",
-  "timestamp": "2026-05-05T14:03:49.860Z",
+  "timestamp": "2026-05-07T12:10:51.018Z",
   "transcripts": [
     {
       "file": "v05-containers.transcript",
@@ -183,7 +183,7 @@
         "passed": 11,
         "failed": 0,
         "skipped": 0,
-        "duration": 123
+        "duration": 74
       }
     }
   ],
@@ -191,6 +191,6 @@
     "totalPassed": 11,
     "totalFailed": 0,
     "totalSkipped": 0,
-    "totalDuration": 123
+    "totalDuration": 74
   }
 }
