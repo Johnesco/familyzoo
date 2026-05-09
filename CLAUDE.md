@@ -321,6 +321,17 @@ Quick map:
 - **Browser preview** via `.claude/launch.json` (portman-backed) for visual/UX checks. Each version lives at `http://127.0.0.1:9000/familyzoo/vNN/play.html`.
 - **Gotcha:** probe + transcript-test both load `dist/index.js` (= default export, currently v17). For v01-specific testing you'll need to swap the re-export or build a per-version variant. See `docs/testing.md` for the full list.
 
+#### Engine-variant lottery & the two-layer testing model
+
+Some `lang-en-us` actions ship multiple message variants for the same outcome and stdlib picks one at random per execution (`Math.random()`). Today the only such case that hits familyzoo is **inventory empty** — stdlib picks one of four message IDs (`inventory_empty`, `nothing_at_all`, `hands_empty`, `pockets_empty`) at `node_modules/@sharpee/stdlib/actions/standard/inventory/inventory.js:104`. Engine seeding is not plumbed end-to-end (no `EngineConfig.seed`, no `--seed` flag), so a single CI run only exercises one variant.
+
+We test these in two layers:
+
+- **Layer A — Walkthrough tolerance.** When a `> command` is leading the player into position rather than being the test focus, the assertion must accept *any* picked variant. Use `[OK: contains_any "..."]` over the variant set, re-anchor to a stable data point (room name, score number), or omit the assertion entirely (a bare `>` line still detects errors). Never pin to a single prose framing word that only matches one variant.
+- **Layer B — Variant coverage.** The variability itself is its own test. For each lottery family, a dedicated transcript at `tests/transcripts/variant-coverage-<family>.transcript` exercises the picker with `contains_any` over the *full* known variant set. A run fails when the engine picks a variant that lacks all our keywords — the regression signal that lang-en-us drifted under us.
+
+When bumping `@sharpee/*`, run the suite multiple times locally (or trust CI's repeated runs) before merging. One run only exercises one variant per family.
+
 ### Modernization passes
 
 Bringing a version up to the currently-pinned `@sharpee/*` release follows the **canonical modernization checklist**: [`docs/modernization-checklist.md`](docs/modernization-checklist.md). Every per-version modernization ticket follows the same six phases (Scope → Source audit → Comment/teaching audit → Behavior audit → One-concept-per-version guard → Artifact audit) and posts the Phase 7 report template as a comment on the issue before a PR opens. If you encounter a drift the checklist didn't anticipate, add the check to the checklist as part of the same ticket — the document is living.

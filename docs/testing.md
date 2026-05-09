@@ -223,6 +223,59 @@ For the modernization passes planned on #1 and #2, expect to use option (1) or a
 
 ---
 
+## Engine-Variant Lottery (important gotcha)
+
+Some `lang-en-us` actions ship multiple message variants for the same outcome and stdlib picks one at random per execution. The runtime `Math.random()` is not seeded by the engine (no `EngineConfig.seed`, no `--seed` on `transcript-test`), so each CI run draws independently and a single run only exercises one variant per family.
+
+**Confirmed lottery families today** (verified against `@sharpee/*` 0.9.113):
+
+| Family | Source | Picks at random from |
+|---|---|---|
+| Inventory empty | `node_modules/@sharpee/stdlib/actions/standard/inventory/inventory.js:104` | `inventory_empty`, `nothing_at_all`, `hands_empty`, `pockets_empty` (4 phrasings; "carrying" appears in 2, "empty" in 2) |
+
+If you find another, add a row here and update the relevant variant-coverage transcript (or write a new one).
+
+**Not lotteries** (deterministic, conditional on game state): scoring (`score_simple` / `score_with_rank` / `perfect_score` / `score_display` chosen by score, rank, maxScore), waiting (always `time_passes`), inventory headers (`carrying` / `wearing` / `carrying_and_wearing` chosen by what player holds).
+
+### Two-layer testing model
+
+We test variant families in two layers — both are pure transcript-author work, no engine or runner changes:
+
+**Layer A — Walkthrough tolerance.** When a `> command` is leading the player into position rather than being the test focus, the assertion must accept *any* picked variant. Three options, in preference order:
+
+1. Re-anchor to a stable data point — room name, item name, score number. Best because it's specific to the thing under test.
+   ```
+   > score
+   [OK: contains "75 points"]
+   ```
+2. Use `[OK: contains_any "..."]` over the variant set when the framing matters.
+   ```
+   > inventory
+   [OK: contains_any "carry" "empty"]
+   ```
+3. Omit the assertion entirely — a bare `>` line still fails on a command error. Best when the navigation step's only job is positioning.
+   ```
+   > drop sign
+   ```
+
+Never pin to a single prose framing word that only matches one variant: `[OK: contains "carry"]` will silently break on the run that draws `hands_empty` or `pockets_empty`.
+
+**Layer B — Variant coverage.** The variability itself is its own focused test. For each lottery family, write a dedicated transcript at `tests/transcripts/variant-coverage-<family>.transcript` that:
+
+- Exercises the picker with multiple repeated calls (one trial samples one variant; ten trials at 4 variants ≈ very high probability of hitting at least 3 distinct variants per CI run).
+- Asserts `[OK: contains_any "..."]` with substrings that *distinguish each known variant uniquely*, not generic words. A new variant the engine adds that lacks all listed substrings will fail this assertion on the run that draws it — the regression signal.
+- Cites the stdlib source line in a comment so future contributors can verify the variant set against the current pinned engine.
+
+Today: [`tests/transcripts/variant-coverage-inventory-empty.transcript`](../tests/transcripts/variant-coverage-inventory-empty.transcript).
+
+### Limitations of the statistical approach
+
+- A *removed* variant won't fail the test — the picker simply stops drawing that key, and `contains_any` keeps passing on the survivors. We accept this; if a removal matters, write a probe-based assertion instead.
+- A single run only exercises a small slice of the variant set. When bumping `@sharpee/*`, run the suite ~10–20 times locally (or trust CI's repeated runs) before merging.
+- True per-variant deterministic tests would need an engine `RANDOM_SEED` that threads into stdlib's `Math.random()` calls. That's an upstream npmsharpee effort — out of scope for familyzoo.
+
+---
+
 ## Claude-Specific Notes
 
 When the user says "test this", infer the modality:

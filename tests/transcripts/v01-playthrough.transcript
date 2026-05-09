@@ -19,8 +19,14 @@ description: Exercise v01's command surface to flag blank/silent responses or ot
 > take sign
 [OK: contains "fixed in place"]
 
+# Engine-variant lottery — stdlib's inventory action picks one of 4 message
+# IDs at random when empty (inventory.js:104). "carry" matches the two
+# "carrying anything" variants but misses "hands are empty" / "pockets are
+# empty". Use contains_any so any picked variant satisfies the assertion.
+# See CLAUDE.md → Testing for the two-layer model and the dedicated
+# variant-coverage transcript.
 > inventory
-[OK: contains "carry"]
+[OK: contains_any "carry" "empty"]
 
 # === Aliases — should resolve to scenery ===
 
