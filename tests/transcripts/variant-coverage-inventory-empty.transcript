@@ -1,0 +1,68 @@
+title: Variant coverage — inventory empty (engine lottery)
+story: familyzoo
+description: Verify that stdlib's empty-inventory message picker keeps choosing among the four variants we expect. Re-runs over CI exercise the picker stochastically.
+
+---
+
+# This is a Layer B variant-coverage scenario (see CLAUDE.md → Testing).
+#
+# stdlib's inventory action picks one of FOUR message IDs at random when
+# the player is empty. From node_modules/@sharpee/stdlib/actions/standard/
+# inventory/inventory.js:104:
+#
+#   const emptyMessages = ['inventory_empty', 'nothing_at_all',
+#                          'hands_empty', 'pockets_empty'];
+#   messageId = emptyMessages[Math.floor(Math.random() * emptyMessages.length)];
+#
+# Rendered (lang-en-us/actions/inventory.js):
+#
+#   inventory_empty  → "{You} aren't carrying anything."
+#   nothing_at_all   → "{You} aren't carrying anything at all."
+#   hands_empty      → "{Your} hands are empty."
+#   pockets_empty    → "{Your} pockets are empty."
+#
+# The contains_any below names the substrings that distinguish each variant.
+# A new variant added by lang-en-us / stdlib that lacks all three keywords
+# will fail this assertion on the run that draws it — that's the regression
+# signal. A variant removal won't be detected by a single run, but over many
+# CI runs the picker will stop drawing the removed key (silent drift, not a
+# failure — note this in the philosophy doc).
+#
+# Rationale for repeated calls: one trial samples one variant. Ten trials
+# at 4 variants ≈ very high probability of seeing at least 3 distinct
+# variants per CI run, which gives the assertion meaningful exposure to
+# the full set inside a single execution.
+
+# The player starts at the Zoo Entrance with empty hands, so > inventory
+# on turn 1 hits the empty branch deterministically (only the chosen
+# variant text is non-deterministic, not whether the branch is taken).
+
+> inventory
+[OK: contains_any "carrying anything" "hands are empty" "pockets are empty"]
+
+> inventory
+[OK: contains_any "carrying anything" "hands are empty" "pockets are empty"]
+
+> inventory
+[OK: contains_any "carrying anything" "hands are empty" "pockets are empty"]
+
+> inventory
+[OK: contains_any "carrying anything" "hands are empty" "pockets are empty"]
+
+> inventory
+[OK: contains_any "carrying anything" "hands are empty" "pockets are empty"]
+
+> inventory
+[OK: contains_any "carrying anything" "hands are empty" "pockets are empty"]
+
+> inventory
+[OK: contains_any "carrying anything" "hands are empty" "pockets are empty"]
+
+> inventory
+[OK: contains_any "carrying anything" "hands are empty" "pockets are empty"]
+
+> inventory
+[OK: contains_any "carrying anything" "hands are empty" "pockets are empty"]
+
+> inventory
+[OK: contains_any "carrying anything" "hands are empty" "pockets are empty"]
