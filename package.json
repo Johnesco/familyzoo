@@ -24,7 +24,6 @@
     "@sharpee/plugin-scheduler": "^0.9.113",
     "@sharpee/sharpee": "^0.9.113",
     "@sharpee/stdlib": "^0.9.113",
-    "@sharpee/text-service": "^0.9.113",
     "@sharpee/world-model": "^0.9.113"
   },
   "devDependencies": {
