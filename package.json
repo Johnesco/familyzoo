@@ -1,7 +1,7 @@
 {
-  "name": "familyzoo",
+  "name": "oldzoo",
   "version": "1.0.0",
-  "description": "Family Zoo \u2014 progressive Sharpee tutorial, v01 through v17+",
+  "description": "Family Zoo \u2014 progressive Sharpee tutorial, v01 through v17+ (local folder/package renamed to oldzoo to disambiguate from the upstream fork's unrelated internal familyzoo tutorial; GitHub repo and in-fiction content are unchanged)",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",

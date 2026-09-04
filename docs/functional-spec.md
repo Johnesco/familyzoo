@@ -3,6 +3,8 @@
 > This is the authoritative record of what the Family Zoo tutorial delivers, how it is organized, and what each version teaches. It is the single source of truth for this tutorial series.
 >
 > **Maintenance rule:** Every change that affects reader-visible behavior — what a version demonstrates, how versions are built and published, what the walkthroughs assert — must be reflected in this document. A change without a corresponding spec update is incomplete.
+>
+> **Naming:** the local folder and npm package are `oldzoo` (renamed from `familyzoo` to disambiguate from an unrelated tutorial of the same name in the upstream engine fork). The GitHub repo, live site, and in-fiction "Willowbrook Family Zoo" setting are unchanged. See project `CLAUDE.md` → Project Identity.
 
 ---
 

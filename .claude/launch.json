@@ -3,7 +3,7 @@
   "configurations": [
     {
       "name": "familyzoo-preview",
-      "runtimeExecutable": "python",
+      "runtimeExecutable": "C:/Users/letme/AppData/Local/Microsoft/WindowsApps/PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0/python.exe",
       "runtimeArgs": ["C:/code/portman/portman.py"],
       "port": 9000
     }

@@ -9,11 +9,17 @@
 ## Project Identity
 
 **Name:** Family Zoo Tutorial
+**Local folder:** `oldzoo` (renamed from `familyzoo` — see naming note below)
 **Purpose:** Progressive Sharpee tutorial — 17 versions that build a small family zoo interactive fiction game, each adding exactly one new engine concept
 **Target Users:** Developers learning to author interactive fiction with the Sharpee TypeScript engine
-**Repository:** https://github.com/Johnesco/familyzoo
+**Repository:** https://github.com/Johnesco/familyzoo _(unchanged — see naming note)_
 **Project Board:** https://github.com/users/Johnesco/projects/5
 **Live Site:** https://johnesco.github.io/familyzoo/ _(GitHub Pages deploy — verify)_
+
+> **Naming note (2026-07-27):** the local directory and npm package name were renamed `familyzoo` → `oldzoo` to disambiguate from an unrelated internal tutorial also called `familyzoo` that lives in the upstream engine fork (`C:/code/fork/sharpee/tutorials/familyzoo/`, split into v1.5.0/v2.0.0 editions for their book). Three separate things share/shared the word "familyzoo" — don't conflate them:
+> 1. **This project's local folder + npm package** — now `oldzoo`.
+> 2. **This project's GitHub repo** — still `Johnesco/familyzoo` (unchanged; renaming it was explicitly out of scope to avoid breaking the live Pages URL, issue links, and the project board).
+> 3. **The in-fiction setting** — the game is still narratively set at "Willowbrook Family Zoo"; no story text, message IDs, `ifhub.conf` target ids, `landing.json` keys, transcript `story:` fields, or the `ship.py familyzoo ...` registry argument changed. Those are load-bearing identifiers tied to the IF Hub registry and the live ship pipeline.
 
 ## Project Context
 
@@ -46,7 +52,7 @@ See `C:/code/npmsharpee/docs/guides/` for the canonical engine reference. If a t
 ## File Structure Overview
 
 ```
-familyzoo/
+oldzoo/                           # local folder name — GitHub repo is still Johnesco/familyzoo
 ├── CLAUDE.md                     # THIS FILE
 ├── README.md                     # Public documentation (TODO — not yet authored)
 ├── package.json                  # @sharpee/* 0.9.111 deps, tsc build

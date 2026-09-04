@@ -28,7 +28,7 @@ Listed primary-first. Reach for transcript tooling before probe; drop to probe o
 
 ## Tools Inventory
 
-All commands below run from the familyzoo repo root (`C:/code/text-games/sharpee/familyzoo/`). Prerequisite for anything that loads compiled code: `npm run build` (emits `dist/`).
+All commands below run from the repo root (`C:/code/text-games/sharpee/oldzoo/` — local folder renamed from `familyzoo`, see project `CLAUDE.md` → Project Identity for why). Prerequisite for anything that loads compiled code: `npm run build` (emits `dist/`).
 
 ### 1. Browser preview — the reader's experience
 
@@ -241,7 +241,7 @@ If you find another, add a row here and update the relevant variant-coverage tra
 
 We test variant families in two layers — both are pure transcript-author work, no engine or runner changes:
 
-**Layer A — Walkthrough tolerance.** When a `> command` is leading the player into position rather than being the test focus, the assertion must accept *any* picked variant. Three options, in preference order:
+**Layer A — Walkthrough tolerance.** When a `> command` is leading the player into position rather than being the test focus, the assertion must accept *any* picked variant. Two options, in preference order:
 
 1. Re-anchor to a stable data point — room name, item name, score number. Best because it's specific to the thing under test.
    ```
@@ -253,12 +253,10 @@ We test variant families in two layers — both are pure transcript-author work,
    > inventory
    [OK: contains_any "carry" "empty"]
    ```
-3. Omit the assertion entirely — a bare `>` line still fails on a command error. Best when the navigation step's only job is positioning.
-   ```
-   > drop sign
-   ```
 
 Never pin to a single prose framing word that only matches one variant: `[OK: contains "carry"]` will silently break on the run that draws `hands_empty` or `pockets_empty`.
+
+> **Note on bare `>` lines.** Some upstream guides suggest omitting the assertion entirely so a command "just runs without checking output." That works under `transcript-runner.js` (which injects an auto-blank-check), but the canonical `transcript-test` CLI used by `scripts/test-all.py` **rejects bare `>` lines as validation errors**. Always provide an assertion. If you genuinely don't care about output, use `contains_any` over the plausible set; if a command-surface sweep is what you want, run it through `transcript-runner.js` rather than `transcript-test`.
 
 **Layer B — Variant coverage.** The variability itself is its own focused test. For each lottery family, write a dedicated transcript at `tests/transcripts/variant-coverage-<family>.transcript` that:
 
