@@ -23,7 +23,7 @@ import { hatchModules } from './hatch-modules.js';
 // The compiled story, generated beside this file at build time the same way.
 import { storyIR } from './story-ir.js';
 
-const THEME_STORAGE_KEY = 'hello-chord-theme';
+const THEME_STORAGE_KEY = 'familyzoo-theme';
 ThemeManager.applyEarlyTheme(THEME_STORAGE_KEY);
 
 /**
@@ -132,7 +132,7 @@ async function start(): Promise<void> {
     const authorChannels = (globalThis as { __SHARPEE_AUTHOR_CHANNELS__?: unknown })
       .__SHARPEE_AUTHOR_CHANNELS__ === true;
     client = new BrowserClient({
-      storagePrefix: 'hello-chord-',
+      storagePrefix: 'familyzoo-',
       ...(authorChannels
         ? { clientCapabilities: { ...BROWSER_CAPABILITIES, authorChannels: true } }
         : {}),
