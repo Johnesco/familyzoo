@@ -3,11 +3,11 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Family Zoo - Sharpee Tutorial &mdash; IF Hub</title>
+<title>Family Zoo — a Chord tutorial &mdash; IF Hub</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="ifhub:title" content="Family Zoo - Sharpee Tutorial">
-<meta name="ifhub:meta" content="A progressive Sharpee engine walkthrough">
-<meta name="ifhub:description" content="Family Zoo — a 17-version progressive walkthrough of the Sharpee TypeScript IF engine, from a single room to a full multi-file story.">
+<meta name="ifhub:title" content="Family Zoo — a Chord tutorial">
+<meta name="ifhub:meta" content="Sixteen steps through the Sharpee engine">
+<meta name="ifhub:description" content="Family Zoo — a sixteen-step tutorial for Chord, the Sharpee authoring language, from a single room to a full story.">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -158,26 +158,26 @@ footer a { color: #887755; border-bottom-color: #3a3020; }
 </head>
 <body>
 
-<nav class="breadcrumb"><a href="/ifhub/">IF Hub</a> &rsaquo; Family Zoo - Sharpee Tutorial</nav>
+<nav class="breadcrumb"><a href="/ifhub/">IF Hub</a> &rsaquo; Family Zoo — a Chord tutorial</nav>
 
-<h1>Family Zoo - Sharpee Tutorial</h1>
-<p class="subtitle">A progressive Sharpee engine walkthrough</p>
+<h1>Family Zoo — a Chord tutorial</h1>
+<p class="subtitle">Sixteen steps through the Sharpee engine</p>
 
-<a class="play-latest" href="/familyzoo/play.html">→ Play the latest step (v17)</a>
+<a class="play-latest" href="/familyzoo/play.html">→ Play the finished zoo</a>
 <a class="play-latest" href="/ifhub/app.html?game=familyzoo">Play in IF Hub</a>
 
-<p><strong>Family Zoo</strong> is a progressive tutorial for the <a href="https://sharpee.net">Sharpee</a> TypeScript interactive fiction engine. It builds one game across seventeen steps: v01 is a single room, v17 is a full multi-file story with NPCs, timed events, scoring and an endgame. Each step adds one chapter of the zoo and one slice of the engine, and each is playable on its own with its source and test report beside it.</p><p>Start at <a href="#familyzoo-v01">v01</a> to follow the tutorial in order, or jump to any step below.</p>
+<p><strong>Family Zoo</strong> is a tutorial for <a href="https://sharpee.net/chord/">Chord</a>, the authoring language of the <a href="https://sharpee.net">Sharpee</a> interactive fiction engine. It builds one game across sixteen steps: v01 is a single room in about fifty lines, v16 is the whole zoo in eight hundred — animals with their own verbs, a zookeeper, timed events, scoring, and an after-hours phase.</p><p>Every step is a single <code>.story</code> file that is the step before it plus one idea, and every step is playable on its own with its source and test report beside it. Start at <a href="#familyzoo-v01">v01</a> to follow it in order, or jump in anywhere.</p>
 
 <h2>Versions</h2>
 
 <div class="version-nav">
 <span class="current">Current</span>
-  <a href="#familyzoo-v16">v16 — Scoring and Endgame</a>
-  <a href="#familyzoo-v15">v15 — Timed Events (Daemons & Fuses)</a>
-  <a href="#familyzoo-v14">v14 — Capability Dispatch</a>
-  <a href="#familyzoo-v13">v13 — Custom Actions</a>
-  <a href="#familyzoo-v12">v12 — Event Handlers</a>
-  <a href="#familyzoo-v11">v11 — Non-Player Characters</a>
+  <a href="#familyzoo-v16">v16 — After Hours & the TypeScript Hatch</a>
+  <a href="#familyzoo-v15">v15 — Scoring & Endgame</a>
+  <a href="#familyzoo-v14">v14 — Daemons & Sequences</a>
+  <a href="#familyzoo-v13">v13 — Custom Traits & Actions</a>
+  <a href="#familyzoo-v12">v12 — Event Clauses</a>
+  <a href="#familyzoo-v11">v11 — Characters</a>
   <a href="#familyzoo-v10">v10 — Switchable Devices</a>
   <a href="#familyzoo-v09">v09 — Readable Objects</a>
   <a href="#familyzoo-v08">v08 — Light & Dark</a>
@@ -192,15 +192,16 @@ footer a { color: #887755; border-bottom-color: #3a3020; }
 
 <div class="version-entry primary" id="familyzoo">
   <h3>Current</h3>
-  <p>Splits the growing story across six concern-based files and adds an after-hours phase where the zoo closes, the zookeeper leaves, and the parrot starts speaking candidly. Demonstrates organizing a real-size Sharpee project and swapping NPC behavior at runtime.</p>
+  <p>The finished zoo: eight rooms, animals with their own verbs, a zookeeper, timed events, scoring, and an after-hours phase where the parrot stops being polite. This is every step above, in one 800-line Chord file.</p>
   <ul>
-    <li>Multi-file layout split by concern (zoo-map, zoo-items, characters, events, scoring, language, index)</li>
-    <li>Runtime NPC behavior swap via npcService.removeBehavior + registerBehavior</li>
-    <li>Conditional daemon gated on a world state flag (zoo.after_hours)</li>
-    <li>25-point after-hours bonus for witnessing closing events (max 100)</li>
-    <li>getRunnerState/restoreRunnerState hooks so behavior swaps survive save/restore</li>
+    <li>`on every turn` — the daemon</li>
+    <li>`define sequence feeding time` — scripted beats in order</li>
+    <li>Gating a daemon on a condition so it is not always talking</li>
+    <li>Keeping ambient text from drowning the player's own actions</li>
+    <li>`use scoring` in the story header</li>
+    <li>`score visit worth 5` on a room</li>
   </ul>
-  <div class="version-action" data-gid="familyzoo" data-play="/familyzoo/play.html" data-source="/familyzoo/source.html" data-walkthrough="/familyzoo/walkthrough.txt">
+  <div class="version-action" data-gid="familyzoo" data-play="/familyzoo/play.html" data-source="/familyzoo/familyzoo.story" data-walkthrough="/familyzoo/walkthrough.txt">
     <select class="va-action"><option value="play">Play Game</option><option value="source">View Source</option><option value="walkthrough">View Walkthrough</option></select>
     <label class="va-fs"><input type="checkbox"> Fullscreen</label>
     <button class="va-go" type="button">GO</button>
@@ -208,16 +209,16 @@ footer a { color: #887755; border-bottom-color: #3a3020; }
 </div>
 
 <div class="version-entry" id="familyzoo-v16">
-  <h3>v16 — Scoring and Endgame</h3>
-  <p>Turns the zoo into a 75-point game with an ending: visit rooms, feed animals, and collect items to win. Introduces the score ledger, unique award IDs, and a victory daemon that watches for the win condition.</p>
+  <h3>v16 — After Hours & the TypeScript Hatch</h3>
+  <p>The zoo closes. A story state flips, the zookeeper leaves, and the parrot starts speaking candidly — and the parrot's flavour line comes from TypeScript, the one escape hatch Chord keeps.</p>
   <ul>
-    <li>world.setMaxScore and world.awardScore with idempotent unique IDs</li>
-    <li>world.getScore and the built-in score command</li>
-    <li>Chained event handlers awarding points on room entry</li>
-    <li>A high-priority victory daemon driving endgame state flags</li>
-    <li>Designing a balanced scoring table across exploration and action</li>
+    <li>`states: open, after-hours` in the header</li>
+    <li>`while after-hours` on clauses and descriptions</li>
+    <li>`define sequence closing time` driving the transition</li>
+    <li>`define text flavor from "./chord-extras.ts"` (ADR-259)</li>
+    <li>When to reach for the hatch — and when not to</li>
   </ul>
-  <div class="version-action" data-gid="familyzoo-v16" data-play="/familyzoo-v16/play.html" data-source="/familyzoo-v16/source.html" data-walkthrough="/familyzoo-v16/walkthrough.txt">
+  <div class="version-action" data-gid="familyzoo-v16" data-play="/familyzoo-v16/play.html" data-source="/familyzoo-v16/familyzoo-v16.story" data-walkthrough="/familyzoo-v16/walkthrough.txt">
     <select class="va-action"><option value="play">Play Game</option><option value="source">View Source</option><option value="walkthrough">View Walkthrough</option></select>
     <label class="va-fs"><input type="checkbox"> Fullscreen</label>
     <button class="va-go" type="button">GO</button>
@@ -225,16 +226,16 @@ footer a { color: #887755; border-bottom-color: #3a3020; }
 </div>
 
 <div class="version-entry" id="familyzoo-v15">
-  <h3>v15 — Timed Events (Daemons & Fuses)</h3>
-  <p>The PA system makes scheduled announcements, feeding time arrives on a timer, and goats bleat until fed. Introduces the SchedulerPlugin and its two primitives — daemons that tick every turn and fuses that count down.</p>
+  <h3>v15 — Scoring & Endgame</h3>
+  <p>Points for seeing the zoo. `use scoring` turns on the SCORE command, rooms carry what a visit is worth, and `award` banks it once.</p>
   <ul>
-    <li>SchedulerPlugin registration in onEngineReady</li>
-    <li>Daemon interface with condition() and run() that returns events</li>
-    <li>Fuse interface with turns, repeat, and originalTurns for re-arming</li>
-    <li>game.message events with narrate: true for auto-rendered text</li>
-    <li>Gotchas around turn offsets and the fuse skipNextTick behavior</li>
+    <li>`use scoring` in the story header</li>
+    <li>`score visit worth 5` on a room</li>
+    <li>`award visit` inside `after the player entering`</li>
+    <li>Why awarding is idempotent — revisiting pays nothing</li>
+    <li>The SCORE command, for free</li>
   </ul>
-  <div class="version-action" data-gid="familyzoo-v15" data-play="/familyzoo-v15/play.html" data-source="/familyzoo-v15/source.html" data-walkthrough="/familyzoo-v15/walkthrough.txt">
+  <div class="version-action" data-gid="familyzoo-v15" data-play="/familyzoo-v15/play.html" data-source="/familyzoo-v15/familyzoo-v15.story" data-walkthrough="/familyzoo-v15/walkthrough.txt">
     <select class="va-action"><option value="play">Play Game</option><option value="source">View Source</option><option value="walkthrough">View Walkthrough</option></select>
     <label class="va-fs"><input type="checkbox"> Fullscreen</label>
     <button class="va-go" type="button">GO</button>
@@ -242,16 +243,15 @@ footer a { color: #887755; border-bottom-color: #3a3020; }
 </div>
 
 <div class="version-entry" id="familyzoo-v14">
-  <h3>v14 — Capability Dispatch</h3>
-  <p>Petting the goats feels different from petting the parrot (which bites). Introduces capability dispatch — one verb whose behavior is delegated to whichever trait the target entity carries.</p>
+  <h3>v14 — Daemons & Sequences</h3>
+  <p>The zoo starts moving on its own: PA announcements, feeding time, goats that get hungrier. A daemon runs every turn; a sequence is a scripted run of beats.</p>
   <ul>
-    <li>Custom traits declaring a static capabilities[] list</li>
-    <li>registerCapabilityBehavior with optional condition predicates</li>
-    <li>createCapabilityDispatchAction factory for auto-built dispatch actions</li>
-    <li>Per-entity behavior selection via trait data like animalKind</li>
-    <li>The verb vs entity responsibility split vs. plain custom actions</li>
+    <li>`on every turn` — the daemon</li>
+    <li>`define sequence feeding time` — scripted beats in order</li>
+    <li>Gating a daemon on a condition so it is not always talking</li>
+    <li>Keeping ambient text from drowning the player's own actions</li>
   </ul>
-  <div class="version-action" data-gid="familyzoo-v14" data-play="/familyzoo-v14/play.html" data-source="/familyzoo-v14/source.html" data-walkthrough="/familyzoo-v14/walkthrough.txt">
+  <div class="version-action" data-gid="familyzoo-v14" data-play="/familyzoo-v14/play.html" data-source="/familyzoo-v14/familyzoo-v14.story" data-walkthrough="/familyzoo-v14/walkthrough.txt">
     <select class="va-action"><option value="play">Play Game</option><option value="source">View Source</option><option value="walkthrough">View Walkthrough</option></select>
     <label class="va-fs"><input type="checkbox"> Fullscreen</label>
     <button class="va-go" type="button">GO</button>
@@ -259,16 +259,16 @@ footer a { color: #887755; border-bottom-color: #3a3020; }
 </div>
 
 <div class="version-entry" id="familyzoo-v13">
-  <h3>v13 — Custom Actions</h3>
-  <p>Adds entirely new verbs — feed, photograph, snap — that stdlib does not know about. Walks through the four-phase Action interface and how to teach the parser and language provider about story-specific vocabulary.</p>
+  <h3>v13 — Custom Traits & Actions</h3>
+  <p>Goats, rabbits and the verbs that go with them. In Chord a trait and the action that dispatches on it are one lesson: the trait names a capability, the action is what makes it mean something.</p>
   <ul>
-    <li>The Action interface with validate, execute, report, and blocked phases</li>
-    <li>getCustomActions on the Story class</li>
-    <li>extendParser with grammar.define and mapsTo</li>
-    <li>extendLanguage for registering message IDs and text</li>
-    <li>context.sharedData for passing state between phases</li>
+    <li>`define trait pettable` — naming a capability the stdlib lacks</li>
+    <li>`define action petting` — a new verb and its grammar</li>
+    <li>An action that finds its target by trait, not by name</li>
+    <li>`feedable`, `chatty`, `restless` and animals that carry several traits</li>
+    <li>Why a trait alone does nothing until an action consults it</li>
   </ul>
-  <div class="version-action" data-gid="familyzoo-v13" data-play="/familyzoo-v13/play.html" data-source="/familyzoo-v13/source.html" data-walkthrough="/familyzoo-v13/walkthrough.txt">
+  <div class="version-action" data-gid="familyzoo-v13" data-play="/familyzoo-v13/play.html" data-source="/familyzoo-v13/familyzoo-v13.story" data-walkthrough="/familyzoo-v13/walkthrough.txt">
     <select class="va-action"><option value="play">Play Game</option><option value="source">View Source</option><option value="walkthrough">View Walkthrough</option></select>
     <label class="va-fs"><input type="checkbox"> Fullscreen</label>
     <button class="va-go" type="button">GO</button>
@@ -276,16 +276,15 @@ footer a { color: #887755; border-bottom-color: #3a3020; }
 </div>
 
 <div class="version-entry" id="familyzoo-v12">
-  <h3>v12 — Event Handlers</h3>
-  <p>Hooks into stdlib action events so dropped feed triggers goats to rush in and a penny dropped in a press becomes a pressed souvenir. Separates silent state mutations from chained events that produce player-facing text.</p>
+  <h3>v12 — Event Clauses</h3>
+  <p>The snake, and the three places a story can interrupt the engine: before an action, after it, and on it. This is Chord's answer to event handlers.</p>
   <ul>
-    <li>registerEventHandler for silent state changes</li>
-    <li>chainEvent returning ISemanticEvent for narrated reactions</li>
-    <li>The full catalog of if.event.* triggers (taken, dropped, put_in, opened, etc.)</li>
-    <li>The item-transformation pattern: remove input, create output, message the player</li>
-    <li>Unique handler keys for each chain registration</li>
+    <li>`on the player <verb>ing` — replace the standard response</li>
+    <li>`before` — refuse or redirect an action</li>
+    <li>`after the player entering` — react to arrival</li>
+    <li>Where a clause belongs: on the thing, not in a central handler</li>
   </ul>
-  <div class="version-action" data-gid="familyzoo-v12" data-play="/familyzoo-v12/play.html" data-source="/familyzoo-v12/source.html" data-walkthrough="/familyzoo-v12/walkthrough.txt">
+  <div class="version-action" data-gid="familyzoo-v12" data-play="/familyzoo-v12/play.html" data-source="/familyzoo-v12/familyzoo-v12.story" data-walkthrough="/familyzoo-v12/walkthrough.txt">
     <select class="va-action"><option value="play">Play Game</option><option value="source">View Source</option><option value="walkthrough">View Walkthrough</option></select>
     <label class="va-fs"><input type="checkbox"> Fullscreen</label>
     <button class="va-go" type="button">GO</button>
@@ -293,16 +292,15 @@ footer a { color: #887755; border-bottom-color: #3a3020; }
 </div>
 
 <div class="version-entry" id="familyzoo-v11">
-  <h3>v11 — Non-Player Characters</h3>
-  <p>A patrolling zookeeper and a chatty parrot bring the zoo to life. Walks through the three-part NPC system — trait, behavior, plugin — and how to write custom behavior reactions.</p>
+  <h3>v11 — Characters</h3>
+  <p>Sam the zookeeper. A person is created like anything else, but carries conversation and reacts to the player being in the room.</p>
   <ul>
-    <li>NpcTrait, ActorTrait with isPlayer false, and the NpcPlugin</li>
-    <li>Built-in behaviors: patrol, wanderer, follower, guard, passive</li>
-    <li>Custom NpcBehavior implementations with onTurn and onPlayerEnters hooks</li>
-    <li>NpcAction types: move, speak, emote, wait, take, drop</li>
-    <li>NpcContext giving behaviors access to world, npc, and player state</li>
+    <li>`a person` and where they stand</li>
+    <li>`on the player talking to` for conversation</li>
+    <li>Describing someone doing something, not just standing there</li>
+    <li>Why the room description mentions them separately</li>
   </ul>
-  <div class="version-action" data-gid="familyzoo-v11" data-play="/familyzoo-v11/play.html" data-source="/familyzoo-v11/source.html" data-walkthrough="/familyzoo-v11/walkthrough.txt">
+  <div class="version-action" data-gid="familyzoo-v11" data-play="/familyzoo-v11/play.html" data-source="/familyzoo-v11/familyzoo-v11.story" data-walkthrough="/familyzoo-v11/walkthrough.txt">
     <select class="va-action"><option value="play">Play Game</option><option value="source">View Source</option><option value="walkthrough">View Walkthrough</option></select>
     <label class="va-fs"><input type="checkbox"> Fullscreen</label>
     <button class="va-go" type="button">GO</button>
@@ -311,15 +309,14 @@ footer a { color: #887755; border-bottom-color: #3a3020; }
 
 <div class="version-entry" id="familyzoo-v10">
   <h3>v10 — Switchable Devices</h3>
-  <p>A radio bolted to a shelf in the supply room can be switched on and off to play music. Shows SwitchableTrait on its own — no light source involved — and contrasts it with OpenableTrait.</p>
+  <p>A radio in the supply room, a feed dispenser in the petting zoo, a penny press in the gift shop — and the shop itself, whose description is stitched from a cycling phrase.</p>
   <ul>
-    <li>Standalone SwitchableTrait for non-light devices</li>
-    <li>switch on/off and turn on/off verb aliases from stdlib</li>
-    <li>Semantic distinction between switch (devices) and open (barriers)</li>
-    <li>Combining SwitchableTrait with SceneryTrait for fixed appliances</li>
-    <li>Patterns for future device combinations</li>
+    <li>`switchable` and TURN ON / TURN OFF</li>
+    <li>`on` clauses that fire when a device is used</li>
+    <li>`define phrase pins, cycling` — a different line each time</li>
+    <li>`{pins}` — binding a phrase into a description</li>
   </ul>
-  <div class="version-action" data-gid="familyzoo-v10" data-play="/familyzoo-v10/play.html" data-source="/familyzoo-v10/source.html" data-walkthrough="/familyzoo-v10/walkthrough.txt">
+  <div class="version-action" data-gid="familyzoo-v10" data-play="/familyzoo-v10/play.html" data-source="/familyzoo-v10/familyzoo-v10.story" data-walkthrough="/familyzoo-v10/walkthrough.txt">
     <select class="va-action"><option value="play">Play Game</option><option value="source">View Source</option><option value="walkthrough">View Walkthrough</option></select>
     <label class="va-fs"><input type="checkbox"> Fullscreen</label>
     <button class="va-go" type="button">GO</button>
@@ -328,15 +325,14 @@ footer a { color: #887755; border-bottom-color: #3a3020; }
 
 <div class="version-entry" id="familyzoo-v09">
   <h3>v09 — Readable Objects</h3>
-  <p>Plaques, warning signs, and a take-away brochure give the zoo readable text. Separates what an object looks like from what it actually says.</p>
+  <p>A plaque in the aviary. READ is its own action, distinct from EXAMINE, and a phrase block lets the text be laid out the way a sign really reads.</p>
   <ul>
-    <li>ReadableTrait with its own text field</li>
-    <li>Clear split between examine and read verbs</li>
-    <li>Scenery plaques you can read but not take</li>
-    <li>Portable readables like brochures, letters, and books</li>
-    <li>Guidance on when to use ReadableTrait vs. a long description</li>
+    <li>`readable` alongside `scenery`</li>
+    <li>`on the player reading` versus the plain description</li>
+    <li>A `phrase` block holding multi-paragraph sign text</li>
+    <li>Why READ and EXAMINE should say different things</li>
   </ul>
-  <div class="version-action" data-gid="familyzoo-v09" data-play="/familyzoo-v09/play.html" data-source="/familyzoo-v09/source.html" data-walkthrough="/familyzoo-v09/walkthrough.txt">
+  <div class="version-action" data-gid="familyzoo-v09" data-play="/familyzoo-v09/play.html" data-source="/familyzoo-v09/familyzoo-v09.story" data-walkthrough="/familyzoo-v09/walkthrough.txt">
     <select class="va-action"><option value="play">Play Game</option><option value="source">View Source</option><option value="walkthrough">View Walkthrough</option></select>
     <label class="va-fs"><input type="checkbox"> Fullscreen</label>
     <button class="va-go" type="button">GO</button>
@@ -345,15 +341,14 @@ footer a { color: #887755; border-bottom-color: #3a3020; }
 
 <div class="version-entry" id="familyzoo-v08">
   <h3>v08 — Light & Dark</h3>
-  <p>Adds a pitch-black nocturnal exhibit reachable only after finding and switching on a flashlight in the supply room. Introduces darkness as a room property and light sources as the gating mechanism.</p>
+  <p>The nocturnal exhibit is unlit. Without a light source the player sees nothing; with the flashlight the room opens up. One word on the room does the whole job.</p>
   <ul>
-    <li>isDark flag on RoomTrait</li>
-    <li>LightSourceTrait with brightness and isLit</li>
-    <li>SwitchableTrait for on/off toggles</li>
-    <li>The flashlight pattern combining three traits</li>
-    <li>Alternative patterns for always-on, consumable, and adjustable lights</li>
+    <li>`a room, dark`</li>
+    <li>A portable light source and what carrying it changes</li>
+    <li>What the engine says when there is no light</li>
+    <li>A warning sign that tells the player what they need</li>
   </ul>
-  <div class="version-action" data-gid="familyzoo-v08" data-play="/familyzoo-v08/play.html" data-source="/familyzoo-v08/source.html" data-walkthrough="/familyzoo-v08/walkthrough.txt">
+  <div class="version-action" data-gid="familyzoo-v08" data-play="/familyzoo-v08/play.html" data-source="/familyzoo-v08/familyzoo-v08.story" data-walkthrough="/familyzoo-v08/walkthrough.txt">
     <select class="va-action"><option value="play">Play Game</option><option value="source">View Source</option><option value="walkthrough">View Walkthrough</option></select>
     <label class="va-fs"><input type="checkbox"> Fullscreen</label>
     <button class="va-go" type="button">GO</button>
@@ -362,15 +357,14 @@ footer a { color: #887755; border-bottom-color: #3a3020; }
 
 <div class="version-entry" id="familyzoo-v07">
   <h3>v07 — Locked Doors & Keys</h3>
-  <p>A staff gate now blocks passage south until the player finds the keycard at the entrance and unlocks it. Covers the full locked-door stack: keys, LockableTrait, DoorTrait, and the via property on exits.</p>
+  <p>A staff gate the player cannot pass until they find the keycard. The refusal message is a named phrase in the en-US catalog, not hardcoded English in the exit.</p>
   <ul>
-    <li>LockableTrait with keyId wiring a specific key to a specific lock</li>
-    <li>DoorTrait bridging two rooms bidirectionally</li>
-    <li>Exit via property so going checks the door state</li>
-    <li>The take, unlock, open, go player sequence</li>
-    <li>Ordinary items serving as keys — no special trait needed</li>
+    <li>`lockable with the staff keycard`</li>
+    <li>`south is blocked while the staff gate is closed: staff-gate-blocked`</li>
+    <li>`define phrases en-US` — the catalog of refusal keys</li>
+    <li>UNLOCK, LOCK and the messages the stdlib already knows</li>
   </ul>
-  <div class="version-action" data-gid="familyzoo-v07" data-play="/familyzoo-v07/play.html" data-source="/familyzoo-v07/source.html" data-walkthrough="/familyzoo-v07/walkthrough.txt">
+  <div class="version-action" data-gid="familyzoo-v07" data-play="/familyzoo-v07/play.html" data-source="/familyzoo-v07/familyzoo-v07.story" data-walkthrough="/familyzoo-v07/walkthrough.txt">
     <select class="va-action"><option value="play">Play Game</option><option value="source">View Source</option><option value="walkthrough">View Walkthrough</option></select>
     <label class="va-fs"><input type="checkbox"> Fullscreen</label>
     <button class="va-go" type="button">GO</button>
@@ -379,15 +373,14 @@ footer a { color: #887755; border-bottom-color: #3a3020; }
 
 <div class="version-entry" id="familyzoo-v06">
   <h3>v06 — Openable Things</h3>
-  <p>Makes containers openable and closeable, so a lunchbox and the feed dispenser hide their contents until opened. Teaches the open/closed state machine and the trick for pre-populating closed containers during world setup.</p>
+  <p>The supply room, its metal shelves and a cork board. `openable` gives a thing an open and a closed state, and OPEN and CLOSE start working with no code of your own.</p>
   <ul>
-    <li>OpenableTrait with isOpen, canClose, and revealsContents</li>
-    <li>Built-in open and close actions from stdlib</li>
-    <li>Closed containers blocking put-in and hiding contents</li>
-    <li>Temporarily opening a container during initializeWorld to seed items</li>
-    <li>Pattern preview for combining OpenableTrait with LockableTrait</li>
+    <li>`openable` and the state it implies</li>
+    <li>A container that is also openable</li>
+    <li>Rooms reached only through something you must open</li>
+    <li>Descriptions that read correctly whether open or closed</li>
   </ul>
-  <div class="version-action" data-gid="familyzoo-v06" data-play="/familyzoo-v06/play.html" data-source="/familyzoo-v06/source.html" data-walkthrough="/familyzoo-v06/walkthrough.txt">
+  <div class="version-action" data-gid="familyzoo-v06" data-play="/familyzoo-v06/play.html" data-source="/familyzoo-v06/familyzoo-v06.story" data-walkthrough="/familyzoo-v06/walkthrough.txt">
     <select class="va-action"><option value="play">Play Game</option><option value="source">View Source</option><option value="walkthrough">View Walkthrough</option></select>
     <label class="va-fs"><input type="checkbox"> Fullscreen</label>
     <button class="va-go" type="button">GO</button>
@@ -396,15 +389,14 @@ footer a { color: #887755; border-bottom-color: #3a3020; }
 
 <div class="version-entry" id="familyzoo-v05">
   <h3>v05 — Containers & Supporters</h3>
-  <p>Adds intermediate storage: a backpack to put things in, a park bench to set things on, and a fixed feed dispenser. Covers the split between containers and supporters and how capacity limits work.</p>
+  <p>A backpack that holds things and a park bench that things sit on. Chord distinguishes what is *in* a thing from what is *on* it, and the parser follows.</p>
   <ul>
-    <li>ContainerTrait for things held inside</li>
-    <li>SupporterTrait for things placed on top</li>
-    <li>Preposition-sensitive parsing of put in vs put on</li>
-    <li>Capacity limits via maxItems</li>
-    <li>Composing multiple traits (e.g. SupporterTrait + SceneryTrait) on one entity</li>
+    <li>`a container` — things go in it</li>
+    <li>`a supporter` — things go on it</li>
+    <li>Putting a thing inside another at creation time</li>
+    <li>How the room description reports contents it did not have to be told about</li>
   </ul>
-  <div class="version-action" data-gid="familyzoo-v05" data-play="/familyzoo-v05/play.html" data-source="/familyzoo-v05/source.html" data-walkthrough="/familyzoo-v05/walkthrough.txt">
+  <div class="version-action" data-gid="familyzoo-v05" data-play="/familyzoo-v05/play.html" data-source="/familyzoo-v05/familyzoo-v05.story" data-walkthrough="/familyzoo-v05/walkthrough.txt">
     <select class="va-action"><option value="play">Play Game</option><option value="source">View Source</option><option value="walkthrough">View Walkthrough</option></select>
     <label class="va-fs"><input type="checkbox"> Fullscreen</label>
     <button class="va-go" type="button">GO</button>
@@ -413,15 +405,14 @@ footer a { color: #887755; border-bottom-color: #3a3020; }
 
 <div class="version-entry" id="familyzoo-v04">
   <h3>v04 — Portable Objects</h3>
-  <p>Introduces takeable items — a zoo map, a bag of feed, a souvenir penny — that the player can pick up, carry between rooms, and drop. Establishes that portability is the default and SceneryTrait is what removes it.</p>
+  <p>The first things the player can carry: a brochure, a map, a souvenir penny. Also the first phrase block — the brochure's text is set verbatim so its layout survives.</p>
   <ul>
-    <li>EntityType.ITEM for portable objects</li>
-    <li>Built-in take, drop, inventory, and take all actions</li>
-    <li>Items traveling with the player automatically</li>
-    <li>Loose objects appearing in room listings</li>
-    <li>The portable-by-default design philosophy</li>
+    <li>A thing with no `scenery` is takeable by default</li>
+    <li>`readable` and `on the player reading`</li>
+    <li>`define phrase brochure-text, verbatim` — text kept exactly as written</li>
+    <li>TAKE, DROP and INVENTORY come from the standard library</li>
   </ul>
-  <div class="version-action" data-gid="familyzoo-v04" data-play="/familyzoo-v04/play.html" data-source="/familyzoo-v04/source.html" data-walkthrough="/familyzoo-v04/walkthrough.txt">
+  <div class="version-action" data-gid="familyzoo-v04" data-play="/familyzoo-v04/play.html" data-source="/familyzoo-v04/familyzoo-v04.story" data-walkthrough="/familyzoo-v04/walkthrough.txt">
     <select class="va-action"><option value="play">Play Game</option><option value="source">View Source</option><option value="walkthrough">View Walkthrough</option></select>
     <label class="va-fs"><input type="checkbox"> Fullscreen</label>
     <button class="va-go" type="button">GO</button>
@@ -430,15 +421,14 @@ footer a { color: #887755; border-bottom-color: #3a3020; }
 
 <div class="version-entry" id="familyzoo-v03">
   <h3>v03 — Scenery</h3>
-  <p>Populates every room with environmental detail — fences, flowers, hay bales, waterfalls — that the player can examine but not pick up. Makes the distinction between EntityType.SCENERY as a label and SceneryTrait as the mechanism that actually blocks taking.</p>
+  <p>Fences, flower beds, hay, a waterfall, a toucan. Scenery is what makes a room feel like a place rather than a list of exits — present to examine, refused when taken.</p>
   <ul>
-    <li>SceneryTrait to prevent items from being taken</li>
-    <li>Distinction between EntityType.SCENERY and SceneryTrait</li>
-    <li>Generous alias lists for natural player phrasing</li>
-    <li>Guidance on what belongs as scenery vs. portable items</li>
-    <li>Scenery-only descriptions that stay hidden from room object listings</li>
+    <li>`scenery` blocks taking without any refusal message of your own</li>
+    <li>Several scenery things sharing one room</li>
+    <li>Writing descriptions that reward a second look</li>
+    <li>`aka` on scenery so EXAMINE FENCE and EXAMINE IRON FENCE both work</li>
   </ul>
-  <div class="version-action" data-gid="familyzoo-v03" data-play="/familyzoo-v03/play.html" data-source="/familyzoo-v03/source.html" data-walkthrough="/familyzoo-v03/walkthrough.txt">
+  <div class="version-action" data-gid="familyzoo-v03" data-play="/familyzoo-v03/play.html" data-source="/familyzoo-v03/familyzoo-v03.story" data-walkthrough="/familyzoo-v03/walkthrough.txt">
     <select class="va-action"><option value="play">Play Game</option><option value="source">View Source</option><option value="walkthrough">View Walkthrough</option></select>
     <label class="va-fs"><input type="checkbox"> Fullscreen</label>
     <button class="va-go" type="button">GO</button>
@@ -447,15 +437,14 @@ footer a { color: #887755; border-bottom-color: #3a3020; }
 
 <div class="version-entry" id="familyzoo-v02">
   <h3>v02 — Multiple Rooms & Navigation</h3>
-  <p>Expands the zoo to four connected rooms — entrance, main path, petting zoo, and aviary — linked by compass directions. Teaches how room exits are wired and why they must be created as pairs.</p>
+  <p>The zoo grows to four rooms joined by compass directions. Exits are one line each, and `aka` gives every room the names a player will actually type.</p>
   <ul>
-    <li>Direction enum for compass movement (N/S/E/W and more)</li>
-    <li>RoomTrait.exits mapping directions to destinations</li>
-    <li>Two-step create-then-connect pattern for rooms</li>
-    <li>Retrieving traits with entity.get(Trait)</li>
-    <li>Automatic handling by the stdlib going action</li>
+    <li>`south to the Main Path` — an exit is a property of the room</li>
+    <li>Exits are declared one way; Chord wires the return trip</li>
+    <li>`aka path, gravel path` for synonyms the parser accepts</li>
+    <li>Room descriptions that tell the player where the exits go</li>
   </ul>
-  <div class="version-action" data-gid="familyzoo-v02" data-play="/familyzoo-v02/play.html" data-source="/familyzoo-v02/source.html" data-walkthrough="/familyzoo-v02/walkthrough.txt">
+  <div class="version-action" data-gid="familyzoo-v02" data-play="/familyzoo-v02/play.html" data-source="/familyzoo-v02/familyzoo-v02.story" data-walkthrough="/familyzoo-v02/walkthrough.txt">
     <select class="va-action"><option value="play">Play Game</option><option value="source">View Source</option><option value="walkthrough">View Walkthrough</option></select>
     <label class="va-fs"><input type="checkbox"> Fullscreen</label>
     <button class="va-go" type="button">GO</button>
@@ -464,15 +453,15 @@ footer a { color: #887755; border-bottom-color: #3a3020; }
 
 <div class="version-entry" id="familyzoo-v01">
   <h3>v01 — A Single Room</h3>
-  <p>The simplest possible Sharpee story: one room with a welcome sign and ticket booth. Introduces the Story class structure, entities, and the four essential traits needed to stand up a world.</p>
+  <p>The smallest Chord story that runs: a header that names the work, one room, and two pieces of scenery you can examine. Everything else in the tutorial is added to this.</p>
   <ul>
-    <li>Story interface with config, createPlayer, and initializeWorld</li>
-    <li>IdentityTrait for names, descriptions, and aliases</li>
-    <li>ActorTrait with isPlayer flag and ContainerTrait for inventory</li>
-    <li>SceneryTrait and RoomTrait basics</li>
-    <li>Explicit entity placement via world.moveEntity</li>
+    <li>The `story` header — `title`, `authors`, `id`, `description`</li>
+    <li>`create the <Room>` with `a room` and an indented description</li>
+    <li>`scenery` for things that belong to the room and cannot be taken</li>
+    <li>`in the <Room>` to place a thing</li>
+    <li>`before the game starts` naming who the player is</li>
   </ul>
-  <div class="version-action" data-gid="familyzoo-v01" data-play="/familyzoo-v01/play.html" data-source="/familyzoo-v01/source.html" data-walkthrough="/familyzoo-v01/walkthrough.txt">
+  <div class="version-action" data-gid="familyzoo-v01" data-play="/familyzoo-v01/play.html" data-source="/familyzoo-v01/familyzoo-v01.story" data-walkthrough="/familyzoo-v01/walkthrough.txt">
     <select class="va-action"><option value="play">Play Game</option><option value="source">View Source</option><option value="walkthrough">View Walkthrough</option></select>
     <label class="va-fs"><input type="checkbox"> Fullscreen</label>
     <button class="va-go" type="button">GO</button>
