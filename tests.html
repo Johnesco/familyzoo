@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><title>Tests — familyzoo-17</title><style>
+:root {
+  --bg: #fafafa;
+  --fg: #1a1a1a;
+  --muted: #6b6b6b;
+  --pass: #1a7f37;
+  --pass-bg: #dcffe4;
+  --fail: #b81a3e;
+  --fail-bg: #ffd9e0;
+  --warn: #b87800;
+  --code-bg: #f1efe9;
+  --line: #d8d4cb;
+  --accent: #4a3a25;
+  --hover: #f3efe8;
+  /* Game text — what the interpreter prints. Monospace, slightly warm. */
+  --game-font: ui-monospace, "SF Mono", "Cascadia Code", "Fira Code", Consolas, monospace;
+  /* Test/UI text — labels, counts, status. Proportional. */
+  --ui-font: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", system-ui, sans-serif;
+  /* Mono used inside UI for things that quote literal game/assertion text. */
+  --mono: ui-monospace, "SF Mono", Consolas, monospace;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font: 15px/1.5 var(--ui-font);
+  padding: 24px 32px 64px;
+  max-width: 1100px;
+}
+h1 { font-size: 22px; margin: 0 0 4px; font-weight: 600; }
+h2 {
+  font-size: 13px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.5px;
+  color: var(--muted);
+  margin: 32px 0 10px; padding-bottom: 6px;
+  border-bottom: 1px solid var(--line);
+}
+h3 { font-size: 16px; margin: 0 0 4px; font-weight: 600; }
+h4 {
+  font-size: 11px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.5px;
+  color: var(--muted);
+  margin: 14px 0 6px;
+}
+h4:first-child { margin-top: 0; }
+.subtitle { color: var(--muted); font-size: 13px; margin-bottom: 8px; }
+
+/* ─── summary card ─────────────────────────────────────────────── */
+.summary {
+  display: flex; gap: 24px; flex-wrap: wrap;
+  padding: 12px 16px;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  font-variant-numeric: tabular-nums;
+}
+.summary .item { display: flex; align-items: baseline; gap: 6px; }
+.summary .num { font-size: 22px; font-weight: 600; }
+.summary .label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+.summary .pass-num { color: var(--pass); }
+.summary .fail-num { color: var(--fail); }
+
+/* ─── games card ───────────────────────────────────────────────── */
+.games {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 4px 16px;
+}
+.game-row {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  column-gap: 16px;
+  align-items: baseline;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+}
+.game-row:last-child { border-bottom: none; }
+.game-name { font-weight: 600; font-family: var(--mono); }
+.game-paths { font-family: var(--mono); font-size: 12.5px; color: var(--muted); }
+.game-paths .relpath { color: var(--accent); }
+.game-paths .abspath { display: block; margin-top: 2px; }
+.game-paths .seed { color: var(--warn); margin-left: 8px; }
+
+.glyph { display: inline-block; width: 16px; text-align: center; font-weight: 700; }
+.glyph.pass { color: var(--pass); }
+.glyph.fail { color: var(--fail); }
+.glyph.error { color: var(--fail); }
+.outcome-walkthrough { color: var(--pass); font-weight: 600; }
+.outcome-scenario { color: var(--muted); }
+.outcome-error { color: var(--fail); font-weight: 600; }
+
+/* ─── test list (collapsible per-test cards) ─────────────────── */
+.tests { background: transparent; border: none; }
+details.test {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  margin-bottom: 18px;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+}
+
+/* Heavy, inverted-color title bar so it's unmistakable when scrolling
+   between multiple open tests where one ends and the next begins. */
+summary.test-summary {
+  cursor: pointer;
+  padding: 18px 22px;
+  display: grid;
+  grid-template-columns: 18px 28px minmax(160px, 1fr) auto;
+  gap: 16px;
+  align-items: center;
+  user-select: none;
+  list-style: none;
+  background: #2b231a;
+  color: #fafafa;
+  border-left: 6px solid var(--pass);
+}
+details.test[data-status="fail"] summary.test-summary {
+  background: #4a1626;
+  border-left-color: var(--fail);
+}
+summary.test-summary::-webkit-details-marker { display: none; }
+summary.test-summary::before {
+  content: "▶";
+  color: rgba(255,255,255,0.55);
+  font-size: 12px;
+  transition: transform 0.15s;
+}
+details.test[open] > summary.test-summary::before { transform: rotate(90deg); }
+summary.test-summary:hover { filter: brightness(1.18); }
+summary.test-summary .glyph { font-size: 22px; }
+summary.test-summary .glyph.pass { color: #6fcf97; }
+summary.test-summary .glyph.fail { color: #ff7a91; }
+.test-name {
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: 0.2px;
+}
+.test-summary-meta {
+  color: rgba(255,255,255,0.78);
+  font-size: 13.5px;
+  font-variant-numeric: tabular-nums;
+}
+.test-summary-meta .outcome-walkthrough { color: #6fcf97; font-weight: 600; }
+.test-summary-meta .outcome-scenario { color: rgba(255,255,255,0.72); }
+.test-summary-meta .outcome-error { color: #ff7a91; font-weight: 600; }
+
+.test-body {
+  padding: 0;
+  background: white;
+}
+
+/* ─── setup section (.before turns) ──────────────────────────── */
+details.setup {
+  background: #f7f3ea;
+  border-bottom: 1px solid var(--line);
+}
+summary.setup-summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 10px 22px;
+  font-size: 12.5px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  font-weight: 600;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.setup-end-state {
+  margin-left: auto;
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 400;
+  color: var(--muted);
+  font-family: var(--ui-font);
+  font-size: 12.5px;
+}
+.setup-end-room {
+  color: #6b3a8a;
+  font-family: var(--mono);
+}
+summary.setup-summary::-webkit-details-marker { display: none; }
+summary.setup-summary::before {
+  content: "▶";
+  font-size: 9px;
+  color: var(--muted);
+  transition: transform 0.15s;
+}
+details.setup[open] > summary.setup-summary::before { transform: rotate(90deg); }
+summary.setup-summary:hover { background: var(--hover); }
+.setup-count { color: var(--accent); }
+.setup-files { color: var(--muted); font-weight: 400; text-transform: none; letter-spacing: 0; font-family: var(--mono); }
+ul.setup-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background: #fdfbf6;
+  border-top: 1px dashed var(--line);
+}
+li.setup-step {
+  display: grid;
+  grid-template-columns: 28px 52px 1fr;
+  gap: 10px;
+  padding: 4px 22px 4px 28px;
+  font-family: var(--ui-font);
+  font-size: 13px;
+  color: var(--muted);
+  border-bottom: 1px solid #ebe6d9;
+}
+li.setup-step:last-child { border-bottom: none; }
+li.setup-step .setup-glyph { color: var(--muted); font-family: var(--mono); }
+li.setup-step .setup-tcount { color: var(--muted); font-variant-numeric: tabular-nums; }
+li.setup-step .setup-cmd { color: var(--accent); font-family: var(--mono); }
+li.setup-step .setup-room {
+  color: #6b3a8a;
+  font-family: var(--mono);
+  font-size: 12px;
+  margin-left: 8px;
+  opacity: 0.7;
+}
+
+/* ─── transcript (per-turn collapsible rows) ─────────────────── */
+.transcript {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background: white;
+  border: none;
+  border-radius: 0;
+}
+li.turn {
+  border-bottom: 1px solid var(--line);
+}
+li.turn:last-child { border-bottom: none; }
+details.turn-detail[data-status="fail"] {
+  background: var(--fail-bg);
+}
+/* Fixed pixel columns so room / score / turn counter / asserts align
+   vertically down the whole transcript instead of sliding with content.
+   The row is UI text (sans), but the > command and @ room are quoted
+   literal strings so they stay in mono. */
+summary.turn-row {
+  cursor: pointer;
+  display: grid;
+  /* Trailing columns are fixed-width so the layout stays stable whether
+     a turn has assertions or not — no horizontal shift between rows. */
+  grid-template-columns:
+    14px              /* disclosure ▶ */
+    52px              /* T:N         */
+    minmax(140px, auto) /* > command */
+    1fr               /* Room name (right-aligned, hugs score column) */
+    78px              /* score N     */
+    40px              /* +N delta    */
+    50px              /* WIN/LOSE    */
+    100px;            /* asserts     */
+  gap: 12px;
+  padding: 10px 16px;
+  align-items: center;
+  font-family: var(--ui-font);
+  font-size: 14px;
+  /* Subtle warm tint distinguishes each turn header from the white
+     turn-body (and the bg-coloured extras section) when scrolling. */
+  background: #f1ebdb;
+  border-top: 1px solid #ddd5c0;
+  user-select: none;
+  list-style: none;
+}
+li.turn:first-child summary.turn-row { border-top: none; }
+details.turn-detail[data-status="fail"] summary.turn-row {
+  background: var(--fail-bg);
+  border-top-color: #f0aab8;
+}
+summary.turn-row::-webkit-details-marker { display: none; }
+summary.turn-row::before {
+  content: "▶";
+  color: var(--muted);
+  font-size: 9px;
+  transition: transform 0.1s;
+}
+details.turn-detail[open] > summary.turn-row::before { transform: rotate(90deg); }
+summary.turn-row:hover { background: var(--hover); }
+details.turn-detail[data-status="fail"] summary.turn-row:hover { background: #ffc6d3; }
+.turn-room, .turn-cmd { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.turn-cmd {
+  font-weight: 600;
+  color: var(--accent);
+  font-family: var(--mono);  /* literal player input */
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.turn-room {
+  color: #6b3a8a;
+  font-family: var(--mono);  /* literal room name from game */
+  text-align: right;          /* hug the score column on the right */
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.room-fp {
+  border-bottom: 1px dotted currentColor;
+  cursor: help;
+}
+.turn-score { color: var(--warn); font-variant-numeric: tabular-nums; }
+.turn-tcount { color: var(--muted); font-variant-numeric: tabular-nums; }
+.turn-delta { color: var(--pass); font-weight: 600; font-variant-numeric: tabular-nums; }
+.turn-delta.neg { color: var(--fail); }
+.turn-outcome { font-weight: 700; }
+.turn-outcome.win { color: var(--pass); }
+.turn-outcome.lose { color: var(--fail); }
+.turn-outcome.end { color: var(--muted); }
+.turn-asserts {
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.turn-asserts .pass { color: var(--pass); font-weight: 600; }
+.turn-asserts .fail { color: var(--fail); font-weight: 600; }
+.turn-asserts .pass + .fail { margin-left: 8px; }
+
+/* ─── transcript-style response ──────────────────────────────── */
+.turn-body { background: white; }
+pre.turn-response, pre.opening-text {
+  margin: 0;
+  padding: 16px 24px 16px 38px;
+  background: white;
+  font-family: var(--game-font);
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: #2a2620;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  border-top: 1px dashed var(--line);
+}
+pre.turn-response .room-title,
+pre.opening-text .room-title {
+  font-weight: 700;
+  color: var(--accent);
+  display: inline-block;
+}
+li.opening { list-style: none; }
+li.opening pre.opening-text { border-top: none; padding-left: 24px; }
+
+/* ─── per-turn extras (assertions, drift, metadata) ──────────── */
+details.turn-extras {
+  border-top: 1px dashed var(--line);
+}
+summary.turn-extras-summary {
+  cursor: pointer;
+  padding: 8px 16px 8px 38px;
+  font-size: 13px;
+  color: var(--muted);
+  user-select: none;
+  list-style: none;
+  font-family: var(--ui-font);
+}
+summary.turn-extras-summary::-webkit-details-marker { display: none; }
+summary.turn-extras-summary::before {
+  content: "▸ ";
+  font-size: 10px;
+}
+details.turn-extras[open] > summary.turn-extras-summary::before { content: "▾ "; }
+summary.turn-extras-summary:hover { background: var(--hover); }
+.turn-extras-body {
+  padding: 10px 24px 14px 38px;
+  background: var(--bg);
+}
+.turn-extras-body h4:first-child { margin-top: 0; }
+
+ul.assertions { margin: 0; padding-left: 4px; list-style: none; }
+ul.assertions li {
+  padding: 6px 0;
+  font-size: 13.5px;
+  font-family: var(--ui-font);  /* labels read as prose, not literal text */
+  position: relative;
+  padding-left: 22px;
+  line-height: 1.45;
+}
+ul.assertions li.pass::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--pass);
+  font-weight: 700;
+  font-size: 14px;
+}
+ul.assertions li.fail::before {
+  content: "✗";
+  position: absolute;
+  left: 0;
+  color: var(--fail);
+  font-weight: 700;
+  font-size: 14px;
+}
+ul.assertions li.pass .label { color: var(--pass); font-weight: 600; }
+ul.assertions li.fail .label { color: var(--fail); font-weight: 600; }
+ul.assertions li .pattern {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--muted);
+  margin-left: 8px;
+  font-weight: 400;
+}
+ul.assertions li .detail {
+  display: block;
+  color: var(--fail);
+  margin-top: 2px;
+  font-size: 12px;
+  font-family: var(--mono);
+}
+
+/* Inline match highlight: clicking "show" on an assertion highlights
+   the satisfying span(s) in the game-output block above. Click the same
+   button again to clear; click a different button in the same turn to
+   swap (radio-style). Highlight spans start invisible and only show
+   when activated, so plain reading of the transcript is uncluttered. */
+button.match-toggle {
+  margin-left: 8px;
+  padding: 1px 8px;
+  font-family: var(--ui-font);
+  font-size: 11px;
+  background: white;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  cursor: pointer;
+  vertical-align: 1px;
+}
+button.match-toggle:hover { color: var(--accent); border-color: var(--accent); }
+button.match-toggle.active {
+  background: #ffe88a;
+  color: #5a4400;
+  border-color: #d9b840;
+  font-weight: 700;
+}
+li.fail button.match-toggle.active {
+  background: #ffd9e0;
+  color: var(--fail);
+  border-color: var(--fail);
+}
+.hl {
+  /* baseline: no visual treatment — only highlight when activated */
+}
+.hl.hl-active {
+  background: #ffe88a;
+  color: #5a4400;
+  padding: 1px 2px;
+  border-radius: 2px;
+  font-weight: 700;
+  box-shadow: 0 0 0 1px #d9b840;
+}
+li.fail.matches-active ~ pre.turn-response .hl.hl-active,
+.turn-detail[data-status="fail"] .hl.hl-active.hl-fail {
+  background: #ffd9e0;
+  color: var(--fail);
+  box-shadow: 0 0 0 1px var(--fail);
+}
+
+/* ─── drift diff ──────────────────────────────────────────────── */
+.drift-diff {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 12px 14px;
+  font-family: var(--game-font);  /* it's quoting game text */
+  font-size: 13px;
+  line-height: 1.7;
+}
+.drift-diff .equal { color: var(--muted); }
+.drift-diff .del {
+  background: var(--fail-bg);
+  color: var(--fail);
+  text-decoration: line-through;
+  padding: 1px 3px;
+  border-radius: 2px;
+}
+.drift-diff .ins {
+  background: var(--pass-bg);
+  color: var(--pass);
+  padding: 1px 3px;
+  border-radius: 2px;
+}
+.drift-legend {
+  font-size: 11px; color: var(--muted);
+  margin: 4px 0 6px;
+  display: flex; gap: 12px; flex-wrap: wrap;
+}
+.drift-legend .swatch { display: inline-block; padding: 0 4px; border-radius: 2px; margin-right: 4px; }
+.drift-legend .swatch.del { background: var(--fail-bg); color: var(--fail); text-decoration: line-through; }
+.drift-legend .swatch.ins { background: var(--pass-bg); color: var(--pass); }
+
+.error {
+  background: var(--fail-bg);
+  border: 1px solid var(--fail);
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-family: var(--mono);
+  font-size: 12.5px;
+  color: var(--fail);
+}
+.metadata {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 4px 16px;
+  font-size: 12.5px;
+  font-family: var(--mono);
+}
+.metadata dt { color: var(--muted); }
+.metadata dd { margin: 0; }
+</style></head><body><h1>Tests — familyzoo-17</h1><div class="subtitle">generated 2026-05-09 02:04:02 · 1 test · 274ms</div><div class="summary"><div class="item"><span class="num pass-num">1</span><span class="label">passed</span></div><div class="item"><span class="num fail-num">0</span><span class="label">failed</span></div><div class="item"><span class="num">0</span><span class="label">walkthroughs</span></div><div class="item"><span class="num">30</span><span class="label">turns</span></div><div class="item"><span class="num">39/39</span><span class="label">assertions</span></div></div><h2>Games under test</h2><div class="games"><div class="game-row"><div class="game-name">familyzoo-17</div><div class="game-paths"><span class="relpath">familyzoo-17</span><span class="seed">seed: (no seed)</span></div></div></div><h2>Tests</h2><div class="tests"><details class="test" data-status="pass"><summary class="test-summary"><span class="glyph pass">✓</span><span class="test-name">V17 — After Hours &amp; Multi-File Organization</span><span class="test-summary-meta">30 turns · <span class="outcome-scenario">scenario</span> · 39/39 ✓ · 274ms</span></summary><div class="test-body"><ul class="transcript"></ul><ul class="transcript"><li class="turn"><details class="turn-detail" data-status="pass"><summary class="turn-row"><span class="turn-tcount">T:1</span><span class="turn-cmd">&gt; take map</span><span class="turn-room">—</span><span class="turn-score"></span><span class="turn-delta"></span><span class="turn-outcome "></span><span class="turn-asserts"><span class="pass">✓ 1/1</span></span></summary><div class="turn-body"><pre class="turn-response">Family Zoo
+By Sharpee Tutorial
+
+Type HELP for instructions.
+
+<span class="hl" data-asserts="0">Taken</span>.
+</pre><details class="turn-extras"><summary class="turn-extras-summary">1 check ✓  ·  0ms</summary><div class="turn-extras-body"><h4>Checks</h4><ul class="assertions"><li class="pass"><span class="label">Contains &quot;Taken&quot;</span><span class="pattern">? Taken</span><button type="button" class="match-toggle" data-assertion-idx="0">show</button></li></ul></div></details></div></details></li><li class="turn"><details class="turn-detail" data-status="pass"><summary class="turn-row"><span class="turn-tcount">T:2</span><span class="turn-cmd">&gt; take brochure</span><span class="turn-room">—</span><span class="turn-score"></span><span class="turn-delta"></span><span class="turn-outcome "></span><span class="turn-asserts"><span class="pass">✓ 1/1</span></span></summary><div class="turn-body"><pre class="turn-response"><span class="hl" data-asserts="0">Taken</span>.
+</pre><details class="turn-extras"><summary class="turn-extras-summary">1 check ✓  ·  0ms</summary><div class="turn-extras-body"><h4>Checks</h4><ul class="assertions"><li class="pass"><span class="label">Contains &quot;Taken&quot;</span><span class="pattern">? Taken</span><button type="button" class="match-toggle" data-assertion-idx="0">show</button></li></ul></div></details></div></details></li><li class="turn"><details class="turn-detail" data-status="pass"><summary class="turn-row"><span class="turn-tcount">T:3</span><span class="turn-cmd">&gt; read brochure</span><span class="turn-room">—</span><span class="turn-score"></span><span class="turn-delta"></span><span class="turn-outcome "></span><span class="turn-asserts"><span class="pass">✓ 1/1</span></span></summary><div class="turn-body"><pre class="turn-response">The zoo brochure reads:
+<span class="hl" data-asserts="0">WILLOWBROOK</span> FAMILY ZOO — Your Guide
+
+EXHIBITS:
+  Petting Zoo — East from Main Path
+  Aviary — West from Main Path
+  Gift Shop — West from Aviary
+  Nocturnal Animals — Staff Area
+
+&quot;Where every visit is a wild adventure!&quot;
+</pre><details class="turn-extras"><summary class="turn-extras-summary">1 check ✓  ·  0ms</summary><div class="turn-extras-body"><h4>Checks</h4><ul class="assertions"><li class="pass"><span class="label">Contains &quot;WILLOWBROOK&quot;</span><span class="pattern">? WILLOWBROOK</span><button type="button" class="match-toggle" data-assertion-idx="0">show</button></li></ul></div></details></div></details></li><li class="turn"><details class="turn-detail" data-status="pass"><summary class="turn-row"><span class="turn-tcount">T:4</span><span class="turn-cmd">&gt; take keycard</span><span class="turn-room">—</span><span class="turn-score"></span><span class="turn-delta"></span><span class="turn-outcome "></span><span class="turn-asserts"><span class="pass">✓ 1/1</span></span></summary><div class="turn-body"><pre class="turn-response"><span class="hl" data-asserts="0">Taken</span>.
+</pre><details class="turn-extras"><summary class="turn-extras-summary">1 check ✓  ·  0ms</summary><div class="turn-extras-body"><h4>Checks</h4><ul class="assertions"><li class="pass"><span class="label">Contains &quot;Taken&quot;</span><span class="pattern">? Taken</span><button type="button" class="match-toggle" data-assertion-idx="0">show</button></li></ul></div></details></div></details></li><li class="turn"><details class="turn-detail" data-status="pass"><summary class="turn-row"><span class="turn-tcount">T:5</span><span class="turn-cmd">&gt; south</span><span class="turn-room">—</span><span class="turn-score"></span><span class="turn-delta"></span><span class="turn-outcome "></span><span class="turn-asserts"><span class="pass">✓ 1/1</span></span></summary><div class="turn-body"><pre class="turn-response"><span class="hl" data-asserts="0">Main Path</span>
+
+A wide gravel path winds through the heart of the zoo. Colorful direction signs point every which way. A park bench sits beside the path. To the east, the petting zoo. To the west, the aviary. A staff gate blocks the path to the south. The entrance is back to the north.
+
+You can see staff gate, direction signs, flower beds, souvenir penny, park bench, lunchbox here.
+*DING DONG* &quot;Attention visitors! The Willowbrook Family Zoo will be closing in three hours. Please make sure to visit all exhibits before closing time!&quot;
+</pre><details class="turn-extras"><summary class="turn-extras-summary">1 check ✓  ·  0ms</summary><div class="turn-extras-body"><h4>Checks</h4><ul class="assertions"><li class="pass"><span class="label">Contains &quot;Main Path&quot;</span><span class="pattern">? Main Path</span><button type="button" class="match-toggle" data-assertion-idx="0">show</button></li></ul></div></details></div></details></li><li class="turn"><details class="turn-detail" data-status="pass"><summary class="turn-row"><span class="turn-tcount">T:6</span><span class="turn-cmd">&gt; take penny</span><span class="turn-room">—</span><span class="turn-score"></span><span class="turn-delta"></span><span class="turn-outcome "></span><span class="turn-asserts"><span class="pass">✓ 1/1</span></span></summary><div class="turn-body"><pre class="turn-response"><span class="hl" data-asserts="0">Taken</span>.
+</pre><details class="turn-extras"><summary class="turn-extras-summary">1 check ✓  ·  0ms</summary><div class="turn-extras-body"><h4>Checks</h4><ul class="assertions"><li class="pass"><span class="label">Contains &quot;Taken&quot;</span><span class="pattern">? Taken</span><button type="button" class="match-toggle" data-assertion-idx="0">show</button></li></ul></div></details></div></details></li><li class="turn"><details class="turn-detail" data-status="pass"><summary class="turn-row"><span class="turn-tcount">T:7</span><span class="turn-cmd">&gt; west</span><span class="turn-room">—</span><span class="turn-score"></span><span class="turn-delta"></span><span class="turn-outcome "></span><span class="turn-asserts"><span class="pass">✓ 1/1</span></span></summary><div class="turn-body"><pre class="turn-response"><span class="hl" data-asserts="0">Aviary</span>
+
+You step inside a soaring mesh dome. Brilliantly colored parrots chatter from rope perches, and a toucan eyes you curiously from a branch overhead. A small waterfall splashes into a stone basin. An info plaque hangs near the entrance. The gift shop is to the west. The main path is back to the east.
+
+You can see toucan, waterfall, rope perches, <span class="hl" data-asserts="0">aviary</span> plaque, parrot here.
+</pre><details class="turn-extras"><summary class="turn-extras-summary">1 check ✓  ·  0ms</summary><div class="turn-extras-body"><h4>Checks</h4><ul class="assertions"><li class="pass"><span class="label">Contains &quot;Aviary&quot;</span><span class="pattern">? Aviary</span><button type="button" class="match-toggle" data-assertion-idx="0">show</button></li></ul></div></details></div></details></li><li class="turn"><details class="turn-detail" data-status="pass"><summary class="turn-row"><span class="turn-tcount">T:8</span><span class="turn-cmd">&gt; west</span><span class="turn-room">—</span><span class="turn-score"></span><span class="turn-delta"></span><span class="turn-outcome "></span><span class="turn-asserts"><span class="pass">✓ 1/1</span></span></summary><div class="turn-body"><pre class="turn-response"><span class="hl" data-asserts="0">Gift Shop</span>
+
+A small zoo <span class="hl" data-asserts="0">gift shop</span> crammed with stuffed animals and postcards. A large souvenir penny press machine stands near the door. A disposable camera sits on the counter. The aviary is back to the east.
+
+You can see stuffed animals, postcards, disposable camera, souvenir press here.
+</pre><details class="turn-extras"><summary class="turn-extras-summary">1 check ✓  ·  0ms</summary><div class="turn-extras-body"><h4>Checks</h4><ul class="assertions"><li class="pass"><span class="label">Contains &quot;Gift Shop&quot;</span><span class="pattern">? Gift Shop</span><button type="button" class="match-toggle" data-assertion-idx="0">show</button></li></ul></div></details></div></details></li><li class="turn"><details class="turn-detail" data-status="pass"><summary class="turn-row"><span class="turn-tcount">T:9</span><span class="turn-cmd">&gt; take camera</span><span class="turn-room">—</span><span class="turn-score"></span><span class="turn-delta"></span><span class="turn-outcome "></span><span class="turn-asserts"><span class="pass">✓ 1/1</span></span></summary><div class="turn-body"><pre class="turn-response"><span class="hl" data-asserts="0">Taken</span>.
+</pre><details class="turn-extras"><summary class="turn-extras-summary">1 check ✓  ·  0ms</summary><div class="turn-extras-body"><h4>Checks</h4><ul class="assertions"><li class="pass"><span class="label">Contains &quot;Taken&quot;</span><span class="pattern">? Taken</span><button type="button" class="match-toggle" data-assertion-idx="0">show</button></li></ul></div></details></div></details></li><li class="turn"><details class="turn-detail" data-status="pass"><summary class="turn-row"><span class="turn-tcount">T:10</span><span class="turn-cmd">&gt; put penny in press</span><span class="turn-room">—</span><span class="turn-score"></span><span class="turn-delta"></span><span class="turn-outcome "></span><span class="turn-asserts"><span class="pass">✓ 1/1</span></span></summary><div class="turn-body"><pre class="turn-response">You put the souvenir penny in the souvenir press.
+*DING DONG* &quot;Attention visitors! Two hours until closing. Don&#x27;t forget to stop by the gift shop for souvenirs!&quot;
+<span class="hl" data-asserts="0">CLUNK</span>! CRUNCH! WHIRRR! The souvenir press produces a beautiful pressed penny with an embossed toucan.
+</pre><details class="turn-extras"><summary class="turn-extras-summary">1 check ✓  ·  0ms</summary><div class="turn-extras-body"><h4>Checks</h4><ul class="assertions"><li class="pass"><span class="label">Contains &quot;CLUNK&quot;</span><span class="pattern">? CLUNK</span><button type="button" class="match-toggle" data-assertion-idx="0">show</button></li></ul></div></details></div></details></li><li class="turn"><details class="turn-detail" data-status="pass"><summary class="turn-row"><span class="turn-tcount">T:11</span><span class="turn-cmd">&gt; east</span><span class="turn-room">—</span><span class="turn-score"></span><span class="turn-delta"></span><span class="turn-outcome "></span><span class="turn-asserts"><span class="pass">✓ 1/1</span></span></summary><div class="turn-body"><pre class="turn-response"><span class="hl" data-asserts="0">Aviary</span>
+
+You step inside a soaring mesh dome. Brilliantly colored parrots chatter from rope perches, and a toucan eyes you curiously from a branch overhead. A small waterfall splashes into a stone basin. An info plaque hangs near the entrance. The gift shop is to the west. The main path is back to the east.
+
+You can see toucan, waterfall, rope perches, <span class="hl" data-asserts="0">aviary</span> plaque, parrot here.
+*DING DONG* &quot;It&#x27;s FEEDING TIME at the Petting Zoo! Come watch our pygmy goats and rabbits enjoy their favorite snacks!&quot;
+</pre><details class="turn-extras"><summary class="turn-extras-summary">1 check ✓  ·  0ms</summary><div class="turn-extras-body"><h4>Checks</h4><ul class="assertions"><li class="pass"><span class="label">Contains &quot;Aviary&quot;</span><span class="pattern">? Aviary</span><button type="button" class="match-toggle" data-assertion-idx="0">show</button></li></ul></div></details></div></details></li><li class="turn"><details class="turn-detail" data-status="pass"><summary class="turn-row"><span class="turn-tcount">T:12</span><span class="turn-cmd">&gt; photograph parrot</span><span class="turn-room">—</span><span class="turn-score"></span><span class="turn-delta"></span><span class="turn-outcome "></span><span class="turn-asserts"><span class="pass">✓ 1/1</span></span></summary><div class="turn-body"><pre class="turn-response">Click! You snap a <span class="hl" data-asserts="0">photo</span> of parrot. That one&#x27;s going on the fridge.
+</pre><details class="turn-extras"><summary class="turn-extras-summary">1 check ✓  ·  0ms</summary><div class="turn-extras-body"><h4>Checks</h4><ul class="assertions"><li class="pass"><span class="label">Contains &quot;photo&quot;</span><span class="pattern">? photo</span><button type="button" class="match-toggle" data-assertion-idx="0">show</button></li></ul></div></details></div></details></li><li class="turn"><details class="turn-detail" data-status="pass"><summary class="turn-row"><span class="turn-tcount">T:13</span><span class="turn-cmd">&gt; east</span><span class="turn-room">—</span><span class="turn-score"></span><span class="turn-delta"></span><span class="turn-outcome "></span><span class="turn-asserts"><span class="pass">✓ 1/1</span></span></summary><div class="turn-body"><pre class="turn-response"><span class="hl" data-asserts="0">Main Path</span>
+
+A wide gravel path winds through the heart of the zoo. Colorful direction signs point every which way. A park bench sits beside the path. To the east, the petting zoo. To the west, the aviary. A staff gate blocks the path to the south. The entrance is back to the north.
+
+You can see staff gate, direction signs, flower beds, park bench, lunchbox here.
+</pre><details class="turn-extras"><summary class="turn-extras-summary">1 check ✓  ·  0ms</summary><div class="turn-extras-body"><h4>Checks</h4><ul class="assertions"><li class="pass"><span class="label">Contains &quot;Main Path&quot;</span><span class="pattern">? Main Path</span><button type="button" class="match-toggle" data-assertion-idx="0">show</button></li></ul></div></details></div></details></li><li class="turn"><details class="turn-detail" data-status="pass"><summary class="turn-row"><span class="turn-tcount">T:14</span><span class="turn-cmd">&gt; east</span><span class="turn-room">—</span><span class="turn-score"></span><span class="turn-delta"></span><span class="turn-outcome "></span><span class="turn-asserts"><span class="pass">✓ 1/1</span></span></summary><div class="turn-body"><pre class="turn-response"><span class="hl" data-asserts="0">Petting Zoo</span>
+
+A cheerful open-air enclosure filled with friendly animals. Pygmy goats trot around nibbling at visitors&#x27; shoelaces, while a pair of fluffy rabbits hop lazily near a hay bale. A feed dispenser is mounted on a post. An info plaque is posted by the gate. The main path is back to the west.
+
+You can see hay bale, info plaque, bag of animal feed, feed dispenser, pygmy goats, rabbits, zookeeper here.
+The pygmy goats are bleating loudly and headbutting the fence. They seem very hungry!
+</pre><details class="turn-extras"><summary class="turn-extras-summary">1 check ✓  ·  0ms</summary><div class="turn-extras-body"><h4>Checks</h4><ul class="assertions"><li class="pass"><span class="label">Contains &quot;Petting Zoo&quot;</span><span class="pattern">? Petting Zoo</span><button type="button" class="match-toggle" data-assertion-idx="0">show</button></li></ul></div></details></div></details></li><li class="turn"><details class="turn-detail" data-status="pass"><summary class="turn-row"><span class="turn-tcount">T:15</span><span class="turn-cmd">&gt; take feed</span><span class="turn-room">—</span><span class="turn-score"></span><span class="turn-delta"></span><span class="turn-outcome "></span><span class="turn-asserts"><span class="pass">✓ 1/1</span></span></summary><div class="turn-body"><pre class="turn-response"><span class="hl" data-asserts="0">Taken</span>.
+*DING DONG* &quot;Attention visitors! One hour until closing. Please begin making your way toward the exit.&quot;
+</pre><details class="turn-extras"><summary class="turn-extras-summary">1 check ✓  ·  0ms</summary><div class="turn-extras-body"><h4>Checks</h4><ul class="assertions"><li class="pass"><span class="label">Contains &quot;Taken&quot;</span><span class="pattern">? Taken</span><button type="button" class="match-toggle" data-assertion-idx="0">show</button></li></ul></div></details></div></details></li><li class="turn"><details class="turn-detail" data-status="pass"><summary class="turn-row"><span class="turn-tcount">T:16</span><span class="turn-cmd">&gt; feed goats</span><span class="turn-room">—</span><span class="turn-score"></span><span class="turn-delta"></span><span class="turn-outcome "></span><span class="turn-asserts"><span class="pass">✓ 1/1</span></span></summary><div class="turn-body"><pre class="turn-response">You scatter some <span class="hl" data-asserts="0">feed</span> on the ground. The pygmy goats rush over, bleating excitedly, and devour the corn and pellets in seconds. The smallest goat looks up at you with big grateful eyes.
+</pre><details class="turn-extras"><summary class="turn-extras-summary">1 check ✓  ·  0ms</summary><div class="turn-extras-body"><h4>Checks</h4><ul class="assertions"><li class="pass"><span class="label">Contains &quot;feed&quot;</span><span class="pattern">? feed</span><button type="button" class="match-toggle" data-assertion-idx="0">show</button></li></ul></div></details></div></details></li><li class="turn"><details class="turn-detail" data-status="pass"><summary class="turn-row"><span class="turn-tcount">T:17</span><span class="turn-cmd">&gt; feed rabbits</span><span class="turn-room">—</span><span class="turn-score"></span><span class="turn-delta"></span><span class="turn-outcome "></span><span class="turn-asserts"><span class="pass">✓ 1/1</span></span></summary><div class="turn-body"><pre class="turn-response">You sprinkle some <span class="hl" data-asserts="0">pellets</span> near the rabbits. Biscuit and Marmalade hop over cautiously, then munch away happily.
+</pre><details class="turn-extras"><summary class="turn-extras-summary">1 check ✓  ·  0ms</summary><div class="turn-extras-body"><h4>Checks</h4><ul class="assertions"><li class="pass"><span class="label">Contains &quot;pellets&quot;</span><span class="pattern">? pellets</span><button type="button" class="match-toggle" data-assertion-idx="0">show</button></li></ul></div></details></div></details></li><li class="turn"><details class="turn-detail" data-status="pass"><summary class="turn-row"><span class="turn-tcount">T:18</span><span class="turn-cmd">&gt; pet goats</span><span class="turn-room">—</span><span class="turn-score"></span><span class="turn-delta"></span><span class="turn-outcome "></span><span class="turn-asserts"><span class="pass">✓ 1/1</span></span></summary><div class="turn-body"><pre class="turn-response">You reach down and <span class="hl" data-asserts="0">pet</span> the nearest goat. It leans into your hand and bleats happily. The others crowd around, demanding equal attention.
+</pre><details class="turn-extras"><summary class="turn-extras-summary">1 check ✓  ·  0ms</summary><div class="turn-extras-body"><h4>Checks</h4><ul class="assertions"><li class="pass"><span class="label">Contains &quot;pet&quot;</span><span class="pattern">? pet</span><button type="button" class="match-toggle" data-assertion-idx="0">show</button></li></ul></div></details></div></details></li><li class="turn"><details class="turn-detail" data-status="pass"><summary class="turn-row"><span class="turn-tcount">T:19</span><span class="turn-cmd">&gt; west</span><span class="turn-room">—</span><span class="turn-score"></span><span class="turn-delta"></span><span class="turn-outcome "></span><span class="turn-asserts"><span class="pass">✓ 1/1</span></span></summary><div class="turn-body"><pre class="turn-response"><span class="hl" data-asserts="0">Main Path</span>
+
+A wide gravel path winds through the heart of the zoo. Colorful direction signs point every which way. A park bench sits beside the path. To the east, the petting zoo. To the west, the aviary. A staff gate blocks the path to the south. The entrance is back to the north.
+
+You can see staff gate, direction signs, flower beds, park bench, lunchbox, zookeeper here.
+*DING DONG* &quot;It&#x27;s FEEDING TIME at the Petting Zoo! Come watch our pygmy goats and rabbits enjoy their favorite snacks!&quot;
+</pre><details class="turn-extras"><summary class="turn-extras-summary">1 check ✓  ·  0ms</summary><div class="turn-extras-body"><h4>Checks</h4><ul class="assertions"><li class="pass"><span class="label">Contains &quot;Main Path&quot;</span><span class="pattern">? Main Path</span><button type="button" class="match-toggle" data-assertion-idx="0">show</button></li></ul></div></details></div></details></li><li class="turn"><details class="turn-detail" data-status="pass"><summary class="turn-row"><span class="turn-tcount">T:20</span><span class="turn-cmd">&gt; wait</span><span class="turn-room">—</span><span class="turn-score"></span><span class="turn-delta"></span><span class="turn-outcome "></span><span class="turn-asserts"><span class="pass">✓ 1/1</span></span></summary><div class="turn-body"><pre class="turn-response">Time passes...
+*DING DONG* &quot;The Willowbrook Family Zoo is now <span class="hl" data-asserts="0">closed</span>. Thank you for visiting! We hope to see you again soon!&quot;
+</pre><details class="turn-extras"><summary class="turn-extras-summary">1 check ✓  ·  0ms</summary><div class="turn-extras-body"><h4>Checks</h4><ul class="assertions"><li class="pass"><span class="label">Contains &quot;closed&quot;</span><span class="pattern">? closed</span><button type="button" class="match-toggle" data-assertion-idx="0">show</button></li></ul></div></details></div></details></li><li class="turn"><details class="turn-detail" data-status="pass"><summary class="turn-row"><span class="turn-tcount">T:21</span><span class="turn-cmd">&gt; east</span><span class="turn-room">—</span><span class="turn-score"></span><span class="turn-delta"></span><span class="turn-outcome "></span><span class="turn-asserts"><span class="pass">✓ 5/5</span></span></summary><div class="turn-body"><pre class="turn-response"><span class="hl" data-asserts="0">Petting Zoo</span>
+
+A cheerful open-air enclosure filled with friendly animals. Pygmy goats trot around nibbling at visitors&#x27; shoelaces, while a pair of fluffy rabbits hop lazily near a hay bale. A feed dispenser is mounted on a post. An info plaque is posted by the gate. The main path is back to the west.
+
+You can see hay bale, info plaque, feed dispenser, pygmy goats, rabbits, <span class="hl" data-asserts="1">zookeeper</span> here.
+Now that the keeper is gone, the goats exchange glances. The largest one turns to you and bleats in a very deliberate pattern. You could swear it sounds like: &quot;Finally. Do you have any idea what it&#x27;s like being called &#x27;cute&#x27; six hundred times a day? We are <span class="hl" data-asserts="3">MAJESTIC</span>.&quot;
+The rabbits stop mid-hop and look at each other. Biscuit twitches her nose disapprovingly. Marmalade thumps his foot twice. You get the distinct impression they&#x27;re critiquing the quality of today&#x27;s pellets. &quot;Barely adequate,&quot; the thumping seems to say. &quot;<span class="hl" data-asserts="4">Last Tuesday</span>&#x27;s batch was far superior.&quot;
+The <span class="hl" data-asserts="1">zookeeper</span> glances at the clock, unclips the walkie-talkie from his belt, and stretches. &quot;Well, that&#x27;s me <span class="hl" data-asserts="2">done for the day</span>. Zoo&#x27;s all yours, I guess!&quot; He gives you a friendly wave and ambles off toward the staff parking lot. A moment later, you hear an engine start and fade into the distance.
+The pygmy goats are bleating loudly and headbutting the fence. They seem very hungry!
+</pre><details class="turn-extras"><summary class="turn-extras-summary">5 checks ✓  ·  0ms</summary><div class="turn-extras-body"><h4>Checks</h4><ul class="assertions"><li class="pass"><span class="label">Contains &quot;Petting Zoo&quot;</span><span class="pattern">? Petting Zoo</span><button type="button" class="match-toggle" data-assertion-idx="0">show</button></li><li class="pass"><span class="label">Contains &quot;zookeeper&quot;</span><span class="pattern">? zookeeper</span><button type="button" class="match-toggle" data-assertion-idx="1">show</button></li><li class="pass"><span class="label">Contains &quot;done for the day&quot;</span><span class="pattern">? done for the day</span><button type="button" class="match-toggle" data-assertion-idx="2">show</button></li><li class="pass"><span class="label">Contains &quot;MAJESTIC&quot;</span><span class="pattern">? MAJESTIC</span><button type="button" class="match-toggle" data-assertion-idx="3">show</button></li><li class="pass"><span class="label">Contains &quot;Last Tuesday&quot;</span><span class="pattern">? Last Tuesday</span><button type="button" class="match-toggle" data-assertion-idx="4">show</button></li></ul></div></details></div></details></li><li class="turn"><details class="turn-detail" data-status="pass"><summary class="turn-row"><span class="turn-tcount">T:22</span><span class="turn-cmd">&gt; score</span><span class="turn-room">—</span><span class="turn-score"></span><span class="turn-delta"></span><span class="turn-outcome "></span><span class="turn-asserts"><span class="pass">✓ 1/1</span></span></summary><div class="turn-body"><pre class="turn-response">You have scored 75 <span class="hl" data-asserts="0">out of 100</span>, earning you the rank of Expert.
+</pre><details class="turn-extras"><summary class="turn-extras-summary">1 check ✓  ·  0ms</summary><div class="turn-extras-body"><h4>Checks</h4><ul class="assertions"><li class="pass"><span class="label">Contains &quot;out of 100&quot;</span><span class="pattern">? out of 100</span><button type="button" class="match-toggle" data-assertion-idx="0">show</button></li></ul></div></details></div></details></li><li class="turn"><details class="turn-detail" data-status="pass"><summary class="turn-row"><span class="turn-tcount">T:23</span><span class="turn-cmd">&gt; west</span><span class="turn-room">—</span><span class="turn-score"></span><span class="turn-delta"></span><span class="turn-outcome "></span><span class="turn-asserts"><span class="pass">✓ 1/1</span></span></summary><div class="turn-body"><pre class="turn-response"><span class="hl" data-asserts="0">Main Path</span>
+
+A wide gravel path winds through the heart of the zoo. Colorful direction signs point every which way. A park bench sits beside the path. To the east, the petting zoo. To the west, the aviary. A staff gate blocks the path to the south. The entrance is back to the north.
+
+You can see staff gate, direction signs, flower beds, park bench, lunchbox here.
+</pre><details class="turn-extras"><summary class="turn-extras-summary">1 check ✓  ·  0ms</summary><div class="turn-extras-body"><h4>Checks</h4><ul class="assertions"><li class="pass"><span class="label">Contains &quot;Main Path&quot;</span><span class="pattern">? Main Path</span><button type="button" class="match-toggle" data-assertion-idx="0">show</button></li></ul></div></details></div></details></li><li class="turn"><details class="turn-detail" data-status="pass"><summary class="turn-row"><span class="turn-tcount">T:24</span><span class="turn-cmd">&gt; west</span><span class="turn-room">—</span><span class="turn-score"></span><span class="turn-delta"></span><span class="turn-outcome "></span><span class="turn-asserts"><span class="pass">✓ 3/3</span></span></summary><div class="turn-body"><pre class="turn-response"><span class="hl" data-asserts="0">Aviary</span>
+
+You step inside a soaring mesh dome. Brilliantly colored parrots chatter from rope perches, and a <span class="hl" data-asserts="2">toucan</span> eyes you curiously from a branch overhead. A small waterfall splashes into a stone basin. An info plaque hangs near the entrance. The gift shop is to the west. The main path is back to the east.
+
+You can see <span class="hl" data-asserts="2">toucan</span>, waterfall, rope perches, <span class="hl" data-asserts="0">aviary</span> plaque, parrot here.
+The parrot clears its throat — actually clears its throat — and fixes you with a knowing look. &quot;Right then. Now that the <span class="hl" data-asserts="1">performative squawking</span> is over, let me tell you something: that <span class="hl" data-asserts="2">toucan</span>? Complete fraud. Can&#x27;t even crack a nut properly. And don&#x27;t get me started on the gift shop markup.&quot;
+</pre><details class="turn-extras"><summary class="turn-extras-summary">3 checks ✓  ·  0ms</summary><div class="turn-extras-body"><h4>Checks</h4><ul class="assertions"><li class="pass"><span class="label">Contains &quot;Aviary&quot;</span><span class="pattern">? Aviary</span><button type="button" class="match-toggle" data-assertion-idx="0">show</button></li><li class="pass"><span class="label">Contains &quot;performative squawking&quot;</span><span class="pattern">? performative squawking</span><button type="button" class="match-toggle" data-assertion-idx="1">show</button></li><li class="pass"><span class="label">Contains &quot;toucan&quot;</span><span class="pattern">? toucan</span><button type="button" class="match-toggle" data-assertion-idx="2">show</button></li></ul></div></details></div></details></li><li class="turn"><details class="turn-detail" data-status="pass"><summary class="turn-row"><span class="turn-tcount">T:25</span><span class="turn-cmd">&gt; east</span><span class="turn-room">—</span><span class="turn-score"></span><span class="turn-delta"></span><span class="turn-outcome "></span><span class="turn-asserts"><span class="pass">✓ 1/1</span></span></summary><div class="turn-body"><pre class="turn-response"><span class="hl" data-asserts="0">Main Path</span>
+
+A wide gravel path winds through the heart of the zoo. Colorful direction signs point every which way. A park bench sits beside the path. To the east, the petting zoo. To the west, the aviary. A staff gate blocks the path to the south. The entrance is back to the north.
+
+You can see staff gate, direction signs, flower beds, park bench, lunchbox here.
+</pre><details class="turn-extras"><summary class="turn-extras-summary">1 check ✓  ·  0ms</summary><div class="turn-extras-body"><h4>Checks</h4><ul class="assertions"><li class="pass"><span class="label">Contains &quot;Main Path&quot;</span><span class="pattern">? Main Path</span><button type="button" class="match-toggle" data-assertion-idx="0">show</button></li></ul></div></details></div></details></li><li class="turn"><details class="turn-detail" data-status="pass"><summary class="turn-row"><span class="turn-tcount">T:26</span><span class="turn-cmd">&gt; unlock gate with keycard</span><span class="turn-room">—</span><span class="turn-score"></span><span class="turn-delta"></span><span class="turn-outcome "></span><span class="turn-asserts"><span class="pass">✓ 1/1</span></span></summary><div class="turn-body"><pre class="turn-response">You <span class="hl" data-asserts="0">unlock</span> the staff gate with the staff keycard.
+</pre><details class="turn-extras"><summary class="turn-extras-summary">1 check ✓  ·  0ms</summary><div class="turn-extras-body"><h4>Checks</h4><ul class="assertions"><li class="pass"><span class="label">Contains &quot;unlock&quot;</span><span class="pattern">? unlock</span><button type="button" class="match-toggle" data-assertion-idx="0">show</button></li></ul></div></details></div></details></li><li class="turn"><details class="turn-detail" data-status="pass"><summary class="turn-row"><span class="turn-tcount">T:27</span><span class="turn-cmd">&gt; open gate</span><span class="turn-room">—</span><span class="turn-score"></span><span class="turn-delta"></span><span class="turn-outcome "></span><span class="turn-asserts"><span class="pass">✓ 1/1</span></span></summary><div class="turn-body"><pre class="turn-response">You <span class="hl" data-asserts="0">open</span> the staff gate.
+</pre><details class="turn-extras"><summary class="turn-extras-summary">1 check ✓  ·  0ms</summary><div class="turn-extras-body"><h4>Checks</h4><ul class="assertions"><li class="pass"><span class="label">Contains &quot;open&quot;</span><span class="pattern">? open</span><button type="button" class="match-toggle" data-assertion-idx="0">show</button></li></ul></div></details></div></details></li><li class="turn"><details class="turn-detail" data-status="pass"><summary class="turn-row"><span class="turn-tcount">T:28</span><span class="turn-cmd">&gt; south</span><span class="turn-room">—</span><span class="turn-score"></span><span class="turn-delta"></span><span class="turn-outcome "></span><span class="turn-asserts"><span class="pass">✓ 1/1</span></span></summary><div class="turn-body"><pre class="turn-response"><span class="hl" data-asserts="0">Supply Room</span>
+
+A cluttered storage room behind the staff gate. Metal shelves line the walls. A cork board on the wall is covered with staff schedules. A battered radio sits on one of the shelves. The staff gate leads back north.
+
+You can see metal shelves, cork board, warning sign, flashlight, radio here.
+*DING DONG* &quot;It&#x27;s FEEDING TIME at the Petting Zoo! Come watch our pygmy goats and rabbits enjoy their favorite snacks!&quot;
+</pre><details class="turn-extras"><summary class="turn-extras-summary">1 check ✓  ·  0ms</summary><div class="turn-extras-body"><h4>Checks</h4><ul class="assertions"><li class="pass"><span class="label">Contains &quot;Supply Room&quot;</span><span class="pattern">? Supply Room</span><button type="button" class="match-toggle" data-assertion-idx="0">show</button></li></ul></div></details></div></details></li><li class="turn"><details class="turn-detail" data-status="pass"><summary class="turn-row"><span class="turn-tcount">T:29</span><span class="turn-cmd">&gt; south</span><span class="turn-room">—</span><span class="turn-score"></span><span class="turn-delta"></span><span class="turn-outcome "></span><span class="turn-asserts"><span class="pass">✓ 3/3</span></span></summary><div class="turn-body"><pre class="turn-response">It is pitch dark. You are likely to be eaten by a grue.
+A soft, sibilant voice drifts from behind the glass of the snake enclosure. &quot;Ssso... you&#x27;re the one who stayed. Good. Do you know what it&#x27;s like in here? They keep the lights on &#x27;dim&#x27; and call it &#x27;<span class="hl" data-asserts="0">nocturnal</span>.&#x27; I haven&#x27;t seen actual <span class="hl" data-asserts="1">moonlight</span> in three years. <span class="hl" data-asserts="2">Three. Years</span>.&quot;
+</pre><details class="turn-extras"><summary class="turn-extras-summary">3 checks ✓  ·  0ms</summary><div class="turn-extras-body"><h4>Checks</h4><ul class="assertions"><li class="pass"><span class="label">Contains &quot;Nocturnal&quot;</span><span class="pattern">? Nocturnal</span><button type="button" class="match-toggle" data-assertion-idx="0">show</button></li><li class="pass"><span class="label">Contains &quot;moonlight&quot;</span><span class="pattern">? moonlight</span><button type="button" class="match-toggle" data-assertion-idx="1">show</button></li><li class="pass"><span class="label">Contains &quot;Three. Years&quot;</span><span class="pattern">? Three. Years</span><button type="button" class="match-toggle" data-assertion-idx="2">show</button></li></ul></div></details></div></details></li><li class="turn"><details class="turn-detail" data-status="pass"><summary class="turn-row"><span class="turn-tcount">T:30</span><span class="turn-cmd">&gt; score</span><span class="turn-room">—</span><span class="turn-score"></span><span class="turn-delta"></span><span class="turn-outcome "></span><span class="turn-asserts"><span class="pass">✓ 2/2</span></span></summary><div class="turn-body"><pre class="turn-response">You have scored <span class="hl" data-asserts="0">95</span> <span class="hl" data-asserts="1">out of 100</span>, earning you the rank of Master.
+</pre><details class="turn-extras"><summary class="turn-extras-summary">2 checks ✓  ·  0ms</summary><div class="turn-extras-body"><h4>Checks</h4><ul class="assertions"><li class="pass"><span class="label">Contains &quot;95&quot;</span><span class="pattern">? 95</span><button type="button" class="match-toggle" data-assertion-idx="0">show</button></li><li class="pass"><span class="label">Contains &quot;out of 100&quot;</span><span class="pattern">? out of 100</span><button type="button" class="match-toggle" data-assertion-idx="1">show</button></li></ul></div></details></div></details></li></ul></div></details></div><script>
+document.addEventListener('click', function (e) {
+  var btn = e.target.closest && e.target.closest('.match-toggle');
+  if (!btn) return;
+  var turn = btn.closest('.turn-detail');
+  if (!turn) return;
+  var idx = btn.getAttribute('data-assertion-idx');
+  var wasActive = btn.classList.contains('active');
+  // Reset every toggle + highlight in this turn (radio-style: only one
+  // assertion's highlights visible at a time within a turn).
+  Array.prototype.forEach.call(turn.querySelectorAll('.match-toggle.active'),
+    function (b) { b.classList.remove('active'); });
+  Array.prototype.forEach.call(turn.querySelectorAll('.hl.hl-active'),
+    function (s) { s.classList.remove('hl-active'); });
+  if (wasActive) return;  // re-click on the active toggle deselects → done
+  btn.classList.add('active');
+  Array.prototype.forEach.call(turn.querySelectorAll('.hl'), function (span) {
+    var ids = (span.getAttribute('data-asserts') || '').split(' ');
+    if (ids.indexOf(idx) >= 0) span.classList.add('hl-active');
+  });
+});
+</script></body></html>
