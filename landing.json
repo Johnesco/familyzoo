@@ -1,179 +1,168 @@
 {
-  "title": "Family Zoo - Sharpee Tutorial",
-  "meta": "A progressive Sharpee engine walkthrough",
-  "subtitle": "A progressive Sharpee engine walkthrough",
-  "description": "Family Zoo — a 17-version progressive walkthrough of the Sharpee TypeScript IF engine, from a single room to a full multi-file story.",
-  "primaryCtaLabel": "→ Play the latest step (v17)",
-  "introHtml": "<p><strong>Family Zoo</strong> is a progressive tutorial for the <a href=\"https://sharpee.net\">Sharpee</a> TypeScript interactive fiction engine. It builds one game across seventeen steps: v01 is a single room, v17 is a full multi-file story with NPCs, timed events, scoring and an endgame. Each step adds one chapter of the zoo and one slice of the engine, and each is playable on its own with its source and test report beside it.</p><p>Start at <a href=\"#familyzoo-v01\">v01</a> to follow the tutorial in order, or jump to any step below.</p>",
+  "title": "Family Zoo — a Chord tutorial",
+  "meta": "Sixteen steps through the Sharpee engine",
+  "subtitle": "Sixteen steps through the Sharpee engine",
+  "description": "Family Zoo — a sixteen-step tutorial for Chord, the Sharpee authoring language, from a single room to a full story.",
+  "primaryCtaLabel": "→ Play the finished zoo",
+  "introHtml": "<p><strong>Family Zoo</strong> is a tutorial for <a href=\"https://sharpee.net/chord/\">Chord</a>, the authoring language of the <a href=\"https://sharpee.net\">Sharpee</a> interactive fiction engine. It builds one game across sixteen steps: v01 is a single room in about fifty lines, v16 is the whole zoo in eight hundred — animals with their own verbs, a zookeeper, timed events, scoring, and an after-hours phase.</p><p>Every step is a single <code>.story</code> file that is the step before it plus one idea, and every step is playable on its own with its source and test report beside it. Start at <a href=\"#familyzoo-v01\">v01</a> to follow it in order, or jump in anywhere.</p>",
   "versions": {
     "familyzoo": {
-      "summary": "Splits the growing story across six concern-based files and adds an after-hours phase where the zoo closes, the zookeeper leaves, and the parrot starts speaking candidly. Demonstrates organizing a real-size Sharpee project and swapping NPC behavior at runtime.",
+      "summary": "The finished zoo: eight rooms, animals with their own verbs, a zookeeper, timed events, scoring, and an after-hours phase where the parrot stops being polite. This is every step above, in one 800-line Chord file.",
       "features": [
-        "Multi-file layout split by concern (zoo-map, zoo-items, characters, events, scoring, language, index)",
-        "Runtime NPC behavior swap via npcService.removeBehavior + registerBehavior",
-        "Conditional daemon gated on a world state flag (zoo.after_hours)",
-        "25-point after-hours bonus for witnessing closing events (max 100)",
-        "getRunnerState/restoreRunnerState hooks so behavior swaps survive save/restore"
+        "`on every turn` — the daemon",
+        "`define sequence feeding time` — scripted beats in order",
+        "Gating a daemon on a condition so it is not always talking",
+        "Keeping ambient text from drowning the player's own actions",
+        "`use scoring` in the story header",
+        "`score visit worth 5` on a room"
       ]
     },
     "familyzoo-v16": {
-      "summary": "Turns the zoo into a 75-point game with an ending: visit rooms, feed animals, and collect items to win. Introduces the score ledger, unique award IDs, and a victory daemon that watches for the win condition.",
+      "summary": "The zoo closes. A story state flips, the zookeeper leaves, and the parrot starts speaking candidly — and the parrot's flavour line comes from TypeScript, the one escape hatch Chord keeps.",
       "features": [
-        "world.setMaxScore and world.awardScore with idempotent unique IDs",
-        "world.getScore and the built-in score command",
-        "Chained event handlers awarding points on room entry",
-        "A high-priority victory daemon driving endgame state flags",
-        "Designing a balanced scoring table across exploration and action"
+        "`states: open, after-hours` in the header",
+        "`while after-hours` on clauses and descriptions",
+        "`define sequence closing time` driving the transition",
+        "`define text flavor from \"./chord-extras.ts\"` (ADR-259)",
+        "When to reach for the hatch — and when not to"
       ]
     },
     "familyzoo-v15": {
-      "summary": "The PA system makes scheduled announcements, feeding time arrives on a timer, and goats bleat until fed. Introduces the SchedulerPlugin and its two primitives — daemons that tick every turn and fuses that count down.",
+      "summary": "Points for seeing the zoo. `use scoring` turns on the SCORE command, rooms carry what a visit is worth, and `award` banks it once.",
       "features": [
-        "SchedulerPlugin registration in onEngineReady",
-        "Daemon interface with condition() and run() that returns events",
-        "Fuse interface with turns, repeat, and originalTurns for re-arming",
-        "game.message events with narrate: true for auto-rendered text",
-        "Gotchas around turn offsets and the fuse skipNextTick behavior"
+        "`use scoring` in the story header",
+        "`score visit worth 5` on a room",
+        "`award visit` inside `after the player entering`",
+        "Why awarding is idempotent — revisiting pays nothing",
+        "The SCORE command, for free"
       ]
     },
     "familyzoo-v14": {
-      "summary": "Petting the goats feels different from petting the parrot (which bites). Introduces capability dispatch — one verb whose behavior is delegated to whichever trait the target entity carries.",
+      "summary": "The zoo starts moving on its own: PA announcements, feeding time, goats that get hungrier. A daemon runs every turn; a sequence is a scripted run of beats.",
       "features": [
-        "Custom traits declaring a static capabilities[] list",
-        "registerCapabilityBehavior with optional condition predicates",
-        "createCapabilityDispatchAction factory for auto-built dispatch actions",
-        "Per-entity behavior selection via trait data like animalKind",
-        "The verb vs entity responsibility split vs. plain custom actions"
+        "`on every turn` — the daemon",
+        "`define sequence feeding time` — scripted beats in order",
+        "Gating a daemon on a condition so it is not always talking",
+        "Keeping ambient text from drowning the player's own actions"
       ]
     },
     "familyzoo-v13": {
-      "summary": "Adds entirely new verbs — feed, photograph, snap — that stdlib does not know about. Walks through the four-phase Action interface and how to teach the parser and language provider about story-specific vocabulary.",
+      "summary": "Goats, rabbits and the verbs that go with them. In Chord a trait and the action that dispatches on it are one lesson: the trait names a capability, the action is what makes it mean something.",
       "features": [
-        "The Action interface with validate, execute, report, and blocked phases",
-        "getCustomActions on the Story class",
-        "extendParser with grammar.define and mapsTo",
-        "extendLanguage for registering message IDs and text",
-        "context.sharedData for passing state between phases"
+        "`define trait pettable` — naming a capability the stdlib lacks",
+        "`define action petting` — a new verb and its grammar",
+        "An action that finds its target by trait, not by name",
+        "`feedable`, `chatty`, `restless` and animals that carry several traits",
+        "Why a trait alone does nothing until an action consults it"
       ]
     },
     "familyzoo-v12": {
-      "summary": "Hooks into stdlib action events so dropped feed triggers goats to rush in and a penny dropped in a press becomes a pressed souvenir. Separates silent state mutations from chained events that produce player-facing text.",
+      "summary": "The snake, and the three places a story can interrupt the engine: before an action, after it, and on it. This is Chord's answer to event handlers.",
       "features": [
-        "registerEventHandler for silent state changes",
-        "chainEvent returning ISemanticEvent for narrated reactions",
-        "The full catalog of if.event.* triggers (taken, dropped, put_in, opened, etc.)",
-        "The item-transformation pattern: remove input, create output, message the player",
-        "Unique handler keys for each chain registration"
+        "`on the player <verb>ing` — replace the standard response",
+        "`before` — refuse or redirect an action",
+        "`after the player entering` — react to arrival",
+        "Where a clause belongs: on the thing, not in a central handler"
       ]
     },
     "familyzoo-v11": {
-      "summary": "A patrolling zookeeper and a chatty parrot bring the zoo to life. Walks through the three-part NPC system — trait, behavior, plugin — and how to write custom behavior reactions.",
+      "summary": "Sam the zookeeper. A person is created like anything else, but carries conversation and reacts to the player being in the room.",
       "features": [
-        "NpcTrait, ActorTrait with isPlayer false, and the NpcPlugin",
-        "Built-in behaviors: patrol, wanderer, follower, guard, passive",
-        "Custom NpcBehavior implementations with onTurn and onPlayerEnters hooks",
-        "NpcAction types: move, speak, emote, wait, take, drop",
-        "NpcContext giving behaviors access to world, npc, and player state"
+        "`a person` and where they stand",
+        "`on the player talking to` for conversation",
+        "Describing someone doing something, not just standing there",
+        "Why the room description mentions them separately"
       ]
     },
     "familyzoo-v10": {
-      "summary": "A radio bolted to a shelf in the supply room can be switched on and off to play music. Shows SwitchableTrait on its own — no light source involved — and contrasts it with OpenableTrait.",
+      "summary": "A radio in the supply room, a feed dispenser in the petting zoo, a penny press in the gift shop — and the shop itself, whose description is stitched from a cycling phrase.",
       "features": [
-        "Standalone SwitchableTrait for non-light devices",
-        "switch on/off and turn on/off verb aliases from stdlib",
-        "Semantic distinction between switch (devices) and open (barriers)",
-        "Combining SwitchableTrait with SceneryTrait for fixed appliances",
-        "Patterns for future device combinations"
+        "`switchable` and TURN ON / TURN OFF",
+        "`on` clauses that fire when a device is used",
+        "`define phrase pins, cycling` — a different line each time",
+        "`{pins}` — binding a phrase into a description"
       ]
     },
     "familyzoo-v09": {
-      "summary": "Plaques, warning signs, and a take-away brochure give the zoo readable text. Separates what an object looks like from what it actually says.",
+      "summary": "A plaque in the aviary. READ is its own action, distinct from EXAMINE, and a phrase block lets the text be laid out the way a sign really reads.",
       "features": [
-        "ReadableTrait with its own text field",
-        "Clear split between examine and read verbs",
-        "Scenery plaques you can read but not take",
-        "Portable readables like brochures, letters, and books",
-        "Guidance on when to use ReadableTrait vs. a long description"
+        "`readable` alongside `scenery`",
+        "`on the player reading` versus the plain description",
+        "A `phrase` block holding multi-paragraph sign text",
+        "Why READ and EXAMINE should say different things"
       ]
     },
     "familyzoo-v08": {
-      "summary": "Adds a pitch-black nocturnal exhibit reachable only after finding and switching on a flashlight in the supply room. Introduces darkness as a room property and light sources as the gating mechanism.",
+      "summary": "The nocturnal exhibit is unlit. Without a light source the player sees nothing; with the flashlight the room opens up. One word on the room does the whole job.",
       "features": [
-        "isDark flag on RoomTrait",
-        "LightSourceTrait with brightness and isLit",
-        "SwitchableTrait for on/off toggles",
-        "The flashlight pattern combining three traits",
-        "Alternative patterns for always-on, consumable, and adjustable lights"
+        "`a room, dark`",
+        "A portable light source and what carrying it changes",
+        "What the engine says when there is no light",
+        "A warning sign that tells the player what they need"
       ]
     },
     "familyzoo-v07": {
-      "summary": "A staff gate now blocks passage south until the player finds the keycard at the entrance and unlocks it. Covers the full locked-door stack: keys, LockableTrait, DoorTrait, and the via property on exits.",
+      "summary": "A staff gate the player cannot pass until they find the keycard. The refusal message is a named phrase in the en-US catalog, not hardcoded English in the exit.",
       "features": [
-        "LockableTrait with keyId wiring a specific key to a specific lock",
-        "DoorTrait bridging two rooms bidirectionally",
-        "Exit via property so going checks the door state",
-        "The take, unlock, open, go player sequence",
-        "Ordinary items serving as keys — no special trait needed"
+        "`lockable with the staff keycard`",
+        "`south is blocked while the staff gate is closed: staff-gate-blocked`",
+        "`define phrases en-US` — the catalog of refusal keys",
+        "UNLOCK, LOCK and the messages the stdlib already knows"
       ]
     },
     "familyzoo-v06": {
-      "summary": "Makes containers openable and closeable, so a lunchbox and the feed dispenser hide their contents until opened. Teaches the open/closed state machine and the trick for pre-populating closed containers during world setup.",
+      "summary": "The supply room, its metal shelves and a cork board. `openable` gives a thing an open and a closed state, and OPEN and CLOSE start working with no code of your own.",
       "features": [
-        "OpenableTrait with isOpen, canClose, and revealsContents",
-        "Built-in open and close actions from stdlib",
-        "Closed containers blocking put-in and hiding contents",
-        "Temporarily opening a container during initializeWorld to seed items",
-        "Pattern preview for combining OpenableTrait with LockableTrait"
+        "`openable` and the state it implies",
+        "A container that is also openable",
+        "Rooms reached only through something you must open",
+        "Descriptions that read correctly whether open or closed"
       ]
     },
     "familyzoo-v05": {
-      "summary": "Adds intermediate storage: a backpack to put things in, a park bench to set things on, and a fixed feed dispenser. Covers the split between containers and supporters and how capacity limits work.",
+      "summary": "A backpack that holds things and a park bench that things sit on. Chord distinguishes what is *in* a thing from what is *on* it, and the parser follows.",
       "features": [
-        "ContainerTrait for things held inside",
-        "SupporterTrait for things placed on top",
-        "Preposition-sensitive parsing of put in vs put on",
-        "Capacity limits via maxItems",
-        "Composing multiple traits (e.g. SupporterTrait + SceneryTrait) on one entity"
+        "`a container` — things go in it",
+        "`a supporter` — things go on it",
+        "Putting a thing inside another at creation time",
+        "How the room description reports contents it did not have to be told about"
       ]
     },
     "familyzoo-v04": {
-      "summary": "Introduces takeable items — a zoo map, a bag of feed, a souvenir penny — that the player can pick up, carry between rooms, and drop. Establishes that portability is the default and SceneryTrait is what removes it.",
+      "summary": "The first things the player can carry: a brochure, a map, a souvenir penny. Also the first phrase block — the brochure's text is set verbatim so its layout survives.",
       "features": [
-        "EntityType.ITEM for portable objects",
-        "Built-in take, drop, inventory, and take all actions",
-        "Items traveling with the player automatically",
-        "Loose objects appearing in room listings",
-        "The portable-by-default design philosophy"
+        "A thing with no `scenery` is takeable by default",
+        "`readable` and `on the player reading`",
+        "`define phrase brochure-text, verbatim` — text kept exactly as written",
+        "TAKE, DROP and INVENTORY come from the standard library"
       ]
     },
     "familyzoo-v03": {
-      "summary": "Populates every room with environmental detail — fences, flowers, hay bales, waterfalls — that the player can examine but not pick up. Makes the distinction between EntityType.SCENERY as a label and SceneryTrait as the mechanism that actually blocks taking.",
+      "summary": "Fences, flower beds, hay, a waterfall, a toucan. Scenery is what makes a room feel like a place rather than a list of exits — present to examine, refused when taken.",
       "features": [
-        "SceneryTrait to prevent items from being taken",
-        "Distinction between EntityType.SCENERY and SceneryTrait",
-        "Generous alias lists for natural player phrasing",
-        "Guidance on what belongs as scenery vs. portable items",
-        "Scenery-only descriptions that stay hidden from room object listings"
+        "`scenery` blocks taking without any refusal message of your own",
+        "Several scenery things sharing one room",
+        "Writing descriptions that reward a second look",
+        "`aka` on scenery so EXAMINE FENCE and EXAMINE IRON FENCE both work"
       ]
     },
     "familyzoo-v02": {
-      "summary": "Expands the zoo to four connected rooms — entrance, main path, petting zoo, and aviary — linked by compass directions. Teaches how room exits are wired and why they must be created as pairs.",
+      "summary": "The zoo grows to four rooms joined by compass directions. Exits are one line each, and `aka` gives every room the names a player will actually type.",
       "features": [
-        "Direction enum for compass movement (N/S/E/W and more)",
-        "RoomTrait.exits mapping directions to destinations",
-        "Two-step create-then-connect pattern for rooms",
-        "Retrieving traits with entity.get(Trait)",
-        "Automatic handling by the stdlib going action"
+        "`south to the Main Path` — an exit is a property of the room",
+        "Exits are declared one way; Chord wires the return trip",
+        "`aka path, gravel path` for synonyms the parser accepts",
+        "Room descriptions that tell the player where the exits go"
       ]
     },
     "familyzoo-v01": {
-      "summary": "The simplest possible Sharpee story: one room with a welcome sign and ticket booth. Introduces the Story class structure, entities, and the four essential traits needed to stand up a world.",
+      "summary": "The smallest Chord story that runs: a header that names the work, one room, and two pieces of scenery you can examine. Everything else in the tutorial is added to this.",
       "features": [
-        "Story interface with config, createPlayer, and initializeWorld",
-        "IdentityTrait for names, descriptions, and aliases",
-        "ActorTrait with isPlayer flag and ContainerTrait for inventory",
-        "SceneryTrait and RoomTrait basics",
-        "Explicit entity placement via world.moveEntity"
+        "The `story` header — `title`, `authors`, `id`, `description`",
+        "`create the <Room>` with `a room` and an indented description",
+        "`scenery` for things that belong to the room and cannot be taken",
+        "`in the <Room>` to place a thing",
+        "`before the game starts` naming who the player is"
       ]
     }
   }

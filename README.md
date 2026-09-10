@@ -1,15 +1,17 @@
-# Family Zoo — a Sharpee tutorial
+# Family Zoo — a Chord tutorial
 
-A progressive tutorial for the [Sharpee](https://sharpee.net) TypeScript interactive
-fiction engine. It builds one game across **seventeen steps**: v01 is a single room,
-v17 is a full multi-file story with NPCs, timed events, scoring and an endgame. Each
-step adds one chapter of the zoo and one slice of the engine.
+A sixteen-step tutorial for [Chord](https://sharpee.net/chord/), the authoring language
+of the [Sharpee](https://sharpee.net) interactive fiction engine. It builds one game:
+**v01 is a single room in about fifty lines; v16 is the whole zoo in eight hundred** —
+animals with their own verbs, a zookeeper, timed events, scoring, and an after-hours
+phase where the parrot stops being polite.
 
 Play the whole trail on IF Hub: <https://johnesco.github.io/familyzoo/>
 
 ## The steps
 
-Each step is published as its own repo so it can be played, read and tested on its own.
+Each step is one `.story` file — the step before it plus one idea — published as its own
+repo so it can be played, read and tested on its own.
 
 | Step | Teaches | Repo |
 |---|---|---|
@@ -23,42 +25,39 @@ Each step is published as its own repo so it can be played, read and tested on i
 | v08 | Light & Dark | [`familyzoo-v08`](https://github.com/Johnesco/familyzoo-v08) |
 | v09 | Readable Objects | [`familyzoo-v09`](https://github.com/Johnesco/familyzoo-v09) |
 | v10 | Switchable Devices | [`familyzoo-v10`](https://github.com/Johnesco/familyzoo-v10) |
-| v11 | Non-Player Characters | [`familyzoo-v11`](https://github.com/Johnesco/familyzoo-v11) |
-| v12 | Event Handlers | [`familyzoo-v12`](https://github.com/Johnesco/familyzoo-v12) |
-| v13 | Custom Actions | [`familyzoo-v13`](https://github.com/Johnesco/familyzoo-v13) |
-| v14 | Capability Dispatch | [`familyzoo-v14`](https://github.com/Johnesco/familyzoo-v14) |
-| v15 | Timed Events (Daemons & Fuses) | [`familyzoo-v15`](https://github.com/Johnesco/familyzoo-v15) |
-| v16 | Scoring and Endgame | [`familyzoo-v16`](https://github.com/Johnesco/familyzoo-v16) |
-| v17 | Current **(Current)** | [`familyzoo`](https://github.com/Johnesco/familyzoo) |
+| v11 | Characters | [`familyzoo-v11`](https://github.com/Johnesco/familyzoo-v11) |
+| v12 | Event Clauses | [`familyzoo-v12`](https://github.com/Johnesco/familyzoo-v12) |
+| v13 | Custom Traits & Actions | [`familyzoo-v13`](https://github.com/Johnesco/familyzoo-v13) |
+| v14 | Daemons & Sequences | [`familyzoo-v14`](https://github.com/Johnesco/familyzoo-v14) |
+| v15 | Scoring & Endgame | [`familyzoo-v15`](https://github.com/Johnesco/familyzoo-v15) |
+| v16 | After Hours & the TypeScript Hatch | [`familyzoo-v16`](https://github.com/Johnesco/familyzoo-v16) |
+| — | **The finished zoo (Current)** | [`familyzoo`](https://github.com/Johnesco/familyzoo) |
 
 ## This repo
 
-`familyzoo` is both the **authoring tree** for all seventeen steps and the hub's
-**Current** entry, which serves v17. The per-step source is in `src/` (`v01.ts` …
-`v16.ts`, `v17/`), the built output for every step is in `browser/vNN/`, the tutorial
-chapters are in `docs/`, and each step's transcript is in `tests/transcripts/`.
+`familyzoo` is the **master story** and the hub's **Current** entry. `familyzoo.story` is
+the finished zoo; the sixteen step repos are generated from it by slicing to the blocks
+each step introduces. Change the master, then re-lay the steps — the step files are not
+hand-edited.
 
-The frozen sibling repos `familyzoo-v01` … `familyzoo-v16` are generated from this tree.
+The 0.9.x TypeScript edition this replaced is kept in [`legacy/`](./legacy).
 
-## Playing locally
-
-```bash
-python -m http.server 8000 --directory familyzoo
-```
-
-## Building
-
-Family Zoo is pinned to the **0.9.x TypeScript pipeline** — the API the tutorial exists
-to explain. It is deliberately not translated to Chord. The built output in each folder
-is the published artifact:
+## Playing and testing
 
 ```bash
-python ../tools/build.py familyzoo
+npx sharpee play
+npx sharpee test                           # replays familyzoo.tests.json
+python ../tools/build.py familyzoo --force
 python C:/code/ifhub/tools/ship.py familyzoo
 ```
 
-The group landing page that lists every step is generated from `landing.json`:
+The group landing page listing every step is generated from `landing.json`:
 
 ```bash
-python C:/code/ifhub/tools/build_landing.py familyzoo
+python C:/code/ifhub/tools/build_landing.py familyzoo --force
 ```
+
+## Engine
+
+Pinned to `@sharpee/*` **5.3.0** (Chord 3.6.0), held there by an `overrides` block in
+`package.json`: 5.3.1 publishes broken subpath exports and breaks `sharpee test`.
