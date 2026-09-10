@@ -1,0 +1,42 @@
+Zoo Entrance
+Your family piles out of the car, buzzing with excitement — a whole day at the zoo! You straighten the strap of your backpack and take it all in. You stand before the wrought-iron gates of the Willowbrook Family Zoo. A cheerful welcome sign arches over the entrance, and a small ticket booth sits to one side. A sturdy iron fence runs along either side of the gates. The main path leads south into the zoo grounds.
+
+You can see a staff keycard, a zoo brochure, a zoo map, and a backpack here.
+
+> south
+Main Path
+A wide gravel path winds through the heart of the zoo. Colorful direction signs point every which way. A park bench sits beside the path. To the east, the petting zoo. To the west, the aviary. A staff gate blocks the path to the south. The entrance is back to the north. Sam the zookeeper is here, jingling a ring of keys.
+
+You can see a souvenir penny, a lunchbox, and a zookeeper here.
+
+> west
+Aviary
+You step inside a soaring mesh dome. Brilliantly colored parrots chatter from rope perches, and a toucan eyes you curiously from a branch overhead. A small waterfall splashes into a stone basin. An info plaque hangs near the entrance. The gift shop is to the west. The main path is back to the east. A scarlet macaw watches you with one bright, knowing eye.
+
+You can see a parrot here.
+
+The parrot ruffles its feathers and eyes you with interest.
+
+> x parrot
+A magnificent scarlet macaw perched on a rope. It tilts its head and watches you with one bright eye.
+
+The parrot ruffles its scarlet feathers and whistles a jaunty tune. (A small plaque notes the macaws are rescues from the illegal pet trade.)
+
+> east
+Main Path
+A wide gravel path winds through the heart of the zoo. Colorful direction signs point every which way. A park bench sits beside the path. To the east, the petting zoo. To the west, the aviary. A staff gate blocks the path to the south. The entrance is back to the north. Sam the zookeeper is here, jingling a ring of keys.
+
+You can see a souvenir penny, a lunchbox, and a zookeeper here.
+
+*DING DONG* "Attention visitors! The Willowbrook Family Zoo will be closing in three hours. Please make sure to visit all exhibits before closing time!"
+
+> east
+Petting Zoo
+A cheerful open-air enclosure that smells of warm hay and fur. A feed dispenser is mounted on a post, and an info plaque is posted by the gate. The main path is back to the west. Three pygmy goats mill about hopefully, eyeing your pockets for snacks. A pair of Holland Lop rabbits lounges near the hay bale, ears flopped.
+
+You can see a bag of animal feed here.
+
+The pygmy goats are bleating loudly and headbutting the fence. They seem very hungry!
+
+> score
+You have scored 10 out of a possible 85.

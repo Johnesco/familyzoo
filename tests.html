@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Family Zoo (Current) &mdash; tests</title>
+<style>
+:root { --bg: #101418; --fg: #d8dee6; --muted: #7f8b99; --line: #232b35; --pass: #6fcf7f; --pass-bg: rgba(111,207,127,.12);
+  --fail: #ff7a7a; --fail-bg: rgba(255,122,122,.14); --warn: #e0b458; --accent: #8fd3ff; --code-bg: #161c23; --hover: #1a2129;
+  --hl-bg: rgba(255,232,138,.3); --hl-fg: #ffe88a; --room: #c49ee0; --ui-font: Georgia, "Times New Roman", serif; --mono: ui-monospace, Consolas, monospace; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 15px/1.5 var(--ui-font); }
+.wrap { max-width: 980px; margin: 0 auto; padding: 24px 20px 60px; }
+h1 { font-size: 20px; margin: 0 0 4px; }
+.subtitle { color: var(--muted); font: 13px var(--mono); margin-bottom: 14px; }
+.summary { display: flex; flex-wrap: wrap; gap: 12px 24px; border: 1px solid var(--line); border-radius: 6px; padding: 10px 14px; margin-bottom: 10px; background: var(--code-bg); }
+.summary .item { display: flex; align-items: baseline; gap: 6px; }
+.summary .num { font: bold 18px var(--mono); }
+.summary .pass-num { color: var(--pass); } .summary .fail-num { color: var(--fail); }
+.summary .label { color: var(--muted); font: 12px var(--mono); text-transform: uppercase; letter-spacing: .06em; }
+.status.PASS { color: var(--pass); } .status.FAIL { color: var(--fail); }
+.games { font: 13px var(--mono); color: var(--muted); margin-bottom: 14px; display: flex; flex-wrap: wrap; gap: 4px 16px; }
+.controls { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; margin: 0 0 6px; font: 13px var(--mono); }
+.controls button, button.match-toggle { font: 12px var(--mono); color: var(--fg); background: var(--code-bg); border: 1px solid var(--line); border-radius: 4px; padding: 3px 8px; cursor: pointer; }
+.controls button:hover, button.match-toggle:hover { background: var(--hover); }
+.controls input[type=search] { font: 13px var(--mono); color: var(--fg); background: var(--code-bg); border: 1px solid var(--line); border-radius: 4px; padding: 4px 8px; min-width: 260px; }
+.controls label { display: flex; gap: 6px; align-items: center; cursor: pointer; }
+.controls .hint { color: var(--muted); font-size: 12px; }
+h2 { font-size: 13px; font-family: var(--mono); color: var(--muted); letter-spacing: .06em; text-transform: uppercase; margin: 24px 0 10px; }
+table.lines { border-collapse: collapse; width: 100%; font: 13px var(--mono); }
+table.lines th, table.lines td { text-align: left; padding: 4px 8px; border-bottom: 1px solid var(--line); }
+table.lines th { color: var(--muted); font-weight: normal; }
+table.lines th.num, table.lines td.num { text-align: right; }
+table.lines td.pass { color: var(--pass); } table.lines td.fail { color: var(--fail); }
+table.lines a, .line-note a, .fork a { color: var(--accent); text-decoration: none; }
+table.lines a:hover, .line-note a:hover, .fork a:hover { text-decoration: underline; }
+details.test { border: 1px solid var(--line); border-radius: 6px; margin: 0 0 12px; background: var(--code-bg); }
+summary { cursor: pointer; list-style: none; }
+summary::-webkit-details-marker { display: none; }
+summary.test-summary { display: flex; gap: 10px; align-items: center; padding: 8px 12px; font: 14px var(--mono); }
+summary.test-summary::before { content: "\25B8"; color: var(--muted); width: 1em; }
+details.test[open] > summary.test-summary::before { content: "\25BE"; }
+.glyph.pass { color: var(--pass); } .glyph.fail { color: var(--fail); } .glyph.skip { color: var(--muted); }
+.test-name { font-weight: bold; }
+.test-summary-meta { color: var(--muted); margin-left: auto; font-size: 12px; text-align: right; }
+.test-body { border-top: 1px solid var(--line); }
+.line-note { padding: 6px 12px; color: var(--muted); font: 12px var(--mono); border-bottom: 1px solid var(--line); }
+.line-note code { color: var(--accent); }
+ul.transcript { list-style: none; margin: 0; padding: 0; }
+li.turn { border-bottom: 1px solid var(--line); }
+li.turn:last-child { border-bottom: 0; }
+summary.turn-row { display: grid; grid-template-columns: 4.5em minmax(10em, 1fr) minmax(6em, auto) auto 5em; gap: 10px; align-items: baseline; padding: 5px 12px; font: 13px var(--mono); }
+summary.turn-row:hover { background: var(--hover); }
+details.turn-detail[data-status="fail"] > summary.turn-row { background: var(--fail-bg); }
+.turn-tcount { color: var(--muted); }
+.turn-cmd { color: var(--accent); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.turn-room { color: var(--room); font-style: italic; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.turn-inv { color: var(--muted); font-size: 12px; text-align: right; }
+.turn-asserts { text-align: right; }
+.turn-asserts .pass, .fork .pass { color: var(--pass); } .turn-asserts .fail, .fork .fail { color: var(--fail); } .turn-asserts .skip { color: var(--muted); }
+.turn-body { padding: 6px 12px 10px 5.5em; }
+pre.turn-response { white-space: pre-wrap; margin: 4px 0 8px; font: inherit; color: var(--fg); }
+pre.turn-response.empty { color: var(--muted); font-style: italic; }
+.hl.hl-active { background: var(--hl-bg); color: var(--hl-fg); box-shadow: 0 0 0 1px var(--hl-fg); border-radius: 2px; }
+.hl.hl-active.hl-fail { background: var(--fail-bg); color: var(--fail); box-shadow: 0 0 0 1px var(--fail); }
+details.turn-extras > summary { font: 12px var(--mono); color: var(--muted); padding: 2px 0; }
+details.turn-extras > summary::before { content: "\25B8 "; }
+details.turn-extras[open] > summary::before { content: "\25BE "; }
+.turn-extras-body { padding: 4px 0 0 1em; }
+h4 { margin: 8px 0 4px; font: 12px var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+.note { color: var(--muted); font: 12px var(--mono); }
+ul.assertions { list-style: none; margin: 0; padding: 0; font: 13px var(--mono); }
+ul.assertions li { display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: baseline; padding: 2px 0; }
+ul.assertions li.pass > .label::before { content: "\2713 "; color: var(--pass); }
+ul.assertions li.fail > .label::before { content: "\2717 "; color: var(--fail); }
+ul.assertions .kind { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: .05em; min-width: 7em; }
+ul.assertions .label { white-space: pre-wrap; }
+ul.assertions .message { flex-basis: 100%; color: var(--fail); padding-left: 7.7em; white-space: pre-wrap; }
+button.match-toggle.active { background: var(--hl-bg); color: var(--hl-fg); border-color: var(--hl-fg); }
+li.fail button.match-toggle.active { background: var(--fail-bg); color: var(--fail); border-color: var(--fail); }
+dl.kv { display: grid; grid-template-columns: auto 1fr; gap: 2px 12px; margin: 0; font: 13px var(--mono); }
+dl.kv dt { color: var(--muted); } dl.kv dd { margin: 0; }
+details.raw > summary { font: 12px var(--mono); color: var(--muted); margin-top: 8px; }
+details.raw > summary::before { content: "\25B8 "; } details.raw[open] > summary::before { content: "\25BE "; }
+pre.raw-json { font: 12px/1.4 var(--mono); background: var(--bg); border: 1px solid var(--line); border-radius: 4px; padding: 8px 10px; overflow: auto; max-height: 26em; margin: 4px 0; }
+.fork { padding: 2px 12px 6px 5.5em; font: 12px var(--mono); color: var(--muted); }
+body.failures-only li.turn[data-status="pass"], body.failures-only li.turn[data-status="skip"], body.failures-only details.test[data-status="pass"] { display: none; }
+li.turn.filtered-out, details.test.filtered-out { display: none; }
+@media (max-width: 640px) { summary.turn-row { grid-template-columns: 3.5em 1fr auto; } .turn-room, .turn-inv { display: none; } .turn-body, .fork { padding-left: 12px; } }
+</style>
+</head>
+<body>
+<div class="wrap"><h1>Family Zoo (Current) &mdash; test report</h1><div class="subtitle">1 line &middot; 8 cards &middot; 15 assertions &middot; 40 ms</div><div class="summary"><div class="item"><span class="num status PASS">PASS</span></div><div class="item"><span class="num pass-num">1</span><span class="label">lines passed</span></div><div class="item"><span class="num ">0</span><span class="label">lines failed</span></div><div class="item"><span class="num pass-num">8</span><span class="label">cards passed</span></div><div class="item"><span class="num ">0</span><span class="label">cards failed</span></div><div class="item"><span class="num pass-num">15</span><span class="label">of 15 assertions</span></div><div class="item"><span class="num">40</span><span class="label">ms</span></div></div><div class="games"><span class="relpath">familyzoo.tests.json</span><span class="seed">seed 42</span><span>Sharpee 5.3.0 · Chord 3.6.0</span><span>generated 2026-09-10 05:03</span><span>0 unreached &middot; 0 skipped &middot; 0 errors</span></div><div class="controls"><button type="button" id="expand-all">Expand all</button><button type="button" id="collapse-all">Collapse all</button><label><input type="checkbox" id="failures-only"> failures only</label><input type="search" id="filter" placeholder="filter cards: command, prose, checks, room, item" aria-label="filter cards"><span class="hint" id="filter-hint"></span></div><h2>Lines</h2><table class="lines"><thead><tr><th>line</th><th>forks from</th><th class="num">cards</th><th class="num">passed</th><th class="num">failed</th><th class="num">ms</th></tr></thead><tbody><tr class="pass"><td><a href="#line-0">opening-zoo-entrance</a></td><td>&mdash;</td><td class="num">8</td><td class="num pass">8</td><td class="num ">0</td><td class="num">40</td></tr></tbody></table><h2>Tests</h2><div class="tests"><details class="test" id="line-0" data-status="pass" open><summary class="test-summary"><span class="glyph pass">&#10003;</span><span class="test-name">opening-zoo-entrance</span><span class="test-summary-meta">main line &middot; 8 cards &middot; 8/8 &#10003; &middot; 40 ms</span></summary><div class="test-body"><ul class="transcript"><li class="turn" data-status="pass"><details class="turn-detail" data-status="pass"><summary class="turn-row"><span class="turn-tcount">&mdash;</span><span class="turn-cmd">&gt; (opening)</span><span class="turn-room"></span><span class="turn-inv" title="carrying nothing"></span><span class="turn-asserts"><span class="pass">&#10003; 2/2</span></span></summary><div class="turn-body"><pre class="turn-response empty">(the opening card checks what the client shows before play; no prose)</pre><details class="turn-extras"><summary class="turn-extras-summary">2 checks &#10003; &middot; raw</summary><div class="turn-extras-body"><h4>Checks</h4><ul class="assertions"><li class="pass"><span class="kind">channel</span><span class="label">info.title is &quot;Family Zoo&quot;</span></li><li class="pass"><span class="kind">channel</span><span class="label">info.description is &quot;A day at the Willowbrook Family Zoo.&quot;</span></li></ul><details class="raw"><summary>Raw: the runner record and the authored card</summary><pre class="raw-json">{
+  &quot;schemaVersion&quot;: 2,
+  &quot;seq&quot;: 2,
+  &quot;elapsedMs&quot;: 68,
+  &quot;type&quot;: &quot;command-result&quot;,
+  &quot;file&quot;: &quot;opening-zoo-entrance&quot;,
+  &quot;line&quot;: 0,
+  &quot;input&quot;: &quot;(opening)&quot;,
+  &quot;passed&quot;: true,
+  &quot;expectedFailure&quot;: false,
+  &quot;skipped&quot;: false,
+  &quot;actualOutput&quot;: &quot;&quot;,
+  &quot;assertionResults&quot;: [
+    {
+      &quot;description&quot;: &quot;channel info.title is \&quot;Family Zoo\&quot;&quot;,
+      &quot;passed&quot;: true
+    },
+    {
+      &quot;description&quot;: &quot;channel info.description is \&quot;A day at the Willowbrook Family Zoo.\&quot;&quot;,
+      &quot;passed&quot;: true
+    }
+  ]
+}</pre><pre class="raw-json">{
+  &quot;type&quot;: &quot;opening&quot;,
+  &quot;assertions&quot;: {
+    &quot;channels&quot;: [
+      {
+        &quot;id&quot;: &quot;info.title&quot;,
+        &quot;is&quot;: &quot;Family Zoo&quot;
+      },
+      {
+        &quot;id&quot;: &quot;info.description&quot;,
+        &quot;is&quot;: &quot;A day at the Willowbrook Family Zoo.&quot;
+      }
+    ]
+  }
+}</pre></details></div></details></div></details></li><li class="turn" data-status="pass"><details class="turn-detail" data-status="pass"><summary class="turn-row"><span class="turn-tcount">T:1</span><span class="turn-cmd">&gt; look  (boot)</span><span class="turn-room">Zoo Entrance</span><span class="turn-inv" title="carrying nothing"></span><span class="turn-asserts"><span class="pass">&#10003; 2/2</span></span></summary><div class="turn-body"><pre class="turn-response"><span class="hl" data-asserts="0">Zoo Entrance</span>
+<span class="hl" data-asserts="1">Your family piles out of the car, buzzing with excitement — a whole day at the zoo! You st</span>raighten the strap of your backpack and take it all in. You stand before the wrought-iron gates of the Willowbrook Family Zoo. A cheerful welcome sign arches over the entrance, and a small ticket booth sits to one side. A sturdy iron fence runs along either side of the gates. The main path leads south into the zoo grounds.
+
+You can see a staff keycard, a zoo brochure, a zoo map, and a backpack here.</pre><details class="turn-extras"><summary class="turn-extras-summary">2 checks &#10003; &middot; Zoo Entrance &middot; 0 carried &middot; raw</summary><div class="turn-extras-body"><h4>Checks</h4><ul class="assertions"><li class="pass"><span class="kind">contains</span><span class="label">Zoo Entrance</span><button type="button" class="match-toggle" data-assertion-idx="0">show</button></li><li class="pass"><span class="kind">contains</span><span class="label">Your family piles out of the car, buzzing with excitement — a whole day at the zoo! You st</span><button type="button" class="match-toggle" data-assertion-idx="1">show</button></li></ul><h4>World after this turn</h4><dl class="kv"><dt>Location</dt><dd>Zoo Entrance</dd><dt>Carrying</dt><dd>nothing</dd></dl><details class="raw"><summary>Raw: the runner record and the authored card</summary><pre class="raw-json">{
+  &quot;schemaVersion&quot;: 2,
+  &quot;seq&quot;: 3,
+  &quot;elapsedMs&quot;: 68,
+  &quot;type&quot;: &quot;command-result&quot;,
+  &quot;file&quot;: &quot;opening-zoo-entrance&quot;,
+  &quot;line&quot;: 0,
+  &quot;input&quot;: &quot;look&quot;,
+  &quot;passed&quot;: true,
+  &quot;expectedFailure&quot;: false,
+  &quot;skipped&quot;: false,
+  &quot;actualOutput&quot;: &quot;Zoo Entrance\nYour family piles out of the car, buzzing with excitement — a whole day at the zoo! You straighten the strap of your backpack and take it all in. You stand before the wrought-iron gates of the Willowbrook Family Zoo. A cheerful welcome sign arches over the entrance, and a small ticket booth sits to one side. A sturdy iron fence runs along either side of the gates. The main path leads south into the zoo grounds.\n\nYou can see a staff keycard, a zoo brochure, a zoo map, and a backpack here.&quot;,
+  &quot;turn&quot;: 1,
+  &quot;world&quot;: {
+    &quot;location&quot;: {
+      &quot;name&quot;: &quot;Zoo Entrance&quot;,
+      &quot;token&quot;: &quot;entrance&quot;
+    },
+    &quot;inventory&quot;: []
+  },
+  &quot;assertionResults&quot;: [
+    {
+      &quot;description&quot;: &quot;contains \&quot;Zoo Entrance\&quot;&quot;,
+      &quot;passed&quot;: true
+    },
+    {
+      &quot;description&quot;: &quot;contains \&quot;Your family piles out of the car, buzzing with excitement — a whole day at the zoo! You st\&quot;&quot;,
+      &quot;passed&quot;: true
+    }
+  ]
+}</pre><pre class="raw-json">{
+  &quot;type&quot;: &quot;boot&quot;,
+  &quot;assertions&quot;: {
+    &quot;contains&quot;: [
+      &quot;Zoo Entrance&quot;,
+      &quot;Your family piles out of the car, buzzing with excitement — a whole day at the zoo! You st&quot;
+    ]
+  }
+}</pre></details></div></details></div></details></li><li class="turn" data-status="pass"><details class="turn-detail" data-status="pass"><summary class="turn-row"><span class="turn-tcount">T:2</span><span class="turn-cmd">&gt; south</span><span class="turn-room">Main Path</span><span class="turn-inv" title="carrying nothing"></span><span class="turn-asserts"><span class="pass">&#10003; 2/2</span></span></summary><div class="turn-body"><pre class="turn-response"><span class="hl" data-asserts="0">Main Path</span>
+<span class="hl" data-asserts="1">A wide gravel path winds through the heart of the zoo. Colorful direction signs point ever</span>y which way. A park bench sits beside the path. To the east, the petting zoo. To the west, the aviary. A staff gate blocks the path to the south. The entrance is back to the north. Sam the zookeeper is here, jingling a ring of keys.
+
+You can see a souvenir penny, a lunchbox, and a zookeeper here.</pre><details class="turn-extras"><summary class="turn-extras-summary">2 checks &#10003; &middot; Main Path &middot; 0 carried &middot; raw</summary><div class="turn-extras-body"><h4>Checks</h4><ul class="assertions"><li class="pass"><span class="kind">contains</span><span class="label">Main Path</span><button type="button" class="match-toggle" data-assertion-idx="0">show</button></li><li class="pass"><span class="kind">contains</span><span class="label">A wide gravel path winds through the heart of the zoo. Colorful direction signs point ever</span><button type="button" class="match-toggle" data-assertion-idx="1">show</button></li></ul><h4>World after this turn</h4><dl class="kv"><dt>Location</dt><dd>Main Path</dd><dt>Carrying</dt><dd>nothing</dd></dl><details class="raw"><summary>Raw: the runner record and the authored card</summary><pre class="raw-json">{
+  &quot;schemaVersion&quot;: 2,
+  &quot;seq&quot;: 4,
+  &quot;elapsedMs&quot;: 74,
+  &quot;type&quot;: &quot;command-result&quot;,
+  &quot;file&quot;: &quot;opening-zoo-entrance&quot;,
+  &quot;line&quot;: 0,
+  &quot;input&quot;: &quot;south&quot;,
+  &quot;passed&quot;: true,
+  &quot;expectedFailure&quot;: false,
+  &quot;skipped&quot;: false,
+  &quot;actualOutput&quot;: &quot;Main Path\nA wide gravel path winds through the heart of the zoo. Colorful direction signs point every which way. A park bench sits beside the path. To the east, the petting zoo. To the west, the aviary. A staff gate blocks the path to the south. The entrance is back to the north. Sam the zookeeper is here, jingling a ring of keys.\n\nYou can see a souvenir penny, a lunchbox, and a zookeeper here.&quot;,
+  &quot;turn&quot;: 2,
+  &quot;world&quot;: {
+    &quot;location&quot;: {
+      &quot;name&quot;: &quot;Main Path&quot;,
+      &quot;token&quot;: &quot;path&quot;
+    },
+    &quot;inventory&quot;: []
+  },
+  &quot;assertionResults&quot;: [
+    {
+      &quot;description&quot;: &quot;contains \&quot;Main Path\&quot;&quot;,
+      &quot;passed&quot;: true
+    },
+    {
+      &quot;description&quot;: &quot;contains \&quot;A wide gravel path winds through the heart of the zoo. Colorful direction signs point ever\&quot;&quot;,
+      &quot;passed&quot;: true
+    }
+  ]
+}</pre><pre class="raw-json">{
+  &quot;type&quot;: &quot;turn&quot;,
+  &quot;command&quot;: &quot;south&quot;,
+  &quot;assertions&quot;: {
+    &quot;contains&quot;: [
+      &quot;Main Path&quot;,
+      &quot;A wide gravel path winds through the heart of the zoo. Colorful direction signs point ever&quot;
+    ]
+  }
+}</pre></details></div></details></div></details></li><li class="turn" data-status="pass"><details class="turn-detail" data-status="pass"><summary class="turn-row"><span class="turn-tcount">T:3</span><span class="turn-cmd">&gt; west</span><span class="turn-room">Aviary</span><span class="turn-inv" title="carrying nothing"></span><span class="turn-asserts"><span class="pass">&#10003; 2/2</span></span></summary><div class="turn-body"><pre class="turn-response"><span class="hl" data-asserts="0">Aviary</span>
+<span class="hl" data-asserts="1">You step inside a soaring mesh dome. Brilliantly colored parrots chatter from rope perches</span>, and a toucan eyes you curiously from a branch overhead. A small waterfall splashes into a stone basin. An info plaque hangs near the entrance. The gift shop is to the west. The main path is back to the east. A scarlet macaw watches you with one bright, knowing eye.
+
+You can see a parrot here.
+
+The parrot ruffles its feathers and eyes you with interest.</pre><details class="turn-extras"><summary class="turn-extras-summary">2 checks &#10003; &middot; Aviary &middot; 0 carried &middot; raw</summary><div class="turn-extras-body"><h4>Checks</h4><ul class="assertions"><li class="pass"><span class="kind">contains</span><span class="label">Aviary</span><button type="button" class="match-toggle" data-assertion-idx="0">show</button></li><li class="pass"><span class="kind">contains</span><span class="label">You step inside a soaring mesh dome. Brilliantly colored parrots chatter from rope perches</span><button type="button" class="match-toggle" data-assertion-idx="1">show</button></li></ul><h4>World after this turn</h4><dl class="kv"><dt>Location</dt><dd>Aviary</dd><dt>Carrying</dt><dd>nothing</dd></dl><details class="raw"><summary>Raw: the runner record and the authored card</summary><pre class="raw-json">{
+  &quot;schemaVersion&quot;: 2,
+  &quot;seq&quot;: 5,
+  &quot;elapsedMs&quot;: 77,
+  &quot;type&quot;: &quot;command-result&quot;,
+  &quot;file&quot;: &quot;opening-zoo-entrance&quot;,
+  &quot;line&quot;: 0,
+  &quot;input&quot;: &quot;west&quot;,
+  &quot;passed&quot;: true,
+  &quot;expectedFailure&quot;: false,
+  &quot;skipped&quot;: false,
+  &quot;actualOutput&quot;: &quot;Aviary\nYou step inside a soaring mesh dome. Brilliantly colored parrots chatter from rope perches, and a toucan eyes you curiously from a branch overhead. A small waterfall splashes into a stone basin. An info plaque hangs near the entrance. The gift shop is to the west. The main path is back to the east. A scarlet macaw watches you with one bright, knowing eye.\n\nYou can see a parrot here.\n\nThe parrot ruffles its feathers and eyes you with interest.&quot;,
+  &quot;turn&quot;: 3,
+  &quot;world&quot;: {
+    &quot;location&quot;: {
+      &quot;name&quot;: &quot;Aviary&quot;,
+      &quot;token&quot;: &quot;dome&quot;
+    },
+    &quot;inventory&quot;: []
+  },
+  &quot;assertionResults&quot;: [
+    {
+      &quot;description&quot;: &quot;contains \&quot;Aviary\&quot;&quot;,
+      &quot;passed&quot;: true
+    },
+    {
+      &quot;description&quot;: &quot;contains \&quot;You step inside a soaring mesh dome. Brilliantly colored parrots chatter from rope perches\&quot;&quot;,
+      &quot;passed&quot;: true
+    }
+  ]
+}</pre><pre class="raw-json">{
+  &quot;type&quot;: &quot;turn&quot;,
+  &quot;command&quot;: &quot;west&quot;,
+  &quot;assertions&quot;: {
+    &quot;contains&quot;: [
+      &quot;Aviary&quot;,
+      &quot;You step inside a soaring mesh dome. Brilliantly colored parrots chatter from rope perches&quot;
+    ]
+  }
+}</pre></details></div></details></div></details></li><li class="turn" data-status="pass"><details class="turn-detail" data-status="pass"><summary class="turn-row"><span class="turn-tcount">T:4</span><span class="turn-cmd">&gt; x parrot</span><span class="turn-room">Aviary</span><span class="turn-inv" title="carrying nothing"></span><span class="turn-asserts"><span class="pass">&#10003; 2/2</span></span></summary><div class="turn-body"><pre class="turn-response"><span class="hl" data-asserts="0">A magnificent scarlet macaw perched on a rope. It tilts its head and watches you with one </span>bright eye.
+
+<span class="hl" data-asserts="1">The parrot ruffles its scarlet feathers and whistles a jaunty tune. (A small plaque notes </span>the macaws are rescues from the illegal pet trade.)</pre><details class="turn-extras"><summary class="turn-extras-summary">2 checks &#10003; &middot; Aviary &middot; 0 carried &middot; raw</summary><div class="turn-extras-body"><h4>Checks</h4><ul class="assertions"><li class="pass"><span class="kind">contains</span><span class="label">A magnificent scarlet macaw perched on a rope. It tilts its head and watches you with one </span><button type="button" class="match-toggle" data-assertion-idx="0">show</button></li><li class="pass"><span class="kind">contains</span><span class="label">The parrot ruffles its scarlet feathers and whistles a jaunty tune. (A small plaque notes </span><button type="button" class="match-toggle" data-assertion-idx="1">show</button></li></ul><h4>World after this turn</h4><dl class="kv"><dt>Location</dt><dd>Aviary</dd><dt>Carrying</dt><dd>nothing</dd></dl><details class="raw"><summary>Raw: the runner record and the authored card</summary><pre class="raw-json">{
+  &quot;schemaVersion&quot;: 2,
+  &quot;seq&quot;: 6,
+  &quot;elapsedMs&quot;: 82,
+  &quot;type&quot;: &quot;command-result&quot;,
+  &quot;file&quot;: &quot;opening-zoo-entrance&quot;,
+  &quot;line&quot;: 0,
+  &quot;input&quot;: &quot;x parrot&quot;,
+  &quot;passed&quot;: true,
+  &quot;expectedFailure&quot;: false,
+  &quot;skipped&quot;: false,
+  &quot;actualOutput&quot;: &quot;A magnificent scarlet macaw perched on a rope. It tilts its head and watches you with one bright eye.\n\nThe parrot ruffles its scarlet feathers and whistles a jaunty tune. (A small plaque notes the macaws are rescues from the illegal pet trade.)&quot;,
+  &quot;turn&quot;: 4,
+  &quot;world&quot;: {
+    &quot;location&quot;: {
+      &quot;name&quot;: &quot;Aviary&quot;,
+      &quot;token&quot;: &quot;dome&quot;
+    },
+    &quot;inventory&quot;: []
+  },
+  &quot;assertionResults&quot;: [
+    {
+      &quot;description&quot;: &quot;contains \&quot;A magnificent scarlet macaw perched on a rope. It tilts its head and watches you with one \&quot;&quot;,
+      &quot;passed&quot;: true
+    },
+    {
+      &quot;description&quot;: &quot;contains \&quot;The parrot ruffles its scarlet feathers and whistles a jaunty tune. (A small plaque notes \&quot;&quot;,
+      &quot;passed&quot;: true
+    }
+  ]
+}</pre><pre class="raw-json">{
+  &quot;type&quot;: &quot;turn&quot;,
+  &quot;command&quot;: &quot;x parrot&quot;,
+  &quot;assertions&quot;: {
+    &quot;contains&quot;: [
+      &quot;A magnificent scarlet macaw perched on a rope. It tilts its head and watches you with one &quot;,
+      &quot;The parrot ruffles its scarlet feathers and whistles a jaunty tune. (A small plaque notes &quot;
+    ]
+  }
+}</pre></details></div></details></div></details></li><li class="turn" data-status="pass"><details class="turn-detail" data-status="pass"><summary class="turn-row"><span class="turn-tcount">T:5</span><span class="turn-cmd">&gt; east</span><span class="turn-room">Main Path</span><span class="turn-inv" title="carrying nothing"></span><span class="turn-asserts"><span class="pass">&#10003; 2/2</span></span></summary><div class="turn-body"><pre class="turn-response"><span class="hl" data-asserts="0">Main Path</span>
+<span class="hl" data-asserts="1">A wide gravel path winds through the heart of the zoo. Colorful direction signs point ever</span>y which way. A park bench sits beside the path. To the east, the petting zoo. To the west, the aviary. A staff gate blocks the path to the south. The entrance is back to the north. Sam the zookeeper is here, jingling a ring of keys.
+
+You can see a souvenir penny, a lunchbox, and a zookeeper here.
+
+*DING DONG* &quot;Attention visitors! The Willowbrook Family Zoo will be closing in three hours. Please make sure to visit all exhibits before closing time!&quot;</pre><details class="turn-extras"><summary class="turn-extras-summary">2 checks &#10003; &middot; Main Path &middot; 0 carried &middot; raw</summary><div class="turn-extras-body"><h4>Checks</h4><ul class="assertions"><li class="pass"><span class="kind">contains</span><span class="label">Main Path</span><button type="button" class="match-toggle" data-assertion-idx="0">show</button></li><li class="pass"><span class="kind">contains</span><span class="label">A wide gravel path winds through the heart of the zoo. Colorful direction signs point ever</span><button type="button" class="match-toggle" data-assertion-idx="1">show</button></li></ul><h4>World after this turn</h4><dl class="kv"><dt>Location</dt><dd>Main Path</dd><dt>Carrying</dt><dd>nothing</dd></dl><details class="raw"><summary>Raw: the runner record and the authored card</summary><pre class="raw-json">{
+  &quot;schemaVersion&quot;: 2,
+  &quot;seq&quot;: 7,
+  &quot;elapsedMs&quot;: 85,
+  &quot;type&quot;: &quot;command-result&quot;,
+  &quot;file&quot;: &quot;opening-zoo-entrance&quot;,
+  &quot;line&quot;: 0,
+  &quot;input&quot;: &quot;east&quot;,
+  &quot;passed&quot;: true,
+  &quot;expectedFailure&quot;: false,
+  &quot;skipped&quot;: false,
+  &quot;actualOutput&quot;: &quot;Main Path\nA wide gravel path winds through the heart of the zoo. Colorful direction signs point every which way. A park bench sits beside the path. To the east, the petting zoo. To the west, the aviary. A staff gate blocks the path to the south. The entrance is back to the north. Sam the zookeeper is here, jingling a ring of keys.\n\nYou can see a souvenir penny, a lunchbox, and a zookeeper here.\n\n*DING DONG* \&quot;Attention visitors! The Willowbrook Family Zoo will be closing in three hours. Please make sure to visit all exhibits before closing time!\&quot;&quot;,
+  &quot;turn&quot;: 5,
+  &quot;world&quot;: {
+    &quot;location&quot;: {
+      &quot;name&quot;: &quot;Main Path&quot;,
+      &quot;token&quot;: &quot;path&quot;
+    },
+    &quot;inventory&quot;: []
+  },
+  &quot;assertionResults&quot;: [
+    {
+      &quot;description&quot;: &quot;contains \&quot;Main Path\&quot;&quot;,
+      &quot;passed&quot;: true
+    },
+    {
+      &quot;description&quot;: &quot;contains \&quot;A wide gravel path winds through the heart of the zoo. Colorful direction signs point ever\&quot;&quot;,
+      &quot;passed&quot;: true
+    }
+  ]
+}</pre><pre class="raw-json">{
+  &quot;type&quot;: &quot;turn&quot;,
+  &quot;command&quot;: &quot;east&quot;,
+  &quot;assertions&quot;: {
+    &quot;contains&quot;: [
+      &quot;Main Path&quot;,
+      &quot;A wide gravel path winds through the heart of the zoo. Colorful direction signs point ever&quot;
+    ]
+  }
+}</pre></details></div></details></div></details></li><li class="turn" data-status="pass"><details class="turn-detail" data-status="pass"><summary class="turn-row"><span class="turn-tcount">T:6</span><span class="turn-cmd">&gt; east</span><span class="turn-room">Petting Zoo</span><span class="turn-inv" title="carrying nothing"></span><span class="turn-asserts"><span class="pass">&#10003; 2/2</span></span></summary><div class="turn-body"><pre class="turn-response"><span class="hl" data-asserts="0">Petting Zoo</span>
+<span class="hl" data-asserts="1">A cheerful open-air enclosure that smells of warm hay and fur. A feed dispenser is mounted</span> on a post, and an info plaque is posted by the gate. The main path is back to the west. Three pygmy goats mill about hopefully, eyeing your pockets for snacks. A pair of Holland Lop rabbits lounges near the hay bale, ears flopped.
+
+You can see a bag of animal feed here.
+
+The pygmy goats are bleating loudly and headbutting the fence. They seem very hungry!</pre><details class="turn-extras"><summary class="turn-extras-summary">2 checks &#10003; &middot; Petting Zoo &middot; 0 carried &middot; raw</summary><div class="turn-extras-body"><h4>Checks</h4><ul class="assertions"><li class="pass"><span class="kind">contains</span><span class="label">Petting Zoo</span><button type="button" class="match-toggle" data-assertion-idx="0">show</button></li><li class="pass"><span class="kind">contains</span><span class="label">A cheerful open-air enclosure that smells of warm hay and fur. A feed dispenser is mounted</span><button type="button" class="match-toggle" data-assertion-idx="1">show</button></li></ul><h4>World after this turn</h4><dl class="kv"><dt>Location</dt><dd>Petting Zoo</dd><dt>Carrying</dt><dd>nothing</dd></dl><details class="raw"><summary>Raw: the runner record and the authored card</summary><pre class="raw-json">{
+  &quot;schemaVersion&quot;: 2,
+  &quot;seq&quot;: 8,
+  &quot;elapsedMs&quot;: 91,
+  &quot;type&quot;: &quot;command-result&quot;,
+  &quot;file&quot;: &quot;opening-zoo-entrance&quot;,
+  &quot;line&quot;: 0,
+  &quot;input&quot;: &quot;east&quot;,
+  &quot;passed&quot;: true,
+  &quot;expectedFailure&quot;: false,
+  &quot;skipped&quot;: false,
+  &quot;actualOutput&quot;: &quot;Petting Zoo\nA cheerful open-air enclosure that smells of warm hay and fur. A feed dispenser is mounted on a post, and an info plaque is posted by the gate. The main path is back to the west. Three pygmy goats mill about hopefully, eyeing your pockets for snacks. A pair of Holland Lop rabbits lounges near the hay bale, ears flopped.\n\nYou can see a bag of animal feed here.\n\nThe pygmy goats are bleating loudly and headbutting the fence. They seem very hungry!&quot;,
+  &quot;turn&quot;: 6,
+  &quot;world&quot;: {
+    &quot;location&quot;: {
+      &quot;name&quot;: &quot;Petting Zoo&quot;,
+      &quot;token&quot;: &quot;pen&quot;
+    },
+    &quot;inventory&quot;: []
+  },
+  &quot;assertionResults&quot;: [
+    {
+      &quot;description&quot;: &quot;contains \&quot;Petting Zoo\&quot;&quot;,
+      &quot;passed&quot;: true
+    },
+    {
+      &quot;description&quot;: &quot;contains \&quot;A cheerful open-air enclosure that smells of warm hay and fur. A feed dispenser is mounted\&quot;&quot;,
+      &quot;passed&quot;: true
+    }
+  ]
+}</pre><pre class="raw-json">{
+  &quot;type&quot;: &quot;turn&quot;,
+  &quot;command&quot;: &quot;east&quot;,
+  &quot;assertions&quot;: {
+    &quot;contains&quot;: [
+      &quot;Petting Zoo&quot;,
+      &quot;A cheerful open-air enclosure that smells of warm hay and fur. A feed dispenser is mounted&quot;
+    ]
+  }
+}</pre></details></div></details></div></details></li><li class="turn" data-status="pass"><details class="turn-detail" data-status="pass"><summary class="turn-row"><span class="turn-tcount">T:7</span><span class="turn-cmd">&gt; score</span><span class="turn-room">Petting Zoo</span><span class="turn-inv" title="carrying nothing"></span><span class="turn-asserts"><span class="pass">&#10003; 1/1</span></span></summary><div class="turn-body"><pre class="turn-response"><span class="hl" data-asserts="0">You have scored 10 out of a possible 85.</span></pre><details class="turn-extras"><summary class="turn-extras-summary">1 check &#10003; &middot; Petting Zoo &middot; 0 carried &middot; raw</summary><div class="turn-extras-body"><h4>Checks</h4><ul class="assertions"><li class="pass"><span class="kind">contains</span><span class="label">You have scored 10 out of a possible 85.</span><button type="button" class="match-toggle" data-assertion-idx="0">show</button></li></ul><h4>World after this turn</h4><dl class="kv"><dt>Location</dt><dd>Petting Zoo</dd><dt>Carrying</dt><dd>nothing</dd></dl><details class="raw"><summary>Raw: the runner record and the authored card</summary><pre class="raw-json">{
+  &quot;schemaVersion&quot;: 2,
+  &quot;seq&quot;: 9,
+  &quot;elapsedMs&quot;: 92,
+  &quot;type&quot;: &quot;command-result&quot;,
+  &quot;file&quot;: &quot;opening-zoo-entrance&quot;,
+  &quot;line&quot;: 0,
+  &quot;input&quot;: &quot;score&quot;,
+  &quot;passed&quot;: true,
+  &quot;expectedFailure&quot;: false,
+  &quot;skipped&quot;: false,
+  &quot;actualOutput&quot;: &quot;You have scored 10 out of a possible 85.&quot;,
+  &quot;turn&quot;: 7,
+  &quot;world&quot;: {
+    &quot;location&quot;: {
+      &quot;name&quot;: &quot;Petting Zoo&quot;,
+      &quot;token&quot;: &quot;pen&quot;
+    },
+    &quot;inventory&quot;: []
+  },
+  &quot;assertionResults&quot;: [
+    {
+      &quot;description&quot;: &quot;contains \&quot;You have scored 10 out of a possible 85.\&quot;&quot;,
+      &quot;passed&quot;: true
+    }
+  ]
+}</pre><pre class="raw-json">{
+  &quot;type&quot;: &quot;turn&quot;,
+  &quot;command&quot;: &quot;score&quot;,
+  &quot;assertions&quot;: {
+    &quot;contains&quot;: [
+      &quot;You have scored 10 out of a possible 85.&quot;
+    ]
+  }
+}</pre></details></div></details></div></details></li></ul></div></details></div></div>
+<script>
+(function () {
+  // "show" on a check highlights what it matched in the prose; radio-style per card.
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest && e.target.closest('.match-toggle');
+    if (!btn) return;
+    var turn = btn.closest('.turn-detail');
+    if (!turn) return;
+    var idx = btn.getAttribute('data-assertion-idx');
+    var wasActive = btn.classList.contains('active');
+    turn.querySelectorAll('.match-toggle.active').forEach(function (b) { b.classList.remove('active'); });
+    turn.querySelectorAll('.hl.hl-active').forEach(function (s) { s.classList.remove('hl-active'); });
+    if (wasActive) return;
+    btn.classList.add('active');
+    turn.querySelectorAll('.hl').forEach(function (span) {
+      var ids = (span.getAttribute('data-asserts') || '').split(' ');
+      if (ids.indexOf(idx) >= 0) span.classList.add('hl-active');
+    });
+  });
+  var all = function (sel) { return Array.prototype.slice.call(document.querySelectorAll(sel)); };
+  document.getElementById('expand-all').addEventListener('click', function () {
+    all('details').forEach(function (d) { d.open = true; });
+  });
+  document.getElementById('collapse-all').addEventListener('click', function () {
+    all('details').forEach(function (d) { d.open = false; });
+  });
+  document.getElementById('failures-only').addEventListener('change', function (e) {
+    document.body.classList.toggle('failures-only', e.target.checked);
+  });
+  var hint = document.getElementById('filter-hint');
+  document.getElementById('filter').addEventListener('input', function (e) {
+    var q = e.target.value.trim().toLowerCase();
+    var shown = 0, total = 0;
+    all('li.turn').forEach(function (li) {
+      total += 1;
+      var hit = !q || (li.textContent || '').toLowerCase().indexOf(q) >= 0;
+      li.classList.toggle('filtered-out', !hit);
+      if (hit) shown += 1;
+      if (hit && q.length >= 2) { var d = li.querySelector('details.turn-detail'); if (d) d.open = true; }
+    });
+    all('details.test').forEach(function (t) {
+      var visible = t.querySelectorAll('li.turn:not(.filtered-out)').length;
+      t.classList.toggle('filtered-out', !!q && !visible);
+      if (q && visible) t.open = true;
+    });
+    hint.textContent = q ? shown + ' of ' + total + ' cards match' : '';
+  });
+})();
+</script>
+<script src="theme-listener.js"></script>
+<script>
+if (window.ThemeListener) ThemeListener.init({
+  buildCSS: function (g, sb) {
+    return ':root { --bg: ' + g.bodyBg + ' !important; --fg: ' + g.bufferFg + ' !important; --muted: ' + g.gridFg +
+      ' !important; --accent: ' + g.inputFg + ' !important; --code-bg: ' + g.bufferBg + ' !important; --line: ' + g.gridBg +
+      ' !important; --mono: ' + g.monoFamily + ' !important; }\n' +
+      'body { background: ' + g.bodyBg + ' !important; color: ' + g.bufferFg + ' !important; }\n' +
+      '* { scrollbar-color: ' + sb.thumb + ' ' + sb.track + '; }\n';
+  },
+  dispatchResize: false
+});
+</script>
+</body>
+</html>

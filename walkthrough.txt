@@ -1,0 +1,6 @@
+south
+west
+x parrot
+east
+east
+score

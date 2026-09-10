@@ -14,17 +14,17 @@
     "author": "John Googol"
   },
   "dependencies": {
-    "@sharpee/sharpee": "^5.0.0",
-    "@sharpee/chord": "^5.0.0",
-    "@sharpee/story-loader": "^5.0.0",
-    "@sharpee/engine": "^5.0.0",
-    "@sharpee/parser-en-us": "^5.0.0",
-    "@sharpee/lang-en-us": "^5.0.0",
-    "@sharpee/stdlib": "^5.0.0",
-    "@sharpee/platform-browser": "^5.0.0"
+    "@sharpee/sharpee": "5.3.0",
+    "@sharpee/chord": "5.3.0",
+    "@sharpee/story-loader": "5.3.0",
+    "@sharpee/engine": "5.3.0",
+    "@sharpee/parser-en-us": "5.3.0",
+    "@sharpee/lang-en-us": "5.3.0",
+    "@sharpee/stdlib": "5.3.0",
+    "@sharpee/platform-browser": "5.3.0"
   },
   "devDependencies": {
-    "@sharpee/devkit": "^5.3.0",
+    "@sharpee/devkit": "5.3.0",
     "esbuild": "^0.20.0"
   },
   "keywords": [
@@ -33,5 +33,32 @@
     "chord"
   ],
   "author": "John Googol",
-  "license": "MIT"
+  "license": "MIT",
+  "overrides": {
+    "@sharpee/sharpee": "5.3.0",
+    "@sharpee/chord": "5.3.0",
+    "@sharpee/story-loader": "5.3.0",
+    "@sharpee/engine": "5.3.0",
+    "@sharpee/parser-en-us": "5.3.0",
+    "@sharpee/lang-en-us": "5.3.0",
+    "@sharpee/stdlib": "5.3.0",
+    "@sharpee/platform-browser": "5.3.0",
+    "@sharpee/core": "5.3.0",
+    "@sharpee/world-model": "5.3.0",
+    "@sharpee/world-index": "5.3.0",
+    "@sharpee/bootstrap": "5.3.0",
+    "@sharpee/ide-protocol": "5.3.0",
+    "@sharpee/transcript-tester": "5.3.0",
+    "@sharpee/branch-tester": "5.3.0",
+    "@sharpee/devkit": "5.3.0",
+    "@sharpee/if-domain": "5.3.0",
+    "@sharpee/event-processor": "5.3.0",
+    "@sharpee/plugins": "5.3.0",
+    "@sharpee/channel-service": "5.3.0",
+    "@sharpee/character": "5.3.0",
+    "@sharpee/queries": "5.3.0",
+    "@sharpee/if-services": "5.3.0",
+    "@sharpee/helpers": "5.3.0",
+    "@sharpee/media": "5.3.0"
+  }
 }
