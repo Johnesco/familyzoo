@@ -1,79 +1,177 @@
 /**
- * Browser Entry Point — Family Zoo (default)
+ * Browser entry point for An interactive fiction adventure — a Chord (`.story`) project.
+ *
+ * The bundle carries the story already COMPILED: the build stamps `story-ir.ts`
+ * beside this file, so boot is Story IR → story-loader → engine, with no fetch
+ * and no compiler on the page. That is what lets a published zip run from
+ * `file://` — `fetch()` cannot read a `file://` URL, so a page that loaded its
+ * own story over the network worked on a server and died on a double-click.
+ * Add any story-specific channel/audio renderers before `client.start()`.
  */
 
-import { GameEngine } from '@sharpee/engine';
+import { GameEngine, type Story } from '@sharpee/engine';
 import { WorldModel, EntityType } from '@sharpee/world-model';
 import { Parser } from '@sharpee/parser-en-us';
 import { LanguageProvider } from '@sharpee/lang-en-us';
 import { PerceptionService } from '@sharpee/stdlib';
-import { BrowserClient, ThemeManager } from '@sharpee/platform-browser';
-import { story } from './index.js';
+import { BrowserClient, BROWSER_CAPABILITIES, ThemeManager } from '@sharpee/platform-browser';
+import { createStory } from '@sharpee/story-loader';
+import { STORY_VERSION, ENGINE_VERSION, BUILD_DATE } from './version.js';
+// The story's TypeScript hatches (ADR-259 D1/D2), generated beside this file
+// at build time exactly as version.ts is. Empty for a pure-IR story.
+import { hatchModules } from './hatch-modules.js';
+// The compiled story, generated beside this file at build time the same way.
+import { storyIR } from './story-ir.js';
 
-const THEME_STORAGE_KEY = 'familyzoo-theme';
-
+const THEME_STORAGE_KEY = 'hello-chord-theme';
 ThemeManager.applyEarlyTheme(THEME_STORAGE_KEY);
 
-const config = story.config;
-const title = config.title;
-const description = config.description || '';
-const authors = Array.isArray(config.author)
-  ? config.author.join(', ')
-  : config.author;
+/**
+ * The IDE's pinned play seed (ADR-299 D5), or undefined on a published page.
+ * Read per call, not cached: restart reboots re-run the boot path and must
+ * see whatever the embedding surface set for this load.
+ */
+function pinnedPlaySeed(): number | undefined {
+  const seed = (globalThis as { __SHARPEE_PLAY_SEED__?: unknown }).__SHARPEE_PLAY_SEED__;
+  return typeof seed === 'number' ? seed : undefined;
+}
 
-const client = new BrowserClient({
-  storagePrefix: 'familyzoo-',
-  defaultTheme: 'modern-dark',
-  themes: [
-    { id: 'modern-dark', name: 'Modern Dark' },
-    { id: 'dos-classic', name: 'DOS Classic' },
-    { id: 'retro-terminal', name: 'Retro Terminal' },
-    { id: 'paper', name: 'Paper' },
-  ],
-  storyInfo: {
-    title,
-    description,
-    authors,
-    version: config.version,
-    engineVersion: '0.9.111',
-    buildDate: new Date().toISOString().slice(0, 10),
-  },
-  callbacks: {
-    handleStoryEvent: (event, client) => {
-      if (event.type === 'command.failed') {
-        const reason = (event.data as any)?.reason || '';
-        if (reason.includes('UNKNOWN_VERB')) {
-          client.displayText("I don't know that word.");
-        } else if (reason.includes('ENTITY_NOT_FOUND')) {
-          client.displayText("You don't see that here.");
-        } else {
-          client.displayText("I don't understand that.");
-        }
-        return true;
-      }
-      return false;
-    },
-  },
-});
+/**
+ * Outcome forcings for this boot (ADR-299 D5), or undefined on a published
+ * page. The Sharpee IDE sets this global when replaying a forced branch of the
+ * skein, so the live story reproduces the counterfactual the author asked for
+ * rather than whatever the pinned seed would have drawn.
+ *
+ * The host passes ALREADY-STRUCTURED specs (`RandomForceSpec`), not the
+ * `point[#occurrence]=CLASS` header text: parsing that grammar is
+ * transcript-tester's job, and a second copy of it shipped inside every built
+ * page is a copy that drifts. Read per call — a restart reboot re-runs the
+ * boot path and must see whatever the surface set for this load.
+ */
+function pinnedPlayForces(): unknown[] {
+  const forces = (globalThis as { __SHARPEE_PLAY_FORCES__?: unknown }).__SHARPEE_PLAY_FORCES__;
+  return Array.isArray(forces) ? forces : [];
+}
+
+/**
+ * Applies the IDE's forcings to a freshly built engine.
+ *
+ * Forces are session state, never save state (ADR-293 D9), so they are loaded
+ * per boot rather than restored. A malformed or unknown force is the engine's
+ * typed load error; it surfaces on the page's console rather than killing the
+ * boot, because a published page can never reach this path and an authoring
+ * surface is better off running unforced-but-visible than blank.
+ */
+function applyPinnedPlayForces(engine: GameEngine): void {
+  const specs = pinnedPlayForces();
+  if (specs.length === 0) return;
+  try {
+    const random = engine.getRandomService();
+    random.clearForces();
+    random.loadForces(specs as Parameters<typeof random.loadForces>[0]);
+  } catch (error) {
+    console.error('[sharpee] could not apply the IDE play forcings:', error);
+  }
+}
+
+/**
+ * Build the story from the IR embedded in this bundle.
+ *
+ * There is no compile step and no diagnostics path here on purpose: the build
+ * ran the load-time gates before it emitted the IR (ADR-251 imports are
+ * resolved there too), so a gate failure cannot reach a player's browser. It
+ * fails the build instead, which is where an author can act on it.
+ */
+function loadStory(): Story {
+  const playSeed = pinnedPlaySeed();
+  // A pure-IR story gets an empty map and is unaffected; a hatched story
+  // gets its author-written modules, bound by the loader against the same
+  // paths the `.story` declares (ADR-259 D2).
+  // The chord evaluator's stream (`one chance in <n>`, `randomly`) derives
+  // from the session seed (ADR-293 D1) — omitting it leaves chord draws
+  // clock-seeded even when the engine runs pinned (the author-game.ts
+  // precedent, re-learned here in ADR-299 Phase 5).
+  return createStory(storyIR, {
+    hatchModules,
+    ...(playSeed !== undefined ? { seed: playSeed } : {}),
+  }) as unknown as Story;
+}
+
+/**
+ * The one BrowserClient for this page. Constructed on first boot and
+ * reused across restart reboots (ADR-248): the client owns the DOM
+ * wiring, which must not be re-bound per boot.
+ */
+let client: BrowserClient | null = null;
 
 async function start(): Promise<void> {
-  client.initialize({
-    statusLocation: document.getElementById('location-name'),
-    statusScore: document.getElementById('score-turns'),
-    textContent: document.getElementById('text-content'),
-    mainWindow: document.getElementById('main-window'),
-    commandInput: document.getElementById('command-input') as HTMLInputElement,
-    modalOverlay: document.getElementById('modal-overlay'),
-    saveDialog: document.getElementById('save-dialog'),
-    restoreDialog: document.getElementById('restore-dialog'),
-    startupDialog: document.getElementById('startup-dialog'),
-    saveNameInput: document.getElementById('save-name-input') as HTMLInputElement,
-    saveSlotsListEl: document.getElementById('save-slots-list'),
-    restoreSlotsListEl: document.getElementById('restore-slots-list'),
-    noSavesMessage: document.getElementById('no-saves-message'),
-    startupSaveInfo: document.getElementById('startup-save-info'),
-    menuBar: document.getElementById('menu-bar'),
-  });
+  // Fresh build per boot (ADR-248): a restart reboot re-runs start() and gets
+  // a fully fresh story built from the same embedded IR.
+  let story: Story;
+  try {
+    story = loadStory();
+  } catch (error) {
+    const target = document.getElementById('text-content');
+    const message = error instanceof Error ? error.message : String(error);
+    if (target) {
+      const pre = document.createElement('pre');
+      pre.textContent = message;
+      target.appendChild(pre);
+    }
+    throw error;
+  }
+
+  if (!client) {
+    const author = story.config.author;
+    // Author channels (ADR-318 D11 / ADR-310 D12): the IDE's testing page
+    // sets this global before any client script runs, flipping the
+    // `authorChannels` capability so the `character` channel's per-NPC rows
+    // ride the turn feed. A published page never defines it — player
+    // profiles keep authorChannels false and the channel layer never
+    // produces the rows (Acceptance 8).
+    const authorChannels = (globalThis as { __SHARPEE_AUTHOR_CHANNELS__?: unknown })
+      .__SHARPEE_AUTHOR_CHANNELS__ === true;
+    client = new BrowserClient({
+      storagePrefix: 'hello-chord-',
+      ...(authorChannels
+        ? { clientCapabilities: { ...BROWSER_CAPABILITIES, authorChannels: true } }
+        : {}),
+      // ADR-248: RESTART reboots by re-running this entry's boot path.
+      reboot: () => start(),
+      defaultTheme: 'modern-dark',
+      themes: [
+        { id: 'modern-dark', name: 'Modern Dark' },
+        { id: 'retro-terminal', name: 'Retro Terminal' },
+        { id: 'paper', name: 'Paper' },
+        { id: 'system-6', name: 'System 6' },
+      ],
+      storyInfo: {
+        title: story.config.title,
+        description: story.config.description || '',
+        authors: Array.isArray(author) ? author.join(', ') : author,
+        version: STORY_VERSION,
+        engineVersion: ENGINE_VERSION,
+        buildDate: BUILD_DATE,
+      },
+    });
+
+    client.initialize({
+      statusLocation: document.getElementById('location-name'),
+      statusScore: document.getElementById('score-turns'),
+      textContent: document.getElementById('text-content'),
+      mainWindow: document.getElementById('main-window'),
+      commandInput: document.getElementById('command-input') as HTMLInputElement,
+      saveDialog: document.getElementById('save-dialog') as HTMLDialogElement,
+      restoreDialog: document.getElementById('restore-dialog') as HTMLDialogElement,
+      startupDialog: document.getElementById('startup-dialog') as HTMLDialogElement,
+      saveNameInput: document.getElementById('save-name-input') as HTMLInputElement,
+      saveSlotsListEl: document.getElementById('save-slots-list'),
+      restoreSlotsListEl: document.getElementById('restore-slots-list'),
+      noSavesMessage: document.getElementById('no-saves-message'),
+      startupSaveInfo: document.getElementById('startup-save-info'),
+      menuBar: document.getElementById('menu-bar'),
+    });
+  }
 
   const world = new WorldModel();
   const player = world.createEntity('player', EntityType.ACTOR);
@@ -81,33 +179,28 @@ async function start(): Promise<void> {
 
   const language = new LanguageProvider();
   const parser = new Parser(language);
-
-  if ('extendParser' in story) (story as any).extendParser(parser);
-  if ('extendLanguage' in story) (story as any).extendLanguage(language);
+  if (story.extendParser) story.extendParser(parser);
+  if (story.extendLanguage) story.extendLanguage(language);
 
   const perceptionService = new PerceptionService();
-
+  // Pinned play seed (ADR-299 D5): the Sharpee IDE's play surface sets this
+  // global before any client script runs, so every boot — including restart
+  // reboots, which re-run start() — executes at the skein's one pinned seed.
+  // A published page never defines it and boots at the clock as before.
+  const playSeed = pinnedPlaySeed();
+  // The seed rides EngineConfig (options.config.seed) — a top-level `seed`
+  // on the options object is silently ignored by the GameEngine constructor.
   const engine = new GameEngine({
-    world,
-    player,
-    parser,
-    language,
-    perceptionService,
+    world, player, parser, language, perceptionService,
+    ...(playSeed !== undefined ? { config: { seed: playSeed } } : {}),
   });
+  // Before any turn runs — including the client's own boot `look`, which may
+  // itself reach a forced point.
+  applyPinnedPlayForces(engine);
 
   client.connectEngine(engine, world);
   engine.setStory(story);
-
-  const hooks = client.getSaveRestoreHooks();
-  hooks.onRestartRequested = async () => {
-    if (confirm('Are you sure you want to restart? All unsaved progress will be lost.')) {
-      (client as any).saveManager.clearAutosave();
-      window.location.reload();
-      return false;
-    }
-    return false;
-  };
-  engine.registerSaveRestoreHooks(hooks);
+  engine.registerSaveRestoreHooks(client.getSaveRestoreHooks());
 
   await client.start();
 }

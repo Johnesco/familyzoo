@@ -1,36 +1,37 @@
 {
-  "name": "oldzoo",
+  "name": "familyzoo",
   "version": "1.0.0",
-  "description": "Family Zoo \u2014 progressive Sharpee tutorial, v01 through v17+ (local folder/package renamed to oldzoo to disambiguate from the upstream fork's unrelated internal familyzoo tutorial; GitHub repo and in-fiction content are unchanged)",
-  "main": "dist/index.js",
+  "description": "Family Zoo \u2014 a Sharpee tutorial, Chord edition",
+  "private": true,
   "scripts": {
-    "build": "tsc",
-    "dev": "tsc --watch",
-    "build:all": "python C:/code/npmsharpee/tools/ship.py familyzoo local --no-test",
-    "test:all": "python scripts/test-all.py",
-    "ship:local": "python C:/code/npmsharpee/tools/ship.py familyzoo hub-local --no-test",
-    "ship:hub": "python C:/code/npmsharpee/tools/ship.py familyzoo hub --no-test",
-    "sync:banner": "python scripts/sync-sharpee-banner.py"
+    "build": "sharpee build",
+    "build:browser": "sharpee build --browser",
+    "test": "sharpee test",
+    "play": "sharpee play"
+  },
+  "sharpee": {
+    "title": "Family Zoo",
+    "author": "John Googol"
   },
   "dependencies": {
-    "@sharpee/core": "^0.9.113",
-    "@sharpee/engine": "^0.9.113",
-    "@sharpee/helpers": "^0.9.113",
-    "@sharpee/lang-en-us": "^0.9.113",
-    "@sharpee/media": "^0.9.113",
-    "@sharpee/parser-en-us": "^0.9.113",
-    "@sharpee/platform-browser": "^0.9.113",
-    "@sharpee/plugin-npc": "^0.9.113",
-    "@sharpee/plugin-scheduler": "^0.9.113",
-    "@sharpee/sharpee": "^0.9.113",
-    "@sharpee/stdlib": "^0.9.113",
-    "@sharpee/world-model": "^0.9.113"
+    "@sharpee/sharpee": "^5.0.0",
+    "@sharpee/chord": "^5.0.0",
+    "@sharpee/story-loader": "^5.0.0",
+    "@sharpee/engine": "^5.0.0",
+    "@sharpee/parser-en-us": "^5.0.0",
+    "@sharpee/lang-en-us": "^5.0.0",
+    "@sharpee/stdlib": "^5.0.0",
+    "@sharpee/platform-browser": "^5.0.0"
   },
   "devDependencies": {
-    "@sharpee/transcript-tester": "^0.9.113",
-    "esbuild": "^0.20.0",
-    "typescript": "^5.3.3"
+    "@sharpee/devkit": "^5.3.0",
+    "esbuild": "^0.20.0"
   },
+  "keywords": [
+    "interactive-fiction",
+    "sharpee",
+    "chord"
+  ],
   "author": "John Googol",
   "license": "MIT"
 }
