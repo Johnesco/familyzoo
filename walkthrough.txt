@@ -1,6 +1,5 @@
 look
 x staff keycard
-i
 x keycard
 x welcome sign
 x sign
@@ -10,15 +9,11 @@ x iron fence
 x fence
 x zoo brochure
 read zoo brochure
-i
 x brochure
 x zoo map
-i
 x map
 x backpack
 look in backpack
-look in backpack
-i
 x rucksack
 south
 x staff gate
@@ -28,21 +23,17 @@ x signs
 x flower beds
 x flowers
 x souvenir penny
-i
 x penny
 x park bench
 look on park bench
 x bench
 x lunchbox
 look in lunchbox
-look in lunchbox
-i
 x lunch box
 x zookeeper
 talk to zookeeper
 x keeper
 x juice box
-i
 x juice
 west
 x toucan
@@ -68,10 +59,8 @@ x info plaque
 read info plaque
 x plaque
 x bag of animal feed
-i
 x feed
 x feed dispenser
-look in feed dispenser
 look in feed dispenser
 x dispenser
 x pygmy goats
@@ -90,19 +79,10 @@ x warning sign
 read warning sign
 x warning
 x flashlight
-i
 x torch
 x radio
 x portable radio
 south
-x sugar gliders
-x gliders
-x bush babies
-x galagos
-x barn owl
-x owl
-x snake
-x python
 north
 open staff gate
 north
@@ -116,10 +96,8 @@ x enamel pins
 x pins
 x souvenir press
 look in souvenir press
-look in souvenir press
 x press
 x disposable camera
-i
 x camera
 east
 east
@@ -193,12 +171,19 @@ turn off radio
 turn on radio
 take radio
 south
+x sugar gliders
 take sugar gliders
+x gliders
+x bush babies
 take bush babies
+x galagos
+x barn owl
 take barn owl
+x owl
+x snake
 take snake
+x python
 north
-open staff gate
 north
 west
 west
@@ -210,4 +195,3 @@ take souvenir press
 take disposable camera
 drop disposable camera
 score
-inventory
