@@ -3,11 +3,193 @@ Your family piles out of the car, buzzing with excitement — a whole day at the
 
 You can see a staff keycard, a zoo brochure, a zoo map, and a backpack here.
 
+> look
+Zoo Entrance
+You stand before the wrought-iron gates of the Willowbrook Family Zoo. A cheerful welcome sign arches over the entrance, and a small ticket booth sits to one side. A sturdy iron fence runs along either side of the gates. The main path leads south into the zoo grounds.
+
+You can see a staff keycard, a zoo brochure, a zoo map, and a backpack here.
+
+> x staff keycard
+A white plastic keycard with "WILLOWBROOK ZOO — STAFF ONLY" printed in blue.
+
+> i
+You aren't carrying anything at all.
+
+> x keycard
+A white plastic keycard with "WILLOWBROOK ZOO — STAFF ONLY" printed in blue.
+
+*DING DONG* "Attention visitors! The Willowbrook Family Zoo will be closing in three hours. Please make sure to visit all exhibits before closing time!"
+
+> x welcome sign
+A brightly painted wooden sign reads: "WELCOME TO WILLOWBROOK FAMILY ZOO."
+
+> x sign
+A brightly painted wooden sign reads: "WELCOME TO WILLOWBROOK FAMILY ZOO."
+
+> x ticket booth
+A small wooden booth with a "Self-Guided Tours" sign.
+
+> x booth
+A small wooden booth with a "Self-Guided Tours" sign.
+
+> x iron fence
+A tall wrought-iron fence with animal silhouettes.
+
+*DING DONG* "Attention visitors! Two hours until closing. Don't forget to stop by the gift shop for souvenirs!"
+
+> x fence
+A tall wrought-iron fence with animal silhouettes.
+
+*DING DONG* "It's FEEDING TIME at the Petting Zoo! Come watch our pygmy goats and rabbits enjoy their favorite snacks!"
+
+> x zoo brochure
+A glossy tri-fold brochure with "WILLOWBROOK FAMILY ZOO" on the cover.
+
+> read zoo brochure
+(first taking the zoo brochure)
+
+Taken.
+
+WILLOWBROOK FAMILY ZOO — Your Guide
+
+EXHIBITS:
+  Petting Zoo — East from Main Path
+  Aviary — West from Main Path
+  Gift Shop — West from Aviary
+  Nocturnal Animals — Staff Area
+
+"Where every visit is a wild adventure!"
+
+> i
+You are carrying:
+
+a zoo brochure
+
+> x brochure
+A glossy tri-fold brochure with "WILLOWBROOK FAMILY ZOO" on the cover.
+
+*DING DONG* "Attention visitors! One hour until closing. Please begin making your way toward the exit."
+
+> x zoo map
+A colorful folding map of the Willowbrook Family Zoo.
+
+> i
+You are carrying:
+
+a zoo brochure
+
+> x map
+A colorful folding map of the Willowbrook Family Zoo.
+
+> x backpack
+A small red canvas backpack.
+
+*DING DONG* "It's FEEDING TIME at the Petting Zoo! Come watch our pygmy goats and rabbits enjoy their favorite snacks!"
+
+> look in backpack
+The backpack is empty.
+
+*DING DONG* "The Willowbrook Family Zoo is now closed. Thank you for visiting! We hope to see you again soon!"
+
+> look in backpack
+The backpack is empty.
+
+> i
+You are carrying:
+
+a zoo brochure
+
+> x rucksack
+A small red canvas backpack.
+
 > south
 Main Path
-A wide gravel path winds through the heart of the zoo. Colorful direction signs point every which way. A park bench sits beside the path. To the east, the petting zoo. To the west, the aviary. A staff gate blocks the path to the south. The entrance is back to the north. Sam the zookeeper is here, jingling a ring of keys.
+A wide gravel path winds through the heart of the zoo. Colorful direction signs point every which way. A park bench sits beside the path. To the east, the petting zoo. To the west, the aviary. A staff gate blocks the path to the south. The entrance is back to the north.
 
-You can see a souvenir penny, a lunchbox, and a zookeeper here.
+You can see a souvenir penny and a lunchbox here.
+
+> x staff gate
+A sturdy metal gate with a "STAFF ONLY" sign.
+
+The staff gate is set into the fence.
+
+> x gate
+A sturdy metal gate with a "STAFF ONLY" sign.
+
+The staff gate is set into the fence.
+
+> x direction signs
+Arrow signs: PETTING ZOO (east), AVIARY (west), EXIT (north).
+
+*DING DONG* "It's FEEDING TIME at the Petting Zoo! Come watch our pygmy goats and rabbits enjoy their favorite snacks!"
+
+> x signs
+Arrow signs: PETTING ZOO (east), AVIARY (west), EXIT (north).
+
+> x flower beds
+Tidy beds of marigolds and petunias.
+
+> x flowers
+Tidy beds of marigolds and petunias.
+
+> x souvenir penny
+A shiny copper penny.
+
+> i
+You are carrying:
+
+a zoo brochure
+
+> x penny
+A shiny copper penny.
+
+> x park bench
+A sturdy park bench painted forest green.
+
+> look on park bench
+I don't understand that.
+
+> x bench
+A sturdy park bench painted forest green.
+
+*DING DONG* "It's FEEDING TIME at the Petting Zoo! Come watch our pygmy goats and rabbits enjoy their favorite snacks!"
+
+> x lunchbox
+A dented metal lunchbox decorated with cartoon zoo animals.
+
+> look in lunchbox
+The lunchbox is closed.
+
+> look in lunchbox
+The lunchbox is closed.
+
+> i
+You are carrying:
+
+a zoo brochure
+
+> x lunch box
+A dented metal lunchbox decorated with cartoon zoo animals.
+
+> x zookeeper
+You can't see any such thing.
+
+> talk to zookeeper
+You can't see any such thing.
+
+> x keeper
+You can't see any such thing.
+
+> x juice box
+You can't see any such thing.
+
+> i
+You are carrying:
+
+a zoo brochure
+
+> x juice
+You can't see any such thing.
 
 > west
 Aviary
@@ -15,20 +197,82 @@ You step inside a soaring mesh dome. Brilliantly colored parrots chatter from ro
 
 You can see a parrot here.
 
-The parrot ruffles its feathers and eyes you with interest.
+The parrot glances at you and nods, as if recognizing a fellow after-hours regular.
+
+> x toucan
+A Toco toucan with an enormous orange-and-black bill.
+
+> x toco toucan
+A Toco toucan with an enormous orange-and-black bill.
+
+Between you and me, the toucan is a complete diva. Won't shut up about its bill.
+
+> x waterfall
+A gentle artificial waterfall cascading into a stone basin.
+
+Between you and me, the toucan is a complete diva. Won't shut up about its bill.
+
+> x water
+A gentle artificial waterfall cascading into a stone basin.
+
+> x rope perches
+Thick sisal ropes strung between wooden posts.
+
+> x perches
+Thick sisal ropes strung between wooden posts.
+
+> x aviary plaque
+A colorful information board near the aviary entrance.
+
+The gift shop markup is criminal. Three dollars for a postcard? In this economy?
+
+> read aviary plaque
+WELCOME TO THE AVIARY — Home to over 30 species!
+
+TOCO TOUCAN — Its bill weighs less than a smartphone.
+
+SCARLET MACAW — Can live over 75 years. Our oldest, Captain, is 42.
+
+I have a degree in ornithology, you know. Well, I would, if birds could enroll.
+
+> x information board
+A colorful information board near the aviary entrance.
 
 > x parrot
 A magnificent scarlet macaw perched on a rope. It tilts its head and watches you with one bright eye.
 
 The parrot ruffles its scarlet feathers and whistles a jaunty tune. (A small plaque notes the macaws are rescues from the illegal pet trade.)
 
+> talk to parrot
+The parrot doesn't respond.
+
+> x macaw
+A magnificent scarlet macaw perched on a rope. It tilts its head and watches you with one bright eye.
+
+The parrot cocks its head and rasps, "Pretty bird! Pretty bird!"
+
+Finally, they're gone. Do you know how exhausting it is to say "Polly wants a cracker" eight hours a day?
+
+> x parrots
+A raucous flock of scarlet macaws and grey African parrots.
+
+Finally, they're gone. Do you know how exhausting it is to say "Polly wants a cracker" eight hours a day?
+
+> x macaws
+A raucous flock of scarlet macaws and grey African parrots.
+
+> x parrot
+A magnificent scarlet macaw perched on a rope. It tilts its head and watches you with one bright eye.
+
+The parrot preens one wing, ignoring you with theatrical disdain.
+
+You seem alright. Most visitors just want selfies. At least you're still here.
+
 > east
 Main Path
-A wide gravel path winds through the heart of the zoo. Colorful direction signs point every which way. A park bench sits beside the path. To the east, the petting zoo. To the west, the aviary. A staff gate blocks the path to the south. The entrance is back to the north. Sam the zookeeper is here, jingling a ring of keys.
+A wide gravel path winds through the heart of the zoo. Colorful direction signs point every which way. A park bench sits beside the path. To the east, the petting zoo. To the west, the aviary. A staff gate blocks the path to the south. The entrance is back to the north.
 
-You can see a souvenir penny, a lunchbox, and a zookeeper here.
-
-*DING DONG* "Attention visitors! The Willowbrook Family Zoo will be closing in three hours. Please make sure to visit all exhibits before closing time!"
+You can see a souvenir penny and a lunchbox here.
 
 > east
 Petting Zoo
@@ -38,5 +282,603 @@ You can see a bag of animal feed here.
 
 The pygmy goats are bleating loudly and headbutting the fence. They seem very hungry!
 
+> x hay bale
+A large round bale of golden hay.
+
+The pygmy goats are bleating loudly and headbutting the fence. They seem very hungry!
+
+> x hay
+A large round bale of golden hay.
+
+The pygmy goats are bleating loudly and headbutting the fence. They seem very hungry!
+
+> x info plaque
+A brass plaque mounted on a wooden post near the petting zoo gate.
+
+The pygmy goats are bleating loudly and headbutting the fence. They seem very hungry!
+
+> read info plaque
+PYGMY GOATS — These Nigerian Dwarf goats are gentle, curious, and always hungry.
+
+HOLLAND LOP RABBITS — Known for their floppy ears. Our pair, Biscuit and Marmalade, were born here in 2023.
+
+The pygmy goats are bleating loudly and headbutting the fence. They seem very hungry!
+
+> x plaque
+A brass plaque mounted on a wooden post near the petting zoo gate.
+
+The pygmy goats are bleating loudly and headbutting the fence. They seem very hungry!
+
+> x bag of animal feed
+A small brown paper bag filled with dried corn and pellets.
+
+The pygmy goats are bleating loudly and headbutting the fence. They seem very hungry!
+
+> i
+You are carrying:
+
+a zoo brochure
+
+The pygmy goats are bleating loudly and headbutting the fence. They seem very hungry!
+
+> x feed
+A small brown paper bag filled with dried corn and pellets.
+
+The pygmy goats are bleating loudly and headbutting the fence. They seem very hungry!
+
+> x feed dispenser
+A coin-operated feed dispenser mounted on a wooden post. Sign: "FREE — Just Turn!"
+
+The pygmy goats are bleating loudly and headbutting the fence. They seem very hungry!
+
+> look in feed dispenser
+The feed dispenser is closed.
+
+The pygmy goats are bleating loudly and headbutting the fence. They seem very hungry!
+
+> look in feed dispenser
+The feed dispenser is closed.
+
+The pygmy goats are bleating loudly and headbutting the fence. They seem very hungry!
+
+> x dispenser
+A coin-operated feed dispenser mounted on a wooden post. Sign: "FREE — Just Turn!"
+
+The pygmy goats are bleating loudly and headbutting the fence. They seem very hungry!
+
+> x pygmy goats
+Three pygmy goats hoping you have food.
+
+The pygmy goats are bleating loudly and headbutting the fence. They seem very hungry!
+
+> x goats
+Three pygmy goats hoping you have food.
+
+The pygmy goats are bleating loudly and headbutting the fence. They seem very hungry!
+
+> x rabbits
+A pair of Holland Lop rabbits with floppy ears.
+
+The pygmy goats are bleating loudly and headbutting the fence. They seem very hungry!
+
+> x rabbit
+A pair of Holland Lop rabbits with floppy ears.
+
+The pygmy goats are bleating loudly and headbutting the fence. They seem very hungry!
+
 > score
-You have scored 10 out of a possible 85.
+You have scored 40 out of a possible 85.
+
+> west
+Main Path
+A wide gravel path winds through the heart of the zoo. Colorful direction signs point every which way. A park bench sits beside the path. To the east, the petting zoo. To the west, the aviary. A staff gate blocks the path to the south. The entrance is back to the north.
+
+You can see a souvenir penny and a lunchbox here.
+
+> open staff gate
+You open the staff gate.
+
+> south
+Supply Room
+A cluttered storage room behind the staff gate. Metal shelves line the walls. A cork board on the wall is covered with staff schedules. A battered radio sits on one of the shelves. The staff gate leads back north.
+
+You can see a flashlight here.
+
+> x metal shelves
+Industrial metal shelving units stacked with supplies.
+
+> x shelves
+Industrial metal shelving units stacked with supplies.
+
+> x cork board
+A cork board with staff schedules. A note in red marker: "DON'T FORGET: nocturnal exhibit lights need new batteries!"
+
+> x board
+A cork board with staff schedules. A note in red marker: "DON'T FORGET: nocturnal exhibit lights need new batteries!"
+
+> x warning sign
+A yellow warning sign near the nocturnal exhibit entrance.
+
+> read warning sign
+CAUTION: The Nocturnal Animals Exhibit is kept dark. Please use a flashlight. Do NOT use camera flash. (We don't talk about the Great Owl Incident of 2022.)
+
+> x warning
+A yellow warning sign near the nocturnal exhibit entrance.
+
+> x flashlight
+A heavy-duty yellow flashlight.
+
+> i
+You are carrying:
+
+a zoo brochure
+
+> x torch
+A heavy-duty yellow flashlight.
+
+> x radio
+A battered portable radio held together with duct tape. The antenna is bent at a jaunty angle. A faded sticker on the side reads "ZOO FM — All Animals, All The Time."
+
+> x portable radio
+A battered portable radio held together with duct tape. The antenna is bent at a jaunty angle. A faded sticker on the side reads "ZOO FM — All Animals, All The Time."
+
+> south
+It is pitch dark. You are likely to be eaten by a grue.
+
+> x sugar gliders
+You can't see any such thing.
+
+> x gliders
+You can't see any such thing.
+
+> x bush babies
+You can't see any such thing.
+
+> x galagos
+You can't see any such thing.
+
+> x barn owl
+You can't see any such thing.
+
+> x owl
+You can't see any such thing.
+
+> x snake
+You can't see any such thing.
+
+> x python
+You can't see any such thing.
+
+> north
+Supply Room
+A cluttered storage room behind the staff gate. Metal shelves line the walls. A cork board on the wall is covered with staff schedules. A battered radio sits on one of the shelves. The staff gate leads back north.
+
+You can see a flashlight here.
+
+> open staff gate
+You can't see any such thing.
+
+> north
+Main Path
+A wide gravel path winds through the heart of the zoo. Colorful direction signs point every which way. A park bench sits beside the path. To the east, the petting zoo. To the west, the aviary. A staff gate blocks the path to the south. The entrance is back to the north.
+
+You can see a souvenir penny and a lunchbox here.
+
+> west
+Aviary
+You step inside a soaring mesh dome. Brilliantly colored parrots chatter from rope perches, and a toucan eyes you curiously from a branch overhead. A small waterfall splashes into a stone basin. An info plaque hangs near the entrance. The gift shop is to the west. The main path is back to the east. A scarlet macaw watches you with one bright, knowing eye.
+
+You can see a parrot here.
+
+The parrot glances at you and nods, as if recognizing a fellow after-hours regular.
+
+> west
+Gift Shop
+A small zoo gift shop crammed with stuffed animals and postcards, and a spinning rack of enamel pins wobbles by the register. A large souvenir penny press machine stands near the door. A disposable camera sits on the counter. The aviary is back to the east.
+
+You can see a disposable camera here.
+
+> x stuffed animals
+Shelves of plush tigers, pandas, and penguins.
+
+> x plush
+Shelves of plush tigers, pandas, and penguins.
+
+> x postcards
+A spinning rack of postcards showing the zoo's greatest hits.
+
+> x cards
+A spinning rack of postcards showing the zoo's greatest hits.
+
+> x enamel pins
+A spinning rack of enamel pins: parrots, pygmy goats, a grinning snake. Every one of them costs more than it should.
+
+> x pins
+A spinning rack of enamel pins: parrots, pygmy goats, a grinning snake. Every one of them costs more than it should.
+
+> x souvenir press
+A heavy cast-iron machine with a big crank handle. A slot on top accepts pennies, and the mechanism stamps them with a zoo animal design. A sign reads: "INSERT PENNY, TURN HANDLE, KEEP FOREVER!"
+
+> look in souvenir press
+The souvenir press is empty.
+
+> look in souvenir press
+The souvenir press is empty.
+
+> x press
+A heavy cast-iron machine with a big crank handle. A slot on top accepts pennies, and the mechanism stamps them with a zoo animal design. A sign reads: "INSERT PENNY, TURN HANDLE, KEEP FOREVER!"
+
+> x disposable camera
+A cheap yellow disposable camera with "ZOO MEMORIES" printed on the side.
+
+> i
+You are carrying:
+
+a zoo brochure
+
+> x camera
+A cheap yellow disposable camera with "ZOO MEMORIES" printed on the side.
+
+> east
+Aviary
+You step inside a soaring mesh dome. Brilliantly colored parrots chatter from rope perches, and a toucan eyes you curiously from a branch overhead. A small waterfall splashes into a stone basin. An info plaque hangs near the entrance. The gift shop is to the west. The main path is back to the east. A scarlet macaw watches you with one bright, knowing eye.
+
+You can see a parrot here.
+
+The parrot glances at you and nods, as if recognizing a fellow after-hours regular.
+
+Between you and me, the toucan is a complete diva. Won't shut up about its bill.
+
+> east
+Main Path
+A wide gravel path winds through the heart of the zoo. Colorful direction signs point every which way. A park bench sits beside the path. To the east, the petting zoo. To the west, the aviary. A staff gate blocks the path to the south. The entrance is back to the north.
+
+You can see a souvenir penny and a lunchbox here.
+
+> north
+Zoo Entrance
+You stand before the wrought-iron gates of the Willowbrook Family Zoo. A cheerful welcome sign arches over the entrance, and a small ticket booth sits to one side. A sturdy iron fence runs along either side of the gates. The main path leads south into the zoo grounds.
+
+You can see a staff keycard, a zoo map, and a backpack here.
+
+> take staff keycard
+Taken.
+
+> drop staff keycard
+Dropped.
+
+> take welcome sign
+The welcome sign is fixed in place.
+
+> take ticket booth
+The ticket booth is fixed in place.
+
+> take iron fence
+The iron fence is fixed in place.
+
+> take zoo brochure
+You already have the zoo brochure.
+
+> drop zoo brochure
+Dropped.
+
+> take zoo map
+Taken.
+
+> drop zoo map
+Dropped.
+
+> open backpack
+The backpack can't be opened.
+
+> take backpack
+Taken.
+
+> drop backpack
+Dropped.
+
+> south
+Main Path
+A wide gravel path winds through the heart of the zoo. Colorful direction signs point every which way. A park bench sits beside the path. To the east, the petting zoo. To the west, the aviary. A staff gate blocks the path to the south. The entrance is back to the north.
+
+You can see a souvenir penny and a lunchbox here.
+
+> open staff gate
+The staff gate is already open.
+
+> close staff gate
+You close the staff gate.
+
+> open staff gate
+You open the staff gate.
+
+> unlock staff gate
+The staff gate is already unlocked.
+
+> open staff gate
+The staff gate is already open.
+
+> take staff gate
+The staff gate is fixed in place.
+
+> take direction signs
+The direction signs are fixed in place.
+
+> take flower beds
+The flower beds are fixed in place.
+
+> take souvenir penny
+Taken.
+
+> drop souvenir penny
+Dropped.
+
+> take park bench
+The park bench is fixed in place.
+
+> open lunchbox
+You open the lunchbox.
+
+In the lunchbox you see a juice box.
+
+> close lunchbox
+You close the lunchbox.
+
+> open lunchbox
+You open the lunchbox.
+
+In the lunchbox you see a juice box.
+
+> open lunchbox
+The lunchbox is already open.
+
+> take lunchbox
+Taken.
+
+> drop lunchbox
+Dropped.
+
+> take juice box
+You take the juice box from the lunchbox.
+
+> drop juice box
+Dropped.
+
+> east
+Petting Zoo
+A cheerful open-air enclosure that smells of warm hay and fur. A feed dispenser is mounted on a post, and an info plaque is posted by the gate. The main path is back to the west. Three pygmy goats mill about hopefully, eyeing your pockets for snacks. A pair of Holland Lop rabbits lounges near the hay bale, ears flopped.
+
+You can see a bag of animal feed here.
+
+The pygmy goats are bleating loudly and headbutting the fence. They seem very hungry!
+
+> take hay bale
+The hay bale is fixed in place.
+
+The pygmy goats are bleating loudly and headbutting the fence. They seem very hungry!
+
+> take info plaque
+The info plaque is fixed in place.
+
+The pygmy goats are bleating loudly and headbutting the fence. They seem very hungry!
+
+> take bag of animal feed
+Taken.
+
+The pygmy goats are bleating loudly and headbutting the fence. They seem very hungry!
+
+> drop bag of animal feed
+Dropped.
+
+The pygmy goats are bleating loudly and headbutting the fence. They seem very hungry!
+
+> open feed dispenser
+You open the feed dispenser, which is empty.
+
+The pygmy goats are bleating loudly and headbutting the fence. They seem very hungry!
+
+> close feed dispenser
+You close the feed dispenser.
+
+The pygmy goats are bleating loudly and headbutting the fence. They seem very hungry!
+
+> open feed dispenser
+You open the feed dispenser, which is empty.
+
+The pygmy goats are bleating loudly and headbutting the fence. They seem very hungry!
+
+> open feed dispenser
+The feed dispenser is already open.
+
+The pygmy goats are bleating loudly and headbutting the fence. They seem very hungry!
+
+> take feed dispenser
+The feed dispenser is fixed in place.
+
+The pygmy goats are bleating loudly and headbutting the fence. They seem very hungry!
+
+> take pygmy goats
+The pygmy goats are fixed in place.
+
+The pygmy goats are bleating loudly and headbutting the fence. They seem very hungry!
+
+> feed pygmy goats
+You don't have any animal feed.
+
+The pygmy goats are bleating loudly and headbutting the fence. They seem very hungry!
+
+> pet pygmy goats
+You pet the animal. It seems pleased.
+
+You reach down and pet the nearest goat. It leans into your hand and bleats happily. The others crowd around, demanding equal attention.
+
+The pygmy goats are bleating loudly and headbutting the fence. They seem very hungry!
+
+> take rabbits
+The rabbits are fixed in place.
+
+The pygmy goats are bleating loudly and headbutting the fence. They seem very hungry!
+
+> feed rabbits
+You don't have any animal feed.
+
+The pygmy goats are bleating loudly and headbutting the fence. They seem very hungry!
+
+> pet rabbits
+You pet the animal. It seems pleased.
+
+You gently stroke one of the rabbits. Its fur is incredibly soft. It twitches its nose at you contentedly.
+
+The pygmy goats are bleating loudly and headbutting the fence. They seem very hungry!
+
+> west
+Main Path
+A wide gravel path winds through the heart of the zoo. Colorful direction signs point every which way. A park bench sits beside the path. To the east, the petting zoo. To the west, the aviary. A staff gate blocks the path to the south. The entrance is back to the north.
+
+You can see a souvenir penny, a lunchbox, and a juice box here.
+
+> west
+Aviary
+You step inside a soaring mesh dome. Brilliantly colored parrots chatter from rope perches, and a toucan eyes you curiously from a branch overhead. A small waterfall splashes into a stone basin. An info plaque hangs near the entrance. The gift shop is to the west. The main path is back to the east. A scarlet macaw watches you with one bright, knowing eye.
+
+You can see a parrot here.
+
+The parrot glances at you and nods, as if recognizing a fellow after-hours regular.
+
+> take toucan
+The toucan is fixed in place.
+
+> take waterfall
+The waterfall is fixed in place.
+
+> take rope perches
+The rope perches are fixed in place.
+
+> take aviary plaque
+The aviary plaque is fixed in place.
+
+The gift shop markup is criminal. Three dollars for a postcard? In this economy?
+
+> pet parrot
+You pet the animal. It seems pleased.
+
+You reach toward the parrot. CHOMP! It nips your finger with its beak. "NO TOUCHING!" it squawks indignantly.
+
+> take parrots
+The parrots are fixed in place.
+
+Finally, they're gone. Do you know how exhausting it is to say "Polly wants a cracker" eight hours a day?
+
+> east
+Main Path
+A wide gravel path winds through the heart of the zoo. Colorful direction signs point every which way. A park bench sits beside the path. To the east, the petting zoo. To the west, the aviary. A staff gate blocks the path to the south. The entrance is back to the north.
+
+You can see a souvenir penny, a lunchbox, and a juice box here.
+
+> open staff gate
+The staff gate is already open.
+
+> south
+Supply Room
+A cluttered storage room behind the staff gate. Metal shelves line the walls. A cork board on the wall is covered with staff schedules. A battered radio sits on one of the shelves. The staff gate leads back north.
+
+You can see a flashlight here.
+
+> take metal shelves
+The metal shelves are fixed in place.
+
+> take cork board
+The cork board is fixed in place.
+
+> take warning sign
+The warning sign is fixed in place.
+
+> take flashlight
+Taken.
+
+> turn on flashlight
+The flashlight switches on, banishing the darkness.
+
+> turn on radio
+The radio hums to life.
+
+> turn off radio
+The radio powers down with a soft whir.
+
+> turn on radio
+The radio hums to life.
+
+> take radio
+The radio is fixed in place.
+
+> south
+Nocturnal Animals Exhibit
+A cool, dimly lit cavern designed to simulate nighttime. Glass enclosures line both walls with soft red lights. You can see sugar gliders, bush babies, and a barn owl. A warning sign is posted near the entrance. The exit leads back north to the supply room.
+
+> take sugar gliders
+The sugar gliders are fixed in place.
+
+> take bush babies
+The bush babies are fixed in place.
+
+> take barn owl
+The barn owl is fixed in place.
+
+> take snake
+The snake is fixed in place.
+
+> north
+Supply Room
+A cluttered storage room behind the staff gate. Metal shelves line the walls. A cork board on the wall is covered with staff schedules. A battered radio sits on one of the shelves. The staff gate leads back north.
+
+> open staff gate
+You can't see any such thing.
+
+> north
+Main Path
+A wide gravel path winds through the heart of the zoo. Colorful direction signs point every which way. A park bench sits beside the path. To the east, the petting zoo. To the west, the aviary. A staff gate blocks the path to the south. The entrance is back to the north.
+
+You can see a souvenir penny, a lunchbox, and a juice box here.
+
+> west
+Aviary
+You step inside a soaring mesh dome. Brilliantly colored parrots chatter from rope perches, and a toucan eyes you curiously from a branch overhead. A small waterfall splashes into a stone basin. An info plaque hangs near the entrance. The gift shop is to the west. The main path is back to the east. A scarlet macaw watches you with one bright, knowing eye.
+
+You can see a parrot here.
+
+The parrot glances at you and nods, as if recognizing a fellow after-hours regular.
+
+> west
+Gift Shop
+A small zoo gift shop crammed with stuffed animals and postcards, and the enamel-pin rack stands picked half bare. A large souvenir penny press machine stands near the door. A disposable camera sits on the counter. The aviary is back to the east.
+
+You can see a disposable camera here.
+
+> take stuffed animals
+The stuffed animals are fixed in place.
+
+> take postcards
+The postcards are fixed in place.
+
+> take enamel pins
+The enamel pins are fixed in place.
+
+> open souvenir press
+The souvenir press can't be opened.
+
+> take souvenir press
+The souvenir press is fixed in place.
+
+> take disposable camera
+Taken.
+
+> drop disposable camera
+Dropped.
+
+> score
+You have scored 60 out of a possible 85.
+
+> inventory
+You are carrying:
+
+a flashlight
