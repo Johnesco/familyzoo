@@ -18,13 +18,14 @@
       ]
     },
     "familyzoo-v16": {
-      "summary": "The zoo closes. A story state flips, the zookeeper leaves, and the parrot starts speaking candidly — and the parrot's flavour line comes from TypeScript, the one escape hatch Chord keeps.",
+      "summary": "The zoo closes. A story state flips, the zookeeper leaves, and once he is gone each animal tells you what it really thinks when you visit it. The parrot's flavour line cycles, and the plaque's aside is printed only the first time — both written in Chord.",
       "features": [
         "`states: open, after-hours` in the header",
         "`while after-hours` on clauses and descriptions",
         "`define sequence closing time` driving the transition",
-        "`define text flavor from \"./chord-extras.ts\"` (ADR-259)",
-        "When to reach for the hatch — and when not to"
+        "Conditions joined with `and`: `while after-hours and the zookeeper is in the Staff Parking Lot`",
+        "`, once` on a clause, so a confession is heard one time",
+        "`define phrase aside, first-time` beside `define phrase flavor, cycling`, used as `{flavor} {aside}` in a description"
       ]
     },
     "familyzoo-v15": {

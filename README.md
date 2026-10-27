@@ -30,7 +30,7 @@ repo so it can be played, read and tested on its own.
 | v13 | Custom Traits & Actions | [`familyzoo-v13`](https://github.com/Johnesco/familyzoo-v13) |
 | v14 | Daemons & Sequences | [`familyzoo-v14`](https://github.com/Johnesco/familyzoo-v14) |
 | v15 | Scoring & Endgame | [`familyzoo-v15`](https://github.com/Johnesco/familyzoo-v15) |
-| v16 | After Hours & the TypeScript Hatch | [`familyzoo-v16`](https://github.com/Johnesco/familyzoo-v16) |
+| v16 | After Hours & Story States | [`familyzoo-v16`](https://github.com/Johnesco/familyzoo-v16) |
 | — | **The finished zoo (Current)** | [`familyzoo`](https://github.com/Johnesco/familyzoo) |
 
 ## This repo

@@ -172,7 +172,7 @@ footer a { color: #887755; border-bottom-color: #3a3020; }
 
 <div class="version-nav">
 <span class="current">Current</span>
-  <a href="#familyzoo-v16">v16 — After Hours & the TypeScript Hatch</a>
+  <a href="#familyzoo-v16">v16 — After Hours & Story States</a>
   <a href="#familyzoo-v15">v15 — Scoring & Endgame</a>
   <a href="#familyzoo-v14">v14 — Daemons & Sequences</a>
   <a href="#familyzoo-v13">v13 — Custom Traits & Actions</a>
@@ -209,14 +209,15 @@ footer a { color: #887755; border-bottom-color: #3a3020; }
 </div>
 
 <div class="version-entry" id="familyzoo-v16">
-  <h3>v16 — After Hours & the TypeScript Hatch</h3>
-  <p>The zoo closes. A story state flips, the zookeeper leaves, and the parrot starts speaking candidly — and the parrot's flavour line comes from TypeScript, the one escape hatch Chord keeps.</p>
+  <h3>v16 — After Hours & Story States</h3>
+  <p>The zoo closes. A story state flips, the zookeeper leaves, and once he is gone each animal tells you what it really thinks when you visit it. The parrot's flavour line cycles, and the plaque's aside is printed only the first time — both written in Chord.</p>
   <ul>
     <li>`states: open, after-hours` in the header</li>
     <li>`while after-hours` on clauses and descriptions</li>
     <li>`define sequence closing time` driving the transition</li>
-    <li>`define text flavor from "./chord-extras.ts"` (ADR-259)</li>
-    <li>When to reach for the hatch — and when not to</li>
+    <li>Conditions joined with `and`: `while after-hours and the zookeeper is in the Staff Parking Lot`</li>
+    <li>`, once` on a clause, so a confession is heard one time</li>
+    <li>`define phrase aside, first-time` beside `define phrase flavor, cycling`, used as `{flavor} {aside}` in a description</li>
   </ul>
   <div class="version-action" data-gid="familyzoo-v16" data-play="/familyzoo-v16/play.html" data-source="/familyzoo-v16/familyzoo-v16.story" data-walkthrough="/familyzoo-v16/walkthrough.txt">
     <select class="va-action"><option value="play">Play Game</option><option value="source">View Source</option><option value="walkthrough">View Walkthrough</option></select>
