@@ -5,6 +5,8 @@
 > `CLAUDE.md` one level up, which Claude Code loads automatically. Do not restate
 > it here; link to it.
 
+<!-- workspace: ../CLAUDE.md -->
+
 ## Project Identity
 
 **Name:** Family Zoo — Current (the finished zoo)
@@ -24,15 +26,16 @@ v16 (the whole zoo, about eight hundred). Each step is published as its own repo
 
 ## Key Design Decisions (do not change without discussion)
 
-- **One master, generated steps.** `familyzoo.story` is the finished zoo. Each step repo is
-  the master sliced to the blocks introduced at or before that step, using the step map in
-  the workspace tooling (not in this repo). Change the master and the step map, then
-  re-lay the steps. Never hand-edit a step's `.story`: a re-lay overwrites it.
-- **Step titles live in the step map.** A step's title appears in its `.story` header, its
-  opening test card, `ifhub.conf`, its README, and here in `README.md` and `landing.json`.
-  Renaming a step means changing the step map, not just those files.
+- **One master, sixteen cumulative steps.** `familyzoo.story` is the finished zoo. Each step
+  repo holds its own `.story`: the step before it plus one idea. There is no slicing tool
+  or step map; the steps are edited in place, and a change that belongs to every step from
+  vN on is made in vN … v16 and the master. v16's body must stay identical to the
+  master's (only the header differs); check with a diff after any change.
+- **A step's title lives in six places.** Its `.story` header, its opening test card,
+  `ifhub.conf`, its README, and here in `README.md` and `landing.json`. A rename touches all
+  six, then a rebuild and `ship.py --refresh-pages`.
 - **Chord, not TypeScript.** Reworked from the 0.9.x TypeScript edition on 2026-09-10; the
-  old edition is kept in `legacy/`. Chord 4.0 (Sharpee 5.5.0) removed the TypeScript
+  old edition is kept in `legacy/`. Chord 4.0 removed the TypeScript
   hatches (`define text … from`, ADR-361 D1), so the story must be pure Chord.
 - **Built output is the artifact.** `play.html`, `game.js`, `tests.html` and the walkthrough
   files are committed and served by GitHub Pages. IF Hub does not build or test: build in
@@ -48,7 +51,7 @@ familyzoo/
 ├── landing.json           prose for the GROUP landing page; build_landing.py renders it
 ├── index.html             into index.html for the whole trail
 ├── familyzoo.story        the master story
-├── familyzoo.tests.json   the master's tests
+├── familyzoo.tests/       the master's tests document (segmented, one file per line)
 ├── play.html, game.js     the built player
 ├── tests.html             the test report
 ├── walkthrough*.txt       walkthrough, its output, and the guide
@@ -96,11 +99,11 @@ workflow. Claude must follow these canonical docs:
 ## Project History
 
 ### Recent Changes
-- 2026-10-28: v16 renamed "After Hours & Story States" on branch
-  `claude/vibrant-archimedes-uhwg0l` here and in `familyzoo-v16`. Not merged yet; the step
-  map still needs the new title.
-- 2026-10-27: All sixteen steps moved to Sharpee 5.5.0 (Chord 4.0.0) and rebuilt. v16's
-  TypeScript hatch (`chord-extras.ts`) was replaced by `define phrase flavor, cycling` and
-  `define phrase aside, first-time`. This master on GitHub is still on 5.4.1 with the hatch.
-- 2026-09-17: All sixteen steps and this master shipped on Sharpee 5.4.1.
+- 2026-10-28: v16 renamed "After Hours & Story States"; the master moved to the Chord 4
+  engine with the steps and shipped (#12).
+- 2026-10-27: All sixteen steps moved to Chord 4 and rebuilt. v16's TypeScript hatch
+  (`chord-extras.ts`) was replaced by `define phrase flavor, cycling` and
+  `define phrase aside, first-time`; the after-hours confessions now wait for the keeper
+  to leave and for the player to be with the animal.
+- 2026-09-17: All sixteen steps and this master shipped on the previous engine.
 - 2026-09-10: Chord edition replaced the 0.9.x TypeScript edition (kept in `legacy/`).

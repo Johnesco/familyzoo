@@ -46,7 +46,7 @@ The 0.9.x TypeScript edition this replaced is kept in [`legacy/`](./legacy).
 
 ```bash
 npx sharpee play
-npx sharpee test                           # replays familyzoo.tests.json
+npx sharpee test                           # replays familyzoo.tests/
 python ../tools/build.py familyzoo --force
 python C:/code/ifhub/tools/ship.py familyzoo
 ```
@@ -59,5 +59,4 @@ python C:/code/ifhub/tools/build_landing.py familyzoo --force
 
 ## Engine
 
-Pinned to `@sharpee/*` **5.3.0** (Chord 3.6.0), held there by an `overrides` block in
-`package.json`: 5.3.1 publishes broken subpath exports and breaks `sharpee test`.
+Pinned in `package.json`, held across the whole `@sharpee/*` scope by an `overrides` block.
