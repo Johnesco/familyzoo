@@ -1,71 +1,60 @@
-# Family Zoo — Current (v17 — After Hours & Multi-File Organization) — Claude Project Memory
+# Family Zoo — Current (Chord edition) — Claude Project Memory
 
 > Project-specific context for Claude Code sessions in this folder. Shared context
 > (toolchain, commands, testing standard, conventions) comes from the workspace
 > `CLAUDE.md` one level up, which Claude Code loads automatically. Do not restate
 > it here; link to it.
 
-<!-- workspace: ../CLAUDE.md -->
-
 ## Project Identity
 
-**Name:** Family Zoo — Current (v17 — After Hours & Multi-File Organization)
-**Purpose:** Sharpee tutorial step 17 — After Hours & Multi-File Organization.
-**Engine:** Sharpee, the 0.9.x TypeScript pipeline (pinned in `package.json` in the
-authoring repo — this folder ships built output only).
+**Name:** Family Zoo — Current (the finished zoo)
+**Purpose:** The master story for a sixteen-step tutorial for Chord, the Sharpee
+authoring language, and the hub's **Current** entry.
+**Engine:** Sharpee / Chord. The exact version is pinned in `package.json`, held across
+the whole `@sharpee/*` scope by an `overrides` block.
 **Repository:** https://github.com/Johnesco/familyzoo
 **Live:** https://johnesco.github.io/familyzoo/
 
 ## Project Context
 
-This folder is the **Current** entry of the Family Zoo group: the latest tutorial step, shown at the top of the hub card.
-
-Family Zoo is a 17-step progressive tutorial for the Sharpee TypeScript engine. Each
-step adds one chapter of the story and one slice of the engine. The steps are published
-as separate repos so the hub can show the whole trail; the model is
+Family Zoo builds one game across sixteen steps, v01 (one room, about fifty lines) to
+v16 (the whole zoo, about eight hundred). Each step is published as its own repo,
+`familyzoo-v01` … `familyzoo-v16`, so the hub can show the whole trail; the model is
 [`multi-version-guide.md`](https://github.com/Johnesco/ifhub/blob/main/reference/multi-version-guide.md).
 
 ## Key Design Decisions (do not change without discussion)
 
-- **Frozen.** This is the current step; new tutorial work lands here. The cascade rule from the
-  multi-version guide applies: a fix in vN propagates *upward* to v(N+1)… and Current,
-  never downward.
-- **Stays on the 0.9.x TypeScript pipeline.** The tutorial teaches that API. Translating
-  it to Chord would delete the thing it exists to explain.
-- **Built output is the artifact.** `play.html`, the bundle, `source.html`, `tests.html`
-  and the walkthrough files are committed and served by GitHub Pages.
+- **One master, generated steps.** `familyzoo.story` is the finished zoo. Each step repo is
+  the master sliced to the blocks introduced at or before that step, using the step map in
+  the workspace tooling (not in this repo). Change the master and the step map, then
+  re-lay the steps. Never hand-edit a step's `.story`: a re-lay overwrites it.
+- **Step titles live in the step map.** A step's title appears in its `.story` header, its
+  opening test card, `ifhub.conf`, its README, and here in `README.md` and `landing.json`.
+  Renaming a step means changing the step map, not just those files.
+- **Chord, not TypeScript.** Reworked from the 0.9.x TypeScript edition on 2026-09-10; the
+  old edition is kept in `legacy/`. Chord 4.0 (Sharpee 5.5.0) removed the TypeScript
+  hatches (`define text … from`, ADR-361 D1), so the story must be pure Chord.
+- **Built output is the artifact.** `play.html`, `game.js`, `tests.html` and the walkthrough
+  files are committed and served by GitHub Pages. IF Hub does not build or test: build in
+  the workspace first, then ship.
 
 ## File Structure Overview
-
-This repo is **both** the authoring tree for all seventeen steps and the hub's
-**Current** entry, which serves v17.
 
 ```
 familyzoo/
 ├── CLAUDE.md              THIS FILE
-├── README.md              public documentation
+├── README.md              public documentation, including the step table
 ├── ifhub.conf             the IF Hub card (versionPrimary = yes)
-├── landing.json           prose for the GROUP landing page — build_landing.py
-│                          renders it into index.html for the whole trail
-│
-│   ── Current (v17) served at the root, copied from browser/v17/ ──
-├── play.html              the player (loads styles.css + the bundle + theme-listener.js)
-├── familyzoo-17.js        the built story bundle
-├── source.html            multi-file source view (sourceBrowser = yes)
+├── landing.json           prose for the GROUP landing page; build_landing.py renders it
+├── index.html             into index.html for the whole trail
+├── familyzoo.story        the master story
+├── familyzoo.tests.json   the master's tests
+├── play.html, game.js     the built player
 ├── tests.html             the test report
-├── walkthrough.txt        + walkthrough_output.txt, walkthrough-guide.txt
-│
-│   ── the authoring tree, all 17 steps ──
-├── src/                   v01.ts … v16.ts, v17/, and each step's -entry.ts
-├── browser/               built output per step: v01/ … v17/
-├── docs/                  one tutorial chapter per step
-├── tests/transcripts/     one transcript per step
-└── scripts/               test-all.py and the build helpers
+├── walkthrough*.txt       walkthrough, its output, and the guide
+├── src/                   browser entry plus generated story-ir.ts / version.ts
+└── legacy/                the 0.9.x TypeScript edition
 ```
-
-The frozen steps live in sibling repos `../familyzoo-v01` … `../familyzoo-v16`,
-each a self-contained copy of that step's `browser/vNN/` output. They are
-generated from this tree, so a change to a step here must be re-laid there.
 
 ## Working in this project
 
@@ -74,9 +63,15 @@ generated from this tree, so a change to a step here must be re-laid there.
 Shared rules live in the workspace `../CLAUDE.md` (loaded automatically). Build and ship:
 
 ```bash
-python ../tools/build.py familyzoo
-python C:/code/ifhub/tools/ship.py familyzoo
+python ../tools/build.py familyzoo --force        # rebuild the master
+python ../tools/build.py familyzoo-vNN --force    # rebuild one step: game.js, tests.html, walkthrough
+python C:/code/ifhub/tools/ship.py familyzoo-vNN  # publish one step + register it on the hub
+python C:/code/ifhub/tools/build_landing.py familyzoo --force   # regenerate index.html
 ```
+
+`ship.py` takes one game per run. Use `--refresh-pages` when a title changes, so the
+step's own `index.html` is rewritten. Building and testing tools exist only in the local
+workspace; a cloud session can run `npx sharpee test` but cannot produce `tests.html`.
 
 This project uses the [sdlc-baseline](https://github.com/Johnesco/sdlc-baseline) universal
 workflow. Claude must follow these canonical docs:
@@ -98,12 +93,14 @@ workflow. Claude must follow these canonical docs:
 2. **Decide before you build.** Anything above a tuning tweak gets a six-line ADR stub first.
 3. **Claude cannot QA its own work.** The Verify column is always human-owned.
 
-### Project-specific deviations
-
-Split out of the familyzoo monorepo on 2026-09-10 so each tutorial step could be its own
-hub entry. The authoring tree for all 17 steps stays in `familyzoo/`.
-
 ## Project History
 
 ### Recent Changes
-- 2026-09-10: Split from the familyzoo monorepo into a per-version repo.
+- 2026-10-28: v16 renamed "After Hours & Story States" on branch
+  `claude/vibrant-archimedes-uhwg0l` here and in `familyzoo-v16`. Not merged yet; the step
+  map still needs the new title.
+- 2026-10-27: All sixteen steps moved to Sharpee 5.5.0 (Chord 4.0.0) and rebuilt. v16's
+  TypeScript hatch (`chord-extras.ts`) was replaced by `define phrase flavor, cycling` and
+  `define phrase aside, first-time`. This master on GitHub is still on 5.4.1 with the hatch.
+- 2026-09-17: All sixteen steps and this master shipped on Sharpee 5.4.1.
+- 2026-09-10: Chord edition replaced the 0.9.x TypeScript edition (kept in `legacy/`).
