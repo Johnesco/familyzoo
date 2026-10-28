@@ -162,12 +162,12 @@ The parrot glances at you and nods, as if recognizing a fellow after-hours regul
 
 *DING DONG* "It's FEEDING TIME at the Petting Zoo! Come watch our pygmy goats and rabbits enjoy their favorite snacks!"
 
-Finally, they're gone. Do you know how exhausting it is to say "Polly wants a cracker" eight hours a day?
+The parrot clears its throat — actually clears its throat — and fixes you with a knowing look. "Right then. Now that the performative squawking is over, let me tell you something: that toucan? Complete fraud. Can't even crack a nut properly. And don't get me started on the gift shop markup."
 
 > x toucan
 A Toco toucan with an enormous orange-and-black bill.
 
-The gift shop markup is criminal. Three dollars for a postcard? In this economy?
+You seem alright. Most visitors just want selfies. At least you're still here.
 
 > x toco toucan
 A Toco toucan with an enormous orange-and-black bill.
@@ -186,10 +186,10 @@ Thick sisal ropes strung between wooden posts.
 > x perches
 Thick sisal ropes strung between wooden posts.
 
+Finally, they're gone. Do you know how exhausting it is to say "Polly wants a cracker" eight hours a day?
+
 > x aviary plaque
 A colorful information board near the aviary entrance.
-
-Between you and me, the toucan is a complete diva. Won't shut up about its bill.
 
 > read aviary plaque
 WELCOME TO THE AVIARY — Home to over 30 species!
@@ -198,38 +198,32 @@ TOCO TOUCAN — Its bill weighs less than a smartphone.
 
 SCARLET MACAW — Can live over 75 years. Our oldest, Captain, is 42.
 
-The gift shop markup is criminal. Three dollars for a postcard? In this economy?
-
 > x information board
 A colorful information board near the aviary entrance.
 
 > x parrot
-A magnificent scarlet macaw perched on a rope. It tilts its head and watches you with one bright eye.
+A magnificent scarlet macaw perched on a rope. It tilts its head and watches you with one bright eye. The parrot ruffles its scarlet feathers and whistles a jaunty tune. (A small plaque notes the macaws are rescues from the illegal pet trade.)
 
-The parrot ruffles its scarlet feathers and whistles a jaunty tune. (A small plaque notes the macaws are rescues from the illegal pet trade.)
+The gift shop markup is criminal. Three dollars for a postcard? In this economy?
 
 > talk to parrot
 The parrot doesn't respond.
 
 > x macaw
-A magnificent scarlet macaw perched on a rope. It tilts its head and watches you with one bright eye.
-
-The parrot cocks its head and rasps, "Pretty bird! Pretty bird!"
+A magnificent scarlet macaw perched on a rope. It tilts its head and watches you with one bright eye. The parrot cocks its head and rasps, "Pretty bird! Pretty bird!" 
 
 > x parrots
 A raucous flock of scarlet macaws and grey African parrots.
 
+Between you and me, the toucan is a complete diva. Won't shut up about its bill.
+
 > x macaws
 A raucous flock of scarlet macaws and grey African parrots.
 
-I have a degree in ornithology, you know. Well, I would, if birds could enroll.
-
 > x parrot
-A magnificent scarlet macaw perched on a rope. It tilts its head and watches you with one bright eye.
+A magnificent scarlet macaw perched on a rope. It tilts its head and watches you with one bright eye. The parrot preens one wing, ignoring you with theatrical disdain. 
 
-The parrot preens one wing, ignoring you with theatrical disdain.
-
-Finally, they're gone. Do you know how exhausting it is to say "Polly wants a cracker" eight hours a day?
+Between you and me, the toucan is a complete diva. Won't shut up about its bill.
 
 > east
 Main Path
@@ -318,7 +312,7 @@ A pair of Holland Lop rabbits with floppy ears.
 The pygmy goats are bleating loudly and headbutting the fence. They seem very hungry!
 
 > score
-You have scored 40 out of a possible 85.
+You have scored 25 out of a possible 85.
 
 > west
 Main Path
@@ -370,6 +364,8 @@ A battered portable radio held together with duct tape. The antenna is bent at a
 
 > south
 It is pitch dark. You are likely to be eaten by a grue.
+
+A soft, sibilant voice drifts from behind the glass of the snake enclosure. "Ssso... you're the one who stayed. Good. Do you know what it's like in here? They keep the lights on 'dim' and call it 'nocturnal.' I haven't seen actual moonlight in three years. Three. Years."
 
 > north
 Supply Room
@@ -440,8 +436,6 @@ You step inside a soaring mesh dome. Brilliantly colored parrots chatter from ro
 You can see a parrot here.
 
 The parrot glances at you and nods, as if recognizing a fellow after-hours regular.
-
-You seem alright. Most visitors just want selfies. At least you're still here.
 
 > east
 Main Path
@@ -626,6 +620,8 @@ You pet the animal. It seems pleased.
 
 You reach down and pet the nearest goat. It leans into your hand and bleats happily. The others crowd around, demanding equal attention.
 
+Now that the keeper is gone, the goats exchange glances. The largest one turns to you and bleats in a very deliberate pattern. You could swear it sounds like: "Finally. Do you have any idea what it's like being called 'cute' six hundred times a day? We are MAJESTIC."
+
 The pygmy goats are bleating loudly and headbutting the fence. They seem very hungry!
 
 > take rabbits
@@ -642,6 +638,8 @@ The pygmy goats are bleating loudly and headbutting the fence. They seem very hu
 You pet the animal. It seems pleased.
 
 You gently stroke one of the rabbits. Its fur is incredibly soft. It twitches its nose at you contentedly.
+
+The rabbits stop mid-hop and look at each other. Biscuit twitches her nose disapprovingly. Marmalade thumps his foot twice. You get the distinct impression they're critiquing the quality of today's pellets. "Barely adequate," the thumping seems to say. "Last Tuesday's batch was far superior."
 
 The pygmy goats are bleating loudly and headbutting the fence. They seem very hungry!
 
@@ -662,23 +660,25 @@ The parrot glances at you and nods, as if recognizing a fellow after-hours regul
 > take toucan
 The toucan is fixed in place.
 
-Finally, they're gone. Do you know how exhausting it is to say "Polly wants a cracker" eight hours a day?
-
 > take waterfall
 The waterfall is fixed in place.
+
+You seem alright. Most visitors just want selfies. At least you're still here.
 
 > take rope perches
 The rope perches are fixed in place.
 
-Finally, they're gone. Do you know how exhausting it is to say "Polly wants a cracker" eight hours a day?
-
 > take aviary plaque
 The aviary plaque is fixed in place.
+
+You seem alright. Most visitors just want selfies. At least you're still here.
 
 > pet parrot
 You pet the animal. It seems pleased.
 
 You reach toward the parrot. CHOMP! It nips your finger with its beak. "NO TOUCHING!" it squawks indignantly.
+
+You seem alright. Most visitors just want selfies. At least you're still here.
 
 > take parrots
 The parrots are fixed in place.
@@ -784,8 +784,6 @@ You step inside a soaring mesh dome. Brilliantly colored parrots chatter from ro
 You can see a parrot here.
 
 The parrot glances at you and nods, as if recognizing a fellow after-hours regular.
-
-The gift shop markup is criminal. Three dollars for a postcard? In this economy?
 
 > west
 Gift Shop

@@ -1,10 +1,6 @@
 {
-  "version": 1,
-  "story": "familyzoo",
-  "seed": 42,
   "cards": [
     {
-      "type": "opening",
       "assertions": {
         "channels": [
           {
@@ -16,75 +12,85 @@
             "is": "A day at the Willowbrook Family Zoo."
           }
         ]
-      }
+      },
+      "id": "jam4frp5",
+      "type": "opening"
     },
     {
-      "type": "boot",
       "assertions": {
         "contains": [
           "Zoo Entrance",
           "Your family piles out of the car, buzzing with excitement — a whole day at the zoo! You st"
         ]
-      }
+      },
+      "id": "o7djmql6",
+      "type": "boot"
     },
     {
-      "type": "turn",
-      "command": "south",
       "assertions": {
         "contains": [
           "Main Path",
           "A wide gravel path winds through the heart of the zoo. Colorful direction signs point ever"
         ]
-      }
+      },
+      "command": "south",
+      "id": "95zw715t",
+      "type": "turn"
     },
     {
-      "type": "turn",
-      "command": "west",
       "assertions": {
         "contains": [
           "Aviary",
           "You step inside a soaring mesh dome. Brilliantly colored parrots chatter from rope perches"
         ]
-      }
+      },
+      "command": "west",
+      "id": "tvizmk5o",
+      "type": "turn"
     },
     {
-      "type": "turn",
-      "command": "x parrot",
       "assertions": {
         "contains": [
           "A magnificent scarlet macaw perched on a rope. It tilts its head and watches you with one ",
           "The parrot ruffles its scarlet feathers and whistles a jaunty tune. (A small plaque notes "
         ]
-      }
+      },
+      "command": "x parrot",
+      "id": "2oub5caf",
+      "type": "turn"
     },
     {
-      "type": "turn",
-      "command": "east",
       "assertions": {
         "contains": [
           "Main Path",
           "A wide gravel path winds through the heart of the zoo. Colorful direction signs point ever"
         ]
-      }
+      },
+      "command": "east",
+      "id": "1t01d9uy",
+      "type": "turn"
     },
     {
-      "type": "turn",
-      "command": "east",
       "assertions": {
         "contains": [
           "Petting Zoo",
           "A cheerful open-air enclosure that smells of warm hay and fur. A feed dispenser is mounted"
         ]
-      }
+      },
+      "command": "east",
+      "id": "glkz1gcj",
+      "type": "turn"
     },
     {
-      "type": "turn",
-      "command": "score",
       "assertions": {
         "contains": [
           "You have scored 10 out of a possible 85."
         ]
-      }
+      },
+      "command": "score",
+      "id": "e4pn6y1b",
+      "type": "turn"
     }
-  ]
+  ],
+  "id": "ce30qsi5"
 }
