@@ -99,6 +99,13 @@ workflow. Claude must follow these canonical docs:
 ## Project History
 
 ### Recent Changes
+- 2026-11-14: The master and all sixteen steps moved to the current engine (#14).
+  Chord now refuses a story action that repeats standard grammar, and *stroke* is
+  standard touching grammar, so v13–v16 and the master add `remove from action touching`
+  / `stroke the thing` above `define action petting`: STROKE stays a petting verb. `emit petted` and `emit fed`
+  were deleted: nothing listened, and they printed a generic line before each animal's own
+  reply (write-up: `docs/stroke-fix.md`). In the lit Supply Room the
+  flashlight now says "You switch on the flashlight." (upstream #667 fixed the old text).
 - 2026-10-28: v16 renamed "After Hours & Story States"; the master moved to the Chord 4
   engine with the steps and shipped (#12).
 - 2026-10-27: All sixteen steps moved to Chord 4 and rebuilt. v16's TypeScript hatch

@@ -616,8 +616,6 @@ You don't have any animal feed.
 The pygmy goats are bleating loudly and headbutting the fence. They seem very hungry!
 
 > pet pygmy goats
-You pet the animal. It seems pleased.
-
 You reach down and pet the nearest goat. It leans into your hand and bleats happily. The others crowd around, demanding equal attention.
 
 Now that the keeper is gone, the goats exchange glances. The largest one turns to you and bleats in a very deliberate pattern. You could swear it sounds like: "Finally. Do you have any idea what it's like being called 'cute' six hundred times a day? We are MAJESTIC."
@@ -635,8 +633,6 @@ You don't have any animal feed.
 The pygmy goats are bleating loudly and headbutting the fence. They seem very hungry!
 
 > pet rabbits
-You pet the animal. It seems pleased.
-
 You gently stroke one of the rabbits. Its fur is incredibly soft. It twitches its nose at you contentedly.
 
 The rabbits stop mid-hop and look at each other. Biscuit twitches her nose disapprovingly. Marmalade thumps his foot twice. You get the distinct impression they're critiquing the quality of today's pellets. "Barely adequate," the thumping seems to say. "Last Tuesday's batch was far superior."
@@ -674,8 +670,6 @@ The aviary plaque is fixed in place.
 You seem alright. Most visitors just want selfies. At least you're still here.
 
 > pet parrot
-You pet the animal. It seems pleased.
-
 You reach toward the parrot. CHOMP! It nips your finger with its beak. "NO TOUCHING!" it squawks indignantly.
 
 You seem alright. Most visitors just want selfies. At least you're still here.
@@ -713,7 +707,7 @@ The warning sign is fixed in place.
 Taken.
 
 > turn on flashlight
-The flashlight switches on, banishing the darkness.
+You switch on the flashlight.
 
 > turn on radio
 The radio hums to life.
