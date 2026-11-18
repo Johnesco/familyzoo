@@ -99,6 +99,7 @@ workflow. Claude must follow these canonical docs:
 ## Project History
 
 ### Recent Changes
+- 2026-11-18 (#15): the master and all sixteen steps moved to the current engine (syllabus E1). No story change; the release only changes how the browser page restores after a reload. Built and committed on `engine-5.6.3`; not merged, pushed or shipped.
 - 2026-11-14: The master and all sixteen steps moved to the current engine (#14).
   Chord now refuses a story action that repeats standard grammar, and *stroke* is
   standard touching grammar, so v13–v16 and the master add `remove from action touching`
