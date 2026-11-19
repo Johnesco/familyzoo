@@ -11,20 +11,14 @@
             "id": "info.description",
             "is": "A day at the Willowbrook Family Zoo."
           }
-        ]
-      },
-      "id": "jam4frp5",
-      "type": "opening"
-    },
-    {
-      "assertions": {
+        ],
         "contains": [
           "Zoo Entrance",
           "Your family piles out of the car, buzzing with excitement — a whole day at the zoo! You st"
         ]
       },
-      "id": "o7djmql6",
-      "type": "boot"
+      "id": "jam4frp5",
+      "type": "opening"
     },
     {
       "assertions": {
