@@ -164,6 +164,8 @@ The parrot glances at you and nods, as if recognizing a fellow after-hours regul
 
 The parrot clears its throat — actually clears its throat — and fixes you with a knowing look. "Right then. Now that the performative squawking is over, let me tell you something: that toucan? Complete fraud. Can't even crack a nut properly. And don't get me started on the gift shop markup."
 
+You seem alright. Most visitors just want selfies. At least you're still here.
+
 > x toucan
 A Toco toucan with an enormous orange-and-black bill.
 
@@ -172,10 +174,12 @@ You seem alright. Most visitors just want selfies. At least you're still here.
 > x toco toucan
 A Toco toucan with an enormous orange-and-black bill.
 
+Between you and me, the toucan is a complete diva. Won't shut up about its bill.
+
 > x waterfall
 A gentle artificial waterfall cascading into a stone basin.
 
-Between you and me, the toucan is a complete diva. Won't shut up about its bill.
+Finally, they're gone. Do you know how exhausting it is to say "Polly wants a cracker" eight hours a day?
 
 > x water
 A gentle artificial waterfall cascading into a stone basin.
@@ -186,7 +190,7 @@ Thick sisal ropes strung between wooden posts.
 > x perches
 Thick sisal ropes strung between wooden posts.
 
-Finally, they're gone. Do you know how exhausting it is to say "Polly wants a cracker" eight hours a day?
+The gift shop markup is criminal. Three dollars for a postcard? In this economy?
 
 > x aviary plaque
 A colorful information board near the aviary entrance.
@@ -198,8 +202,12 @@ TOCO TOUCAN — Its bill weighs less than a smartphone.
 
 SCARLET MACAW — Can live over 75 years. Our oldest, Captain, is 42.
 
+Between you and me, the toucan is a complete diva. Won't shut up about its bill.
+
 > x information board
 A colorful information board near the aviary entrance.
+
+Between you and me, the toucan is a complete diva. Won't shut up about its bill.
 
 > x parrot
 A magnificent scarlet macaw perched on a rope. It tilts its head and watches you with one bright eye. The parrot ruffles its scarlet feathers and whistles a jaunty tune. (A small plaque notes the macaws are rescues from the illegal pet trade.)
@@ -209,21 +217,23 @@ The gift shop markup is criminal. Three dollars for a postcard? In this economy?
 > talk to parrot
 The parrot doesn't respond.
 
+I have a degree in ornithology, you know. Well, I would, if birds could enroll.
+
 > x macaw
 A magnificent scarlet macaw perched on a rope. It tilts its head and watches you with one bright eye. The parrot cocks its head and rasps, "Pretty bird! Pretty bird!" 
 
 > x parrots
 A raucous flock of scarlet macaws and grey African parrots.
 
-Between you and me, the toucan is a complete diva. Won't shut up about its bill.
-
 > x macaws
 A raucous flock of scarlet macaws and grey African parrots.
+
+Finally, they're gone. Do you know how exhausting it is to say "Polly wants a cracker" eight hours a day?
 
 > x parrot
 A magnificent scarlet macaw perched on a rope. It tilts its head and watches you with one bright eye. The parrot preens one wing, ignoring you with theatrical disdain. 
 
-Between you and me, the toucan is a complete diva. Won't shut up about its bill.
+Finally, they're gone. Do you know how exhausting it is to say "Polly wants a cracker" eight hours a day?
 
 > east
 Main Path
@@ -436,6 +446,8 @@ You step inside a soaring mesh dome. Brilliantly colored parrots chatter from ro
 You can see a parrot here.
 
 The parrot glances at you and nods, as if recognizing a fellow after-hours regular.
+
+Between you and me, the toucan is a complete diva. Won't shut up about its bill.
 
 > east
 Main Path
@@ -653,31 +665,33 @@ You can see a parrot here.
 
 The parrot glances at you and nods, as if recognizing a fellow after-hours regular.
 
+I have a degree in ornithology, you know. Well, I would, if birds could enroll.
+
 > take toucan
 The toucan is fixed in place.
+
+The gift shop markup is criminal. Three dollars for a postcard? In this economy?
 
 > take waterfall
 The waterfall is fixed in place.
 
-You seem alright. Most visitors just want selfies. At least you're still here.
-
 > take rope perches
 The rope perches are fixed in place.
+
+Finally, they're gone. Do you know how exhausting it is to say "Polly wants a cracker" eight hours a day?
 
 > take aviary plaque
 The aviary plaque is fixed in place.
 
-You seem alright. Most visitors just want selfies. At least you're still here.
+I have a degree in ornithology, you know. Well, I would, if birds could enroll.
 
 > pet parrot
 You reach toward the parrot. CHOMP! It nips your finger with its beak. "NO TOUCHING!" it squawks indignantly.
 
-You seem alright. Most visitors just want selfies. At least you're still here.
-
 > take parrots
 The parrots are fixed in place.
 
-I have a degree in ornithology, you know. Well, I would, if birds could enroll.
+The gift shop markup is criminal. Three dollars for a postcard? In this economy?
 
 > east
 Main Path

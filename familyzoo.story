@@ -736,7 +736,7 @@ create the parrots
   A raucous flock of scarlet macaws and grey African parrots.
 
 define sequence closing time
-  at turn 5
+  at turn 4
     phrase zoo-pa-closing-3
       *DING DONG* "Attention visitors! The Willowbrook Family Zoo will
       be closing in three hours. Please make sure to visit all exhibits
@@ -757,7 +757,7 @@ define sequence closing time
 end sequence
 
 define sequence feeding time
-  at turn 11
+  at turn 10
     change the pygmy goats to hungry
     phrase zoo-feeding-time-announced
       *DING DONG* "It's FEEDING TIME at the Petting Zoo! Come watch our
