@@ -99,7 +99,7 @@ workflow. Claude must follow these canonical docs:
 ## Project History
 
 ### Recent Changes
-- 2026-11-20 (#16): the master and all sixteen steps moved to Sharpee 5.7.1 / Chord 4.1.0. The opening is no longer turn 1 (upstream ADR-404): each tests tree's `boot` card is folded into its `opening` card, and the `at turn` numbers in v14–v16 and the master drop by one (syllabus E2a) so the announcements land on the same commands as before. 5.7.1 makes an `emit` print nothing (#724, ADR-405), which needed no change here. Merged and shipped 2026-11-20.
+- 2026-11-20 (#16): the master and all sixteen steps moved to the current engine. The opening is no longer turn 1 (upstream ADR-404): each tests tree's `boot` card is folded into its `opening` card, and the `at turn` numbers in v14–v16 and the master drop by one (syllabus E2a) so the announcements land on the same commands as before. 5.7.1 makes an `emit` print nothing (#724, ADR-405), which needed no change here. Merged and shipped 2026-11-20.
 - 2026-11-18 (#15): the master and all sixteen steps moved to the current engine (syllabus E1). No story change; the release only changes how the browser page restores after a reload. Merged and shipped 2026-11-19. The next move, to 5.7.0 (the opening stops being a turn), is #16.
 - 2026-11-14: The master and all sixteen steps moved to the current engine (#14).
   Chord now refuses a story action that repeats standard grammar, and *stroke* is
